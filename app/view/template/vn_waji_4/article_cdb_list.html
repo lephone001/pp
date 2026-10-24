@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{listTitle|safe}} | {{domain.titleText}}</title>
+  <meta name="description" content="{{listDescription}}">
+  <link rel="icon" href="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/css/style.css?v=366">
+  <style>
+    .cbd-list-wrap{padding:42px 0 56px;background:#f7f9fc}
+    .cbd-list-head{padding:38px 0;background:{{domain.themeColor}};color:#fff}
+    .cbd-list-head h1{margin:0 0 10px;font-size:34px;line-height:1.2}
+    .cbd-list-head p{margin:0;max-width:760px;opacity:.9}
+    .cbd-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .cbd-card{display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #e5e9f2;border-radius:8px;padding:20px;color:#182233;text-decoration:none;min-height:430px;transition:transform .2s ease,box-shadow .2s ease}
+    .cbd-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(20,43,74,.12)}
+    .cbd-card>div:first-child{width:calc(100% + 40px);aspect-ratio:16/10;margin:-20px -20px 18px;overflow:hidden;background:#edf0f4}
+    .cbd-card>div:first-child img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+    .cbd-card:hover>div:first-child img{transform:scale(1.035)}
+    .cbd-card h2{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;min-height:54px;font-size:20px;line-height:1.35;margin:0 0 10px;color:{{domain.themeColor}}}
+    .cbd-card p{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:3;margin:0 0 14px;color:#536171;line-height:1.65}
+    .cbd-card time{margin-top:auto;padding-top:12px;border-top:1px solid #edf0f4;font-size:13px;color:#8b97a8}
+    .cbd-more{display:flex;justify-content:center;margin-top:28px}
+    .cbd-more button{border:0;border-radius:4px;background:{{domain.themeColor}};color:#fff;padding:12px 28px;font-weight:700;cursor:pointer}
+    .cbd-more button:disabled{background:#9aa4b2;cursor:not-allowed}
+    .cbd-pager{display:flex;justify-content:center;gap:10px;margin-top:30px;flex-wrap:wrap}
+    .cbd-pager a,.cbd-pager span{height:40px;padding:0 20px;border:1px solid #d9e1ec;border-radius:4px;background:#fff;color:#263241;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font-weight:700}
+    .cbd-pager .disabled{color:#9aa4b2;background:#f4f6f9}
+    .cbd-mobile-more{display:none}@media (max-width:900px){.cbd-grid{grid-template-columns:1fr}.cbd-card{min-height:0}.cbd-card>div:first-child{aspect-ratio:16/8}.cbd-list-head h1{font-size:28px}.cbd-pager{display:none}.cbd-mobile-more{display:flex}}@media (min-width:901px){.cbd-more{display:none}.cbd-pager{display:flex}}
+  </style>
+</head>
+<body>
+  {% include "template/vn_waji_4/common_header.html" %}
+  <main>
+    <section class="cbd-list-head">
+      <div class="container">
+        <h1>{{listTitle|safe}}</h1>
+        <p>{{listDescription}}</p>
+      </div>
+    </section>
+
+    <section class="cbd-list-wrap">
+      <div class="container">
+        <div id="cbd-list" class="cbd-grid" data-static-url="{{domain.sfurl.mubanStaticUrl}}">
+          {% for item in articleList %}
+          <a class="cbd-card" href="{{item.url}}" aria-label="{{item.title}}">
+            <div><img src="{{domain.sfurl.mubanStaticUrl}}{{item.image}}" alt="{{item.title}}" loading="lazy" decoding="async"></div>
+            <h2>{{item.title|safe}}</h2>
+            <p>{{item.description}}</p>
+            <time
+              class="js-local-date"
+              datetime="{{item.createdAt}}"
+              data-date="{{item.createdAt}}">
+              {{item.createdText}}
+            </time>
+          </a>
+          {% endfor %}
+        </div>
+        <nav class="cbd-pager" aria-label="pagination">
+          {% if hasPrev %}
+          <a href="/v-nl/list.html?prevId={{prevFirstId}}" aria-label="Previous">Prev</a>
+          {% else %}
+          <span class="disabled">Prev</span>
+          {% endif %}
+
+          <a href="/v-nl/list.html" aria-label="Latest">Latest</a>
+
+          {% if hasMore %}
+          <a href="/v-nl/list.html?lastId={{nextLastId}}" aria-label="Next">Next</a>
+          {% else %}
+          <span class="disabled">Next</span>
+          {% endif %}
+        </nav>
+
+        <div class="cbd-more cbd-mobile-more">
+          <button id="cbd-more-btn" type="button" data-last-id="{{nextLastId}}" data-has-more="{{hasMore}}">
+            Xem them
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% include "template/vn_waji_4/common_footer.html" %}
+  <script>
+    (function(){
+      var list = document.getElementById('cbd-list');
+      var btn = document.getElementById('cbd-more-btn');
+      if(!list || !btn) return;
+      var loading = false;
+      var staticUrl = (list.getAttribute('data-static-url') || '').replace(/\/+$/, '');
+
+      function escapeHtml(value){
+        return String(value || '').replace(/[&<>"']/g,function(s){
+          return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s];
+        });
+      }
+
+      function getImageUrl(image){
+        image = String(image || '').trim();
+        if(!image || /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(image)){
+          return image;
+        }
+        return staticUrl + (image.charAt(0) === '/' ? image : '/' + image);
+      }
+
+      function renderItem(item){
+        var title = item.title || '';
+        var image = item.image
+          ? '<div><img src="'+escapeHtml(getImageUrl(item.image))+'" alt="'+escapeHtml(title)+'" loading="lazy" decoding="async"></div>'
+          : '';
+        return '<a class="cbd-card" href="'+escapeHtml(item.url || ('/v-nd/'+item._id+'.html'))+'" aria-label="'+escapeHtml(title)+'">'
+          + image
+          + '<h2>'+title+'</h2>'
+          + '<p>'+escapeHtml(item.description || '')+'</p>'
+          + '<time>'+escapeHtml(item.createdText || '')+'</time>'
+          + '</a>';
+      }
+
+      function setButtonState(hasMore){
+        if(!hasMore || hasMore === 'false'){
+          btn.disabled = true;
+          btn.textContent = 'Da het bai viet';
+        }else{
+          btn.disabled = false;
+          btn.textContent = 'Xem them';
+        }
+      }
+
+      async function loadMore(){
+        if(loading || btn.disabled) return;
+        var lastId = btn.getAttribute('data-last-id') || '';
+        if(!lastId){
+          setButtonState(false);
+          return;
+        }
+        loading = true;
+        btn.disabled = true;
+        btn.textContent = 'Dang tai...';
+        try{
+          var res = await fetch('/v-nl/list.html?ajax=1&lastId='+encodeURIComponent(lastId), {
+            headers: {'Accept':'application/json'}
+          });
+          var json = await res.json();
+          var rows = json.data || [];
+          if(rows.length){
+            list.insertAdjacentHTML('beforeend', rows.map(renderItem).join(''));
+          }
+          btn.setAttribute('data-last-id', json.nextLastId || '');
+          setButtonState(json.hasMore);
+        }catch(e){
+          btn.disabled = false;
+          btn.textContent = 'Tai lai';
+        }finally{
+          loading = false;
+        }
+      }
+
+      setButtonState(btn.getAttribute('data-has-more'));
+      btn.addEventListener('click', loadMore);
+      if('IntersectionObserver' in window){
+        var observer = new IntersectionObserver(function(entries){
+          if(entries.some(function(entry){ return entry.isIntersecting; })){
+            loadMore();
+          }
+        }, {rootMargin:'180px'});
+        observer.observe(btn);
+      }
+    })();
+    (function () {
+       document.querySelectorAll('.js-local-date').forEach(function (element) {
+        const date = new Date(element.dataset.date);
+        if (Number.isNaN(date.getTime())) return;
+
+        element.textContent = new Intl.DateTimeFormat('vi-VN', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          timeZone: 'Asia/Ho_Chi_Minh'
+        }).format(date);
+      });
+    })();
+  </script>
+</body>
+</html>

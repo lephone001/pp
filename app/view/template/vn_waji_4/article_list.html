@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tin giá đục phá bê tông 2026 | {{domain.titleText}}</title>
+  <meta name="description" content="Tin tức bảng giá đục phá bê tông, giá khoan cắt bê tông, giá thuê máy xúc, báo giá tháo dỡ công trình và vận chuyển xà bần năm 2026.">
+  <link rel="canonical" href="/tin-gia-duc-pha-be-tong">
+  <meta property="og:title" content="Tin giá đục phá bê tông 2026">
+  <meta property="og:description" content="Cập nhật đơn giá đục phá bê tông, khoan cắt bê tông, thuê máy xúc và vận chuyển xà bần.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/css/style.css?v=366">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"CollectionPage","name":"Tin giá đục phá bê tông 2026","description":"Danh sách bài viết về bảng giá thi công bê tông, khoan cắt, thuê máy xúc và vận chuyển xà bần."}
+  </script>
+</head>
+<body>
+  {% include "template/vn_waji_4/common_header.html" %}
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Tin giá 2026</p>
+        <h1>Tin tức bảng giá đục phá bê tông và khoan cắt bê tông</h1>
+        <p>Cập nhật đơn giá thi công, báo giá tháo dỡ công trình, thuê máy xúc và vận chuyển xà bần.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container article-layout">
+        <div class="article-item-listt">
+                {% for item in articleList %}
+                <article>
+                    <a href="/detail/{{item._id}}.html">
+                        {% if item.image %}
+                        <div class="a-img" style="background-image: url({{item.image}});"></div>
+                        {% endif %}
+                        {% if item.image %}
+                        <div class="a-content">
+                            {% else %}
+                            <div class="no-image">
+                                {% endif %}
+                                <h1>
+                                    {{item.title}}
+                                </h1>
+                                {% if item.description.length>0 %}
+                                <h4>
+                                    {{item.description}}
+                                </h4>
+                                {% endif %}
+                                <div class="detailInfo">
+                                    <span class="time">时间:{{item.time}}</span>
+                                    <span class="tag">
+                                        分类: {{ item.articleCategory }}
+                                    </span>
+                                    <span class="tag">
+                                        下载: {{ item.view }}次
+                                    </span>
+                                </div>
+                            </div>
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+        <aside class="article-sidebar">
+          <div class="side-box"><h3>Nhóm báo giá</h3><a href="index.html#duc-pha" aria-label="Giá đục phá bê tông">Giá đục phá bê tông</a><a href="index.html#khoan-cat" aria-label="Giá khoan cắt bê tông">Giá khoan cắt bê tông</a><a href="index.html#may-xuc" aria-label="Giá thuê máy xúc">Giá thuê máy xúc</a><a href="index.html#xa-ban" aria-label="Giá vận chuyển xà bần">Giá vận chuyển xà bần</a></div>
+          <div class="side-box contact-box"><h3>Nhận báo giá</h3><p>Gửi thông tin công trình để nhận đơn giá chính xác.</p><a href="tel:{{domain.agentLink.noticeDom}}" aria-label="Gọi {{domain.agentLink.noticeDom}}">Gọi {{domain.agentLink.noticeDom}}</a></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  {% include "template/vn_waji_4/common_footer.html" %}
+  <div class="fixed-contact"><a href="tel:{{domain.agentLink.noticeDom}}" aria-label="Gọi ngay">Gọi ngay</a><a href="index.html#bao-gia" aria-label="Báo giá">Báo giá</a></div>
+  <script src="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/js/main.js"></script>
+</body>
+</html>

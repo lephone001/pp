@@ -1,0 +1,179 @@
+<html>
+    <head>
+        <title>{{sodomain.title}}</title>
+        <meta charset="utf-8">
+        <meta name="copyright" content="{{sodomain.link}}">
+        <meta name="viewport"
+            content="width=device-width,initial-scale=1.0,maximum-scale=1.0,
+            user-scalable=0">
+        <meta name="keywords" content="{{sodomain.keyWords}}">
+        <meta data-hid="description" name="description"
+            content="{{sodomain.description}}">
+        <meta data-hid="mobile-web-app-capable" name="mobile-web-app-capable"
+            content="yes">
+        <meta data-hid="apple-mobile-web-app-title"
+            name="apple-mobile-web-app-title" content="{{sodomain.title}}">
+        <meta data-hid="author" name="author" content="{{sodomain.title}}">
+        <meta data-hid="theme-color" name="theme-color"
+            content="{{sodomain.themeColor}}">
+        <meta data-hid="og:type" name="og:type" property="og:type"
+            content="website">
+        <meta data-hid="og:title" name="og:title" property="og:title"
+            content="{{sodomain.title}}">
+        <meta data-hid="og:site_name" name="og:site_name"
+            property="og:site_name" content="{{sodomain.title}}">
+        <meta data-hid="og:description" name="og:description"
+            property="og:description" content="{{sodomain.description}}">
+        <meta name="shareaholic:image" content="/images/common/share.jpg">
+        <meta name="google" content="notranslate" />
+        <meta name="og:image" content="/images/common/share.jpg">
+        <meta name="referrer" content="always">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="/css/link.css">
+
+        <style>
+            html,body{
+                padding: 0;
+                margin: 0;
+                height: 100%;
+            }
+            body{
+                background: url('https://api88.net/api/bing/') no-repeat;
+                position: relative;
+                overflow: hidden;
+            }
+            body::after{
+                
+            }
+           input {
+                outline: 0;
+                -webkit-appearance: none;
+            }
+            .search-content{
+                height: 100%;
+                position: relative;
+                z-index: 2;
+            }
+            .logo{
+                text-align: center;
+            }
+            .search-con-body{
+                max-width: 680px;
+                margin: 0 auto;
+                padding: 15px;
+                margin-top:100px;
+                background: #ffffff;
+                border-radius: 10px;
+            }
+            .search-con-body .logo{
+                margin:25px 0;
+            }
+            .search-input{
+                width: calc(100% - 108px);
+            }
+            .input-box{
+                height: 44px;
+                border-radius: 5px;
+                width: 100%;
+            }
+            .input-box input{
+                border: none;
+                height: 100%;
+                width: 100%;
+                border: 2px solid #c4c7ce;
+                border-right:none;
+                border-radius: 10px 0 0 10px;
+                padding:0 5px;
+            }
+            .input-box input:focus{
+                border-color: #4e6ef2!important;
+            }
+            .search-box{
+                display: flex;
+            }
+            .search-button button{
+                background: #4e6ef2;
+                border:none;
+                height: 44px;
+                color:#fff;
+                font-size: 17px;
+                width:108px;
+                border-radius: 0px 10px 10px 0px;
+                cursor: pointer;
+            }
+            .search-button button:hover {
+                background-color: #4662d9;
+            }
+            .nav-bot a{
+                text-decoration: none;
+                color:#4e6ef2;
+            }
+            .nav-bot a:hover{
+                color:#3152d8;
+            }
+            .nav-bot h1{
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="height: 0;overflow: hidden;">
+            <img src="https://api88.net/api/bing/" alt="">
+        </div>
+        {% include "template/components/img.html" %}
+        <div class="search-content">
+            <div class="search-con-body">
+                <div class="logo">
+                    <a href="/so">
+                        <img height="58px"
+                        src="https://www.baidu.com/img/flexible/logo/plus_logo_web_2.png"
+                        alt="{{sodomain.title}}">
+                    </a>
+                </div>
+                <div class="search-box">
+                    <div class="search-input">
+                        <div class="input-box">
+                            <input type="text" class="search-input-value">
+                        </div>
+                    </div>
+                    <div class="search-button">
+                        <button onclick="searchClick()">百度一下</button>
+                    </div>
+                </div>
+                <div class="nav-bot"></div>
+                <div class="seo-biying-images">
+                    {% for item in images %}
+                    <a href="{{item.search}}">
+                        <img alt="{{item.title}}" src="https://bing.com/{{item.image}}" alt="">
+                    </a>
+                    {% endfor %}
+                </div>
+                <div class="nav-bot" style="height:0;overflow: hidden;">
+                    {% for item in sodomain.wordList %}
+                    <a href="/so/{{item}}">
+                        <h1>{{item}}</h1>
+                    </a>
+                    {% endfor %}
+                    {% for item in links %}
+                    <a href="/l/{{item.link}}">
+                        <h1>{{item.title}}</h1>
+                    </a>
+                    {% endfor %}
+                    {% for item in links %}
+                    <a href="/n/{{item.title}}">
+                        <h1>{{item.title}}</h1>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% include "template/components/common.html" %}
+        </div>
+        <script>
+            var searchClick = function(){
+            var searchVal = document.querySelector('.search-input-value').value;
+                if(searchVal){
+                    window.location.href = '/so/'+searchVal
+                }
+            }
+        </script>
+    </body>

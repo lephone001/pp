@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{mtdk.title}}{% if mtdk.title %}-{% endif %}{{domain.beiAnName}}</title>
+    <meta name="description" content="{{mtdk.description}}">
+    <meta name="keywords" content="{{domain.beiAnName}}">
+    <link rel="stylesheet" href="/css/link.css">
+    <style>
+        iframe#global-iframe {
+            position:fixed;
+            z-index:10000;
+        }
+    </style>
+</head>
+
+<body id="gogogo">
+    {% include "template/components/img.html" %}
+    {% for i in range(0, 30) -%}
+    <div id="{{domain.urlString}}{{ i }}" class="{{domain.urlString}}{{ i }}"></div>
+    {%- endfor %}
+    <article>{{mtdk.description}}</article>
+    <div class="djs-box" style="background:{{domain.themeColor}};">
+        <div class="box-content">
+            <div class="yuan">
+                <span id="changeNum"><b>✔️</b></span>
+            </div>
+            <div class="text">安全验证成功可放心进入</div>
+            <div>
+                <a class="button" href="javascript:void(0)">点击立即进入</a>
+            </div>
+        </div>
+    </div>
+    {% include "template/components/common.html" %}
+    {% for i in range(30, 60) -%}
+    <div id="{{domain.urlString}}{{ i }}" class="{{domain.urlString}}{{ i }}"></div>
+    {%- endfor %}
+    {{domain.jumpHTML|safe}}
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="plyr-play" viewBox="0 0 18 18"><path d="M3 1.5v15L16 9z"/></symbol>
+  <symbol id="plyr-pause" viewBox="0 0 18 18"><path d="M3 2h4v14H3zm8 0h4v14h-4z"/></symbol>
+  <symbol id="plyr-volume" viewBox="0 0 18 18"><path d="M1 6h3l5-4v14l-5-4H1z"/><path d="M12 5c2 2 2 6 0 8m3-11c4 4 4 10 0 14" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="plyr-muted" viewBox="0 0 18 18"><path d="M1 6h3l5-4v14l-5-4H1z"/><path d="m12 6 5 6m0-6-5 6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="plyr-enter-fullscreen" viewBox="0 0 18 18"><path d="M1 6V1h5M12 1h5v5M17 12v5h-5M6 17H1v-5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="plyr-exit-fullscreen" viewBox="0 0 18 18"><path d="M6 1v5H1M12 1v5h5M17 12h-5v5M1 12h5v5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+</svg>

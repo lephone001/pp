@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="220" viewBox="0 0 320 220" role="img" aria-labelledby="title desc">
+  <title id="title">Đức Toàn construction demolition logo</title>
+  <desc id="desc">Industry logo for concrete demolition, excavator work, and construction services.</desc>
+  <defs>
+    <linearGradient id="red" x1="70" y1="18" x2="250" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ee3b32"/>
+      <stop offset="1" stop-color="#9c1717"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="90" y1="68" x2="240" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffd95b"/>
+      <stop offset="1" stop-color="#e79d20"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="220" rx="18" fill="#fff"/>
+  <path d="M160 18 260 58v72c0 40-34 70-100 88-66-18-100-48-100-88V58l100-40Z" fill="url(#red)" stroke="#1d1d1d" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M88 150h144" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+  <path d="M98 130h88l28 20H82l16-20Z" fill="#1d1d1d"/>
+  <circle cx="112" cy="151" r="15" fill="#ffd95b" stroke="#1d1d1d" stroke-width="6"/>
+  <circle cx="174" cy="151" r="15" fill="#ffd95b" stroke="#1d1d1d" stroke-width="6"/>
+  <path d="M124 101h58l30 29H104l20-29Z" fill="url(#gold)" stroke="#1d1d1d" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M142 111h30l16 14h-54l8-14Z" fill="#d9f3ff" stroke="#1d1d1d" stroke-width="4"/>
+  <path d="M196 116 238 82l14 16-40 38Z" fill="#ffd95b" stroke="#1d1d1d" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M244 88 278 104l-8 17-30-15Z" fill="#ffd95b" stroke="#1d1d1d" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M268 119l26 12-16 18-22-13Z" fill="#1d1d1d"/>
+  <path d="M80 72h38v58H80zM122 88h32v42h-32z" fill="#fff" opacity=".95"/>
+  <path d="M78 132h78" stroke="#ffd95b" stroke-width="6" stroke-linecap="round"/>
+</svg>

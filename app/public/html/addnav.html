@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航添加</title>
+    <link rel="stylesheet" href="/css/vant.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .addnav-page {
+            max-width: 1300px;
+            margin: 10px auto;
+        }
+
+        input,
+        textarea {
+            outline: 0;
+            -webkit-appearance: none;
+        }
+
+        .info {
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 14px;
+            color: #181818;
+        }
+
+        .info h2 {
+            line-height: 40px;
+        }
+
+        .info li {
+            line-height: 25px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .item-input {
+            margin-top: 10px;
+        }
+
+        .input-box {
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .input-box input,
+        .input-box textarea {
+            border: none;
+            height: 100%;
+            width: 100%;
+            height: 44px;
+            border: 2px solid #c4c7ce;
+            border-radius: 5px;
+            padding: 5px;
+            background: #fff;
+            color: #181818;
+        }
+
+        .input-box input:focus,
+        .input-box textarea:focus {
+            border-color: #4e6ef2 !important;
+        }
+
+        .input-box textarea {
+            height: 90px;
+        }
+
+        .form {
+            border-radius: 5px;
+            font-size: 14px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .item-input {
+            width: 50%;
+            padding: 0 5px;
+        }
+
+        .label {
+            padding: 3px 0;
+            color: #181818;
+        }
+
+        .txt-red {
+            color: red;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            height: 0px;
+            background-color: #54bc8c;
+        }
+
+        ::-webkit-scrollbar-track {
+            /* border-radius:10px; */
+            background-color: #54bc8c;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            /* border-radius:10px; */
+            background-color: #1d975e;
+        }
+
+        .v-flex {
+            display: flex;
+        }
+
+        .van-radio__label {
+            color: #000;
+        }
+        .theme-black .van-radio__label {
+            color: #fff;
+        }
+        .theme-black .label {
+            color: #ffffff;
+        }
+
+        .theme-black .info {
+            color: #ffffff;
+        }
+        .theme-black .info{
+
+        }
+        .theme-white .van-radio__label {
+            color: #191919;
+        }
+        .theme-black .input-box{
+            color: #fff;
+        }
+        @media screen and (max-width: 768px) {
+            .item-input {
+                width: 100%;
+                padding: 0;
+            }
+
+            .addnav-page {
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="addnav-page" id="app">
+        <div class="info">
+            <h2>网站添加须知</h2>
+            <ul>
+                <!-- <li>一、正规网站，不违反国家法律法规，并且网站内容无违规、链接、文字、图片、音频、视频内容等。</li> -->
+                <li>一、导航标题描述清晰直观，所属分类准确，网址链接准确无误并且能安全正常访问，链接无拦截被墙等。</li>
+                <li>二、禁止恶意添加，不规范添加，同一站点无需重复多次添加。</li>
+                <li>三、添加成功后请耐性等待管理员审核，也可联系管理员请求立即审核。</li>
+                <li>四、审核通过后如需删除请联系管理员删除操作，如网站添加后长期出现网站异常、违规、跳转等会自动删除处理。</li>
+                <li>五、执行添加操作表示默认遵循并同意本网站链接添加条例。</li>
+            </ul>
+        </div>
+        <div class="form">
+            <div class="item-input">
+                <div class="label">
+                    网站标题（<span class="txt-red">必填</span>例如：百度一下）
+                </div>
+                <div class="input-box">
+                    <input type="text" v-model="dataForm.title" class="search-input-value">
+                </div>
+            </div>
+            <div class="item-input">
+                <div class="label">
+                    所属分类 （<span class="txt-red">必填</span>多个用，或, 分割 如：导航站,视频站）
+                </div>
+                <div class="input-box">
+                    <input v-model="dataForm.keywords" type="text" class="search-input-value">
+                </div>
+            </div>
+            <div class="item-input">
+                <div class="label">
+                    网站链接（<span class="txt-red">必填</span>例如：www.baidu.com）
+                </div>
+
+                <div class="input-box v-flex">
+                    <van-radio-group v-model="linkHttps" direction="horizontal">
+                        <van-radio name="0">http</van-radio>
+                        <van-radio name="1">https</van-radio>
+                    </van-radio-group>
+                    <input style="width:calc(100% - 135px)" placeholder="baidu.com" @blur="noHttpsAndHttp()"
+                        v-model="dataForm.link" type="text" class="search-input-value">
+                </div>
+            </div>
+            <div class="item-input">
+                <div class="label">
+                    H5手机网页链接（例如：m.baidu.com）
+                </div>
+                <div class="input-box v-flex">
+                    <van-radio-group v-model="linkh5Https" direction="horizontal">
+                        <van-radio name="0">http</van-radio>
+                        <van-radio name="1">https</van-radio>
+                    </van-radio-group>
+                    <input style="width:calc(100% - 135px)" placeholder="baidu.com" @blur="noHttpsAndHttp()"
+                        v-model="dataForm.h5" type="text" class="search-input-value">
+                </div>
+            </div>
+            <div class="item-input">
+                <div class="label">
+                    APP链接（例如：app.baidu.com）
+                </div>
+                <div class="input-box v-flex">
+                    <van-radio-group v-model="linkappHttps" direction="horizontal">
+                        <van-radio name="0">http</van-radio>
+                        <van-radio name="1">https</van-radio>
+                    </van-radio-group>
+                    <input style="width:calc(100% - 135px)" placeholder="baidu.com" @blur="noHttpsAndHttp()"
+                        v-model="dataForm.app" type="text" class="search-input-value">
+                </div>
+            </div>
+            <div class="item-input">
+                <div class="label">
+                    网站描述（0-180个字）
+                </div>
+                <div class="input-box">
+                    <textarea v-model="dataForm.description" class="search-input-value"></textarea>
+                </div>
+            </div>
+            
+
+
+            <!-- <div class="item-input">
+                <div class="label">
+                    网站LOGO（<span class="txt-red">数量1，2M以内</span>）
+                </div>
+                <div class="input-box">
+                    <van-uploader v-model="fileListLogo" :accept="'image/png, image/jpeg,image/gif,image/jpg'"
+                        :max-size="2000 * 1024" :max-count="1">
+                    </van-uploader>
+                </div>
+            </div>
+
+            <div class="item-input">
+                <div class="label">
+                    网页封面图（<span class="txt-red">数量小于10，每个大小10M以内</span>）
+                </div>
+                <div class="input-box">
+                    <van-uploader v-model="fileList" :accept="'image/png, image/jpeg,image/gif,image/jpg'" multiple
+                        :max-size="10000 * 1024" :max-count="10">
+                    </van-uploader>
+                </div>
+            </div> -->
+        </div>
+        <div class="submit-box" style="margin:50px 5px 0 5px;display: flex;justify-content: end;">
+            <div class="input-box" style="width:auto;display: flex; align-items: center;">
+                验证码：
+                <input style="width:130px" v-model="dataForm.code" type="text"
+                    class="search-input-value">
+                <img :src="captchaUrl" class="fr" style="
+          border-radius: 2px;width:100px;height: 40px;
+          cursor: pointer;" alt @click="getCaptchaUrl" />
+            </div>
+            <van-button style="width: 90%;max-width: 320px;" size="large" type="primary" @click="submitAddNav">确认提交
+            </van-button>
+        </div>
+    </div>
+    <script src="/js/vue.js"></script>
+    <script src="/js/vant.js"></script>
+    <script src="/js/axios.min.js"></script>
+    <script>
+        var THEMECOLOR = window.localStorage.getItem('THEMECOLOR')
+        if (THEMECOLOR) {
+            document.body.className = THEMECOLOR
+        }
+        // 在 #app 标签下渲染一个按钮组件
+        new Vue({
+            el: '#app',
+            data: {
+                fileListLogo: [],
+                fileList: [],
+                searchValue: '',
+                linkHttps: '0',
+                linkh5Https: '0',
+                linkappHttps: '0',
+                captchaUrl: "/api/captcha?type=3&t=" + new Date().getTime(),
+                dataForm: {
+                    title: '',
+                    keywords: '',
+                    description: '',
+                    code:'',
+                    link: '',
+                    h5: '',
+                    app: '',
+                    logo: '',
+                    imageList: [],
+                }
+            },
+            // watch: {
+            //     dataForm:{
+            //         handler(newVal,oldVal){
+            //             this.noHttpsAndHttp();
+            //         },
+            //         deep:true
+            //     }
+            // },
+            methods: {
+                getCaptchaUrl() {
+                    this.captchaUrl = "/api/captcha?type=3&t=" + new Date().getTime();
+                },
+                noHttpsAndHttp() {
+                    if (this.dataForm.link.indexOf('https') === 0) this.linkHttps = '1';
+                    if (this.dataForm.h5.indexOf('https') === 0) this.linkh5Https = '1';
+                    if (this.dataForm.app.indexOf('https') === 0) this.linkappHttps = '1';
+                    this.dataForm.link = this.dataForm.link.replace(/http\:\/\/|https\:\/\/|HTTPS\:\/\/|HTTP\:\/\/|\/$/g, '')
+                    this.dataForm.h5 = this.dataForm.h5.replace(/http\:\/\/|https\:\/\/|HTTPS\:\/\/|HTTP\:\/\/|\/$/g, '')
+                    this.dataForm.app = this.dataForm.app.replace(/http\:\/\/|https\:\/\/|HTTPS\:\/\/|HTTP\:\/\/|\/$/g, '')
+                },
+                async submitAddNav() {
+                    let logo = null
+                    let images = null
+                    let h5 = this.dataForm.h5
+                    let app = this.dataForm.app
+                    let link = this.dataForm.link
+                    if (!this.dataForm.title || this.dataForm.title.length > 100) return alert('标题不正确！');
+                    if (!this.dataForm.keywords || this.dataForm.keywords.length > 100) return alert('分类不正确！');
+                    if (!this.dataForm.link || this.dataForm.link.indexOf('.') == -1) return alert('链接不正确！');
+                    if (!this.dataForm.code) return alert('验证码不正确！');
+
+                    if (this.dataForm.link.indexOf('http') == -1)
+                        link = this.linkHttps == '0' ? 'http://' + this.dataForm.link : 'https://' + this.dataForm.link
+                    if (this.dataForm.h5.indexOf('http') == -1)
+                        h5 = this.linkh5Https == '0' ? 'http://' + this.dataForm.h5 : 'https://' + this.dataForm.h5
+                    if (this.dataForm.app.indexOf('http') == -1)
+                        app = this.linkappHttps == '0' ? 'http://' + this.dataForm.app : 'https://' + this.dataForm.app
+                    vant.Toast.loading({
+                        message: '加载中...',
+                        forbidClick: true,
+                        loadingType: 'spinner',
+                    });
+                    if (this.fileListLogo.length > 0) {
+                        logo = await this.uploadImage(this.fileListLogo)
+                        if (logo.data) {
+                            this.dataForm.logo = logo.data[0]['filename']
+                        }
+                    }
+                    if (this.fileList.length > 0) {
+                        images = await this.uploadImage(this.fileList)
+                        if (images.data) {
+                            this.dataForm.imageList = []
+                            images.data.forEach((item) => {
+                                this.dataForm.imageList.push(item.filename)
+                            })
+                        }
+                    }
+                    await this.addNav({ ...this.dataForm, h5, app, link });
+                },
+
+                async addNav(dataForm) {
+                    if (this.fileListLogo.length > 0 && !dataForm.logo) return alert('上传文件错误！')
+                    if (this.fileList.length !== dataForm.imageList.length) return alert('上传文件错误！')
+                    vant.Dialog.confirm({
+                        title: '提示',
+                        message: '添加成功,等待审核',
+                    })
+                    vant.Toast.clear()
+                }
+            }
+        });
+        Vue.use(vant.Lazyload);
+    </script>
+</body>
+
+</html>

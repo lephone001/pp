@@ -1,0 +1,23 @@
+<input id="nowPage" class="hidden" value="{{nowPage}}" />
+<input id="pageCount" class="hidden" value="{{count}}" />
+<div class="v-pageList">
+        <div class="page-content-ccc v-flex v-items-center">
+        <a class="active next-page" href="">&lt;Trang trước</a>
+        <div class="page-center-scroll">
+        {% for i in range(snowPage,nowPage-0+11) -%}
+        <a href="/vcategory/{{pid}}/{{cid}}/?s={{nowPage}}&e={{i}}&o={{offset}}" class="{{'active page-item' if nowPage==i else
+            'page-item' }}">{{i}}</a>
+        {%- endfor %}
+        </div>
+        <a class="active next-page" href="">Trang sau&gt;</a>
+    </div>
+</div>
+<div class="pageList-all-c">Tổng {{(count/50)|round }} trang </div>
+<script>
+    var vPageList = document.querySelector('.page-center-scroll')
+    var activePageList = document.querySelector('.page-center-scroll .active')
+    if(activePageList){
+        vPageList.scrollLeft = activePageList.offsetLeft-vPageList.offsetWidth/2;
+    }
+</script>
+

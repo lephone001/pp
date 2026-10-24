@@ -1,0 +1,26 @@
+{
+  "sourceOrder": [
+    "keyword1.txt",
+    "keyword2.txt"
+  ],
+  "totalWords": 657895,
+  "chunkSize": 5000,
+  "files": 132,
+  "lastFileWords": 2895,
+  "removedBlankLines": 5,
+  "wordHash": "5297a14a810213ddaa61aa4c820cbc8ddb6a894c8039896ba59978406330c135",
+  "sources": [
+    {
+      "name": "keyword1.txt",
+      "sha256": "2a51b3ef43e30301bb6225ec1913248d0b522ab93d78aa7c747490cd4196905d",
+      "words": 90729,
+      "skippedBlank": 0
+    },
+    {
+      "name": "keyword2.txt",
+      "sha256": "a718b755c1c907a8f8d6a12f8b2f8de131f08e6d185d8032f33c63877f2422fb",
+      "words": 567166,
+      "skippedBlank": 5
+    }
+  ]
+}

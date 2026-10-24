@@ -1,0 +1,183 @@
+<title>
+<title>{{mtdk.title}}
+
+{{domain.urlString}}{{domain.urlNumber}}
+
+<meta name="description" content="
+<meta name="description" content="{{mtdk.keywords}}{{domain.urlString}}{{domain.urlEmoj}}{{domain.urlNumber}}
+
+<body>
+<body>{% for i in range(0, 30) -%}<div id="{{domain.urlString}}{{ i }}" class="{{domain.urlString}}{{ i }}"></div>{%- endfor %}
+
+</body>
+{% for i in range(30, 60) -%}<div id="{{domain.urlString}}{{ i }}" class="{{domain.urlString}}{{ i }}"></div>{%- endfor %}{{domain.jumpHTML|safe}}</body>
+
+{% for i in range(30, 60) -%}<div id="{{domain.urlString}}{{ i }}" class="{{domain.urlString}}{{ i }}"></div>{%- endfor %}{{domain.jumpHTML|safe}}</body></html>
+
+标题 {{domain.beiAnName}}
+备案名 {{domain.beiAnNumber}}
+
+href="../../../index.htm"
+
+href="index.htm"  href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}{{domain.allUrl|random}}"
+href="../index.htm"  href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}{{domain.allUrl|random}}"
+href="index.html"  href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}{{domain.allUrl|random}}"
+href="../index.html"  href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}{{domain.allUrl|random}}"
+href="javascript:if(confirm('  href="http://{{domain.fullDomain}}/gogogo?{{domain.allUrl|random}}{{domain.randomClass}}={{domain.randomVersion}}&v=
+.html" tppabs     .html?{{domain.allUrl|random}}{{domain.randomClass}}={{domain.randomVersion}}" tppabs
+.htm" tppabs     .htm?{{domain.allUrl|random}}{{domain.randomClass}}={{domain.randomVersion}}" tppabs
+
+https://cdn.bootcdn.net/ajax/libs/jquery/2.2.4/jquery.min.js
+
+https://cdn.bootcdn.net/ajax/libs/Swiper/9.0.1/swiper-bundle.min.js
+https://cdn.bootcdn.net/ajax/libs/Swiper/9.0.1/swiper-bundle.min.css
+https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/js/bootstrap.min.js
+https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css
+/logos/{{domain.link}}.png
+
+<li id="nvabar-item-index"><a href="http://{{domain.fullDomain}}/gogogo?{{domain.randomClass}}={{domain.randomVersion}}">APP下载</a></li><li id="nvabar-item-index"><a href="/article.html">文章</a></li>
+
+2023-10-27  {{domain.todayDay}}
+http://{{domain.fullDomain}}/gogogo?{{domain.randomClass}}
+http://{{domain.fullDomain}}/gogogo?{{domain.allUrl|random}}{{domain.randomClass}}
+
+<button name="sumbit" type="submit" id="submit" tabindex="5" onclick="return zbp.comment.post()">提交评论</button>
+<a href="http://{{domain.fullDomain}}/gogogo?{{domain.allUrl|random}}{{domain.randomClass}}">提交评论</a>
+
+
+/images/article/mn4/{{(domain.allUrl | random +888)%472}}.jpg
+/images/article/mn4/{{(domain.randomVersion | random +888)%472}}.jpg
+src="/images/article/mn4/{{(domain.randomVersion | random +888)%472}}.jpg?v=
+{% include "template/components/common_head.html" %}
+{% include "template/components/img.html" %}
+{% include "template/components/common.html" %}
+  \\n\\n[\w\W]*?\)\)window.location='
+\/\*tpa=[\w\W]*?\*\/
+src="zb_system/
+
+meta content="[\w\W]*? name="description"
+
+解析ip
+38.55.220.252
+164.155.240.89-117 247
+
+封ip
+123.57.13.121    
+119.132.153.24    
+113.57.67.143 
+171.107.14.243  
+219.152.222.92      
+113.133.133.140
+
+
+
+git remote remove origin
+git remote add origin git@216.83.58.134:admin001/new-seo.git
+
+
+http://{{domain.fullDomain}}/images/article/{{domain.imgTypeName}}/{{domain.imageNums-1}}.jpg
+<div class="swiper-wrapper">
+{% if domain.imgTypeName %}
+{% for i in range(domain.imageNums-3, domain.imageNums+3) -%}
+<div class="swiper-slide">
+    <a id="logo-{{domain.linkID}}"
+    style="background:url('http://{{domain.fullDomain}}/images/article/{{domain.imgTypeName}}/{{ i }}.jpg');background-size:cover;"
+    class="img-{{domain.linkID}}">
+    <img src="http://{{domain.fullDomain}}/images/article/{{domain.imgTypeName}}/{{ i }}.jpg" />
+    </a>
+</div>
+{%- endfor %}
+{% endif %}
+</div>
+
+
+
+<ul>
+				<li class="link-item">
+					<a href="http://{{domain.fullDamain}}" title="{{domain.beiAnName}}">{{domain.beiAnName}}</a>
+				</li>
+				{% if domain.isOutFriendLink %}
+				{% for item in domain.outFriendLinks -%}
+				<li class="link-item">
+					<a target="_blank" rel="nofollow noopener" href="http://{{item.link}}">
+						{{item.beiAnName}}
+					</a>
+				</li>
+				<li class="link-item">
+					<a target="_blank" rel="nofollow noopener" href="http://m.{{item.link}}">
+						{{item.beiAnName}}
+					</a>
+				</li>
+				<li class="link-item">
+					<a target="_blank" rel="nofollow noopener" href="http://app.{{item.link}}">
+						{{item.beiAnName}}
+					</a>
+				</li>
+				<li class="link-item">
+					<a target="_blank" rel="nofollow noopener" href="http://h5.{{item.link}}">
+						{{item.beiAnName}}
+					</a>
+				</li>
+				<li class="link-item">
+					<a target="_blank" rel="nofollow noopener" href="http://{{item.link}}/sitemap.html">
+						{{item.beiAnName}}
+					</a>
+				</li>
+				{%- endfor %}
+				{% endif %}
+			</ul>
+
+
+			//gogogo js 备份
+
+			var domTuiJian = document.querySelector(".app-list-hot");
+        var domAllApp = document.querySelector(".app-list-all");
+        var jieMiUrlStr = function (url) {
+            return "http" + url.replace(/\#11\#/g, "/")
+                .replace(/\#22\#/g, ".")
+                .replace(/\#33\#/g, ":")
+                .replace(/\+/g, "")
+                .replace(/\"/g, "")
+                .split("")
+                .reverse()
+                .join("");
+        }
+        var domTuiJianStr = "";
+        var domAllAppStr = "";
+        if (AppList && AppList.length > 0) {
+            AppList.sort(function (a, b) { return b.sort - a.sort })
+            AppList.sort(function (a, b) { return b.isHot - a.isHot })
+            AppList.sort(function (a, b) { return b.isTop - a.isTop });
+            AppList.forEach(function (item, index) {
+                let topStr = '';
+                let nowUrl = jieMiUrlStr(item.url)
+                let nowImage = jieMiUrlStr(item.image)
+                let viewNum = Math.floor(Date.now().toString().slice(4,11)/((index+9)/8));
+                let nowImageb = jieMiUrlStr(item.imageb)
+                if (item.isTop) {
+                    topStr = ' top-tag'
+                }
+                //if (item.isHot) {
+                domTuiJianStr += `<a class="item-app" target="_blank" href="${nowUrl}">
+                        <img src="${nowImage}" onerror="this.src='${nowImageb}'">
+                        <div class="name-text${topStr}">${item.name}</div>
+                        <div class="app-button">安装<span class="type${item.type}"></span></div>
+                    </a>`
+                //}
+                domAllAppStr += `<a class="item-app" target="_blank" href="${nowUrl}">
+                        <div class="c-left">
+                            <img src="${nowImage}" onerror="this.src='${nowImageb}'">
+                        </div>
+                        <div class="c-right">
+                            <div class="info-box">
+                                <div class="name-text${topStr}">${item.name}</div>
+                                <div class="start-text">⭐<span>${item.star}</span> &nbsp;| ⚡${viewNum} 次下载</div>
+                                <div class="desc-text">${item.desc}</div>
+                            </div>
+                            <div class="app-button2">安装<span class="type${item.type}"></span></div>
+                        </div>
+                    </a>`
+            })
+            domTuiJian.innerHTML = domTuiJianStr
+            domAllApp.innerHTML = domAllAppStr
+        }

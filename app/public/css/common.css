@@ -1,0 +1,339 @@
+body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+table,
+td,
+img,
+div,
+dl,
+dt,
+dd,
+input,
+a,
+section,
+figure {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #272727;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  border: none;
+  max-width: 100%;
+}
+
+input,
+select,
+textarea {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+em,
+i {
+  font-style: normal;
+}
+
+/* 
+.page-enter-active,
+.page-leave-active {
+  transition: opacity .5s;
+}
+
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+} */
+.hidden {
+  display: none !important;
+}
+
+.v-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.v-flex-item {
+  flex: 1;
+}
+
+.v-row {
+  flex-direction: row;
+}
+
+.v-column {
+  flex-direction: column;
+}
+
+.v-link {
+  color: #576b95;
+  font-size: 26upx;
+}
+
+.v-items-center {
+  align-items: center;
+}
+
+.v-justify-center {
+  justify-content: center;
+}
+
+.v-justify-end {
+  justify-content: flex-end;
+}
+
+.v-justify-start {
+  justify-content: flex-start;
+}
+
+.v-justify-evenly {
+  justify-content: space-evenly;
+}
+
+.v-justify-around {
+  justify-content: space-around;
+}
+
+.v-justify-between {
+  justify-content: space-between;
+}
+
+.v-center {
+  text-align: center;
+}
+
+.v-inline-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.v-column-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.v-items-start {
+  align-items: flex-start;
+}
+
+.v-items-baseline {
+  align-items: baseline;
+}
+
+.v-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.space-height {
+  height: 50px;
+  width: 100%;
+  display: block;
+  clear: both;
+}
+
+.page-content {
+  min-height: 80vh;
+  padding: 10px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.k-pagination-input-wrap {
+  display: none;
+}
+
+.k-pagination-num-wrap {
+  margin: 0 auto;
+}
+
+.k-pagination-num-wrap a {
+  color: #c5ab91;
+  min-width: 30px;
+  height: 30px;
+  line-height: 30px;
+  display: inline-block;
+  border: 1px solid #d1b79c;
+  margin: 0 1px;
+  text-align: center;
+  border-radius: 2px;
+  padding: 0 10px;
+}
+
+.k-pagination-num-wrap a.k-pagination-disabled {
+  opacity: 0.5;
+  cursor: not-allowed
+}
+
+.k-pagination-num.k-pagination-num-active {
+  background: #ceb398;
+  color: #ffffff;
+}
+
+.v-pageList-box {
+  background: #fff;
+  padding: 10px 0;
+}
+
+.v-pageList {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.page-content-ccc {
+  width: 100%;
+  justify-content: center;
+
+}
+
+.page-center-scroll {
+  overflow: auto;
+  display: flex;
+  max-width: calc(100% - 150px);
+}
+
+.v-pageList a {
+  height: 35px;
+  line-height: 35px;
+  background: #f3f3f3;
+  display: inline-block;
+  text-align: center;
+  font-weight: 800;
+  margin: 2px;
+  border-radius: 3px;
+  border: 1px solid #0a0a0a;
+  font-size: 14px;
+  min-width: 38px;
+}
+
+.v-pageList .next-page {
+  width: 90px;
+}
+
+.pageList-all-c {
+  font-weight: 800;
+  width: 135px;
+  margin: 5px auto;
+  text-align: center;
+  font-size: 12px;
+  color: #a7a7a7;
+}
+
+.v-pageList a:hover,
+.v-pageList a:active {
+  border-color: #000000;
+  background: #000000;
+  color: rgb(255 255 255);
+}
+
+.v-pageList a.active {
+  color: rgb(255 255 255);
+  font-weight: 800;
+  border-color: #000000;
+  background: #000000;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-content a {
+  height: 40px;
+  width: 200px;
+  overflow: hidden;
+  display: inline-block;
+  background: #f7f7f7e8;
+  text-align: left;
+  padding: 0 10px;
+  line-height: 40px;
+  font-weight: 800;
+}
+
+.detail-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 10px;
+  min-height: 100vh;
+}
+
+.detail-content .content h1 {
+  text-align: center;
+}
+
+.copyright {
+  padding: 10px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.adv-page-components {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1400px;
+  margin-bottom: 10px;
+}
+
+.adv-page-components h3 {
+  padding: 5px;
+}
+
+.adv-link a {
+  color: #4e4eff;
+  padding: 5px;
+  display: inline-block;
+}
+
+.detail-content p {
+  padding: 10px 0;
+  text-align: justify;
+  line-height: 25px;
+}
+
+.detail-content p img {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.add-daorumulu,.add-daorufan,.hidden-link {
+  height: 1px;
+  overflow: scroll;
+  opacity: 0;
+}

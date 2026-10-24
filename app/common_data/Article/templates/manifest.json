@@ -1,0 +1,102 @@
+[
+  {
+    "id": "download_portal",
+    "name": "大型应用下载站·绿色门户",
+    "file": "download_portal.html",
+    "source": "用户提供的下载站 HTML 与截图"
+  },
+  {
+    "id": "fanmulu_article5",
+    "name": "泛目录大型应用下载站",
+    "file": "template/fanmulu_article5/index.html",
+    "source": "用户提供的下载站 HTML 与截图",
+    "defaultOnly": true
+  },
+  {
+    "id": "appx_default",
+    "name": "AppX 标准文章",
+    "file": "appx_default.html",
+    "source": "tengxund/appx_pro_5.4/template_default.php"
+  },
+  {
+    "id": "appx_compact",
+    "name": "AppX 简洁文章",
+    "file": "appx_compact.html",
+    "source": "tengxund/appx_pro_5.4/template_compact.php"
+  },
+  {
+    "id": "appx_download",
+    "name": "AppX 下载详情",
+    "file": "appx_download.html",
+    "source": "tengxund/appx_pro_5.4/template_appx.php"
+  },
+  {
+    "id": "appx_movie",
+    "name": "AppX 影视详情",
+    "file": "appx_movie.html",
+    "source": "tengxund/appx_pro_5.4/template_movie.php"
+  },
+  {
+    "id": "legacy_news",
+    "name": "秒速排资讯文章",
+    "file": "legacy_news.html",
+    "source": "秒速排多模板JS程序/templates/index/index.html、show/show.html"
+  },
+  {
+    "id": "legacy_portal",
+    "name": "秒速排门户资讯",
+    "file": "legacy_portal.html",
+    "source": "秒速排多模板JS程序/ggtemplates/index、list、show"
+  },
+  {
+    "id": "legacy_download",
+    "name": "秒速排软件下载",
+    "file": "legacy_download.html",
+    "source": "秒速排多模板JS程序/templates/list/bdxz.html、备份/模板1/show.html"
+  },
+  {
+    "id": "legacy_show",
+    "name": "秒速排内容详情",
+    "file": "legacy_show.html",
+    "source": "秒速排多模板JS程序/templates/list/show.html、备份/模板2/show.html"
+  },
+  {
+    "id": "legacy_gallery",
+    "name": "秒速排图片资讯",
+    "file": "legacy_gallery.html",
+    "source": "秒速排多模板JS程序/templates/备份/模板2/index.html、list.html"
+  },
+  {
+    "id": "legacy_directory",
+    "name": "秒速排目录列表",
+    "file": "legacy_directory.html",
+    "source": "秒速排多模板JS程序/templates/list/xz2.html、备份/模板1/index.html、list.html"
+  },
+  {
+    "id": "legacy_page",
+    "name": "秒速排极简页面",
+    "file": "legacy_page.html",
+    "source": "秒速排多模板JS程序/templates/page.html、no.html"
+  },
+  {
+    "id": "fanmulu_article1",
+    "name": "泛目录影视内容站",
+    "file": "template/fanmulu_article1/index.html",
+    "source": "app/view/template/sbb_nav_01 目录结构参考",
+    "defaultOnly": true
+  },
+  {
+    "id": "fanmulu_article2",
+    "name": "泛目录软件下载站",
+    "file": "template/fanmulu_article2/index.html",
+    "source": "app/view/template/sbb_nav_01 目录结构参考",
+    "defaultOnly": true
+  },
+  {
+    "id": "fanmulu_article3",
+    "name": "泛目录资讯文章站",
+    "file": "template/fanmulu_article3/index.html",
+    "source": "app/view/template/sbb_nav_01 目录结构参考",
+    "defaultOnly": true
+  }
+]

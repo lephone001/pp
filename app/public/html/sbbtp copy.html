@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title></title>
+    <meta name="description" content="description">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta data-hid="theme-color" name="theme-color" content="#d2c3ea">
+    <style>
+        @font-face {
+            font-family: swiper-icons;
+            src: url('data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAAZgABAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAGRAAAABoAAAAci6qHkUdERUYAAAWgAAAAIwAAACQAYABXR1BPUwAABhQAAAAuAAAANuAY7+xHU1VCAAAFxAAAAFAAAABm2fPczU9TLzIAAAHcAAAASgAAAGBP9V5RY21hcAAAAkQAAACIAAABYt6F0cBjdnQgAAACzAAAAAQAAAAEABEBRGdhc3AAAAWYAAAACAAAAAj//wADZ2x5ZgAAAywAAADMAAAD2MHtryVoZWFkAAABbAAAADAAAAA2E2+eoWhoZWEAAAGcAAAAHwAAACQC9gDzaG10eAAAAigAAAAZAAAArgJkABFsb2NhAAAC0AAAAFoAAABaFQAUGG1heHAAAAG8AAAAHwAAACAAcABAbmFtZQAAA/gAAAE5AAACXvFdBwlwb3N0AAAFNAAAAGIAAACE5s74hXjaY2BkYGAAYpf5Hu/j+W2+MnAzMYDAzaX6QjD6/4//Bxj5GA8AuRwMYGkAPywL13jaY2BkYGA88P8Agx4j+/8fQDYfA1AEBWgDAIB2BOoAeNpjYGRgYNBh4GdgYgABEMnIABJzYNADCQAACWgAsQB42mNgYfzCOIGBlYGB0YcxjYGBwR1Kf2WQZGhhYGBiYGVmgAFGBiQQkOaawtDAoMBQxXjg/wEGPcYDDA4wNUA2CCgwsAAAO4EL6gAAeNpj2M0gyAACqxgGNWBkZ2D4/wMA+xkDdgAAAHjaY2BgYGaAYBkGRgYQiAHyGMF8FgYHIM3DwMHABGQrMOgyWDLEM1T9/w8UBfEMgLzE////P/5//f/V/xv+r4eaAAeMbAxwIUYmIMHEgKYAYjUcsDAwsLKxc3BycfPw8jEQA/gZBASFhEVExcQlJKWkZWTl5BUUlZRVVNXUNTQZBgMAAMR+E+gAEQFEAAAAKgAqACoANAA+AEgAUgBcAGYAcAB6AIQAjgCYAKIArAC2AMAAygDUAN4A6ADyAPwBBgEQARoBJAEuATgBQgFMAVYBYAFqAXQBfgGIAZIBnAGmAbIBzgHsAAB42u2NMQ6CUAyGW568x9AneYYgm4MJbhKFaExIOAVX8ApewSt4Bic4AfeAid3VOBixDxfPYEza5O+Xfi04YADggiUIULCuEJK8VhO4bSvpdnktHI5QCYtdi2sl8ZnXaHlqUrNKzdKcT8cjlq+rwZSvIVczNiezsfnP/uznmfPFBNODM2K7MTQ45YEAZqGP81AmGGcF3iPqOop0r1SPTaTbVkfUe4HXj97wYE+yNwWYxwWu4v1ugWHgo3S1XdZEVqWM7ET0cfnLGxWfkgR42o2PvWrDMBSFj/IHLaF0zKjRgdiVMwScNRAoWUoH78Y2icB/yIY09An6AH2Bdu/UB+yxopYshQiEvnvu0dURgDt8QeC8PDw7Fpji3fEA4z/PEJ6YOB5hKh4dj3EvXhxPqH/SKUY3rJ7srZ4FZnh1PMAtPhwP6fl2PMJMPDgeQ4rY8YT6Gzao0eAEA409DuggmTnFnOcSCiEiLMgxCiTI6Cq5DZUd3Qmp10vO0LaLTd2cjN4fOumlc7lUYbSQcZFkutRG7g6JKZKy0RmdLY680CDnEJ+UMkpFFe1RN7nxdVpXrC4aTtnaurOnYercZg2YVmLN/d/gczfEimrE/fs/bOuq29Zmn8tloORaXgZgGa78yO9/cnXm2BpaGvq25Dv9S4E9+5SIc9PqupJKhYFSSl47+Qcr1mYNAAAAeNptw0cKwkAAAMDZJA8Q7OUJvkLsPfZ6zFVERPy8qHh2YER+3i/BP83vIBLLySsoKimrqKqpa2hp6+jq6RsYGhmbmJqZSy0sraxtbO3sHRydnEMU4uR6yx7JJXveP7WrDycAAAAAAAH//wACeNpjYGRgYOABYhkgZgJCZgZNBkYGLQZtIJsFLMYAAAw3ALgAeNolizEKgDAQBCchRbC2sFER0YD6qVQiBCv/H9ezGI6Z5XBAw8CBK/m5iQQVauVbXLnOrMZv2oLdKFa8Pjuru2hJzGabmOSLzNMzvutpB3N42mNgZGBg4GKQYzBhYMxJLMlj4GBgAYow/P/PAJJhLM6sSoWKfWCAAwDAjgbRAAB42mNgYGBkAIIbCZo5IPrmUn0hGA0AO8EFTQAA') format('woff');
+            font-weight: 400;
+            font-style: normal
+        }
+
+        :root {
+            --swiper-theme-color: #007aff
+        }
+
+        .swiper-container {
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            overflow: hidden;
+            list-style: none;
+            padding: 0;
+            z-index: 1
+        }
+
+        .swiper-container-vertical>.swiper-wrapper {
+            flex-direction: column
+        }
+
+        .swiper-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            transition-property: transform;
+            box-sizing: content-box
+        }
+
+        .swiper-container-android .swiper-slide,
+        .swiper-wrapper {
+            transform: translate3d(0px, 0, 0)
+        }
+
+        .swiper-container-multirow>.swiper-wrapper {
+            flex-wrap: wrap
+        }
+
+        .swiper-container-multirow-column>.swiper-wrapper {
+            flex-wrap: wrap;
+            flex-direction: column
+        }
+
+        .swiper-container-free-mode>.swiper-wrapper {
+            transition-timing-function: ease-out;
+            margin: 0 auto
+        }
+
+        .swiper-container-pointer-events {
+            touch-action: pan-y
+        }
+
+        .swiper-container-pointer-events.swiper-container-vertical {
+            touch-action: pan-x
+        }
+
+        .swiper-slide {
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition-property: transform
+        }
+
+        .swiper-slide-invisible-blank {
+            visibility: hidden
+        }
+
+        .swiper-container-autoheight,
+        .swiper-container-autoheight .swiper-slide {
+            height: auto
+        }
+
+        .swiper-container-autoheight .swiper-wrapper {
+            align-items: flex-start;
+            transition-property: transform, height
+        }
+
+        .swiper-container-3d {
+            perspective: 1200px
+        }
+
+        .swiper-container-3d .swiper-cube-shadow,
+        .swiper-container-3d .swiper-slide,
+        .swiper-container-3d .swiper-slide-shadow-bottom,
+        .swiper-container-3d .swiper-slide-shadow-left,
+        .swiper-container-3d .swiper-slide-shadow-right,
+        .swiper-container-3d .swiper-slide-shadow-top,
+        .swiper-container-3d .swiper-wrapper {
+            transform-style: preserve-3d
+        }
+
+        .swiper-container-3d .swiper-slide-shadow-bottom,
+        .swiper-container-3d .swiper-slide-shadow-left,
+        .swiper-container-3d .swiper-slide-shadow-right,
+        .swiper-container-3d .swiper-slide-shadow-top {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10
+        }
+
+        .swiper-container-3d .swiper-slide-shadow-left {
+            background-image: linear-gradient(to left, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0))
+        }
+
+        .swiper-container-3d .swiper-slide-shadow-right {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0))
+        }
+
+        .swiper-container-3d .swiper-slide-shadow-top {
+            background-image: linear-gradient(to top, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0))
+        }
+
+        .swiper-container-3d .swiper-slide-shadow-bottom {
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0))
+        }
+
+        .swiper-container-css-mode>.swiper-wrapper {
+            overflow: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none
+        }
+
+        .swiper-container-css-mode>.swiper-wrapper::-webkit-scrollbar {
+            display: none
+        }
+
+        .swiper-container-css-mode>.swiper-wrapper>.swiper-slide {
+            scroll-snap-align: start start
+        }
+
+        .swiper-container-horizontal.swiper-container-css-mode>.swiper-wrapper {
+            scroll-snap-type: x mandatory
+        }
+
+        .swiper-container-vertical.swiper-container-css-mode>.swiper-wrapper {
+            scroll-snap-type: y mandatory
+        }
+
+        :root {
+            --swiper-navigation-size: 44px
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            position: absolute;
+            top: 50%;
+            width: calc(var(--swiper-navigation-size)/ 44 * 27);
+            height: var(--swiper-navigation-size);
+            margin-top: calc(0px -(var(--swiper-navigation-size)/ 2));
+            z-index: 10;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--swiper-navigation-color, var(--swiper-theme-color))
+        }
+
+        .swiper-button-next.swiper-button-disabled,
+        .swiper-button-prev.swiper-button-disabled {
+            opacity: .35;
+            cursor: auto;
+            pointer-events: none
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-family: swiper-icons;
+            font-size: var(--swiper-navigation-size);
+            text-transform: none !important;
+            letter-spacing: 0;
+            text-transform: none;
+            font-variant: initial;
+            line-height: 1
+        }
+
+        .swiper-button-prev,
+        .swiper-container-rtl .swiper-button-next {
+            left: 10px;
+            right: auto
+        }
+
+        .swiper-button-prev:after,
+        .swiper-container-rtl .swiper-button-next:after {
+            content: 'prev'
+        }
+
+        .swiper-button-next,
+        .swiper-container-rtl .swiper-button-prev {
+            right: 10px;
+            left: auto
+        }
+
+        .swiper-button-next:after,
+        .swiper-container-rtl .swiper-button-prev:after {
+            content: 'next'
+        }
+
+        .swiper-button-next.swiper-button-white,
+        .swiper-button-prev.swiper-button-white {
+            --swiper-navigation-color: #fff
+        }
+
+        .swiper-button-next.swiper-button-black,
+        .swiper-button-prev.swiper-button-black {
+            --swiper-navigation-color: #000
+        }
+
+        .swiper-button-lock {
+            display: none
+        }
+
+        .swiper-pagination {
+            position: absolute;
+            text-align: center;
+            transition: .3s opacity;
+            transform: translate3d(0, 0, 0);
+            z-index: 10
+        }
+
+        .swiper-pagination.swiper-pagination-hidden {
+            opacity: 0
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-bullets,
+        .swiper-pagination-custom,
+        .swiper-pagination-fraction {
+            bottom: 10px;
+            left: 0;
+            width: 100%
+        }
+
+        .swiper-pagination-bullets-dynamic {
+            overflow: hidden;
+            font-size: 0
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+            transform: scale(.33);
+            position: relative
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active {
+            transform: scale(1)
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-main {
+            transform: scale(1)
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev {
+            transform: scale(.66)
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev {
+            transform: scale(.33)
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next {
+            transform: scale(.66)
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next {
+            transform: scale(.33)
+        }
+
+        .swiper-pagination-bullet {
+            width: 4px;
+            height: 4px;
+            display: inline-block;
+            border-radius: 50%;
+            background: #000;
+            opacity: .2
+        }
+
+        button.swiper-pagination-bullet {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            box-shadow: none;
+            -webkit-appearance: none;
+            appearance: none
+        }
+
+        .swiper-pagination-clickable .swiper-pagination-bullet {
+            cursor: pointer
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #9c27b0
+        }
+
+        .swiper-container-vertical>.swiper-pagination-bullets {
+            right: 10px;
+            top: 50%;
+            transform: translate3d(0px, -50%, 0)
+        }
+
+        .swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet {
+            margin: 6px 0;
+            display: block
+        }
+
+        .swiper-container-vertical>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px
+        }
+
+        .swiper-container-vertical>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+            display: inline-block;
+            transition: .2s transform, .2s top
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+            margin: 0 4px
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+            transition: .2s transform, .2s left
+        }
+
+        .swiper-container-horizontal.swiper-container-rtl>.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+            transition: .2s transform, .2s right
+        }
+
+        .swiper-pagination-progressbar {
+            background: rgba(0, 0, 0, .25);
+            position: absolute
+        }
+
+        .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+            background: var(--swiper-pagination-color, var(--swiper-theme-color));
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform: scale(0);
+            transform-origin: left top
+        }
+
+        .swiper-container-rtl .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+            transform-origin: right top
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-progressbar,
+        .swiper-container-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
+            width: 100%;
+            height: 4px;
+            left: 0;
+            top: 0
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
+        .swiper-container-vertical>.swiper-pagination-progressbar {
+            width: 4px;
+            height: 100%;
+            left: 0;
+            top: 0
+        }
+
+        .swiper-pagination-white {
+            --swiper-pagination-color: #fff
+        }
+
+        .swiper-pagination-black {
+            --swiper-pagination-color: #000
+        }
+
+        .swiper-pagination-lock {
+            display: none
+        }
+
+        .swiper-scrollbar {
+            border-radius: 10px;
+            position: relative;
+            -ms-touch-action: none;
+            background: rgba(0, 0, 0, .1)
+        }
+
+        .swiper-container-horizontal>.swiper-scrollbar {
+            position: absolute;
+            left: 1%;
+            bottom: 3px;
+            z-index: 50;
+            height: 5px;
+            width: 98%
+        }
+
+        .swiper-container-vertical>.swiper-scrollbar {
+            position: absolute;
+            right: 3px;
+            top: 1%;
+            z-index: 50;
+            width: 5px;
+            height: 98%
+        }
+
+        .swiper-scrollbar-drag {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            background: rgba(0, 0, 0, .5);
+            border-radius: 10px;
+            left: 0;
+            top: 0
+        }
+
+        .swiper-scrollbar-cursor-drag {
+            cursor: move
+        }
+
+        .swiper-scrollbar-lock {
+            display: none
+        }
+
+        .swiper-zoom-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center
+        }
+
+        .swiper-zoom-container>canvas,
+        .swiper-zoom-container>img,
+        .swiper-zoom-container>svg {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain
+        }
+
+        .swiper-slide-zoomed {
+            cursor: move
+        }
+
+        .swiper-lazy-preloader {
+            width: 42px;
+            height: 42px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -21px;
+            margin-top: -21px;
+            z-index: 10;
+            transform-origin: 50%;
+            animation: swiper-preloader-spin 1s infinite linear;
+            box-sizing: border-box;
+            border: 4px solid var(--swiper-preloader-color, var(--swiper-theme-color));
+            border-radius: 50%;
+            border-top-color: transparent
+        }
+
+        .swiper-lazy-preloader-white {
+            --swiper-preloader-color: #fff
+        }
+
+        .swiper-lazy-preloader-black {
+            --swiper-preloader-color: #000
+        }
+
+        @keyframes swiper-preloader-spin {
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        .swiper-container .swiper-notification {
+            position: absolute;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            opacity: 0;
+            z-index: -1000
+        }
+
+        .swiper-container-fade.swiper-container-free-mode .swiper-slide {
+            transition-timing-function: ease-out
+        }
+
+        .swiper-container-fade .swiper-slide {
+            pointer-events: none;
+            transition-property: opacity
+        }
+
+        .swiper-container-fade .swiper-slide .swiper-slide {
+            pointer-events: none
+        }
+
+        .swiper-container-fade .swiper-slide-active,
+        .swiper-container-fade .swiper-slide-active .swiper-slide-active {
+            pointer-events: auto
+        }
+
+        .swiper-container-cube {
+            overflow: visible
+        }
+
+        .swiper-container-cube .swiper-slide {
+            pointer-events: none;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            z-index: 1;
+            visibility: hidden;
+            transform-origin: 0 0;
+            width: 100%;
+            height: 100%
+        }
+
+        .swiper-container-cube .swiper-slide .swiper-slide {
+            pointer-events: none
+        }
+
+        .swiper-container-cube.swiper-container-rtl .swiper-slide {
+            transform-origin: 100% 0
+        }
+
+        .swiper-container-cube .swiper-slide-active,
+        .swiper-container-cube .swiper-slide-active .swiper-slide-active {
+            pointer-events: auto
+        }
+
+        .swiper-container-cube .swiper-slide-active,
+        .swiper-container-cube .swiper-slide-next,
+        .swiper-container-cube .swiper-slide-next+.swiper-slide,
+        .swiper-container-cube .swiper-slide-prev {
+            pointer-events: auto;
+            visibility: visible
+        }
+
+        .swiper-container-cube .swiper-slide-shadow-bottom,
+        .swiper-container-cube .swiper-slide-shadow-left,
+        .swiper-container-cube .swiper-slide-shadow-right,
+        .swiper-container-cube .swiper-slide-shadow-top {
+            z-index: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden
+        }
+
+        .swiper-container-cube .swiper-cube-shadow {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            opacity: .6;
+            z-index: 0
+        }
+
+        .swiper-container-cube .swiper-cube-shadow:before {
+            content: '';
+            background: #000;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            filter: blur(50px)
+        }
+
+        .swiper-container-flip {
+            overflow: visible
+        }
+
+        .swiper-container-flip .swiper-slide {
+            pointer-events: none;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            z-index: 1
+        }
+
+        .swiper-container-flip .swiper-slide .swiper-slide {
+            pointer-events: none
+        }
+
+        .swiper-container-flip .swiper-slide-active,
+        .swiper-container-flip .swiper-slide-active .swiper-slide-active {
+            pointer-events: auto
+        }
+
+        .swiper-container-flip .swiper-slide-shadow-bottom,
+        .swiper-container-flip .swiper-slide-shadow-left,
+        .swiper-container-flip .swiper-slide-shadow-right,
+        .swiper-container-flip .swiper-slide-shadow-top {
+            z-index: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden
+        }
+
+        .gonggaotxt {
+            position: absolute;
+            left: .4rem;
+            top: .36rem;
+            color: #8d66c7;
+            font-size: .68rem;
+            width: 1.5rem;
+            line-height: .73rem;
+            font-weight: 600;
+            text-align: center
+        }
+
+        .tips-red {
+            font-size: .8rem;
+            color: #6000ff;
+            text-align: center;
+            padding-bottom: .3rem
+        }
+
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            font-size: 10px
+        }
+
+        #page-content {
+            width: 100%;
+            overflow: hidden;
+            margin: 0 auto;
+            background: #d2c3ea
+        }
+
+        .hrader-top {
+            height: 2.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            background-image: linear-gradient(to bottom, #f600bc, #d904ef)
+        }
+
+        .hrader-top img {
+            border-radius: 10px;
+            width: 2rem;
+            height: 2rem
+        }
+
+        .logo-text {
+            font-weight: 800;
+            color: #fff;
+            font-size: 1rem;
+            font-family: fangsong
+        }
+
+        @keyframes changeshadow {
+            0% {
+                text-shadow: 0 0 4px #e34000
+            }
+
+            50% {
+                text-shadow: 0 0 40px #fbff00
+            }
+
+            100% {
+                text-shadow: 0 0 4px #f70e0e
+            }
+        }
+
+        .content-app {
+            color: #fff;
+            height: 100%;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            scrollbar-color: transparent transparent
+        }
+
+        .content-app h2 {
+            font-size: .95rem;
+            font-weight: 800;
+            padding: .2rem .4rem .4rem .4rem;
+            color: #723fcc;
+            font-family: fangsong
+        }
+
+        a {
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        .app-list {
+            display: flex;
+            flex-wrap: wrap;
+            padding: .4rem .2rem 1rem .2rem;
+            border-radius: .4rem;
+            margin: .2rem;
+            background: linear-gradient(#f1ebfac2, #f1ebfac7), url(https://img2.baidu.com/it/u=473133236,457204947&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500);
+            background-repeat: repeat;
+            background-size: 20%;
+            background-attachment: revert
+        }
+
+        #shipin {
+            padding-bottom: 100px
+        }
+
+        .item-app {
+            width: 20%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: .3rem
+        }
+
+        .item-app .name-text {
+            font-size: .6rem;
+            color: #515151;
+            font-weight: 600;
+            padding: 5px 0;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis
+        }
+
+        .item-app .name-text.top-tag {
+            color: #fb00b7;
+            font-weight: bold
+        }
+
+        .item-app .name-text.new-tag {
+            color: #42bb12
+        }
+
+        .item-app .img-box {
+            width: 3.3em;
+            height: 3.3em;
+            border-radius: .5em;
+            overflow: hidden
+        }
+
+        .item-app img {
+            width: 100%;
+            min-width: 16vw;
+            min-height: 16vw;
+            max-width: 100px;
+            border-radius: 16px;
+            max-height: 100px;
+            border: 0;
+            background: #3c266773
+        }
+
+        .app-button {
+            border-radius: 50px;
+            font-size: .56rem;
+            text-align: center;
+            color: #fff;
+            padding: .2rem .8rem;
+            background: linear-gradient(90deg, #d4a4dc 0, #d563e8 100%), #9c27b0
+        }
+
+        .app-list-all .item-app {
+            width: 100%;
+            justify-content: flex-start;
+            padding: 8px 8px;
+            position: relative;
+            box-sizing: border-box;
+            margin-bottom: 0
+        }
+
+        .c-right {
+            width: calc(100% - 18vw);
+            padding-left: 10px;
+            box-sizing: border-box;
+            align-items: center;
+            display: flex;
+            justify-content: space-between
+        }
+
+        .c-left {
+            width: 18vw;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .c-right .info-box {
+            margin-top: -5px;
+            max-width: 60%
+        }
+
+        .app-button2 {
+            background-image: linear-gradient(to right, #9c27b0, #ff51e8);
+            border-radius: 50px;
+            font-size: .58rem;
+            text-align: center;
+            color: #fff;
+            padding: .4rem 1.3rem
+        }
+
+        .c-right .info-box .name-text {
+            text-align: left;
+            padding: 0;
+            font-size: .7rem
+        }
+
+        .start-text {
+            font-size: .5rem;
+            color: #9b9b9b;
+            padding: 3px 0;
+            display: flex;
+            align-items: center
+        }
+
+        .start-text span {
+            font-size: .56rem
+        }
+
+        .desc-text {
+            font-size: .56rem;
+            color: #9b9b9b;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis
+        }
+
+        html,
+        body,
+        #page-content {
+            height: 100%
+        }
+
+        #all {
+            padding-bottom: 5rem
+        }
+
+        .bottom-app {
+            position: fixed;
+            z-index: 100;
+            width: calc(100% - .4rem);
+            right: 0;
+            border-radius: 10px;
+            left: 0;
+            bottom: .5rem;
+            padding: .15rem;
+            box-sizing: border-box;
+            background: #ffffffbf
+        }
+
+        .bottom-app::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            height: 100%;
+            backdrop-filter: blur(8px)
+        }
+
+        .bottom-app .bt-item-app {
+            padding: .2rem;
+            display: flex;
+            overflow: hidden
+        }
+
+        .bottom-app .bottom-left {
+            float: left
+        }
+
+        .bottom-app .bottom-left .image-bot {
+            width: 3.3rem;
+            display: block;
+            height: 3.3rem;
+            border-radius: .5em;
+            border: 0;
+            max-width: 150px;
+            max-height: 150px
+        }
+
+        .bottom-app .bottom-right {
+            float: left;
+            padding-left: 10px
+        }
+
+        .bottom-app .bt-name {
+            font-size: .85rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, #dd9ae8 0, #dd15ff 100%), #673ab7;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            user-select: none
+        }
+
+        .bottom-app .bt-desc {
+            font-size: .65rem;
+            margin-top: 5px;
+            color: #3b3b3b
+        }
+
+        .bottom-app .bt-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            width: 5rem;
+            margin-top: -1.2em;
+            color: #faddff;
+            font-size: .7rem;
+            background: linear-gradient(90deg, #d4a4dc 0, #d563e8 100%), #9c27b0;
+            text-align: center;
+            border-radius: 50rem;
+            padding: 5px;
+            box-sizing: border-box;
+            line-height: 1.8em
+        }
+
+        span.device-desc {
+            font-size: .58rem;
+            font-weight: 400;
+            margin-left: .3rem
+        }
+
+        .tag-c {
+            margin-right: 2px;
+            color: #00e35c;
+            font-weight: bold
+        }
+
+        .android-tagc {
+            color: #00d26a;
+            font-size: .6rem;
+            margin-right: 3px
+        }
+
+        #announcement {
+            height: 2.2em;
+            margin: .4em .4em .4em 0;
+            padding-left: .24rem;
+            background: #fcdefa;
+            border-radius: .2rem;
+            color: #8d66c7;
+            width: calc(78% - .3em);
+        }
+
+        #announcement a {
+            color: #8d66c7;
+            display: block;
+            font-size: .58rem;
+            padding: 0 5px 0 2rem;
+            line-height: 0.8rem;
+        }
+
+        #announcement .swiper-slide {
+            display: flex;
+            align-items: center;
+            line-height: 2.2em;
+        }
+
+        #tabs-container .swiper-slide {
+            min-height: 75vh
+        }
+
+        .tabs .tab-box {
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            /* padding:0 10px; */
+            box-sizing: border-box;
+            justify-content: center
+        }
+
+        .tabs a {
+            font-weight: normal;
+            text-align: center;
+            width: 20%;
+            height: 1.8rem;
+            font-size: .8rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all .2s ease;
+            font-style: italic;
+            background: linear-gradient(90deg, #fff 0, #e0a6e3 100%), #9c27b0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative
+        }
+
+        .tabs a.active {
+            font-size: .95rem;
+            border-radius: 10px;
+            color: #fff
+        }
+
+        .tabs a.active::before {
+            content: "";
+            position: absolute;
+            height: .2rem;
+            width: .2rem;
+            background: #f3abff;
+            left: 50%;
+            margin-left: .4rem;
+            border-radius: 10px;
+            bottom: 0
+        }
+
+        .tabs a.active::after {
+            content: "";
+            position: absolute;
+            height: .2rem;
+            width: 1rem;
+            left: 50%;
+            background: linear-gradient(90deg, #fadfff 0, #e0a6e3 100%), #9c27b0;
+            margin-left: -0.7rem;
+            border-radius: 10px;
+            bottom: 0
+        }
+
+        #hdesc {
+            height: 0;
+            overflow: hidden;
+            opacity: 0
+        }
+
+        #bottomApp {
+            --swiper-theme-color: #f60;
+            --swiper-pagination-color: #2bff00
+        }
+
+        #bottomApp .swiper-pagination {
+            bottom: 1px
+        }
+
+        #bottomApp .swiper-pagination-bullet {
+            width: 6px;
+            height: 6px
+        }
+
+        .qrbox-bg {
+            position: fixed;
+            height: 100%;
+            background: #000000db;
+            left: 0;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(5px)
+        }
+
+        .qrbox-con {
+            position: fixed;
+            left: 50%;
+            top: 35%;
+            width: 170px;
+            height: 5em;
+            margin-left: -85px;
+            z-index: 1001;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        #qrcodeImage {
+            padding: 10px;
+            background: #fff;
+            border-radius: 10px;
+            height: 150px;
+            width: 150px
+        }
+
+        .qr-close {
+            font-size: 16px;
+            padding: 7px;
+            border-radius: 40em;
+            color: #f6bfff;
+            border: 1px solid #f6bfff;
+            cursor: pointer;
+            width: 130px;
+            text-align: center;
+            margin-top: 10px
+        }
+
+        .qr-tips-small {
+            color: #d6bfff;
+            font-size: 0.3rem;
+            margin-top: 0.2rem
+        }
+
+        .qr-tips {
+            font-size: .36rem;
+            color: #fff;
+            margin-top: .5rem
+        }
+
+        .tipsc {
+            font-size: .6rem;
+            margin-bottom: 10px;
+            color: #d6bfff;
+            font-weight: 800
+        }
+
+        .isPC {
+            display: none
+        }
+
+        #qrdcode-box {
+            position: fixed;
+            border-radius: 3px;
+            top: 0;
+            left: 0;
+            z-index: 10002;
+            width: 100px;
+            height: 100px;
+            display: none;
+            border: 12px solid #fff
+        }
+
+        #qrdcode-box .triangle-down {
+            width: 0;
+            position: absolute;
+            height: 0;
+            bottom: -17px;
+            left: 43px;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 5px solid #fff
+        }
+
+        .banners-swp {
+            max-height: 8rem;
+            max-width: 800px;
+            margin: .4rem auto
+        }
+
+        .banners-swp img {
+            width: 100%;
+            border-radius: .2rem;
+            overflow: hidden;
+            transition: all .3s;
+            object-fit: fill;
+            top: 0;
+            height: 100%;
+            display: block
+        }
+
+        .banners-swp .swiper-slide {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            border-radius: 10px;
+            overflow: hidden
+        }
+
+        .banners-swp a {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 111
+        }
+
+        .banners-swp .swiper-slide-prev {
+            transform: scale(.96)
+        }
+
+        .banners-swp .swiper-slide-next {
+            transform: scale(.96)
+        }
+
+        .top-header-con {
+            position: sticky;
+            top: 0;
+            z-index: 11;
+            padding: 8px;
+            background-color: #8b67c7;
+            border-radius: 0 0 .4rem .4rem
+        }
+
+        .bottom-space-h {
+            height: 5rem
+        }
+
+        .top-an-btn-group {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between
+        }
+
+        .download-btn-t a>span {
+            letter-spacing: 1.5px;
+        }
+
+        .download-btn-t {
+            width: 22%;
+            height: 2.2em;
+            margin-top: 0.4em;
+            background: linear-gradient(90deg, #ff3162 0, #ff008a 100%), #ffe400;
+            border-radius: .2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .download-btn-t a {
+            font-size: .56rem;
+            flex-wrap: wrap;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
+            color: #fff;
+        }
+
+        @media(min-width:768px) {
+            .app-list {
+                justify-content: space-around
+            }
+
+            .item-app {
+                width: 3.59em;
+            }
+        }
+
+        @keyframes gradientA {
+            0% {
+                background-image: linear-gradient(to right, #3b77ff, #bdfb00)
+            }
+
+            25% {
+                background-image: linear-gradient(to left, #fbed00, #33bb0a)
+            }
+
+            50% {
+                background-image: linear-gradient(to right, #33bb0a, #03f)
+            }
+
+            100% {
+                background-image: linear-gradient(to left, #03f, #fb00c9)
+            }
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-image: linear-gradient(to right, #ff9800, #de00fb)
+            }
+
+            25% {
+                background-image: linear-gradient(to left, #00a2fb, #fb00b7)
+            }
+
+            50% {
+                background-image: linear-gradient(to right, #fb00b7, #5800fb)
+            }
+
+            100% {
+                background-image: linear-gradient(to left, #0018fb, #00fbf7)
+            }
+        }
+
+        @keyframes gradientBCAnimation {
+            0% {
+                background-image: linear-gradient(to right, #e91e63, #00d7ff)
+            }
+
+            25% {
+                background-image: linear-gradient(to left, #9152dd, #00bcd4)
+            }
+
+            50% {
+                background-image: linear-gradient(to right, #03a9f4, #0096ff)
+            }
+
+            100% {
+                background-image: linear-gradient(to left, #673ab7, #9c27b0)
+            }
+        }
+
+        .item-app.zsb2 .name-text,
+        .bt-name.zbs2 {
+            background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, purple);
+            border-color: #ff6e00;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientAnimation .5s linear infinite
+        }
+
+        .item-app.zsb2 .app-button {
+            background-image: linear-gradient(to right, #ff9ee4, #9b64f6)
+        }
+
+        .item-app.zsb8 .name-text,
+        .item-app.zsb8 .app-button {
+            color: #fff;
+            border-color: #ff6e00;
+            background: linear-gradient(to right, #fffc00, #ff6e00, #fffc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .item-app.zsb3 .name-text {
+            color: #2bff00;
+            border-color: #00d7ff;
+            background: linear-gradient(to right, #00ff7f, #00d7ff, #07f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientBCAnimation .5s linear infinite
+        }
+
+        .item-app.zsb3 .app-button {
+            background: linear-gradient(to right, #aac0ff, #10a1c7)
+        }
+
+        .item-app.zsb4 .name-text,
+        .item-app.zsb4 .app-button {
+            color: #2bff00;
+            border-color: #00d7ff;
+            background: linear-gradient(to right, #00ff7f, #00d7ff, #07f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientBCAnimation .5s linear infinite
+        }
+
+        .item-app.zsb5 .name-text {
+            background: linear-gradient(to right, #eb78ff, #ff3ba3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .item-app.zsb5 .app-button {
+            background: linear-gradient(90deg, #d4a4dc 0, #e12dff 100%), #db07ff
+        }
+
+        .item-app.zsb6 .name-text,
+        .bt-name.zbs6 {
+            background-image: linear-gradient(to right, #dd12ff, #ff5722, #f00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .item-app.zsb6 .app-button {
+            background-image: linear-gradient(to right, #f7b46b, #e2731b)
+        }
+    </style>
+    <script>window.addEventListener("orientationchange" in window ? "orientationchange" : "resize", function () { function c() { var d = document.documentElement; var cw = d.clientWidth || 750; d.style.fontSize = 20 * (cw / 375) > 40 ? 40 + "px" : 20 * (cw / 375) + "px" } c(); return c }(), false);</script>
+    <script>window.AppBannerList = [];</script>
+    <script>window.AppList = []; window.AppGongGaoList = ["本站所发布APP均已测试，请放心下载！", "个别浏览器会有风险提示！请复制链接尝试不同浏览器！"];</script>
+    <script> ####JAVASCRIPT#### </script>
+</head>
+
+<body style="background:#8b67c7;">
+    <div name="description-section"
+        style="position: fixed;top: 3em;left: 0;padding: 0 1em;opacity: 1;font-size: .6rem;z-index: 9;color: #8b67c7;height: 6em;overflow: hidden;">
+        SEODESCRIPTION</div>
+    <div id="page-content">
+        <div class="content-app">
+            <div class="top-header-con">
+                <div class="top-an-btn-group">
+                    <div id="announcement" class="swiper-container"></div>
+                    <div class="download-btn-t"> <a href="javascript:void(0)"> <span id="domain-ls">★域名★</span>
+                            <span>★收藏★</span> </a> </div>
+                </div>
+                <div class="tabs">
+                    <div class="tab-box"> <a href="#" class="active">推荐</a> <a href="#">视频</a> <a href="#">直播</a> <a
+                            href="#">漫画</a> <a href="#">赚钱</a> </div>
+                </div>
+            </div>
+            <div class="banners-swp swiper"></div>
+            <div id="tabs-container" class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div id="tuijian">
+                            <h2> 精品推荐<span class="device-desc">Recommend</span> </h2>
+                            <div class="app-list-hot app-list"></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div id="shipin">
+                            <h2> 视频专区<span class="device-desc">Videos</span> </h2>
+                            <div class="app-list-shipin app-list"></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div id="shipin">
+                            <h2> 精品直播<span class="device-desc">Live</span> </h2>
+                            <div class="app-list-zhibo app-list"></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div id="shipin">
+                            <h2> 漫画专区<span class="device-desc">Comics</span> </h2>
+                            <div class="app-list-sm app-list"></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div id="shipin">
+                            <h2> 娱乐赚钱<span class="device-desc">Money</span> </h2>
+                            <div class="app-list-bc app-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-space-h"></div>
+        </div>
+        <div class="bottom-app swiper-container" id="bottomApp"></div>
+        <div class="isPC qrbox-bg" onclick="closeqrFn()"></div>
+        <div class="isPC qrbox-con">
+            <div class="tipsc">扫码安装</div>
+            <div id="qrcodeImage"></div>
+            <div class="qr-close" onclick="closeqrFn()">关闭</div>
+            <div class="qr-tips">点击任意位置关闭</div>
+            <div class="qr-tips-small"><small class="timmer-clostc">5</small> 秒自动关闭</div>
+        </div>
+        <div id="qrdcode-box">
+            <div id="qrdcode-con"></div>
+            <div class="triangle-down"></div>
+        </div>
+    </div>
+    <script>var jumpFunCtion = function () { if (window.AppGongGaoList[0].indexOf(".") == -1) { } }; if (AppList002 && AppList002.length > 0) { window.AppList = [...AppList002, ...AppList] } var domTuiJian = document.querySelector(".app-list-hot"); var domShipin = document.querySelector(".app-list-shipin"); var domZhibo = document.querySelector(".app-list-zhibo"); var domBC = document.querySelector(".app-list-bc"); var domSM = document.querySelector(".app-list-sm"); var btDom = document.querySelector(".bottom-app"); var uA = navigator.userAgent; if (uA) uA = uA.toLowerCase(); var isAndroid = uA.indexOf("android") > -1 || uA.indexOf("adr") > -1; var isIos = uA.indexOf("iphone") > -1 || uA.indexOf("ipad") > -1; var isSpider = uA.indexOf("bot") > -1 || uA.indexOf("spider") > -1; var domTuiJianStr = ""; var domShiPinStr = ""; var domZhiBoStr = ""; var domBCStr = ""; var domSeManStr = ""; var btItemArr = []; if (AppList && AppList.length > 0) { AppList.sort((function (a, b) { return b.sort - a.sort })); AppList.sort((function (a, b) { return b.isHot - a.isHot })); AppList.sort((function (a, b) { return b.isTop - a.isTop })); AppList.forEach((function (item, index) { let topStr = ""; let urlIsChange = item.url; if (isAndroid && item.androidUrl && item.androidUrl.length > 1) { urlIsChange = item.androidUrl } let nowUrl = urlIsChange; let nowImage = item.image; let itemNameCc = item.name; let viewNum = Math.floor(Date.now().toString().slice(4, 13) / ((index + 9) / 8)); if (item.isBt && item.isBt >= 1) { btItemArr.push(item) } if (item.isTop) { topStr = " top-tag" } let onlyAndroid = ""; let typeText = "进入"; domTuiJianStr += `<a class="item-app zsb${item.type}" target="_blank" rel="noopener noreferrer" href="${nowUrl}">\n                      <div class="img-box" style="background:url(${nowImage}) no-repeat;background-size:cover;"></div>\n                      <div class="name-text${topStr}">${onlyAndroid}${itemNameCc}</div>\n                      <div class="app-button">${typeText}<span class="type${item.type}"></span></div>\n                  </a>`; if (item.type == 1 || item.type == 5) { domShiPinStr += `<a class="item-app zsb${item.type}" target="_blank" rel="noopener noreferrer" href="${nowUrl}">\n                      <div class="img-box" style="background:url(${nowImage}) no-repeat;background-size:cover;"></div>\n                      <div class="name-text${topStr}">${onlyAndroid}${itemNameCc}</div>\n                      <div class="app-button">${typeText}<span class="type${item.type}"></span></div>\n                  </a>` } if (item.type == 2) { domZhiBoStr += `<a class="item-app zsb${item.type}" target="_blank" rel="noopener noreferrer" href="${nowUrl}">\n                      <div class="img-box" style="background:url(${nowImage}) no-repeat;background-size:cover;"></div>\n                      <div class="name-text${topStr}">${onlyAndroid}${itemNameCc}</div>\n                      <div class="app-button">${typeText}<span class="type${item.type}"></span></div>\n                  </a>` } if (item.type == 3) { domBCStr += `<a class="item-app zsb${item.type}" target="_blank" rel="noopener noreferrer" href="${nowUrl}">\n                      <div class="img-box" style="background:url(${nowImage}) no-repeat;background-size:cover;"></div>\n                      <div class="name-text${topStr}">${onlyAndroid}${itemNameCc}</div>\n                      <div class="app-button">${typeText}<span class="type${item.type}"></span></div>\n                  </a>` } if (item.type == 6) { domSeManStr += `<a class="item-app zsb${item.type}" target="_blank" rel="noopener noreferrer" href="${nowUrl}">\n                      <div class="img-box" style="background:url(${nowImage}) no-repeat;background-size:cover;"></div>\n                      <div class="name-text${topStr}">${onlyAndroid}${itemNameCc}</div>\n                      <div class="app-button">${typeText}<span class="type${item.type}"></span></div>\n                  </a>` } })); domTuiJian.innerHTML = domTuiJianStr; domShipin.innerHTML = domShiPinStr; domZhibo.innerHTML = domZhiBoStr; 19371440533; domBC.innerHTML = domBCStr; domSM.innerHTML = domSeManStr; var btDomStr = ""; if (btItemArr && btItemArr.length > 0) { btItemArr = btItemArr.sort((function (a, b) { return b.isBt - a.isBt })) } btItemArr.forEach((btItem, index) => { let btInto = btItem.url; let btName = btItem.name; let btImage = btItem.image; let btDesc = btItem.desc; let btId = btItem.id; btDomStr += `<div class="swiper-slide"><a class="bt-item-app"  target="_blank" rel="noopener noreferrer" href="${btInto}"><div class="bottom-left"><div class="image-bot" style="background:url(${btImage}) no-repeat;background-size:cover;"></div></div><div class="bottom-right"><div class="bt-name zbs${btItem.type}">${btName}</div><div class="bt-desc">${btDesc}</div></div><div class="bt-button">立即进入</div></a></div>` }); btDom.innerHTML = `<div class="swiper-wrapper">${btDomStr}</div><div class="swiper-pagination"></div>` }</script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/6.6.2/swiper-bundle.min.js"></script>
+    <script>function hasClass(obj, cls) { return obj.className.match(new RegExp("(\\s|^)" + cls + "(\\s|$)")) } function addClass(obj, cls) { if (!this.hasClass(obj, cls)) { obj.className += "" + cls } } function removeClass(obj, cls) { if (hasClass(obj, cls)) { var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)"); obj.className = obj.className.replace(reg, "") } } function toggleClass(obj, cls) { if (hasClass(obj, cls)) { removeClass(obj, cls) } else { addClass(obj, cls) } } var bannerItemArr = []; var bannerDomHtml = ""; if (window.AppBannerList && window.AppBannerList.length > 0) { bannerItemArr = window.AppBannerList; bannerItemArr.forEach((baDomStr, index) => { bannerDomHtml += `<div class="swiper-slide">\n                        <img src="${baDomStr.image}" alt="${baDomStr.name}">\n                        <a href="${baDomStr.url}" target="_blank" rel="noopener noreferrer"></a>\n                        </div>` }); var bannerDom = document.querySelector(".banners-swp"); bannerDom.innerHTML = `<div class="swiper-wrapper">${bannerDomHtml}</div>`; var bannersAppSwiper = new Swiper(".banners-swp", { loop: true, slidesPerView: "auto", spaceBetween: 2, centeredSlides: true, autoplay: { delay: 3e3, disableOnInteraction: false }, observer: true, pagination: { el: ".swiper-pagination1" } }) } var gonggaoItemArr = []; var gonggaoDomHtml = ""; if (window.AppGongGaoList) gonggaoItemArr = window.AppGongGaoList; gonggaoItemArr.forEach((bagon, index) => { gonggaoDomHtml += `<div class="swiper-slide"><a href="#">${bagon}</a></div>` }); var gonggaoDom = document.querySelector("#announcement"); gonggaoDom.innerHTML = `<div class="gonggaotxt">温馨<br>提示</div><div class="swiper-wrapper">${gonggaoDomHtml}</div>`; var announcementSwiper = new Swiper("#announcement", { direction: "vertical", loop: true, autoplay: { delay: 3e3, disableOnInteraction: false } }); var quatcDom = document.querySelector(".tabs a"); var tabsSwiper = new Swiper("#tabs-container", { speed: 500, autoHeight: true, on: { slideChangeTransitionStart: function () { removeClass(document.querySelector(".tabs .active"), "active"); addClass(document.querySelectorAll(".tabs a")[this.activeIndex], "active") } } }); document.addEventListener("DOMContentLoaded", (function () { var listItems = document.querySelectorAll(".tabs a"); listItems.forEach((function (li, index) { li.addEventListener("click", (function () { removeClass(document.querySelector(".tabs .active"), "active"); addClass(document.querySelectorAll(".tabs a")[index], "active"); tabsSwiper.slideTo(index) })) })) })); if (btItemArr && btItemArr.length > 0) { var bottomAppSwiper = new Swiper("#bottomApp", { loop: true, pagination: { el: ".swiper-pagination" }, autoplay: { delay: 3e3, disableOnInteraction: false } }) } jumpFunCtion();</script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>function checkMobile() { var sUserAgent = navigator.userAgent.toLowerCase(); var isMobile = sUserAgent.match(/iphone|android|ipad|phone|mobile|wap|netfront|x11|java|operamobi|operamini|uc|windowsce|symbian|symbianos|series|webos|sony|blackberry|dopod|nokia|samsung|palmsource|xda|pieplus|meizu|midp|cldc|motorola|foma|docomo|up.browser|up.link|blazer|helio|hosin|huawei|novarra|coolpad|webos|techfaith|palmsource|alcatel|amoi|ktouch|nexian|ericsson|philips|sagem|wellcom|bunjalloo|maui|smartphone|iemobile|spice|bird|zte-|longcos|pantech|gionee|portalmmm|jig browser|hiptop|benq|haier/i) != null; if (isMobile) { return true } if (navigator.userAgent.indexOf("UCBrowser") > -1) { return true } if (sUserAgent.match(/MicroMessenger/i) == "micromessenger") { return true } if (!!sUserAgent.match(/mqqbrowser|qzone|qqbrowser/i)) { return true } return false } if (!checkMobile() && window.innerWidth > 1367 && !!QRCode) { document.querySelector(".qrbox-bg").style.display = "block"; document.querySelector(".qrbox-con").style.display = "flex"; const qrcodeContainer = document.getElementById("qrcodeImage"); const options = { width: 300, height: 300, color: { dark: "#000000", light: "#ffffff" }, errorCorrectionLevel: "H" }; var qrcAsDderfc = new QRCode(qrcodeContainer, { text: window.location.href, width: 150, height: 150, colorDark: "#8b67c7", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.L }); const listItems = document.querySelectorAll(".app-list a"); const qrcodeDiv = document.getElementById("qrdcode-box"); const qrcodecon = document.getElementById("qrdcode-con"); listItems.forEach(item => { item.addEventListener("mouseover", (function () { const url = this.href; generateQRCode(url, qrcodecon); qrcodeDiv.style.display = "block"; let rect = item.getBoundingClientRect(); qrcodeDiv.style.left = rect.left + 10 + "px"; qrcodeDiv.style.top = rect.top - 130 + "px" })); item.addEventListener("mouseout", (function () { qrcodeDiv.style.display = "none" })) }); function generateQRCode(url, element) { element.innerHTML = ""; const qrmove = new QRCode(qrcodecon, { text: url, width: 100, height: 100, colorDark: "#8b67c7", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.L }) } } const closeqrFn = function () { document.querySelector(".qrbox-bg").style.display = "none"; document.querySelector(".qrbox-con").style.display = "none" }; let timmerNumClose = 5; const timmerNumCloseFn = function () { setTimeout(() => { timmerNumClose--; document.querySelector(".timmer-clostc").innerText = timmerNumClose; if (timmerNumClose > 0) { timmerNumCloseFn() } else { clearTimeout(timmerNumCloseFn); closeqrFn() } }, 1e3) }; timmerNumCloseFn(); jumpFunCtion(); let textsDomain = ["seapp10", "seapp11", "seapp12", "seapp13", "seapp14", "seapp15", "seapp16"]; let indexDomainT = 1; document.getElementById("domain-ls").innerText = textsDomain[0]; function displayText() { document.getElementById("domain-ls").innerText = textsDomain[indexDomainT] + ".cc"; indexDomainT = (indexDomainT + 1) % textsDomain.length; indexDomainT >= 20 ? indexDomainT = 0 : 1 } setInterval(displayText, 300);</script>
+</body>
+
+</html>

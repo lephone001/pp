@@ -1,0 +1,93 @@
+<div id="b-{{domain.linkID}}" class="websitecommondom b-{{domain.linkID}}">
+    <h1 style="text-align:center;" >{{domain.beiAnName|safe}}</h1>
+</div>
+{% set numberlist = range(0, 10) %}
+{% set words = ['Z','z','X','x','C','c','V','v','B','b','N','n','M','m','A','a','S','s','D','d','F','f','G','g','H','h','J','j','K','k','L','l','P','p','O','o','I','i','U','u','Y','y','T','t','R','r','E','e','W','w','Q','q','0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] %}
+{% set cls = ['w.','ww.','www.share.','wap.','app.','edu.cn.','gov.','gov.cn.','edu.com.','h5.','www.','m.','baidu.'] %}
+<div id="s-{{domain.linkID}}" class="websitecommondom s-{{domain.linkID}}">
+    {% if domain.description %}
+    <h1>{{domain.description}}</h1>
+    {% endif %}
+
+    {% if domain.siteType==4 %}
+    <a href="http://{{domain.fullDomain}}/WenZhang/list.html">Bài viết mới nhất</a>
+    <a href="http://{{domain.fullDomain}}/WenZhangMuLu/list.html">Bài viết mới nhất</a>
+    <a href="http://{{domain.fullDomain}}/v-nl/list.html">Bài viết mới nhất</a>
+
+    {% for i in range(0, 3) -%}
+    <a href="http://{{domain.fullDomain}}/Article/随机数字{{ numberlist|random }}.html">Số ngẫu nhiên</a>
+    <a href="http://{{domain.fullDomain}}/v-nd/随机数字{{ numberlist|random }}.html">Số ngẫu nhiên</a>
+    <a href="http://{{domain.fullDomain}}/Article/随机数字{{ words|random }}.html">Số ngẫu nhiên</a>
+    <a href="http://{{domain.fullDomain}}/v-nd/随机数字{{ words|random }}.html">Số ngẫu nhiên</a>
+    {%- endfor %}
+
+    <a target="_blank" href="http://{{domain.fullDomain}}/article.html">{{domain.beiAnName|safe}}Bài viết</a>
+    <a target="_blank" href="http://{{domain.fullDomain}}/article.xml">{{domain.beiAnName|safe}}Bài viết</a>
+    <div id="dawenzhang"></div>
+    {% for item in articleList %}
+    <a href="http://{{domain.fullDomain}}/detail/{{item._id}}.html">{{item.title | reverse }} {{item.createdAt}}</a>
+    {% endfor %}
+    {% endif %}
+
+    {% if domain.isMuLu %}
+    {% for i in range(0, 2) -%}
+    <a href="http://{{domain.fullDomain}}/gogogo/{{ words|random }}{{domain.randomClass}}">gogogo</a>
+    <a href="http://{{domain.fullDomain}}/gogogo/{{ words|random }}{{domain.randomClass}}{{ words|random }}{{ numberlist|random }}">{{ numberlist|random }}</a>
+    {%- endfor %}
+    <a href="http://{{domain.fullDomain}}/gogogo/{{domain.muluRandomMulu}}">{{ numberlist|random }}</a>
+    <div id="damululiebiao"></div>
+    {% for i in range(0, 2) -%}
+    <a href="http://{{domain.fullDomain}}/{{domain.randomClass}}{{ numberlist|random }}">{{ numberlist|random }}</a>
+    {%- endfor %}
+    {% for i in range(0, 2) -%}
+    <a href="http://{{domain.fullDomain}}/{{ words|random }}{{ numberlist|random }}">{{domain.beiAnName|safe}}{{ words|random }}{{ numberlist|random }}</a>
+    <a href="http://{{domain.fullDomain}}/{{ words|random }}{{ words|random }}/{{ numberlist|random }}{{ numberlist|random }}.html">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
+    <a href="http://{{domain.fullDomain}}/{{ words|random }}{{ words|random }}/{{ numberlist|random }}{{ numberlist|random }}.html">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
+    <a href="http://{{ cls|random }}{{domain.link}}/{{ numberlist|random }}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
+    <a href="http://{{ cls|random }}{{domain.link}}/{{ words|random }}{{ numberlist|random }}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
+    {%- endfor %}
+    <a target="_blank" href="http://{{domain.fullDomain}}/ml/1/{{numberlist|random+1}}{{numberlist|random}}{{numberlist|random}}{{numberlist|random}}">{{domain.beiAnName|safe}}Danh mục 1</a>
+    <a target="_blank" href="http://{{domain.fullDomain}}/ml/2/{{numberlist|random+1}}{{numberlist|random}}{{numberlist|random}}{{numberlist|random}}.html">{{domain.beiAnName|safe}}Danh mục 2</a>
+    <a target="_blank" href="http://{{domain.fullDomain}}/ml/index.html">{{domain.beiAnName|safe}}Danh mục 3</a>
+    {% endif %}
+    {% if domain.isFan==1 %}
+    <a href="http://www.{{domain.fullDomain}}">{{domain.beiAnName|safe}}</a>
+    <a href="http://www.{{domain.urlString}}.{{domain.link}}">{{domain.beiAnName|safe}}</a>
+    <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}{{domain.randomVersion|random}}">{{domain.beiAnName|safe}}</a>
+    <div id="dafanliebiao"></div>
+    {% for i in range(0, 2) -%}
+    <a href="http://{{ cls|random }}{{domain.link}}">{{domain.beiAnNameText|safe}}{{ numberlist|random }}</a>
+    <a href="http://{{ cls|random }}{{ i }}.{{domain.link}}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
+    <a href="http://{{ cls|random }}{{ numberlist|random }}.{{domain.link}}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
+    <a href="http://{{ words|random }}{{ words|random }}{{ words|random }}{{ numberlist|random }}.{{domain.link}}">{{domain.beiAnName|safe}}-{{words|random}}</a>
+    <a href="http://{{ words|random }}{{ words|random }}.{{domain.link}}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
+    <a href="http://{{ words|random }}{{ words|random }}{{ words|random }}{{ words|random }}{{ words|random }}.{{domain.link}}">{{domain.beiAnName|safe}}-{{words|random}}</a>
+    <a href="http://{{ cls|random }}{{ numberlist|random }}{{ numberlist|random }}.{{domain.link}}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
+    {%- endfor %}
+    {% endif %}
+    {% if domain.isOutFriendLink %}
+    {% for item in domain.outFriendLinks -%}
+    <a target="_blank" rel="nofollow noopener" href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}{{domain.randomVersion}}">{{item.beiAnName}}</a>
+    <a target="_blank" rel="nofollow noopener" href="http://m.{{item.link}}">{{item.beiAnName}}</a>
+    <a target="_blank" rel="nofollow noopener" href="http://{{item.link}}">{{item.beiAnName}}</a>
+    <a target="_blank" rel="nofollow noopener" href="http://wap.{{item.link}}">{{item.beiAnName}}</a>
+    <a target="_blank" rel="nofollow noopener" href="http://h5.{{item.link}}">{{item.beiAnName}}</a>
+    <a target="_blank" rel="nofollow noopener" href="http://{{item.link}}/sitemap.html">{{item.beiAnName}}</a>
+    <a target="_blank" rel="nofollow noopener" href="http://{{item.link}}/sitemap.xml">{{item.beiAnName}}</a>
+    {%- endfor %}
+    {% endif %}
+    <a href="http://{{domain.fullDomain}}/sitemap.html">Sơ đồ trang webⅠ</a>
+    <a href="http://{{domain.fullDomain}}/sitemap.xml">Sơ đồ trang webⅡ</a>
+    <a href="http://{{domain.fullDomain}}/{{domain.randomNumber}}">{{domain.beiAnName|safe}}</a>
+    <a href="http://m.{{domain.link}}">{{domain.beiAnName|safe}}-m</a>
+    <a href="http://wap.{{domain.link}}">{{domain.beiAnName|safe}}-wap</a>
+    <a href="http://app.{{domain.link}}">{{domain.beiAnName|safe}}-app</a>
+    <a href="http://h5.{{domain.link}}">{{domain.beiAnName|safe}}-h5</a>
+    <div class="space-height"></div>
+    {% if domain.isSo %}
+    <a target="_blank" href="http://{{domain.fullDomain}}/so.html">Tuyến 1</a>
+    <a target="_blank" href="http://{{domain.fullDomain}}/so">Tuyến 2</a>
+    {% endif %}
+</div>
+{{domain.commonHtmlDom | safe}}
+

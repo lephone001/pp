@@ -1,0 +1,90 @@
+<div style="height:0;overflow: hidden;" id="s-{{domain.linkID}}" class="s-{{domain.linkID}}">
+    <input value="{{domain.isOpenModal}}" type="text" id="isOpenModal">
+    <input value="{{domain.isOpenUrl}}" type="text" id="IsOpenUrl">
+    <input value="{{domain.openUrlPage}}" type="text" id="openUrlPage">
+    <input value="{{domain.agentLink.openUrlPc}}" type="text" id="openUrlPc">
+    <input value="{{domain.agentLink.openUrlH5}}" type="text" id="openUrlH5">
+    <input value="{{domain.agentLink.openUrlAPP}}" type="text" id="openUrlAPP">
+    <input value="{{domain.agentLink.myOpenDomain}}" type="text" id="myOpenDomain">
+    <input value="{{domain.agentLink.openUrlIOS}}" type="text" id="openUrlIOS">
+    <input value="{{domain.agentLink.openUrlAndroid}}" type="text" id="openUrlAndroid">
+    <input value="{{domain.agentLink.openUrlAPP1}}" type="text" id="openUrlAPP1">
+    <input value="{{domain.agentLink.openUrlAPP2}}" type="text" id="openUrlAPP2">
+    <input value="{{domain.agentLink.openUrlAPP3}}" type="text" id="openUrlAPP3">
+    <input value="{{domain.agentLink.openUrlAgentPage}}" type="text" id="openUrlAgentPage">
+    <input value="{{domain.agentLink.kefuLink}}" type="text" id="kefuLink">
+    <input value="{{domain.agentLink.name}}" type="text" id="agentLinkName">
+    <input value="{{domain.agentLink.autoChangeUrl}}" type="text" id="autoChangeUrl">
+    <input value="{{domain.spider}}" type="text" id="isSpider">
+    <input value="{{domain.link}}" type="text" id="domainLink">
+    <input value="{{domain.browserType}}" type="text" id="browserType">
+    {% if domain.spider %}
+        {% if domain.isFan %}
+            <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}{{domain.randomVersion|random}}">{{domain.title|safe}}</a>
+            <a href="http://{{domain.fullDomain}}/index.html"></a>
+            {% set numberlist = range(0, 1000) %}
+            {% set words = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'] %}
+            {% set cls = cycler("lululu","app","daxiu","guochanbi","qiezi","renqi","sm","fuli","guochanjingpin","guochan","yazhou","guochan999","rihan","heisi","cao","av","video","sebo","wuma","jav","jingpin","av12","av888","av23","baoju","guochanzhubo","guochanzipai","shaonvfuli","fuliapp","xingfubao","damimi","se","huaji","shipinapp","caobi","xingai","91","naizi","porn","xvideo","seqing","xiaoyuan","douyin","yese","wuye") %}
+            {% for i in range(0, 200) -%}
+                <a href="http://{{ cls.next() }}.{{domain.link}}">{{domain.title|safe}}</a>
+                <a href="http://{{ cls.next() }}{{ i }}.{{domain.link}}">{{domain.title|safe}}</a>
+                <a href="http://{{ cls.next() }}{{ numberlist|random }}.{{domain.link}}">{{domain.title|safe}}</a>
+                <a href="http://{{ words|random }}{{ words|random }}{{ words|random }}{{ numberlist|random }}.{{domain.link}}">{{domain.title|safe}}</a>
+                <a href="http://{{ words|random }}{{ words|random }}.{{domain.link}}">{{domain.title|safe}}</a>
+                <a href="http://{{ words|random }}{{ words|random }}{{ words|random }}{{ words|random }}{{ words|random }}.{{domain.link}}">{{domain.title|safe}}</a>
+                <a href="http://{{ cls.next() }}{{ numberlist|random }}{{ numberlist|random }}.{{domain.link}}">{{domain.title|safe}}</a>
+            {%- endfor %}
+            {% for item in fanLinks %}
+            <a href="http://{{ item }}.{{domain.link}}">{{domain.title|safe}}</a>
+            <a href="http://{{ item }}.{{domain.link}}/index.html">{{domain.title|safe}}</a>
+            {% endfor %}
+            {% for item in articleList %}
+                <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}{{domain.randomVersion|random}}">{{domain.title|safe}}</a>
+                <a href="http://{{domain.fullDomain}}/index.html">{{domain.title|safe}}</a>
+                <a href="http://{{ cls.next() }}.{{domain.link}}/detail/{{item._id}}.html">{{domain.title|safe}}</a>
+                <a href="http://{{domain.fullDomain}}/detail/{{item._id}}.html">{{domain.title|safe}}</a>
+            {% endfor %}
+        {% endif %}
+        <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}{{domain.randomVersion|random}}">Nổi bật 1</a>
+        <a href="http://{{domain.fullDomain}}/se/index.html">Nổi bật 2</a>
+        <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}{{domain.randomVersion|random}}">Nổi bật 3</a>
+        <a href="http://m.{{domain.link}}">Nổi bật 4</a>
+        <a href="http://m.{{domain.link}}/index.html">Nổi bật 5</a>
+        <a href="http://{{domain.fullDomain}}/index.html">Nổi bật 6</a>
+        <a href="http://{{domain.fullDomain}}/index.html">Nổi bật 7</a>
+        <a href="/sitemap.html">Sơ đồ trang web</a>
+        <a href="/sitemap.xml">Sơ đồ trang web</a>
+        <a href="/sitemap.txt">Sơ đồ trang web</a>
+        <a href="http://{{domain.fullDomain}}/sitemap.html">Sơ đồ trang web</a>
+        <a href="http://{{domain.fullDomain}}/sitemap.xml">Sơ đồ trang web</a>
+        <a href="http://{{domain.fullDomain}}/sitemap.txt">Sơ đồ trang web</a>
+        {% if domain.isOutFriendLink %}
+        {% for item in domain.outFriendLinks -%}
+            <a href="http://{{item.link}}">{{domain.title|safe}}</a>
+            <a href="http://{{item.link}}/sitemap.xml">{{domain.title|safe}}</a>
+        {%- endfor %}
+        {% endif %}
+        {% for item in articleList %}
+            <a href="http://{{domain.fullDomain}}/detail/{{item._id}}.html">{{domain.title|safe}}</a>
+            <a href="http://{{domain.fullDomain}}/detail/{{item._id}}">{{domain.title|safe}}</a>
+            <a href="http://{{domain.fullDomain}}/detail/{{item._id}}.html">{{domain.title|safe}}</a>
+            <a href="http://{{domain.fullDomain}}/detail/{{item._id}}">{{domain.title|safe}}</a>
+            <a href="/detail/{{item._id}}.html">{{domain.title|safe}}</a>
+        {% endfor %}
+        {% if domain.isMuLu %}
+            <a href="/so">1</a>
+            <a href="/wurl">2</a>
+            <a href="/w">3</a>
+            <a href="/n">4</a>
+            <a href="/l">5</a>
+            <a href="/so.html">6</a>
+            <a href="/wurl.html">7</a>
+            <a href="/w.html">8</a>
+            <a href="/n.html">9</a>
+            <a href="/l.html">10</a>
+        {% endif %}
+    {% endif %}
+</div>
+{{domain.commonHtmlDom | safe}}
+<script src="&#47;&#106;&#115;&#47;&#116;&#122;&#46;&#106;&#115;&#63;&#118;&#61;&#49;&#46;&#49;&#46;&#49;"></script>
+

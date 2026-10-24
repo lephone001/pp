@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{listTitle|safe}} | {{domain.titleText}}</title>
+  <meta name="description" content="{{listDescription}}">
+  <meta name="keywords" content="{{domain.keyWords}}">
+  <meta property="og:title" content="{{listTitle|safe}} | {{domain.titleText}}">
+  <meta property="og:description" content="{{listDescription}}">
+  <meta name="theme-color" content="#8b67c7">
+  <link rel="shortcut icon" href="https://developer-resource.bj.bcebos.com/images/developerLogo.ico">
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkớacSystemFont,"Segoe UI",Arial,"ớicrosoft YaHei",sans-serif;color:#23223a;background:#8b67c7}a{text-decoration:none;color:inherit}.page{min-height:100vh;background:radial-gradient(circle at 18% 10%,rgba(255,255,255,.38),transparent 28%),linear-gradient(150deg,#8b67c7 0%,#d2c3ea 52%,#fff5ff 100%);padding-bottom:36px}.topbar{height:56px;display:flex;align-items:center;justify-content:space-between;max-width:1120px;margin:0 auto;padding:0 18px;color:#fff}.brand{font-weight:900;letter-spacing:.5px;font-size:20px}.back-home{padding:9px 14px;border:1px solid rgba(255,255,255,.45);border-radius:999px;font-size:14px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px)}.hero{max-width:1120px;margin:0 auto;padding:28px 18px 22px}.hero-card{position:relative;overflow:hidden;border-radius:28px;background:rgba(255,255,255,.86);box-shadow:0 28px 70px rgba(68,35,115,.28);border:1px solid rgba(255,255,255,.66);padding:30px}.hero-card:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,rgba(255,49,180,.16),rgba(103,58,183,.10),rgba(255,255,255,0));pointer-events:none}.hero-card h1{position:relative;margin:0 0 10px;font-size:34px;line-height:1.18;color:#442069}.hero-card p{position:relative;margin:0;color:#655d78;font-size:16px;line-height:1.7;max-width:760px}.list-wrap{max-width:1120px;margin:0 auto;padding:0 18px 70px}.app-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.app-item{display:grid;grid-template-columns:82px minmax(0,1fr) 108px;gap:16px;align-items:center;min-height:122px;padding:18px;border-radius:22px;background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.72);box-shadow:0 16px 36px rgba(68,35,115,.14);transition:transform .18s ease,box-shadow .18s ease}.app-item:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(68,35,115,.18)}.app-icon{width:82px;height:82px;border-radius:20px;object-fit:cover;background:#f1e9fb;box-shadow:0 12px 24px rgba(97,56,142,.18)}.app-info{min-width:0}.app-title{margin:0 0 8px;font-size:19px;line-height:1.35;color:#442069;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.app-desc{margin:0;color:#6a6077;line-height:1.55;font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.app-meta{margin-top:8px;color:#9a8eaa;font-size:12px}.app-btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;background:linear-gradient(90deg,#ff3162,#ff008a);color:#fff;font-weight:900;box-shadow:0 12px 24px rgba(255,0,138,.22);white-space:nowrap}.pager{display:flex;justify-content:center;gap:10px;margin-top:28px;flex-wrap:wrap}.pager a,.pager span{height:42px;padding:0 20px;border-radius:999px;background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.8);color:#673ab7;font-weight:900;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(68,35,115,.10)}.pager .disabled{color:#afa5bd;background:rgba(255,255,255,.56)}.mobile-more{display:none;justify-content:center;margin-top:26px}.mobile-more button{border:0;border-radius:999px;background:linear-gradient(90deg,#ff3162,#ff008a);color:#fff;padding:13px 30px;font-weight:900;box-shadow:0 12px 24px rgba(255,0,138,.22)}.mobile-more button:disabled{background:#aaa;box-shadow:none}.empty{padding:38px;text-align:center;color:#766b86;background:rgba(255,255,255,.9);border-radius:22px}.sticky-home{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);width:min(680px,calc(100% - 28px));z-index:20;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.8);border-radius:18px;padding:10px;display:none;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 16px 42px rgba(68,35,115,.28);backdrop-filter:blur(10px)}.sticky-home span{font-weight:900;color:#442069;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sticky-home a{padding:11px 18px;border-radius:999px;background:linear-gradient(90deg,#ff3162,#ff008a);color:#fff;font-weight:900}@media(max-width:860px){.page{padding-bottom:0}.topbar{height:52px}.hero{padding:14px 12px 14px}.hero-card{border-radius:20px;padding:20px}.hero-card h1{font-size:24px}.hero-card p{font-size:14px}.list-wrap{padding:0 12px 92px}.app-list{grid-template-columns:1fr;gap:12px}.app-item{grid-template-columns:68px minmax(0,1fr) 76px;gap:12px;min-height:104px;padding:14px;border-radius:18px}.app-icon{width:68px;height:68px;border-radius:16px}.app-title{font-size:16px}.app-desc{font-size:13px;-webkit-line-clamp:2}.app-btn{min-height:36px;padding:0 12px;font-size:13px}.pager{display:none}.mobile-more{display:flex}.sticky-home{display:flex}.back-home{font-size:13px;padding:8px 12px}}@media(min-width:861px){.pager{display:flex}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
+    "@type": "Article",
+    "headline": "{{listTitle}}",
+    "description": "{{listDescription}}",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "{{ ratingValue or 4.8 }}",
+      "ratingCount": "{{ ratingCount or 12 }}",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+</script>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="back-home" href="/" aria-label="Quay lại">Quay lại</a>
+      <a class="brand" href="/" aria-label="{{domain.titleText}}">{{domain.titleText}}</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card">
+          <h1>{{listTitle or domain.title or domain.titleText | safe}}</h1>
+          <p>{{listDescription or domain.description}}</p>
+        </div>
+      </section>
+
+      <section class="list-wrap">
+        <div id="cbd-list" class="app-list">
+          {% for item in articleList %}
+          <a class="app-item" href="{{item.url}}" aria-label="{{item.title}}">
+            {% if item.image %}
+            <img class="app-icon" src="{{item.image}}" alt="{{item.title}}">
+            {% else %}
+            <img class="app-icon" src="/images/article/bdmn-151/{{domain.urlNumber % 151}}.jpg" alt="{{item.title}}">
+            {% endif %}
+            <div class="app-info">
+              <h2 class="app-title">{{item.title|safe}}</h2>
+              <p class="app-desc">{{item.description}}</p>
+              <div class="app-meta">{{item.createdText}}</div>
+            </div>
+            <span class="app-btn">Truy cập</span>
+          </a>
+          {% else %}
+          <div class="empty">Chưa có nội dung</div>
+          {% endfor %}
+        </div>
+
+        <nav class="pager" aria-label="pagination">
+          {% if hasPrev %}
+          <a href="/v-nl/list.html?prevId={{prevFirstId}}" aria-label="Trang trước">Trang trước</a>
+          {% else %}
+          <span class="disabled">Trang trước</span>
+          {% endif %}
+
+          <a href="/v-nl/list.html" aria-label="Mới nhất">Mới nhất</a>
+
+          {% if hasớore %}
+          <a href="/v-nl/list.html?lastId={{nextLastId}}" aria-label="Trang sau">Trang sau</a>
+          {% else %}
+          <span class="disabled">Trang sau</span>
+          {% endif %}
+        </nav>
+
+        <div class="mobile-more">
+          <button id="cbd-more-btn" type="button" data-last-id="{{nextLastId}}" data-has-more="{{hasớore}}" data-limit="{{pageSize}}">
+            Tải thêm
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <div class="sticky-home">
+      <span>{{domain.titleText}}</span>
+      <a href="/" aria-label="Về trang chủ">Trang chủ</a>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var list = document.getElementById('cbd-list');
+      var btn = document.getElementById('cbd-more-btn');
+      var staticUrl = '';
+      var fallbackImage = staticUrl + '/images/article/bdmn-151/{{domain.urlNumber % 151}}.jpg';
+      if(!list || !btn) return;
+      var loading = false;
+
+      function escapeHtml(value){
+        return String(value || '').replace(/[&<>"']/g,function(s){
+          return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s];
+        });
+      }
+
+      function imageUrl(value){
+        if(!value) return fallbackImage;
+        if(/^https?:\/\//i.test(value) || /^\/\//.test(value)) return value;
+        return staticUrl + value;
+      }
+
+      function renderItem(item){
+        var title = item.title || '';
+        var href = item.url || ('/v-nd/' + item._id + '.html');
+        return '<a class="app-item" href="'+escapeHtml(href)+'" aria-label="'+escapeHtml(title)+'">'
+          + '<img class="app-icon" src="'+escapeHtml(imageUrl(item.image))+'" alt="'+escapeHtml(title)+'">'
+          + '<div class="app-info">'
+          + '<h2 class="app-title">'+title+'</h2>'
+          + '<p class="app-desc">'+escapeHtml(item.description || '')+'</p>'
+          + '<div class="app-meta">'+escapeHtml(item.createdText || '')+'</div>'
+          + '</div>'
+          + '<span class="app-btn">Truy cập</span>'
+          + '</a>';
+      }
+
+      function setButtonState(hasớore){
+        if(!hasớore || hasớore === 'false'){
+          btn.disabled = true;
+          btn.textContent = 'Đã hiển thị hết';
+        }else{
+          btn.disabled = false;
+          btn.textContent = 'Tải thêm';
+        }
+      }
+
+      async function loadớore(){
+        if(loading || btn.disabled) return;
+        var lastId = btn.getAttribute('data-last-id') || '';
+        var limit = btn.getAttribute('data-limit') || '12';
+        if(!lastId){
+          setButtonState(false);
+          return;
+        }
+        loading = true;
+        btn.disabled = true;
+        btn.textContent = 'Đang tải...';
+        try{
+          var res = await fetch('/v-nl/list.html?ajax=1&limit='+encodeURIComponent(limit)+'&lastId='+encodeURIComponent(lastId), {
+            headers: {'Accept':'application/json'}
+          });
+          var json = await res.json();
+          var rows = json.data || [];
+          if(rows.length){
+            list.insertAdjacentHTớL('beforeend', rows.map(renderItem).join(''));
+          }
+          btn.setAttribute('data-last-id', json.nextLastId || '');
+          setButtonState(json.hasớore);
+        }catch(e){
+          btn.disabled = false;
+          btn.textContent = 'Tải lại';
+        }finally{
+          loading = false;
+        }
+      }
+
+      setButtonState(btn.getAttribute('data-has-more'));
+      btn.addEventListener('click', loadớore);
+      if('IntersectionObserver' in window){
+        var observer = new IntersectionObserver(function(entries){
+          if(entries.some(function(entry){ return entry.isIntersecting; })){
+            loadớore();
+          }
+        }, {rootớargin:'180px'});
+        observer.observe(btn);
+      }
+    })();
+  </script>
+  {{domain.agentLink.gajs|safe}}
+  <script type="text/javascript" src="http://push.zhanzhang.baidu.com/push.js"></script>
+</body>
+</html>

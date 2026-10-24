@@ -1,0 +1,40 @@
+<div class="v-pageList-box">
+    <input id="nowPage" class="hidden" value="{{nowPage}}" />
+    <input id="pageCount" class="hidden" value="{{count}}" />
+    {% if (count/10) > 0 %}
+    <div class="v-pageList">
+        <div class="page-content-ccc v-flex v-items-center">
+            <a class="active next-page"
+                href="/category/{{nowCategory.id}}?s={{nowPage}}&e={{nowPage-1}}&o={{offset}}">Trang trước</a>
+            <div class="page-center-scroll">
+                {% if (count/10) > nowPage+11 %}
+                {% for i in range(snowPage,nowPage+11) %}
+                <a
+                    href="/category/{{nowCategory.id}}?s={{nowPage}}&e={{i}}&o={{offset}}"
+                    class="{{'active page-item' if nowPage==i else
+                    'page-item' }}">{{i}}</a>
+                {% endfor %}
+                {% else %}
+                {% for i in range(snowPage,count/10) %}
+                <a
+                    href="/category/{{nowCategory.id}}?s={{nowPage}}&e={{i}}&o={{offset}}"
+                    class="{{'active page-item' if nowPage==i else
+                    'page-item' }}">{{i}}</a>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <a class="active next-page"
+                href="/category/{{nowCategory.id}}?s={{nowPage}}&e={{(nowPage-0)+1}}&o={{offset}}">Trang sau</a>
+        </div>
+    </div>
+    <div class="pageList-all-c">{{nowCategory.name}} Tổng {{(count/10)|round }} trang
+    </div>
+    {% endif %}
+</div>
+<script>
+    var vPageList = document.querySelector('.page-center-scroll')
+    var activePageList = document.querySelector('.page-center-scroll .active')
+    if(activePageList){
+        vPageList.scrollLeft = activePageList.offsetLeft-vPageList.offsetWidth/2;
+    }
+</script>

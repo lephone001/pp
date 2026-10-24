@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{title}}{% if domain.titleText %} - {{domain.titleText}}{% endif %}</title>
+  <meta name="description" content="{{description or detail.description or 'Bài viết về trò chơi và công nghệ'}}">
+  <link rel="stylesheet" href="{{domain.sfurl.staticJsUrl}}/css/img.css">
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f6f7f9;color:#233044;font:16px/1.8 system-ui,sans-serif}main{max-width:960px;margin:30px auto;padding:28px;background:white;border-radius:12px}a{color:#215cc5;text-decoration:none}nav{display:flex;gap:16px;flex-wrap:wrap}h1{font-size:28px;line-height:1.4}.meta{color:#718096;font-size:14px}.entry{padding:20px 0;border-bottom:1px solid #eee}.entry h2{font-size:20px;margin:0}.pagination{display:flex;gap:0;width:100%}.pagination .pager-slot{width:50%;text-align:center}.pagination a{display:block;width:100%;padding:12px 8px}.content{overflow-wrap:anywhere;margin-top:24px}.content img{max-width:100%;height:auto}.content pre{overflow:auto}.content table{display:block;max-width:100%;overflow:auto}footer{margin-top:28px}@media(max-width:640px){main{margin:0;padding:20px;border-radius:0}h1{font-size:24px}}
+  </style>
+</head>
+<body>
+    <main>
+    {% include "template/components/img.html" %}
+  <nav><a href="/">Trang chủ</a><a href="{{routeBase or '/WenZhang'}}/list.html">Tất cả bài viết</a></nav>
+  {% if isList %}
+    <h1>{{title or 'Bài viết'}}</h1>
+    <nav>{% for category in categories %}<a href="{{routeBase or '/WenZhang'}}/list.html?categoryId={{category._id}}">{{category.name}}</a>{% endfor %}</nav>
+    {% for item in articleList %}
+    <article class="entry"><h2><a href="{{routeBase or '/WenZhang'}}/{{item._id}}.html">{{item.title}}</a></h2><p>{{item.description}}</p><div class="meta">{{item.sourceName}}</div></article>
+    {% else %}<p>Chưa có bài viết</p>{% endfor %}
+    <footer><nav class="pagination"><span class="pager-slot">{% if prevUrl %}<a href="{{prevUrl}}">Trang trước</a>{% endif %}</span><span class="pager-slot">{% if nextUrl %}<a href="{{nextUrl}}">Trang sau</a>{% endif %}</span></nav></footer>
+  {% else %}
+    <h1>{{detail.title}}</h1>
+    <div class="meta">Thời gian:{{detail.publishedAtText or 'Chưa có'}}(giờ Việt Nam)</div>
+    <div class="meta">Nguồn:{{detail.sourceName}}</div>
+    <article class="content">{{detail.content | safe}}</article>
+    <nav class="article-neighbors">
+      {% if previousArticle %}<a href="{{routeBase or '/WenZhang'}}/{{previousArticle._id}}.html">Bài trước：{{previousArticle.title}}</a>{% endif %}
+      {% if nextArticle %}<a href="{{routeBase or '/WenZhang'}}/{{nextArticle._id}}.html">Bài tiếp theo：{{nextArticle.title}}</a>{% endif %}
+    </nav>
+    {% include "template/components/common_d.html" %}
+    <footer><a href="{{routeBase or '/WenZhang'}}/list.html">Về danh sách bài viết</a></footer>
+  {% endif %}
+</main></body></html>

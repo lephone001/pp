@@ -1,0 +1,142 @@
+<html>
+<head>
+    {% if domain.titleType==0 %}
+    <title>{{detail.title}}</title>
+    {% else %}
+    <title>{{domain.allNUrl | safe}}</title>
+    {% endif %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="{{detail.description}}">
+    <meta name="shareaholic:image" content="{{domain.sfurl.staticUrl}}/images/article/mn2/{{ domain.urlNumber%2331 }}.jpg">
+    <meta name="og:image" content="/images/article/mn2/{{ domain.urlNumber%2331 }}.jpg">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:type" content="website" />
+    <meta data-hid="theme-color" name="theme-color" content="{{domain.themeColor }}">
+    <link rel="canonical" href="http://www.{{domain.link}}" />
+    <meta name="mobile-agent" content="format=xhtml;url=http://m.{{domain.link}}" />
+    <meta name="mobile-agent" content="format=html5;url=http://wap.{{domain.link}}" />
+    <meta name="mobile-agent" content="format=xhtml;url=http://h5.{{domain.link}}" />
+    <meta name="google" content="notranslate" />
+    <link rel="icon" type="image/x-icon" href="{{domain.sfurl.staticUrl}}{{domain.favicon}}">
+    <link rel="stylesheet" type="text/css" href="{{domain.sfurl.staticUrl}}/css/link.css" name="skin">
+    <style>
+        .bgThemColor{
+            background-color: {{domain.themeColor}} !important;
+        }
+    </style>
+</head>
+
+<body class="bgThemColor">
+    <div class="header bgThemColor">
+        <div class="cont1300">
+            <div class="span icon">
+                <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}">返回</a>
+            </div>
+            <div>
+                <a href="http://{{domain.fullDomain}}">首页</a>
+            </div>
+            <div class="span fuli">
+                <a href="/gogogo?t={{domain.randomVersion}}">福利</a>
+            </div>
+        </div>
+    </div>
+    <div id="home" class="s-{{domain.linkID}}">
+        {% if domain.isMuLu %}
+        <section class="c-sect m-app-pos">
+            <div class="inner" id="J_az">
+                <div class="info">
+                    <div class="img">
+                        {% for i in range(domain.imageNums-5, domain.imageNums+5) -%}
+                        <img src="{{domain.sfurl.staticUrl}}/images/article/{{domain.imgTypeName}}/{{ i }}.jpg"/>
+                        {%- endfor %}
+                    </div>
+                    <div class="detail">
+                        <h1 class="title">{{titlec}}</h1>
+                        <p>
+                            {% if imageNums %}
+                            <span>大小:{{ imageNums%19+1 }}M</span>
+                            <span>版本:v{{(imageNums%151)|replace('','.')|replace(r/^\.*|\.*$/g,'')}}</span>
+                            {% else %}
+                            <span>大小:{{ domain.imageNums%19+1 }}M</span>
+                            <span>版本:v{{(domain.imageNums%51)|replace('','.')|replace(r/^\.*|\.*$/g,'')}}</span>
+                            {% endif %}
+                        </p>
+                        <p>
+                            <span>系统:安卓/ios</span>
+                            <span>评论:{{domain.urlNumber}}次</span>
+                        </p>
+                        <!-- <p>
+                            <span>时间:{{domain.todayDay}}</span>
+                        </p> -->
+                    </div>
+                    <div class="detail">
+                        {{domain.title}}{{titleCP}}{{ detail.description }}
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <a href="/gogogo?type=h5&time={{domain.randomVersion}}" rel="nofollow" class="btn bgThemColor">🔞进入🔞</a>
+                    <a href="/gogogo?type=android&time={{domain.randomVersion}}" rel="nofollow" class="btn bgThemColor">❌安卓❌</a>
+                    <a href="/gogogo?type=ios&time={{domain.randomVersion}}" rel="nofollow" class="btn bgThemColor">👙苹果👙</a>
+                    <a href="/?v=m" class="btn bgThemColor">💋网页💋</a>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        <main>
+            <div class="entry-meta">
+                <span class="entry-comment">评论:{{domain.urlNumber%568}}k</span>
+                <span class="entry-views">阅读:<span class="view-count">{{domain.urlNumber%20064}}k</span> </span>
+                <span class="entry-date">时间:{{domain.todayDay}}</span>
+            </div>
+            <article>
+                <h1>{{titlec}}</h1>
+                <div class="single-excerpt">
+                    {{articleinfo.content|safe}}
+                    {% if domain.isSo %}
+                    <a target="_blank" href="http://{{domain.fullDomain}}/so.html">地址一</a>
+                    <a target="_blank" href="http://{{domain.fullDomain}}/so">地址二</a>
+                    <a target="_blank" href="http://{{domain.fullDomain}}/so/{{detail.keywords}}">地址三</a>
+                    {% endif %}
+                </div>
+                <div class="detail-list">
+                    {% for item in newArticleList %}
+                    <a href="/detail/{{item._id}}.html">
+                        <h1>
+                            {{item.title}}<small>{{item.time}}</small>
+                        </h1>
+                    </a>
+                    {% endfor %}
+                </div>
+                {{muluContent|safe}}
+                {{fanContent|safe}}
+            </article>
+        </main>
+        <nav>
+            <a  href="/ml/{{domain.randomClass}}" class="bgThemColor" >上一页</a>
+            <a href="/ml/{{domain.randomVersion}}.html" class="bgThemColor" >当前页</a>
+            <a href="/ml/{{domain.randomClass}}.html"  class="bgThemColor" >下一页</a>
+        </nav>
+        <footer>
+            <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}">官网</a>
+            <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}">首页</a>|
+            <a href="http://{{domain.fullDomain}}/sitemap.xml">站点地图</a>
+            <span>©2021<a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">{{domain.beiAnNumber}}</a></span>
+        </footer>
+        <footer>
+            <a href="/ml/1/index.html">首</a>
+            <a href="http://www.{{domain.link}}/sitemap.xml">页</a> |
+            <a href="/ml/1/m_0.html">站</a>
+            <a href="http://h5.{{domain.link}}/sitemap.xml">点</a>
+            <a href="http://wap.{{domain.link}}">地</a>
+            <a href="/ml/map1/sitemap.html">图</a>
+            <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}">|</a>
+            <a href="http://m.{{domain.link}}/sitemap.xml">©2021-</a>
+            <a href="/article.html">2022</a>
+        </footer>
+        {% include "template/components/common.html" %}
+    </div>
+    {{jumpHTML|safe}}
+</body>
+</html>

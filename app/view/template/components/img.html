@@ -1,0 +1,7 @@
+{% if domain.imgTypeName %}
+<div id="logo-{{domain.linkID}}" class="websitecommimages img-{{domain.linkID}}">
+    {% for i in range(domain.imageNums-5, domain.imageNums+5) -%}
+    <img src="{{domain.sfurl.staticUrl}}/images/article/{{domain.imgTypeName}}/{{ i }}.jpg"/>
+    {%- endfor %}
+</div>
+{% endif %}

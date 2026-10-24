@@ -1,0 +1,56 @@
+{
+  "source": "mongodb://127.0.0.1:27017/seo-smart.video_video",
+  "field": "video",
+  "sort": {
+    "_id": -1
+  },
+  "exportedAt": "2026-10-15T04:45:15.540Z",
+  "count": 10000,
+  "examined": 10400,
+  "invalid": 396,
+  "duplicates": 4,
+  "files": [
+    {
+      "name": "link1.txt",
+      "lines": 1000
+    },
+    {
+      "name": "link2.txt",
+      "lines": 1000
+    },
+    {
+      "name": "link3.txt",
+      "lines": 1000
+    },
+    {
+      "name": "link4.txt",
+      "lines": 1000
+    },
+    {
+      "name": "link5.txt",
+      "lines": 1000
+    },
+    {
+      "name": "link6.txt",
+      "lines": 1000
+    },
+    {
+      "name": "link7.txt",
+      "lines": 1000
+    },
+    {
+      "name": "link8.txt",
+      "lines": 1000
+    },
+    {
+      "name": "link9.txt",
+      "lines": 1000
+    },
+    {
+      "name": "link10.txt",
+      "lines": 1000
+    }
+  ],
+  "sha256": "3aaaca1c35aee75733cd83176629ca1644522ebdb205eac9eb81550d775ec719",
+  "previousDirectory": "C:\\Windows\\dev\\new-seo\\backups\\movieplay-2026-10-15T04-45-15-090Z-6984"
+}

@@ -1,0 +1,20 @@
+<section id="hinh-anh" class="case-section case-gallery">
+    <div class="case-title"><h2>Khu vực thi công</h2><p>ĐỨC TOÀN khoan cắt và phá dỡ bê tông tại miền Nam</p></div>
+    <div class="case-gallery-grid">
+    {% set shigongImages = ["8.webp","9.webp","10.webp","11.webp","12.webp","13.webp","14.webp","15.webp","16.webp","17.webp","18.webp","19.webp","29.webp","30.webp","31.webp","32.webp","33.webp","34.webp","35.webp","36.webp","37.webp","38.webp","39.webp","40.webp","41.webp","42.webp","43.webp","44.webp","45.webp","46.webp","47.webp","48.webp","49.webp","50.webp","51.webp","52.webp","53.webp","54.webp","55.webp","56.webp","57.webp","58.webp","59.webp","60.webp","61.webp","62.webp","63.webp","64.webp","65.webp","66.webp","67.webp","68.webp","69.webp","73.webp","74.webp","76.webp","79.webp","80.webp","82.webp","65.webp","83.webp"] %}
+    {% set khuVuc = ["TPHCM","Sài Gòn","Bình Dương","Đồng Nai","Long An","Tây Ninh","Bà Rịa - Vũng Tàu","Vũng Tàu","Bình Phước","Cần Thơ","An Giang","Kiên Giang","Cà Mau","Bạc Liêu","Sóc Trăng","Hậu Giang","Vĩnh Long","Bến Tre","Tiền Giang","Đồng Tháp","Trà Vinh","Miền Nam","Quận 1","Quận 3","Quận 4","Quận 5","Quận 6","Quận 7","Quận 8","Quận 10","Quận 11","Quận 12","Tân Bình","Tân Phú","Gò Vấp","Bình Tân","Phú Nhuận","Bình Thạnh","Thủ Đức","Hóc Môn","Củ Chi","Bình Chánh","Nhà Bè","Cần Giờ","Lâm Đồng"] %}
+    {% for area in khuVuc %}
+    <div class="case-card"><img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/shigong/{{shigongImages[loop.index0 % shigongImages.length]}}" alt="{{area}}"><b>{{area}}</b></div>
+    {% endfor %}
+    </div>
+</section>
+
+<section class="case-section case-news">
+    <div class="case-title"><h2>CÁC DỰ ÁN TIÊU BIỂU</h2><p>Các công trình đục phá bê tông, tháo dỡ và thi công đã hoàn thành</p></div>
+    <div class="case-news-grid">
+    {% set newsImages = ["14.webp","15.webp","16.webp","17.webp","18.webp","19.webp","29.webp","30.webp","31.webp","32.webp","33.webp","34.webp"] %}
+    {% for area in khuVuc.slice(0,24) %}
+    <article class="case-news-card"><img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/shigong/{{newsImages[loop.index0 % newsImages.length]}}" alt="{{area}}"><b>{{area}}</b><p>Khảo sát nhanh, báo giá rõ ràng, nhận thi công tại {{area}}.</p></article>
+    {% endfor %}
+    </div>
+</section>

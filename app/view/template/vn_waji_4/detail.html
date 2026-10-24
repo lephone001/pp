@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{detail.title|safe}} | {{domain.titleText}}</title>
+  <meta name="description" content="{{detail.description}}">
+  <link rel="canonical" href="/bang-gia-duc-pha-be-tong-2026">
+  <meta property="og:title" content="{{detail.title|safe}} | {{domain.titleText}}">
+  <meta property="og:description" content="{{detail.description}}">
+  <meta property="og:type" content="article">
+
+  <link rel="icon" href="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/css/style.css?v=366">
+</head>
+<body>
+  {% include "template/vn_waji_4/common_header.html" %}
+  <main>
+    <article class="detail-page">
+      <section class="page-hero">
+        <div class="container">
+          <nav class="breadcrumb"><a href="//{{domain.fullDomain}}" aria-label="Trang chủ">Trang chủ</a><span>/</span><a href="news-list.html" aria-label="Tin giá">Tin giá</a></nav>
+          <p class="eyebrow"> <time
+          class="js-local-date"
+          datetime="{{detail.createdAt}}"
+          data-date="{{detail.createdAt}}">
+          {{detail.createdAt}}
+        </time></p>
+          <h1>{{detail.title|safe}}</h1>
+          <p>{{detail.description}}</p>
+        </div>
+      </section>
+
+      <div class="container article-layout detail-layout">
+        <div class="detail-content">
+          {{detail.content|safe}}
+        </div>
+        <aside class="article-sidebar">
+          <div class="side-box"><h3>Bài viết liên quan</h3><a href="news-detail.html" aria-label="Đơn giá khoan cắt bê tông">Đơn giá khoan cắt bê tông</a><a href="news-detail.html" aria-label="Giá thuê máy xúc mini">Giá thuê máy xúc mini</a><a href="news-detail.html" aria-label="Giá vận chuyển xà bần">Giá vận chuyển xà bần</a></div>
+          <div class="side-box contact-box"><h3>Dịch vụ liên quan</h3><a href="index.html#khoan-cat" aria-label="Khoan cắt bê tông">Khoan cắt bê tông</a><a href="index.html#may-xuc" aria-label="Thuê máy xúc">Thuê máy xúc</a><a href="index.html#xa-ban" aria-label="Vận chuyển xà bần">Vận chuyển xà bần</a></div>
+        </aside>
+      </div>
+    </article>
+  </main>
+  {% include "template/vn_waji_5/common_footer.html" %}
+</body>
+</html>

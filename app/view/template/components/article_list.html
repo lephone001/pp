@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{domain.title}}-{{domain.fullDomain}}-{{domain.randomClass}}-{{domain.randomVersion}}</title>
+    <meta name="copyright" content="{{domain.fullDomain}}">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="description" content="{{domain.beiAnName}}【{{domain.fullDomain}}】-{{domain.description}}">
+    <meta name="keywords" content="{{domain.keyWords}}">
+    <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/nav_03/static/common.css">
+    <link rel="stylesheet" href="{{domain.sfurl.staticJsUrl}}/css/link.css">
+    <link rel="stylesheet" href="{{domain.sfurl.staticJsUrl}}/css/article.css">
+    <link rel="icon" type="image/x-icon" href="{{ domain.favicon }}">
+    <style>
+        .bgThemColor{
+            background-color: {{domain.themeColor}} !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="articlelist-header bgThemColor">
+        <div class="cont1300">
+            <div class="span">
+                <a href="javascript:void(0)" onclick="window.history.back()">&larr;</a>
+            </div>
+            <div>
+                <a href="http://{{domain.fullDomain}}">Trang chủ</a>
+            </div>
+            <div class="span">
+                <a href="/gogogo?{{domain.randomClass}}={{domain.randomVersion}}">Ưu đãi</a>
+            </div>
+        </div>
+    </div>
+    <div class="space-height"></div>
+    <div class="article-content">
+        <div class="article-list">
+            <div class="article-item-listt">
+                {% for item in articleList %}
+                <article>
+                    <a href="/detail/{{item._id}}.html">
+                        {% if item.image %}
+                        <div class="a-img" style="background-image: url({{item.image}});"></div>
+                        {% endif %}
+                        {% if item.image %}
+                        <div class="a-content">
+                            {% else %}
+                            <div class="no-image">
+                                {% endif %}
+                                <h1>
+                                    {{item.title}}
+                                </h1>
+                                {% if item.description.length>0 %}
+                                <h4>
+                                    {{item.description}}
+                                </h4>
+                                {% endif %}
+                                <div class="detailInfo">
+                                    <span class="time">Thời gian:{{item.time}}</span>
+                                    <span class="tag">
+                                        Danh mục: {{ item.articleCategory }}
+                                    </span>
+                                    <span class="tag">
+                                        Tải xuống: {{ item.view }}lượt
+                                    </span>
+                                </div>
+                            </div>
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="footer bgThemColor">
+        <footer class="footer-box">
+            <a href="/article.html">Xem thêm</a>
+            <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}{{domain.randomVersion|random}}">Trang web chính thức</a>
+            <a href="http://{{domain.fullDomain}}">Trang chủ</a>
+            <a href="http://{{domain.fullDomain}}/sitemap.html">Sơ đồ trang web</a>
+            <a href="https://beian.miit.gov.cn" target="_blank"rel="noopener noreferrer">©2024{{domain.beiAnNumber}}</a></span>
+        </footer>
+    </div>
+    {% include "template/components/common.html" %}
+</body>
+
+</html>

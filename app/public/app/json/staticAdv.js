@@ -1,0 +1,42 @@
+const StaticAdv = [
+        {
+            "id":0,
+            "name":"静态广告列表1区",
+            "price":"10000元一月",
+            "data":[
+                
+            ]
+        },
+        {
+            "id":1,
+            "name":"静态广告列表2区",
+            "price":"5000元一月",
+            "data":[
+                {
+                    "name":"爱游戏",
+                    "link":"http://aiyou955.vip",
+                    "target":true,
+                    "image":"/assets/images/advStatic/1.jpg"
+                },
+                {
+                    "name":"爱游戏棋牌",
+                    "link":"https://ayx1.app/?i_code=1251874",
+                    "target":true,
+                    "image":"/assets/images/advStatic/2.jpg"
+                },
+                {
+                    "name":"色播宝",
+                    "link":"http://www.sebobao.xyz",
+                    "target":true,
+                    "image":"/assets/images/advStatic/qp1.jpg"
+                },
+                {
+                    "name":"大奶牛视频",
+                    "link":"http://www.dnnsp.com",
+                    "target":true,
+                    "image":"/assets/images/advStatic/qp2.jpg"
+                }
+            ]
+        }
+    ]
+export { StaticAdv }

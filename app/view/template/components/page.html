@@ -1,0 +1,71 @@
+{% if count > 0 %}
+<div class="v-pageList-box">
+    <input id="nowPage" class="hidden" value="{{nowPage}}" />
+    <input id="pageCount" class="hidden" value="{{count}}" />
+    <div class="v-pageList">
+        <div class="page-content-ccc v-flex v-items-center">
+            {% if nowPage > 1 %}
+            <a class="next-page" href="?s={{nowPage}}&e={{nowPage-1}}&o={{offset}}">Trang trước</a>
+            {% else %}
+            <a class="next-page" href="javascript:void(0)">Trang trước</a>
+            {% endif %}
+            {% if count > 1 %}
+            <div class="page-center-scroll">
+                {% if count > 10*pageSize %}
+                {% for i in range(snowPage,nowPage-0+6) -%}
+                {% if i <= pageNum %} 
+                {% if nowPage < i %} 
+                <a href="?s={{nowPage}}&e={{i}}&o={{offset}}" class="{{'active
+                    page-item' if nowPage==i else
+                    'page-item' }}">
+                    {{i}}
+                </a>
+                {% else %}
+                <a href="?s={{nowPage}}&e={{i}}&o={{offsetStart}}" class="{{'active
+                    page-item' if nowPage==i else
+                    'page-item' }}">
+                    {{i}}
+                </a>
+                {% endif %}
+                {% endif %}
+                {%- endfor %}
+
+                {% else %}
+                {% for i in range(1,pageNum+1) -%}
+                {% if nowPage < i %} 
+                <a href="?s={{nowPage}}&e={{i}}&o={{offset}}" class="{{'active
+                    page-item' if nowPage==i else
+                    'page-item' }}">
+                    {{i}}
+                </a>
+                {% else %}
+                <a href="?s={{nowPage}}&e={{i}}&o={{offsetStart}}" class="{{'active
+                    page-item' if nowPage==i else
+                    'page-item' }}">
+                    {{i}}
+                </a>
+                    {% endif %}
+                {%- endfor %}
+            {% endif %}
+            </div>
+            {% endif %}
+            {% if nowPage < pageNum %} 
+            <a class="next-page" href="?s={{nowPage}}&e={{(nowPage-0)+1}}&o={{offset}}">Trang sau</a>
+            {% else %}
+            <a class="next-page" href="javascript:void(0)">Trang sau</a>
+            {% endif %}
+        </div>
+    </div>
+    {% if count > 1 %}
+    <div class="pageList-all-c">{{count}} mục · Trang {{nowPage}}/{{pageNum}}</div>
+    {% endif %}
+</div>
+{% endif %}
+<script>
+    var vPageList = document.querySelector('.page-center-scroll')
+    var activePageList = document.querySelector('.page-center-scroll .active')
+    if (activePageList) {
+        vPageList.scrollLeft = activePageList.offsetLeft - vPageList.offsetWidth / 2;
+        activePageList.setAttribute('href', 'javascript:void(0)')
+    }
+</script>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>if (!localStorage.getItem('UPLINK_TOKEN')) window.location.replace('./login.html');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../pay/static/css/ele.css">
+    <title>Document</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+        }
+
+        ul li {
+            list-style: none;
+            margin: 5px 1px;
+        }
+
+        ul li .imgbox {
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+            background-size: cover;
+            border-radius: 20px;
+            background-repeat: no-repeat;
+        }
+
+        body {
+            max-width: 1300px;
+            margin: 20px auto;
+            padding: 0 10px;
+        }
+
+        ul li .el-button {
+            margin-top: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <body>
+        <div id="app">
+            <el-button @click="testUrlFn()" :loading="testLoading"  type="primary">检测</el-button>
+            <div style="margin-top:20px" v-if="testUrlDate.time">
+                上次检测时间：{{testUrlDate.time}} 总数：{{testUrlDate.data.length}}
+            </div>
+            <div style="margin-top:20px">
+                <el-table  v-loading="tableLoading"
+                :data="testUrlDate.data" border style="width: 100%">
+                    <el-table-column prop="name" label="名称"></el-table-column>
+                    <el-table-column prop="url" width="800" label="链接">
+                        <template slot-scope="scope">
+                            <div>{{scope.row.url}} <el-tag size="mini" v-if="scope.row.urlstatus==1" type="success">正常</el-tag><el-tag size="mini" v-if="scope.row.urlstatus==-1" type="danger">异常</el-tag> </div>
+                            <div v-if="scope.row.androidUrl">{{scope.row.androidUrl}}<el-tag size="mini" v-if="scope.row.andUrlstatus==1" type="success">正常</el-tag><el-tag size="mini" v-if="scope.row.andUrlstatus==-1" type="danger">异常</el-tag></div>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </div>
+        </div>
+        <script src="../pay/static/js/axios.min.js"></script>
+        <script src="../pay/static/js/request.js"></script>
+        <script src="../pay/static/js/vue.js"></script>
+        <script src="../pay/static/js/ele.js"></script>
+        <script src="../pay/static/js/moment.js"></script>
+        <script type="text/javascript" src="../pay/static/js/crypto-js.min.js"></script>
+        <script src="/html/testurl.js"></script>
+        <script>
+            const keycode = "jiamibijibenkey-123";
+            new Vue({
+                el: '#app',
+                data: {
+                    testLoading:false,
+                    tableLoading:false,
+                    testUrlDate: {
+                        data:(window.AppList || []).sort((item1,item2)=>item1.urlstatus-item2.urlstatus),
+                        time: window.TIMEUPDATE || ''
+                    }
+                },
+                mounted() {
+                    // if(window.AppList){
+                    //     this.testUrlDate = window.testUrlDate
+                    // }else{
+                    //     this.tableLoading = true;
+                    // }
+                },
+                methods: {
+                    jiamiFn(datac) {
+                        let casd = datac
+                        if (typeof casd !== 'string') {
+                            casd = JSON.stringify(casd)
+                        }
+                        let content = CryptoJS.AES.encrypt(
+                            casd,
+                            keycode
+                        ).toString();
+                        return content;
+                    },
+                    jiemiFn(datac) {
+                        let casd = datac
+                        let isString = 1
+                        if (typeof datac !== 'string') {
+                            casd = JSON.stringify(casd)
+                            isString = 0
+                        }
+                        let bytes = CryptoJS.AES.decrypt(casd, keycode);
+                        let originalText = bytes.toString(CryptoJS.enc.Utf8);
+                        if (isString == 1) {
+                            originalText = JSON.parse(originalText)
+                        }
+                        return originalText
+                    },
+                    testUrlFn(item) {
+                        let option = {url: '/api/uplink/urlAllTest'}
+                        if(item){
+                            option.data = {data: this.jiamiFn(item)}
+                        }
+                        this.testLoading = true;
+                        request(option).then((res)=>{
+                            this.testUrlDate = {data: this.jiemiFn(res), time: moment().format('YYYY-MM-DD HH:mm:ss')};
+                            this.$message.success('检测完成！');
+                        }).finally(()=>{
+                            this.testLoading = false;
+                        })
+                    }
+                }
+            })
+        </script>
+    </body>
+
+</html>

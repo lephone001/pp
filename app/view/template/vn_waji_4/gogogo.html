@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{mtdk.title}} - {{domain.titleText}}</title>
+    <meta name="description" content="{{mtdk.description}}">
+    <meta name="geo.region" content="VN">
+    <meta name="author" content="{{domain.titleText}}">
+    <meta name="copyright" content="{{domain.title}} - {{domain.link}}">
+    <meta name="application-name" content="{{domain.titleText2}}">
+    <meta name="theme-color" content="{{domain.themeColor}}">
+    <meta property="og:type" content="{{domain.titleText2}}">
+    <meta property="og:site_name" content="{{domain.titleText2}}">
+    <meta property="og:title" content="{{domain.title}} | {{domain.titleText}}">
+    <meta property="og:description" content="{{domain.description}}">
+    <meta property="og:url" content="{{domain.fullUrl}}">
+    <meta property="og:image" content="//{{domain.fullDomain}}/vn_waji_5/static/assets/bimg/{{domain.urlNumber%23}}.png">
+    <meta property="og:image:alt" content="{{domain.title}}">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="{{domain.fullUrl}}">
+    <meta name="twitter:creator" content="{{domain.titleText}}">
+    <link rel="icon" href="{{domain.httpFullDomain}}/{{domain.tname}}/favicon.ico" sizes="any">
+    <link rel="canonical" href="{{domain.httpFullDomain}}" />
+    <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/css/style.css?v=366">
+    <script type="application/ld+json">
+    {"@context":"{{domain.fullUrl}}","@type":"Article","headline":"{{mtdk.title|safe}}","datePublished":"{{mtdk.createdAt}}","author":{"@type":"Organization","name":"{{domain.titleText}}"},"publisher":{"@type":"Organization","name":"{{domain.titleText}}"}}
+    </script>
+</head>
+<body>
+  {% include "template/vn_waji_4/common_header.html" %}
+  <main>
+    {% include "template/vn_waji_5/common_contact.html" %}
+    <article class="detail-page">
+      <section class="page-hero">
+        <div class="container">
+          <div class="img-box">
+            <img src="{{domain.sfurl.mubanStaticUrl}}/vn_waji_5/static/assets/bimg/{{domain.urlNumber%23}}.png" alt="{{detail.title}}">
+          </div>
+          <nav class="breadcrumb"><a href="/" aria-label="Trang chủ">Trang chủ</a><span>/</span><a href="/{{domain.randomClass}}/{{domain.randomNumber}}" aria-label="Tin giá">Tin giá</a></nav>
+          <p class="eyebrow">{{detail.createdAt}}</p>
+          <h1>{{detail.title|safe}}</h1>
+        </div>
+      </section>
+    {% include "template/vn_waji_4/common_case2.html" %}
+    {% include "template/vn_waji_4/common_table.html" %}
+      <div class="container article-layout detail-layout">
+        <div class="detail-content">
+          <p class="lead">Giá đục phá bê tông phụ thuộc độ dày bê tông, mật độ cốt thép, vị trí thi công, mặt bằng vận chuyển và khối lượng xà bần cần xử lý. Bảng giá dưới đây là mức tham khảo để khách hàng dự toán trước chi phí.</p>
+          <h2>Đơn giá đục phá bê tông theo hạng mục</h2>
+          <div class="price-scroll">
+             <table class="price-table mini-table">
+              <tbody>
+                <tr><td>Đục nền bê tông</td><td>80.000đ - 180.000đ/m²</td></tr>
+                <tr><td>Đục sàn bê tông</td><td>120.000đ - 260.000đ/m²</td></tr>
+                <tr><td>Đục móng bê tông</td><td>450.000đ - 950.000đ/m³</td></tr>
+                <tr><td>Đục tường bê tông</td><td>150.000đ - 320.000đ/m²</td></tr>
+                <tr><td>Đục cột bê tông, đục dầm bê tông</td><td>Khảo sát báo giá</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h2>Khi nào cần khảo sát trước khi báo giá?</h2>
+          <p>Các hạng mục đục bê tông cốt thép, đục móng sâu, đục cột bê tông, cắt dầm bê tông hoặc công trình trong hẻm nhỏ nên khảo sát trực tiếp để xác định phương án máy móc và nhân công phù hợp.</p>
+          <h2>Thông tin cần gửi để nhận báo giá nhanh</h2>
+          <ul><li>Loại hạng mục: đục nền, đục sàn, đục tường, đục móng.</li><li>Diện tích hoặc khối lượng ước tính.</li><li>Hình ảnh/video hiện trạng công trình.</li><li>Địa chỉ thi công và yêu cầu vận chuyển xà bần.</li></ul>
+          <div class="detail-cta"><h2>Cần báo giá chính xác?</h2><p>Gọi ngay để được tư vấn đơn giá đục phá bê tông theo thực tế công trình.</p><a href="tel:{{domain.agentLink.noticeDom}}" aria-label="Gọi {{domain.agentLink.noticeDom}}">Gọi {{domain.agentLink.noticeDom}}</a></div>
+        </div>
+        <aside class="article-sidebar">
+          <div class="side-box"><h3>Bài viết liên quan</h3><a href="news-detail.html" aria-label="Đơn giá khoan cắt bê tông">Đơn giá khoan cắt bê tông</a><a href="news-detail.html" aria-label="Giá thuê máy xúc mini">Giá thuê máy xúc mini</a><a href="news-detail.html" aria-label="Giá vận chuyển xà bần">Giá vận chuyển xà bần</a></div>
+          <div class="side-box contact-box"><h3>Dịch vụ liên quan</h3><a href="index.html#khoan-cat" aria-label="Khoan cắt bê tông">Khoan cắt bê tông</a><a href="index.html#may-xuc" aria-label="Thuê máy xúc">Thuê máy xúc</a><a href="index.html#xa-ban" aria-label="Vận chuyển xà bần">Vận chuyển xà bần</a></div>
+        </aside>
+      </div>
+    </article>
+  </main>
+  {% include "template/vn_waji_4/common_footer.html" %}
+</body>
+</html>

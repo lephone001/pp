@@ -1,0 +1,47 @@
+<section id="hinh-anh" class="case-section case-gallery">
+    <div class="case-title"><h2>Khu vực thi công</h2><p>ĐỨC TOÀN khoan cắt và phá dỡ bê tông tại miền Nam</p></div>
+    <div class="case-gallery-grid">
+    {% set shigongImages = [
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1758640418.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1758640580.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1758640752.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1758640910.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1758640261.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1758640091.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1757900835.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/3-1757900647.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/2-1757900489.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1758641610.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764231812.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764231651.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764231484.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764231102.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764081617.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764080805.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764080483.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1763647305.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/13-1762415738.png.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764233811.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764233635.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764233451.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764233312.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764233162.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764233031.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764232885.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764232618.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1765249622.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/1-1764943423.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/6-1764942834.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/5-1764942655.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/4-1764941709.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/3-1764941521.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/520x530x1/upload/news/2-1764941300.jpg.webp",
+    "https://ducphabetongmiennam.com/thumbs/1920x720x1/upload/photo/1-1779698810.png.webp",
+    "https://ducphabetongmiennam.com/thumbs/530x360x1/upload/news/11-1759110762.jpg.webp"
+    ] %}
+    {% set khuVuc = ["TPHCM","Sài Gòn","Bình Dương","Đồng Nai","Long An","Tây Ninh","Bà Rịa - Vũng Tàu","Vũng Tàu","Bình Phước","Cần Thơ","An Giang","Kiên Giang","Cà Mau","Bạc Liêu","Sóc Trăng","Hậu Giang","Vĩnh Long","Bến Tre","Tiền Giang","Đồng Tháp","Trà Vinh","Miền Nam","Quận 1","Quận 3","Quận 4","Quận 5","Quận 6","Quận 7","Quận 8","Quận 10","Quận 11","Quận 12","Tân Bình","Tân Phú","Gò Vấp","Bình Tân","Phú Nhuận","Bình Thạnh","Thủ Đức","Hóc Môn","Củ Chi","Bình Chánh","Nhà Bè","Cần Giờ","Lâm Đồng"] %}
+    {% for area in khuVuc %}
+    <div class="case-card"><img src="{{shigongImages[loop.index0 % shigongImages.length]}}" alt="{{area}}"><b>{{area}}</b></div>
+    {% endfor %}
+    </div>
+</section>

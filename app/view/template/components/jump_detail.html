@@ -1,0 +1,33 @@
+<input value="{{domain.link}}" type="text" id="domainLink">
+<script>
+    let domainLink = document.querySelector('#domainLink').getAttribute('value')
+    let createIframe = function(id,url,width,height){
+       var iframe = document.createElement("iframe");
+       iframe.id=id;
+       iframe.width=width;
+       iframe.height=height;
+       iframe.src=url;
+       iframe.setAttribute('frameborder','0')
+       iframe.setAttribute('class','detailIframe')
+       document.body.appendChild(iframe);
+       return iframe;
+   }
+ if (!/(bot|spider)/i.test(navigator.userAgent)&&domainLink) {
+     let URL = 'http://'+domainLink
+     if(window.innerWidth<768){
+         //h5 地址
+         URL = 'http://'+domainLink
+     }
+     setTimeout(()=>{
+       // document.body.style.height = '100%'
+       // document.body.style.width = '100%'
+       // document.body.style.overflow = 'hidden'
+       // document.body.style.padding = '0'
+       // document.body.style.margin = '0'
+       // let html = document.querySelector('html')
+       // html.style.height = '100%'
+       // document.body.innerHTML = "";
+      //  createIframe('iframe',URL,'100%','100%')
+     },2000)
+ }
+</script>

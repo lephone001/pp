@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>if (!localStorage.getItem('UPLINK_TOKEN')) window.location.replace('./login.html');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../pay/static/css/ele.css">
+    <title>APP更新</title>
+    <style>
+        body,html{margin:0;padding:0;}
+        ul{display: flex;flex-wrap: wrap;margin:0;padding:0;justify-content: center;}
+        ul li{
+            list-style: none;
+            margin:5px 1px;
+        }
+        ul li .imgbox{
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+            background-size: cover;
+            border-radius: 20px;
+            background-repeat: no-repeat;
+        }
+        ul li .el-button{margin-top:5px;width: 100%;}
+        .page-content{max-width: 1300px; margin:20px auto;padding: 10px;}
+        textarea{
+            font-size: 16px;
+            font-weight: 800;
+            font-family: emoji;
+        }
+        .left-bcx{width:50px;position: absolute;left:0;top:0;}
+        .left-bcx li{display: block;}
+        .right-bcx{width: calc(100% - 50px);position: absolute;right:0px;}
+        .edit-content{position: relative;}
+    </style>
+</head>
+<body>
+    <body>
+        <div id="app" class="page-content">
+            <div class="h-left">
+                <a href="./app.html">首页</a>
+            </div>
+            <div style="margin: 10px 0;">
+                <el-button @click="savejsonD" :loading="btnloading" style="width: 100%;" type="primary">保存</el-button>
+            </div>
+            <div class="edit-content">
+                <div class="left-bcx">
+                   <div v-for="(item,index) in valDateNumrow">{{item}}</div>
+                </div>
+                <div class="right-bcx">
+                    <el-input v-model="valDate" autosize type="textarea" ></el-input>
+                    <div style="margin: 10px 0;">
+                        <el-button @click="savejsonD" :loading="btnloading" style="width: 100%;" type="primary">保存</el-button>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <script src="../pay/static/js/axios.min.js"></script>
+        <script src="../pay/static/js/request.js"></script>
+        <script src="../pay/static/js/vue.js"></script>
+        <script src="../pay/static/js/ele.js"></script>
+        <script src="../pay/static/js/vant.js"></script>
+        <script src="../pay/static/js/moment.js"></script>
+        <script type="text/javascript" src="../pay/static/js/crypto-js.min.js"></script>
+        <script>
+            const keycode = "jiamibijibenkey-123";
+            new Vue({
+                    el: '#app',
+                    data: {
+                        valDate:"",
+                        valDateNumrow:[],
+                        btnloading:false
+                    },
+                    mounted() {
+                        for(let i=0;i<1500;i++){
+                            this.valDateNumrow.push(i)
+                        }
+                       //先请求数据
+                       request({
+                            url: '/api/uplink/sebobaoappjson',
+                        }).then(res => {
+                            if(res){
+                                this.valDate = res
+                                // console.log(this.typeSelectTableData)
+                            }
+                        })
+                    },
+                    methods: {
+                        async savejsonD(){
+                           this.btnloading = true;
+                           await request({
+                                url: '/api/uplink/saveupdatesebobaojson',
+                                data:{data:this.jiamiFn(this.valDate)}
+                            }).then(res => {
+                                this.$message({
+                                    message: '保存成功！',
+                                    type: 'success'
+                                });
+                            })
+                            this.btnloading = false;
+                        },
+                        jiamiFn (datac) {
+                            let casd = datac
+                            if (typeof casd !== 'string') {
+                                casd = JSON.stringify(casd)
+                            }
+                            let content = CryptoJS.AES.encrypt(
+                                casd,
+                                keycode
+                            ).toString();
+                            return content;
+                        },
+                        jiemiFn (datac) {
+                            let casd = datac
+                            let isString = 1
+                            if (typeof datac !== 'string') {
+                                casd = JSON.stringify(casd)
+                                isString = 0
+                            }
+                            let bytes = CryptoJS.AES.decrypt(casd, keycode);
+                            let originalText = bytes.toString(CryptoJS.enc.Utf8);
+                            if (isString == 1) {
+                                originalText = JSON.parse(originalText)
+                            }
+                            return originalText
+                        },
+                    }
+            })
+        </script>
+    </body>
+    </html>

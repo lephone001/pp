@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{titleCP or detail.title or detail.name | safe}} | {{domain.titleText}}</title>
+  <meta name="description" content="{{titleCP}}{{companyDetail.description or detail.description or detail.desc}}">
+  <meta name="keywords" content="{{titleCP or detail.title or detail.name | safe}} {{detail.keywords}}">
+  <meta property="og:title" content="{{titleCP or detail.title or detail.name | safe}} | {{domain.titleText}}">
+  <meta property="og:description" content="{{titleCP}}{{companyDetail.description or detail.description or detail.desc}}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{domain.fullUrl}}">
+  <meta property="og:image" content="{{detail.image}}">
+  <meta name="theme-color" content="#8b67c7">
+  <link rel="shortcut icon" href="https://developer-resource.bj.bcebos.com/images/developerLogo.ico">
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,"Microsoft YaHei",sans-serif;color:#23223a;background:#8b67c7}a{text-decoration:none;color:inherit}.page{min-height:100vh;background:radial-gradient(circle at 18% 10%,rgba(255,255,255,.38),transparent 28%),linear-gradient(150deg,#8b67c7 0%,#d2c3ea 52%,#fff5ff 100%)}.topbar{height:56px;display:flex;align-items:center;justify-content:space-between;max-width:1120px;margin:0 auto;padding:0 18px;color:#fff}.brand{font-weight:900;letter-spacing:.5px;font-size:20px}.back-home{padding:9px 14px;border:1px solid rgba(255,255,255,.45);border-radius:999px;font-size:14px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px)}.hero{max-width:1120px;margin:0 auto;padding:34px 18px 48px}.download-card{position:relative;overflow:hidden;border-radius:28px;background:rgba(255,255,255,.86);box-shadow:0 28px 70px rgba(68,35,115,.28);border:1px solid rgba(255,255,255,.66)}.download-card:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,rgba(255,49,180,.16),rgba(103,58,183,.10),rgba(255,255,255,0));pointer-events:none}.app-head{position:relative;display:grid;grid-template-columns:132px minmax(0,1fr) 410px;gap:24px;align-items:center;padding:34px}.app-icon{width:132px;height:132px;border-radius:30px;object-fit:cover;background:#eee;box-shadow:0 16px 34px rgba(97,56,142,.24)}.app-title{margin:0 0 10px;font-size:34px;line-height:1.15;color:#442069}.app-desc{margin:0;color:#655d78;line-height:1.7;font-size:16px}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.tag{font-size:12px;color:#fff;background:linear-gradient(90deg,#ff3162,#ff008a);border-radius:999px;padding:5px 10px;font-weight:800}.tag.soft{background:#8b67c7}.download-panel{display:grid;grid-template-columns:130px minmax(0,1fr);gap:18px;align-items:center;background:#f8f2ff;border:1px solid #eadcf7;border-radius:22px;padding:18px}.main-btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:50px;border-radius:14px;background:linear-gradient(90deg,#ff3162,#ff008a);color:#fff;font-size:17px;font-weight:900;box-shadow:0 12px 24px rgba(255,0,138,.25);margin-bottom:10px}.main-btn.ios{background:linear-gradient(90deg,#8b67c7,#673ab7)}.copy-btn{width:100%;height:42px;border:0;border-radius:12px;background:#fff;color:#7b4eb2;font-weight:800;cursor:pointer}.stats{position:relative;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #eee0f7;background:rgba(255,255,255,.72)}.stat{padding:22px 16px;text-align:center;border-right:1px solid #eee0f7}.stat:last-child{border-right:0}.stat strong{display:block;font-size:22px;color:#673ab7;margin-bottom:4px}.stat span{font-size:13px;color:#766b86}.content{max-width:1120px;margin:0 auto;padding:0 18px 58px;display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:22px}.section,.side-box{background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.7);border-radius:22px;padding:24px;box-shadow:0 16px 36px rgba(68,35,115,.14)}.section h2,.side-box h2{margin:0 0 14px;color:#442069;font-size:22px}.section p{line-height:1.9;color:#514966}.rich-content{line-height:1.9;color:#514966}.rich-content img{max-width:100%;height:auto;border-radius:16px}.info-list{display:grid;gap:12px}.info-row{display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid #eee0f7;color:#5f536f}.info-row:last-child{border-bottom:0;padding-bottom:0}.info-row b{color:#342345}.qr-wrap{display:flex;align-items:center;justify-content:center;width:160px;height:160px;margin:12px auto;border-radius:18px;background:#fff;border:1px solid #eee0f7}.qr-code{width:118px;height:118px;border-radius:10px;object-fit:cover}.mobile-share-icon{display:none;width:96px;height:96px;border-radius:22px;object-fit:cover;box-shadow:0 12px 28px rgba(97,56,142,.22)}.sticky-download{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);width:min(680px,calc(100% - 28px));z-index:20;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.8);border-radius:18px;padding:10px;display:none;align-items:center;gap:12px;box-shadow:0 16px 42px rgba(68,35,115,.28);backdrop-filter:blur(10px)}.sticky-download img{width:46px;height:46px;border-radius:12px}.sticky-download .mini-name{font-weight:900;width: calc(100% - 150px);color:#442069;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sticky-download a{margin-left:auto;padding:11px 18px;border-radius:999px;background:linear-gradient(90deg,#ff3162,#ff008a);color:#fff;font-weight:900}.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);background:rgba(35,25,55,.92);color:#fff;border-radius:999px;padding:10px 16px;font-size:14px;display:none;z-index:30}@media(max-width:860px){.topbar{height:52px}.hero{padding:18px 12px 24px}.download-card{border-radius:20px}.app-head{grid-template-columns:82px minmax(0,1fr);gap:14px;padding:18px}.app-icon{width:82px;height:82px;border-radius:20px}.app-title{font-size:24px}.app-desc{font-size:14px;grid-column:1/3}.hero-current-qr{display:none}.download-panel{display:block;grid-column:1/3}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat{padding:16px 10px}.content{grid-template-columns:1fr;padding:0 12px 92px}.section,.side-box{border-radius:18px;padding:18px}.qr-code{display:none}.mobile-share-icon{display:block}.sticky-download{display:flex}.back-home{font-size:13px;padding:8px 12px}}@media(min-width:861px){.page{padding-bottom:20px}}
+  </style>
+  <style>
+    .app-recommend{margin-top:18px;border-radius:24px;background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.72);box-shadow:0 18px 42px rgba(68,35,115,.18);padding:22px}.app-recommend-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.app-recommend-head h2{margin:0;color:#442069;font-size:22px}.app-recommend-head a{font-size:13px;color:#fff;background:#8b67c7;border-radius:999px;padding:7px 12px;font-weight:800}.download-app-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.download-app-item{display:grid;grid-template-columns:58px minmax(0,1fr);gap:10px;align-items:center;position:relative;min-height:88px;padding:12px;border-radius:18px;background:#fff;border:1px solid #eee0f7;color:#442069;box-shadow:0 8px 20px rgba(68,35,115,.08);transition:transform .18s ease,box-shadow .18s ease}.download-app-item:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(68,35,115,.14)}.download-app-icon{width:58px;height:58px;border-radius:16px;object-fit:cover;background:#f1e9fb}.download-app-name{display:block;font-size:14px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.download-app-desc{display:block;margin-top:4px;font-size:12px;line-height:1.35;color:#7a7089;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.download-app-btn{grid-column:1/3;display:flex;align-items:center;justify-content:center;height:30px;border-radius:999px;background:linear-gradient(90deg,#ff3162,#ff008a);color:#fff;font-size:13px;font-weight:900}.download-app-empty{grid-column:1/-1;color:#7a7089;text-align:center;padding:18px}@media(max-width:860px){.app-recommend{margin-top:14px;border-radius:18px;padding:16px}.download-app-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.download-app-item{grid-template-columns:48px minmax(0,1fr);padding:10px;min-height:82px}.download-app-icon{width:48px;height:48px;border-radius:14px}.download-app-btn{grid-column:1/3}}
+    .tag.safe{background: #00ad00;}
+    .rich-content{overflow-wrap:anywhere;word-break:break-word}.article-page-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px;padding-top:20px;border-top:1px solid #eee0f7}.article-page-link{display:block;min-width:0;padding:13px 14px;border:1px solid #e4d6f1;border-radius:8px;background:#faf7fd;color:#442069}.article-page-link:last-child{text-align:right}.article-page-label{display:block;margin-bottom:5px;color:#8d7c9d;font-size:12px;line-height:18px}.article-page-title{display:block;overflow-wrap:anywhere;font-size:14px;font-weight:700;line-height:21px}.current-page-qr,.hero-current-qr{display:flex;align-items:center;justify-content:center}.current-page-qr img,.current-page-qr canvas{display:block;width:140px!important;height:140px!important;padding:8px;border:1px solid #eadcf7;border-radius:8px;background:#fff}.hero-current-qr img,.hero-current-qr canvas{display:block;width:120px!important;height:120px!important;padding:6px;border:1px solid #eadcf7;border-radius:8px;background:#fff}.friend-wrap{max-width:1120px;margin:0 auto;padding:0 18px 70px}.friend-links{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;padding:18px 20px;border:1px solid rgba(255,255,255,.72);border-radius:18px;background:rgba(255,255,255,.9);box-shadow:0 16px 36px rgba(68,35,115,.14);color:#766b86;font-size:13px;line-height:20px}.friend-links strong{color:#442069}.friend-links a{color:#7652b3;overflow-wrap:anywhere}.app-hover-qr{position:fixed;z-index:10002;display:none;width:128px;height:128px;padding:8px;border:1px solid #eadcf7;border-radius:8px;background:#fff;box-shadow:0 12px 30px rgba(45,28,75,.24);pointer-events:none}.app-hover-qr img,.app-hover-qr canvas{display:block;width:110px!important;height:110px!important}@media(max-width:860px){.current-page-qr,.hero-current-qr,.app-hover-qr{display:none!important}.friend-wrap{padding:0 12px 92px}}@media(max-width:520px){.article-page-nav{gap:8px}.article-page-link{padding:11px 10px}.article-page-title{font-size:13px;line-height:19px}}
+    .article-rating{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;color:#5f536f;font-size:14px;line-height:22px}.article-rating .stars{color:#ffb400;letter-spacing:1px}.article-rating strong{color:#442069;font-size:16px}.article-rating .score-text{width:100%;color:#442069;font-weight:800}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
+    "@type": "SoftwareApplication",
+    "name": "{{detail.name or detail.title | safe}}",
+    "description": "{{companyDetail.description or detail.description or detail.desc}}",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "{{ ratingValue or 4.8 }}",
+      "ratingCount": "{{ ratingCount or 12 }}",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="back-home" href="/" aria-label="Quay lại">Quay lại</a>
+      <a class="brand" href="/" aria-label="{{domain.titleText}}">{{domain.titleText}}</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="download-card">
+          <div class="app-head">
+            <img class="app-icon" src="{{detail.image}}" alt="{{detail.name}}">
+            <div>
+              <h1 class="app-title">{{detail.name or detail.title | safe}}</h1>
+              <div class="tags">
+                {% if detail.isHot %}<span class="tag">Phổ biến</span>{% endif %}
+                {% if detail.isNew %}<span class="tag soft">Mới phát hành</span>{% endif %}
+                {% if detail.isTop %}<span class="tag soft">Nổi bật</span>{% endif %}
+                <span class="tag safe">Tải xuống an toàn</span>
+              </div>
+              <div class="article-rating">
+                <span class="stars">★★★★★</span>
+                <strong>{{ ratingValue or 4.8 }}</strong>
+                <span>({{ ratingCount or 12 }} đánh giá)</span>
+                <span class="score-text">Điểm chất lượng：{{ ratingValue or 4.8 }}/5</span>
+              </div>
+            </div>
+            <div class="download-panel">
+              <div id="heroCurrentQr" class="hero-current-qr" aria-label="Mã QR của trang hiện tại"></div>
+              <div class="download-actions">
+                <a class="main-btn" target="_blank" href="{{detail.url}}" rel="nofollow" aria-label="Tải xuống ngay {{detail.name}}">Tải xuống ngay</a>
+                {% if detail.iosUrl %}
+                <a class="main-btn ios" target="_blank" href="{{detail.url}}" rel="nofollow" aria-label="Tải xuống iOS {{detail.name}}">Tải xuống iOS</a>
+                {% endif %}
+                <button class="copy-btn" type="button" data-copy="{{detail.url}}">Sao chép liên kết tải xuống</button>
+              </div>
+            </div>
+          </div>
+          <div class="stats">
+
+            <div class="stat"><strong data-format-date="{{detail.updateTime or detail.createTime or detail.updatedAt or detail.createdAt}}">{{detail.updateTime or detail.createTime or detail.updatedAt or detail.createdAt}}</strong><span>Ngày đăng</span></div>
+            <div class="stat"><strong>{{domain.banBenNumber}}</strong><span>Phiên bản</span></div>
+            <div class="stat"><strong>{{domain.urlNumber%16063}}</strong><span>Tải xuống</span></div>
+            <div class="stat"><strong>{{domain.titleText}}</strong><span>Nguồn</span></div>
+            
+          </div>
+        </div>
+        <div class="app-recommend" id="appRecommendBox">
+          <div class="app-recommend-head">
+            <h2>Ứng dụng đề xuất</h2>
+            <a href="/x-app/2{{domain.urlNumber}}.html" aria-label="Ứng dụng khác">Ứng dụng khác</a>
+          </div>
+          <div class="download-app-list" id="appRecommendList"></div>
+        </div>
+        <div class="app-recommend" id="moreAppRecommendBox">
+          <div class="app-recommend-head">
+            <h2>Ứng dụng khác</h2>
+            <a href="/x-app/{{domain.urlNumber}}.html" aria-label="Ứng dụng khác">Ứng dụng khác</a>
+          </div>
+          <div class="download-app-list" id="moreAppRecommendList"></div>
+        </div>
+      </section>
+
+      <section class="content">
+        <article class="section">
+          <h2>{{titleCP or detail.title or detail.name | safe}} Giới thiệu ứng dụng</h2>
+          <p>{{titleCP}}{{companyDetail.description or detail.description or detail.desc}}</p>
+          <div class="rich-content">
+            {% if detail.content %}
+            {{detail.content|safe}}
+            {% endif %}
+          </div>
+          <nav class="article-page-nav" aria-label="Điều hướng bài viết">
+            {% if companyDetail.prevName %}
+            <a class="article-page-link" href="/v-n/{{companyDetail.prevName}}.html" aria-label="Bài trước {{companyDetail.prevName}}">
+              <span class="article-page-label">Bài trước</span>
+              <span class="article-page-title">{{companyDetail.prevName}}</span>
+            </a>
+            {% else %}
+            <a class="article-page-link" href="/v-n/{{companyDetail.block.b_number or detail.id}}.html" aria-label="Bài viết trước">
+              <span class="article-page-label">Bài trước</span>
+              <span class="article-page-title">{{titleCP or detail.title or detail.name | safe}}</span>
+            </a>
+            {% endif %}
+            {% if companyDetail.nextName %}
+            <a class="article-page-link" href="/v-n/{{companyDetail.nextName}}.html" aria-label="Bài tiếp theo {{companyDetail.nextName}}">
+              <span class="article-page-label">Bài tiếp theo</span>
+              <span class="article-page-title">{{companyDetail.nextName}}</span>
+            </a>
+            {% else %}
+            <a class="article-page-link" href="/v-n/{{companyDetail.block.b_number or detail.id}}.html" aria-label="Bài viết tiếp theo">
+              <span class="article-page-label">Bài tiếp theo</span>
+              <span class="article-page-title">{{titleCP or detail.title or detail.name | safe}}</span>
+            </a>
+            {% endif %}
+          </nav>
+        </article>
+
+        <aside class="side-box">
+          <h2>Thông tin ứng dụng</h2>
+          <div class="info-list">
+            <div class="info-row"><b>Tên ứng dụng</b><span>{{detail.name}}</span></div>
+            <div class="info-row"><b>Mã số</b><span>{{detail.index or detail.id}}</span></div>
+            <div class="info-row"><b>Tác giả</b><span>{{detail.user or domain.titleText}}</span></div>
+            <div class="info-row"><b>Cập nhật lúc</b><span data-format-date="{{detail.updateTime or detail.createTime or detail.updatedAt or detail.createdAt}}">{{detail.updateTime or detail.createTime or detail.updatedAt or detail.createdAt}}</span></div>
+            <div class="info-row"><b>Trạng thái</b><span>{% if detail.status == 1 %}Có thể tải xuống{% else %}Đang bảo trì{% endif %}</span></div>
+            <div class="info-row"><b>Đánh giá</b><span>Điểm chất lượng：{{ ratingValue or 4.8 }}/5</span></div>
+          </div>
+          <div class="qr-wrap" title="Sao chép liên kết để chia sẻ">
+            <div id="currentPageQr" class="current-page-qr" aria-label="Mã QR của trang hiện tại"></div>
+            <img class="mobile-share-icon" src="{{detail.image}}" alt="{{detail.name}}">
+          </div>
+          <a class="main-btn" href="{{detail.url}}" rel="nofollow" aria-label="Tải nhanh {{detail.name}}">Tải nhanh</a>
+        </aside>
+      </section>
+
+      {% if domain.isOutFriendLink %}
+      <section class="friend-wrap">
+        <div class="friend-links">
+          <strong>Liên kết hữu ích</strong>
+          {% for item in domain.outFriendLinks -%}
+          <a target="_blank" rel="nofollow noopener" href="http://www.{{item.link}}" aria-label="{{item.title}}">{{item.title}}</a>
+          {%- endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </main>
+
+    <div class="sticky-download">
+      <img src="{{detail.image}}" alt="{{detail.name}}">
+      <div class="mini-name">{{detail.name or detail.title | safe}}</div>
+      <a href="{{detail.url}}" rel="nofollow" aria-label="Tải xuống {{detail.name}}">Tải xuống</a>
+    </div>
+  </div>
+  <div class="toast" id="toast">Đã sao chép liên kết</div>
+  <div id="appHoverQr" class="app-hover-qr" aria-hidden="true"></div>
+  <script src="/js/qrcode.min.js"></script>
+  <script src="/html/appjs?v={{domain.randomNumber}}"></script>
+  <script>
+    (function () {
+      function formatDate(value) {
+        if (!value) return '';
+        var text = String(value).trim();
+        var direct = text.match(/^(\d{4})[-/.年](\d{1,2})[-/.月](\d{1,2})/);
+        if (direct) {
+          return direct[1] + '-' + String(direct[2]).padStart(2, '0') + '-' + String(direct[3]).padStart(2, '0');
+        }
+
+        var date = new Date(text);
+        if (Number.isNaN(date.getTime())) return text;
+        return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getDate()).padStart(2, '0');
+      }
+
+      document.querySelectorAll('[data-format-date]').forEach(function (node) {
+        node.textContent = formatDate(node.getAttribute('data-format-date') || node.textContent);
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      var apps = (Array.isArray(window.AppList002) ? window.AppList002 : []).concat(Array.isArray(window.AppList) ? window.AppList : []);
+      var enabledApps = apps.filter(function (item) {
+        return item && item.url && String(item.status) !== '0';
+      });
+      var recommendBox = document.getElementById('appRecommendBox');
+      var recommendList = document.getElementById('appRecommendList');
+      var moreAppBox = document.getElementById('moreAppRecommendBox');
+      var moreAppList = document.getElementById('moreAppRecommendList');
+
+      function escapeHtml(value) {
+        return String(value || '').replace(/[&<>"']/g, function (char) {
+          return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char];
+        });
+      }
+
+      function sortApps(list) {
+        return list.slice().sort(function (a, b) {
+          return (Number(b.isTop || 0) - Number(a.isTop || 0)) ||
+            (Number(b.isHot || 0) - Number(a.isHot || 0)) ||
+            (Number(b.sort || 0) - Number(a.sort || 0));
+        });
+      }
+
+      function renderAppList(list, useDetailLink) {
+        return list.map(function (app) {
+          var name = escapeHtml(app.name || 'Tải ứng dụng');
+          var desc = escapeHtml(app.desc || app.title || 'Tải nhanh');
+          var image = escapeHtml(app.image || '');
+          var appId = app.id || app.index || '';
+          var url = useDetailLink ? ('/x-app/' + encodeURIComponent(appId)) : (app.url || '#');
+          url = escapeHtml(url);
+          return '<a class="download-app-item" href="' + url + '" target="' + (useDetailLink ? '_self' : '_blank') + '" rel="nofollow noopener" aria-label="Tải xuống' + name + '">' +
+            '<img class="download-app-icon" src="' + image + '" alt="' + name + '">' +
+            '<span><strong class="download-app-name">' + name + '</strong><span class="download-app-desc">' + desc + '</span></span>' +
+            '<span class="download-app-btn">Tải xuống</span>' +
+          '</a>';
+        }).join('');
+      }
+
+      if (!recommendList || !recommendBox) {
+        return;
+      }
+
+      if (!enabledApps.length) {
+        recommendBox.style.display = 'none';
+        if (moreAppBox) {
+          moreAppBox.style.display = 'none';
+        }
+        return;
+      }
+
+      var sortedApps = sortApps(enabledApps);
+      var topApps = sortedApps.slice(0, 8);
+      var restApps = sortedApps.slice(8);
+      recommendList.innerHTML = renderAppList(topApps, false);
+      if (moreAppList && moreAppBox) {
+        if (restApps.length) {
+          moreAppList.innerHTML = renderAppList(restApps, true);
+        } else {
+          moreAppBox.style.display = 'none';
+        }
+      }
+    })();
+  </script>
+  <script>
+    (function(){
+      var isPc = window.matchMedia('(min-width: 861px)').matches;
+      var currentQr = document.getElementById('currentPageQr');
+      var heroCurrentQr = document.getElementById('heroCurrentQr');
+      var hoverQr = document.getElementById('appHoverQr');
+      if(isPc && typeof QRCode !== 'undefined'){
+        if(currentQr){
+          new QRCode(currentQr, {
+            text: window.location.href,
+            width: 120,
+            height: 120,
+            colorDark: '#442069',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.L
+          });
+        }
+        if(heroCurrentQr){
+          new QRCode(heroCurrentQr, {
+            text: window.location.href,
+            width: 120,
+            height: 120,
+            colorDark: '#442069',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.L
+          });
+        }
+        document.querySelectorAll('.download-app-item').forEach(function(item){
+          item.addEventListener('mouseenter', function(){
+            if(!hoverQr) return;
+            hoverQr.innerHTML = '';
+            new QRCode(hoverQr, {
+              text: item.href,
+              width: 110,
+              height: 110,
+              colorDark: '#442069',
+              colorLight: '#ffffff',
+              correctLevel: QRCode.CorrectLevel.L
+            });
+            var rect = item.getBoundingClientRect();
+            var left = Math.min(window.innerWidth - 140, Math.max(8, rect.left + (rect.width - 128) / 2));
+            var top = rect.top >= 140 ? rect.top - 136 : rect.bottom + 8;
+            hoverQr.style.left = left + 'px';
+            hoverQr.style.top = top + 'px';
+            hoverQr.style.display = 'block';
+          });
+          item.addEventListener('mouseleave', function(){
+            if(hoverQr) hoverQr.style.display = 'none';
+          });
+        });
+      }
+      var btn = document.querySelector('[data-copy]');
+      var toast = document.getElementById('toast');
+      function showToast(text){
+        if(!toast) return;
+        toast.textContent = text;
+        toast.style.display = 'block';
+        clearTimeout(window.__copyToastTimer);
+        window.__copyToastTimer = setTimeout(function(){ toast.style.display = 'none'; }, 1600);
+      }
+      if(btn){
+        btn.addEventListener('click', function(){
+          var value = btn.getAttribute('data-copy') || window.location.href;
+          if(navigator.clipboard && navigator.clipboard.writeText){
+            navigator.clipboard.writeText(value).then(function(){ showToast('Đã sao chép liên kết'); }).catch(function(){ showToast(value); });
+          }else{
+            showToast(value);
+          }
+        });
+      }
+    })();
+  </script>
+  {{domain.agentLink.gajs|safe}}
+  <script>
+      (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</body>
+</html>

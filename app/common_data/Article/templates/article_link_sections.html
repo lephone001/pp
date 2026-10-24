@@ -1,0 +1,51 @@
+{% set relatedItems = related or [] %}
+{% set recommendationItems = recommendations or relatedItems %}
+{% set friendItems = libraryLinks or [] %}
+{% set fanItems = backupDomains or [] %}
+{% set backupDomain = footerDomain or domain %}
+<section class="article-link-hub" aria-label="站点链接导航">
+  <style>
+    .article-link-hub{margin:24px 0;padding:22px;border:1px solid #e6eaf0;border-radius:10px;background:#fff}
+    .article-link-hub-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px}
+    .article-link-hub-section{min-width:0}
+    .article-link-hub-title{margin:0 0 12px;padding-bottom:9px;border-bottom:2px solid #edf0f4;color:#243b53;font-size:18px}
+    .article-link-hub-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;margin:0;padding:0;list-style:none}
+    .article-link-hub-list a{display:block;overflow:hidden;color:#5d6b7e;font-size:13px;text-overflow:ellipsis;white-space:nowrap}
+    .article-link-hub-list a:hover{color:#1677ff}
+    @media(max-width:680px){.article-link-hub-grid{grid-template-columns:1fr}.article-link-hub-list{grid-template-columns:1fr}}
+  </style>
+  <div class="article-link-hub-grid">
+    {% if relatedItems.length %}
+    <section class="article-link-hub-section">
+      <h2 class="article-link-hub-title">相关内容</h2>
+      <ul class="article-link-hub-list">
+        {% for item in relatedItems.slice(0, 12) %}<li><a href="{{ item.url }}">{{ item.title }}</a></li>{% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+    {% if recommendationItems.length %}
+    <section class="article-link-hub-section">
+      <h2 class="article-link-hub-title">推荐阅读</h2>
+      <ul class="article-link-hub-list">
+        {% for item in recommendationItems.slice(0, 18) %}<li><a href="{{ item.url }}">{{ item.title }}</a></li>{% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+    {% if friendItems.length %}
+    <section class="article-link-hub-section">
+      <h2 class="article-link-hub-title">友情链接</h2>
+      <ul class="article-link-hub-list">
+        {% for item in friendItems.slice(0, 18) %}<li><a href="{{ item.url }}" rel="nofollow noopener">{{ item.title }}</a></li>{% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+    {% if backupDomain.isFan == 1 and fanItems.length %}
+    <section class="article-link-hub-section">
+      <h2 class="article-link-hub-title">备用网址</h2>
+      <ul class="article-link-hub-list">
+        {% for item in fanItems.slice(0, 18) %}<li><a href="{{ item.url }}" rel="nofollow noopener">{{ item.title }}</a></li>{% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  </div>
+</section>

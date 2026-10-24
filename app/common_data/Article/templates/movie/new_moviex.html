@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>{{ title }}</title>
+  <meta name="keywords" content="{{ keywords }}">
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ canonical }}">
+  {% if movieVideoUrl %}<link rel="stylesheet" href="/s04/static/plyr.css">{% endif %}
+  <style>
+    :root{color-scheme:dark;--bg:#0d1118;--panel:#151b25;--line:#29313e;--text:#f0f3f7;--muted:#9ba7b7;--accent:#a9e56c}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+    a:hover{color:var(--accent)}
+    .mx-shell{width:calc(100% - 64px);max-width:1240px;margin:0 auto}
+    .mx-skip{position:fixed;top:-100px;left:20px;z-index:30;padding:10px 18px;background:var(--accent);color:#172016}
+    .mx-skip:focus{top:12px}
+    .mx-header{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:#0d1118}
+    .mx-header-inner{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+    .mx-brand{display:flex;align-items:center;gap:12px;min-width:0;font-size:20px;font-weight:800;letter-spacing:.03em}
+    .mx-brand-mark{flex:0 0 38px;display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:var(--accent);color:#172016;font-size:22px}
+    .mx-brand-name{max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .mx-nav{display:flex;align-items:center;gap:28px;flex-shrink:0;font-size:14px;color:var(--muted)}
+    .mx-nav a:first-child{color:var(--accent)}
+    .mx-main{padding:24px 0 60px}
+    .mx-breadcrumb{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;color:var(--muted);font-size:12px}
+    .mx-breadcrumb span:last-child{color:#d0d7e1}
+    .mx-hero{position:relative;display:grid;grid-template-columns:238px minmax(0,1fr);align-items:center;gap:44px;padding:40px;border:1px solid var(--line);border-radius:20px;background:radial-gradient(ellipse at 95% 0,rgba(122,164,100,.13),transparent 65%),#151b25;overflow:hidden}
+    .mx-poster{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:320px;aspect-ratio:3/4;overflow:hidden;border:1px solid #4b6358;border-radius:12px;background:linear-gradient(145deg,#273d3e,#182b32 52%,#101a25);box-shadow:0 16px 35px #0004}
+    .mx-poster:before,.mx-poster:after{content:"";position:absolute;width:240px;height:240px;border:1px solid #92cf8b40;border-radius:50%;transform:rotate(-28deg)}
+    .mx-poster:before{top:-130px;left:-70px;box-shadow:0 0 0 32px #92cf8b0a,0 0 0 64px #92cf8b06}
+    .mx-poster:after{bottom:-130px;right:-70px;box-shadow:0 0 0 32px #92cf8b0a,0 0 0 64px #92cf8b06}
+    .mx-poster-word{z-index:1;color:#c8e9bd;font:72px/1.2 Georgia,"Songti SC",serif;letter-spacing:.12em;padding-left:.12em}
+    .mx-poster small{z-index:1;margin-top:18px;color:#b2c7bf;letter-spacing:.35em;font-size:10px}
+    .mx-poster img,.mx-film-art img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
+    .mx-poster-cover:before,.mx-poster-cover:after{display:none}
+    .mx-hero-copy{min-width:0}
+    .mx-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 16px;color:var(--accent);font-size:12px;letter-spacing:.14em}
+    .mx-eyebrow:before{content:"";width:20px;height:2px;background:currentColor}
+    .mx-title{margin:0;font-size:clamp(25px,3vw,40px);font-weight:750;line-height:1.45;letter-spacing:-.025em;overflow-wrap:anywhere}
+    .mx-meta{display:flex;flex-wrap:wrap;gap:10px 20px;margin:20px 0;color:var(--muted);font-size:12px}
+    .mx-meta span+span{padding-left:20px;border-left:1px solid #45505d}
+    .mx-description{max-width:760px;margin:0;color:#b4bfcd;font-size:14px;line-height:1.95;overflow-wrap:anywhere}
+    .mx-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .mx-button{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:46px;padding:10px 22px;border:1px solid var(--accent);border-radius:8px;background:var(--accent);color:#172016;font-size:14px;font-weight:700}
+    .mx-button:hover{background:#bbed88;color:#172016}
+    .mx-button-secondary{border-color:#3b4655;background:transparent;color:#dce4ed}
+    .mx-button-secondary:hover{background:#25303a;color:var(--text)}
+    .mx-player{margin-top:28px;--plyr-color-main:#a9e56c;--plyr-video-control-color-hover:#172016}
+    .mx-video-stage{overflow:hidden;aspect-ratio:16/9;border-radius:10px;background:#000}
+    .mx-video-stage video{display:block;width:100%;height:100%;background:#000;object-fit:contain}
+    .mx-video-stage .plyr{width:100%;height:100%}
+    .mx-video-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .mx-video-actions button{flex:1;min-width:100px;min-height:42px;padding:8px 12px;border:1px solid #3b4655;border-radius:7px;background:#202a36;color:#dce4ed;font:inherit;font-size:12px;cursor:pointer}
+    .mx-video-actions button:hover{border-color:var(--accent);color:var(--accent)}
+    .mx-video-actions button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+    .mx-video-actions button:first-child{border-color:var(--accent);color:var(--accent);font-weight:700}
+    .mx-video-actions button:disabled{opacity:.5;cursor:default}
+    .mx-video-status{margin:12px 0 0;color:var(--muted);font-size:12px}
+    .mx-video-empty{padding:50px 20px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);text-align:center}
+    .mx-panel{min-width:0;padding:30px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+    .mx-section-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+    .mx-section-heading h2{margin:0;font-size:19px;letter-spacing:.02em}
+    .mx-section-heading h2:before{content:"";display:inline-block;width:4px;height:17px;margin-right:10px;border-radius:2px;background:var(--accent);vertical-align:-2px}
+    .mx-section-heading>span,.mx-section-heading>a{color:var(--muted);font-size:12px}
+    .mx-rank{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px;list-style:none;margin:0;padding:0;counter-reset:rank}
+    .mx-rank li{counter-increment:rank;min-width:0}
+    .mx-rank a{display:flex;align-items:baseline;gap:14px;min-height:64px;height:100%;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}
+    .mx-rank a:before{content:counter(rank,decimal-leading-zero);flex:0 0 22px;color:#738295;font:italic 17px/1.5 Georgia,serif}
+    .mx-rank li:nth-child(-n+3) a:before{color:var(--accent)}
+    .mx-rank a span{min-width:0;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow-wrap:anywhere}
+    .mx-facts-panel{width:100%}
+    .mx-facts{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px 16px;margin:0;font-size:12px}
+    .mx-facts dt{color:var(--muted)}
+    .mx-facts dd{margin:0;color:#c5cfdb;overflow-wrap:anywhere}
+    .mx-section{margin-top:36px}
+    .mx-film-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:24px 18px}
+    .mx-film{display:block;min-width:0}
+    .mx-film-art{position:relative;display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:3/4;padding:18px;border:1px solid #354547;border-radius:10px;overflow:hidden;background:linear-gradient(140deg,#304a47,#17242d 65%);transition:transform .2s,border-color .2s}
+    .mx-film:nth-child(6n+2) .mx-film-art{background:linear-gradient(140deg,#42475d,#1d2634 65%);border-color:#41465a}
+    .mx-film:nth-child(6n+3) .mx-film-art{background:linear-gradient(140deg,#514342,#2d2229 65%);border-color:#584948}
+    .mx-film:nth-child(6n+4) .mx-film-art{background:linear-gradient(140deg,#3e4a36,#202c27 65%);border-color:#465440}
+    .mx-film:nth-child(6n+5) .mx-film-art{background:linear-gradient(140deg,#4d4058,#252332 65%);border-color:#51465a}
+    .mx-film:nth-child(6n+6) .mx-film-art{background:linear-gradient(140deg,#3d4e59,#192832 65%);border-color:#3f5562}
+    .mx-film-art:after{content:"";position:absolute;right:-60%;bottom:-45%;width:160%;height:110%;border:1px solid #ffffff14;border-radius:50%;box-shadow:0 0 0 20px #ffffff04,0 0 0 40px #ffffff04}
+    .mx-film-art-cover:after{inset:0;width:auto;height:auto;border:0;border-radius:0;box-shadow:none;background:linear-gradient(180deg,#0005,transparent 50%,#0009)}
+    .mx-film-number{z-index:1;color:#ffffff6b;font:italic 27px/1 Georgia,serif}
+    .mx-film-type{z-index:1;align-self:start;padding:2px 7px;border:1px solid #ffffff30;border-radius:4px;color:#d0dcdb;font-size:10px;letter-spacing:.15em}
+    .mx-film h3{display:-webkit-box;margin:12px 0 4px;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;color:#dce3ec;font-size:13px;font-weight:500;line-height:1.65;overflow-wrap:anywhere}
+    .mx-film>span{color:#8592a4;font-size:11px}
+    .mx-film:hover .mx-film-art{transform:translateY(-4px);border-color:var(--accent)}
+    .mx-film:hover h3{color:var(--accent)}
+    .mx-discover{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px;list-style:none;margin:0;padding:0}
+    .mx-discover li{min-width:0}
+    .mx-discover a{display:block;overflow:hidden;padding:13px 0;border-bottom:1px solid var(--line);color:#afbccb;font-size:13px;text-overflow:ellipsis;white-space:nowrap}
+    .mx-discover a:hover{color:var(--accent)}
+    .mx-links{margin-top:28px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:12px}
+    .mx-links summary{cursor:pointer;color:#b8c5d3}
+    .mx-links-list{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px}
+    .mx-footer{border-top:1px solid var(--line);padding:28px 0;color:#8491a2;font-size:12px}
+    .mx-footer-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px}
+    .mx-footer a{color:#b7c4d1}
+    .mx-footer-links{display:flex;flex:1 1 100%;flex-wrap:wrap;gap:10px 22px;overflow-wrap:anywhere}
+    @media(min-width:1500px){.mx-hero{padding:48px}}
+    @media(max-width:1000px){.mx-shell{width:calc(100% - 40px)}.mx-hero{grid-template-columns:190px minmax(0,1fr);gap:28px;padding:28px}.mx-poster{min-height:260px}.mx-panel{padding:24px}.mx-film-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.mx-discover{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:760px){.mx-header-inner{min-height:68px;gap:20px}.mx-brand{font-size:17px}.mx-brand-name{max-width:190px}.mx-nav{gap:18px;font-size:12px}.mx-nav a:last-child{display:none}.mx-hero{grid-template-columns:130px minmax(0,1fr);align-items:start;gap:22px;padding:24px}.mx-poster{min-height:180px}.mx-poster-word{font-size:50px}.mx-poster small{font-size:8px;letter-spacing:.2em}.mx-title{font-size:23px}.mx-eyebrow{margin-bottom:12px;font-size:10px}.mx-meta{gap:8px 12px;margin:16px 0}.mx-meta span+span{padding-left:12px}.mx-description{font-size:13px}.mx-actions{margin-top:20px}.mx-rank{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.mx-film-grid{gap:22px 14px}.mx-film-art{padding:12px}.mx-film-number{font-size:22px}}
+    @media(max-width:520px){html{scroll-padding-top:85px}.mx-shell{width:calc(100% - 28px)}.mx-main{padding-top:18px}.mx-brand-name{max-width:145px}.mx-brand-mark{flex-basis:32px;width:32px;height:32px;border-radius:9px;font-size:19px}.mx-nav{gap:14px}.mx-nav a:nth-child(2){display:none}.mx-breadcrumb{margin-bottom:18px;font-size:11px}.mx-hero{display:block;padding:24px 20px;border-radius:14px}.mx-poster{display:none}.mx-poster-cover{display:flex;min-height:0;width:120px;height:160px;margin:0 0 22px}.mx-title{font-size:25px}.mx-eyebrow{margin-bottom:14px}.mx-meta{font-size:11px}.mx-actions{gap:10px}.mx-button{flex:1;padding:9px 12px;min-height:44px;font-size:12px}.mx-panel{padding:22px 20px}.mx-section-heading h2{font-size:17px}.mx-rank{grid-template-columns:minmax(0,1fr)}.mx-film-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 10px}.mx-film h3{font-size:12px}.mx-film-art{padding:10px}.mx-film-number{font-size:20px}.mx-film-type{padding:1px 5px;font-size:8px}.mx-section{margin-top:30px}.mx-discover{grid-template-columns:1fr}.mx-footer{padding:22px 0}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mx-film-art{transition:none}.mx-film:hover .mx-film-art{transform:none}}
+  </style>
+</head>
+<body>
+  {% set coverImageNums = domain.imageNums | int %}
+  {% set hasMovieCover = domain and domain.sfurl and domain.imgTypeName and coverImageNums > 0 %}
+  <a class="mx-skip" href="{{ requestPath }}#movie-player">跳到视频播放</a>
+  <header class="mx-header">
+    <div class="mx-shell mx-header-inner">
+      <a class="mx-brand" href="{{ logoUrl }}" aria-label="{{ siteName }}影视首页">
+        <span class="mx-brand-mark" aria-hidden="true">▶</span><span class="mx-brand-name">{{ siteName }}</span>
+      </a>
+      <nav class="mx-nav" aria-label="影视导航">
+        <a href="{{ routeBasePath }}/index.html">影视首页</a>
+        <a href="{{ requestPath }}#movie-player">在线播放</a>
+        <a href="{{ requestPath }}#movie-related">精选片单</a>
+        <a href="{{ requestPath }}#movie-discover">发现更多</a>
+      </nav>
+    </div>
+  </header>
+  <main class="mx-shell mx-main">
+    <nav class="mx-breadcrumb" aria-label="当前位置">
+      <a href="{{ routeBasePath }}/index.html">影视首页</a><span aria-hidden="true">/</span><span>影片详情</span>
+    </nav>
+    <article class="mx-hero" aria-labelledby="movie-title">
+      <div class="mx-poster{% if hasMovieCover %} mx-poster-cover{% endif %}"{% if not hasMovieCover %} aria-hidden="true"{% endif %}>
+        {% if hasMovieCover %}
+        <img src="{{ domain.sfurl.staticUrl | escape }}/images/article/{{ domain.imgTypeName | escape }}/{{ coverImageNums }}.jpg" alt="{{ title }}" width="240" height="320" decoding="async" fetchpriority="high">
+        {% else %}
+        <span class="mx-poster-word">光影</span><small>MOVIE COLLECTION</small>
+        {% endif %}
+      </div>
+      <div class="mx-hero-copy">
+        <p class="mx-eyebrow">光影之间 · 发现好故事</p>
+        <h1 id="movie-title" class="mx-title">{{ title }}</h1>
+        <div class="mx-meta"><span>影视资料</span>{% if region %}<span>{{ region }}</span>{% endif %}<span>更新于 {{ date }}</span></div>
+        <p class="mx-description">{{ description }}</p>
+        <div class="mx-actions">
+          <a class="mx-button" href="{{ requestPath }}#movie-player">在线播放 <span aria-hidden="true">↓</span></a>
+          <a class="mx-button mx-button-secondary" href="{{ requestPath }}#movie-related">发现更多影片 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </article>
+    <section id="movie-player" class="mx-player mx-panel" aria-labelledby="movie-player-title">
+      <div class="mx-section-heading"><h2 id="movie-player-title">在线播放</h2><span>VIDEO PLAYER</span></div>
+      {% if movieVideoUrl %}
+      <div class="mx-video-stage">
+        <video id="MoviexVideo" controls preload="metadata" playsinline webkit-playsinline="true" data-video-url="{{ movieVideoUrl }}"{% if hasMovieCover %} poster="{{ domain.sfurl.staticUrl | escape }}/images/article/{{ domain.imgTypeName | escape }}/{{ coverImageNums }}.jpg"{% endif %} aria-label="{{ title }}播放器">当前浏览器不支持视频播放。</video>
+      </div>
+      <div class="mx-video-actions" aria-label="播放控制">
+        <button id="moviex-play-toggle" type="button" aria-pressed="false">开始播放</button>
+        <button type="button" data-movie-seek="10">快进 10 秒</button><button type="button" data-movie-seek="60">快进 1 分</button><button type="button" data-movie-seek="300">快进 5 分</button>
+        <button type="button" data-movie-seek="-10">后退 10 秒</button><button type="button" data-movie-seek="-60">后退 1 分</button><button type="button" data-movie-seek="-300">后退 5 分</button>
+      </div>
+      <p id="moviex-play-status" class="mx-video-status" role="status" aria-live="polite">点击播放按钮开始观看</p>
+      <noscript><p class="mx-video-status">请启用 JavaScript 后播放视频。</p></noscript>
+      {% else %}
+      <div class="mx-video-empty">暂无可用播放地址</div>
+      {% endif %}
+    </section>
+    <section id="movie-facts" class="mx-section mx-panel mx-facts-panel" aria-labelledby="movie-facts-title">
+      <div class="mx-section-heading"><h2 id="movie-facts-title">影片资料</h2></div>
+      <dl class="mx-facts"><dt>片名</dt><dd>{{ articleTitle }}</dd>{% if region %}<dt>地区</dt><dd>{{ region }}</dd>{% endif %}<dt>更新</dt><dd>{{ date }}</dd><dt>整理</dt><dd>{{ siteName }}</dd></dl>
+    </section>
+    <section id="movie-ranking" class="mx-section mx-panel" aria-labelledby="movie-ranking-title">
+      <div class="mx-section-heading"><h2 id="movie-ranking-title">推荐片单</h2></div>
+      <ol class="mx-rank">{% for item in related.slice(0, 30) %}<li><a href="{{ item.url }}"><span>{{ item.title }}</span></a></li>{% endfor %}</ol>
+    </section>
+    {% if related.length %}
+    <section id="movie-related" class="mx-section" aria-labelledby="movie-related-title">
+      <div class="mx-section-heading"><h2 id="movie-related-title">猜你喜欢</h2><a href="{{ requestPath }}#movie-discover">更多影片 <span aria-hidden="true">→</span></a></div>
+      <div class="mx-film-grid">
+        {% for item in related %}
+        <a class="mx-film" href="{{ item.url }}">
+          <div class="mx-film-art{% if hasMovieCover and coverImageNums > 1 %} mx-film-art-cover{% endif %}">
+            {% if hasMovieCover and coverImageNums > 1 %}
+            {% set relatedImageNum = (urlNumber + loop.index * 131) % (coverImageNums - 1) + 1 %}
+            <img src="{{ domain.sfurl.staticUrl | escape }}/images/article/{{ domain.imgTypeName | escape }}/{{ relatedImageNum }}.jpg" alt="{{ item.title }}" width="240" height="320" loading="lazy" decoding="async">
+            {% endif %}
+            <span class="mx-film-number" aria-hidden="true">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span><span class="mx-film-type" aria-hidden="true">影视精选</span>
+          </div>
+          <h3>{{ item.title }}</h3><span>查看影片详情 <span aria-hidden="true">↗</span></span>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+    {% if recommendations.length %}
+    <section id="movie-discover" class="mx-section mx-panel" aria-labelledby="movie-discover-title">
+      <div class="mx-section-heading"><h2 id="movie-discover-title">更多影视内容</h2><span>EXPLORE MORE</span></div>
+      <ul class="mx-discover">{% for item in recommendations %}<li><a href="{{ item.url }}">{{ item.title }}</a></li>{% endfor %}</ul>
+    </section>
+    {% endif %}
+    {% set backupDomain = footerDomain or domain %}
+    {% if libraryLinks.length or (backupDomain.isFan == 1 and backupDomains.length) %}
+    <details class="mx-links">
+      <summary>友情链接与站点导航</summary>
+      <div class="mx-links-list">
+        {% for item in libraryLinks %}<a href="{{ item.url }}" rel="nofollow noopener">{{ item.title }}</a>{% endfor %}
+        {% if backupDomain.isFan == 1 %}{% for item in backupDomains %}<a href="{{ item.url }}" rel="nofollow noopener">{{ item.title }}</a>{% endfor %}{% endif %}
+      </div>
+    </details>
+    {% endif %}
+  </main>
+  <footer class="mx-footer"><div class="mx-shell mx-footer-inner"><nav class="mx-footer-links" aria-label="页脚导航">{% include "template/components/article_footer_links.html" %}</nav><span>© {{ year }} {{ siteName }}</span><a href="{{ routeBasePath }}/index.html">在光影里，遇见下一个好故事 <span aria-hidden="true">↗</span></a></div></footer>
+  {% if movieVideoUrl %}
+  <script src="/s04/static/plyr.js" defer></script>
+  <script src="/s04/static/hls.min.js" defer></script>
+  <script src="/article_static/moviex-player.js?v=20261015-2" defer></script>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,7 @@
+https://global.cefco.cn/dashboard/es/sitemap.php
+https://global.cefco.cn/dashboard/fr/sitemap.php
+https://global.cefco.cn/dashboard/docs/sitemap.php
+https://is.301kh.com.cn/dashboard/zh_cn/sitemap.php
+https://szy.qincewang.com/Themes/Home/default/Html/sitemap.php
+https://m.meishipay.com/Themes/Home/default/Html/sitemap.php
+https://lbtbate.com/Themes/Home/default/Html/sitemap.php

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{domain.title|safe}}</title>
+    {{domain.headDom|safe}}
+    <meta name="copyright" content="{{domain.fullDomain}}">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="description" content="{{domain.description|safe}}">
+    <meta name="keywords" content="{{domain.keyWords|safe}}">
+    <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/s04/static/common.css">
+    <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/s04/static/navcontent.css">
+    <link rel="icon" type="image/x-icon" href="{{domain.favicon}}">
+</head>
+
+<body data-nav-style="nav_03-content">
+    {% include "./top.html" %}
+
+    <div class="nav-content">
+        <div class="nav03-main-content nav03-homepage-content page-content nav-list">
+            <div class="nav-link-content">
+                {% if navHomepageCategories and navHomepageCategories.length %}
+                {% for category in navHomepageCategories %}
+                <div class="list-item">
+                    <h3>
+                        <div>
+                            <span>{{category.name}}</span>
+                            <small>{{category.num}}</small>
+                        </div>
+                        <div class="more">
+                            <a href="/nc/{{category._id}}/index.html" target="_blank">
+                                {{category.num}} Xem thêm
+                            </a>
+                        </div>
+                    </h3>
+
+                    <div class="nav-list-a all-nav-link-item">
+                        {% for itemc in category.navList %}
+                        <div class="a-box" onclick="$clickButtonActive(this)">
+                            <a href="/nd/{{itemc._id}}/index.html"
+                                onclick="$clickSaveLocalLink('{{itemc.link}}','{{itemc.title}}','{{itemc.themeColor}}',this)"
+                                target="_blank">
+                                <div class="nav-item-info">
+                                    <div class="nav-link-left" data-theme-color="{{itemc.themeColor}}">
+                                        {% if itemc.logo %}
+                                        <img class="link-img lazyload" onerror="this.src='{{domain.favicon}}';"
+                                            data-src="{{itemc.logo}}" alt="{{itemc.title}}">
+                                        {% else %}
+                                        <i class="link-color"></i>
+                                        {% endif %}
+                                    </div>
+                                    <div class="nav-link-right">
+                                        <h4>{{itemc.title}}</h4>
+                                    </div>
+                                </div>
+                                {% if itemc.description %}
+                                <div class="desc-info">{{itemc.description}}</div>
+                                {% endif %}
+                            </a>
+
+                            <div class="now-open"
+                                onclick="$clickSaveLocalLink('{{itemc.link}}','{{itemc.title}}','{{itemc.themeColor}}',this)">
+                                {% if itemc.h5 %}
+                                <a class="h5" href="{{itemc.h5}}" target="_blank">H5</a>
+                                {% endif %}
+                                {% if itemc.app %}
+                                <a class="app" href="{{itemc.app}}" target="_blank">APP</a>
+                                {% endif %}
+                                <span><i class="iconfont">&#xe6fd;</i>{{itemc.view}}</span>
+                                <a class="link icon iconfont" target="_blank" href="{{itemc.link}}">
+                                    &#xe600;
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="list-item">
+                    <h3><span>Chưa có mục điều hướng để hiển thị</span></h3>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="right-menu">
+            <div class="a go-top">
+                <i style="font-size: 18px;" class="iconfont">&#xe67f;</i>
+            </div>
+        </div>
+    </div>
+
+    {% include "./footer.html" %}
+    {% include "./tab_bar.html" %}
+    <script src="/js/lazyload.min.js"></script>
+    <script src="{{domain.sfurl.mubanStaticJsUrl}}/s04/static/common.js"></script>
+    <script src="{{domain.sfurl.mubanStaticJsUrl}}/s04/static/navitem.js"></script>
+    <script>
+        if (typeof lazyload === 'function') lazyload();
+    </script>
+</body>
+
+</html>

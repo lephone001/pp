@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">{{domain.headDom|safe}}
+    <title>{{domain.title|safe}}</title>
+    <meta name="copyright" content="{{domain.fullDomain}}">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="description" content="{{domain.description|safe}}">
+    <meta name="keywords" content="{{domain.keyWords|safe}}">
+    <meta name="theme-color" content="{{domain.themeColor}}">
+    <meta name="shareaholic:image" content="{{domain.sfurl.staticUrl}}/images/article/{{domain.imgTypeName}}/{{domain.imageNums}}.jpg">
+    <meta name="og:image" content="{{domain.sfurl.staticUrl}}/images/article/{{domain.imgTypeName}}/{{domain.imageNums}}.jpg">    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{domain.keyWords}}" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://{{domain.fullDomain}}/sitemap.xml" />{% if domain.isFan>0 %}
+    <meta name="mobile-agent" content="format=xhtml;url=http://www.share.{{domain.link}}" />
+    <meta name="mobile-agent" content="format=xhtml;url=http://m.{{domain.link}}" />
+    <meta name="mobile-agent" content="format=xhtml;url=http://m.share.{{domain.link}}" />
+    <meta name="mobile-agent" content="format=xhtml;url=http://h5.{{domain.link}}" />
+    <meta name="mobile-agent" content="format=xhtml;url=http://app.{{domain.link}}" />
+    <link rel="canonical" href="http://{{domain.fullDomain}}" />
+    <meta name="mobile-agent" content="format=xhtml;url=http://{{domain.fullDomain}}" />
+    <link rel="next" href="http://www.share.{{domain.link}}" />
+    <link rel="next" href="http://m.share.{{domain.link}}" />
+    <link rel="next" href="http://www.{{domain.link}}" />
+    <link rel="next" href="http://m.{{domain.link}}" />
+    <link rel="next" href="http://app.{{domain.link}}" />
+    <link rel="next" href="http://h5.{{domain.link}}" />{% endif %}
+    <meta name="google" content="notranslate" />
+    <link rel="icon" type="image/x-icon" href="{{domain.sfurl.staticUrl}}/images/favicon/juzi.ico">
+    <link rel="stylesheet" href="{{domain.sfurl.staticJsUrl}}/css/img.css">

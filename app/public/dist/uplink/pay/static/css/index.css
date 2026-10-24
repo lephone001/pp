@@ -1,0 +1,117 @@
+.p-item{
+    border: 2px solid #5e5e5e;
+    padding: 15px;
+    text-align: center;
+    margin:0 10px 10px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.pey-type-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.pay-dilog{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #0000006b;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+.now-type{
+    border: 1px solid #86bcff;
+    padding: 10px;
+    border-radius: 5px;
+    background: #eef6ff;
+    font-size: 14px;
+}
+.my-val{
+    outline:none;
+    height:22px;
+    border:1px solid #ddd;
+    padding:10px;
+    border-radius:3px;
+    line-height: 23px;
+    overflow: hidden;
+    width: 200px;
+}
+.orderNum{
+    background: #f4fff9;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid #07c160;
+    margin: 10px 0;
+    cursor: pointer;
+}
+.my-val:focus{
+    border: 1px solid #0072ff;
+}
+.nowMoney{
+    font-size: 22px;
+    padding: 20px 0;
+    color: orangered;
+    font-weight: 800;
+}
+.money-select{
+    display:flex;
+    
+}
+.money-select .m-item{
+    padding: 6px 15px;
+    border: 1px solid #0072ff;
+    margin: 0 5px;
+    border-radius: 3px;
+    line-height: 23px;
+    color: #0072ff;
+    cursor: pointer;
+    font-size: 16px;
+}
+.pay-dilog .content{
+    width: 320px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px 15px 20px 15px;
+    max-height: 60vh;
+    overflow: auto;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    border-radius: 13px;
+    min-height: 300px;
+}
+.pay-go-button{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    text-align: center;
+}
+.pay-go-button a{
+    padding: 10px;
+    color: #07c160;
+    margin: 10px 0;
+}
+.loading-f{
+    margin: 0 auto;
+}
+.p-item.active{
+    color: #0072ff;
+    border-color: #0072ff;
+}
+.p-item.disabled{
+    opacity: 0.5;
+}
+.van-cell{
+    line-height: unset;
+}
+h3 {
+    line-height: 30px;
+    padding: 10px 0;
+}
+p{
+    padding:5px 0;
+}

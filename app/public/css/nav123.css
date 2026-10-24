@@ -1,0 +1,56 @@
+h2.title {
+    text-align: center;
+    font-size: 35px;
+    padding: 20px 0;
+    font-weight: 300;
+}
+
+.side {
+    width: 25vw;
+
+}
+
+.side a {
+    width: 33.33%;
+}
+
+.content .img {
+    height: 80px;
+    overflow: hidden;
+    text-align: center;
+    background-size: cover;
+    position: relative;
+    background-position: 50%;
+    background: #e7e7e7;
+}
+
+.content .img img {
+    width: auto;
+    height: 100%;
+    max-width: unset;
+    position: absolute;
+    left: 50%;
+    right: 0;
+    transform: translate(-50%);
+}
+
+.content a {
+    padding: 3px;
+}
+
+.content .name {
+    text-align: center;
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+.center {
+    width: 50vw;
+    padding: 0 10px;
+    /* background: #eeeeee; */
+    text-align: center;
+}
+
+.center a {
+    width: 20%;
+}

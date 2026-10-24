@@ -1,0 +1,74 @@
+{% from "download_portal_macros.html" import card %}
+{# Use the same composed fields as all other Article templates. #}
+{% set pageTitle = title if title is defined else portal.title %}
+{% set pageKeywords = keywords if keywords is defined else portal.keywords %}
+{% set pageDescription = description if description is defined else portal.description %}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ browserTitle if browserTitle is defined else pageTitle }}</title>
+  <meta name="description" content="{{ pageDescription }}"><meta name="keywords" content="{{ pageKeywords }}">
+  {% if portal.canonical %}<link rel="canonical" href="{{ portal.canonical }}">{% endif %}
+  <link rel="icon" href="/article_static/download_portal/fallback.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/article_static/download_portal/style.css?v=20261015-1">
+  <link rel="stylesheet" href="/article_static/download_portal/content.css">
+  {% if includeFanmuluArticle5Common %}<link rel="stylesheet" href="{{domain.sfurl.staticJsUrl}}/css/img.css">{% endif %}
+  {% if portalThemeColor %}
+  <meta name="theme-color" content="{{ portalThemeColor }}">
+  <style>
+    :root{--green:{{ portalThemeColor }}}
+    a:hover,.eyebrow,.search-result,.home-badge,.tag-row a,.section-tabs a.active,.gallery-controls button,.compact .card-category,.directory-grid a:hover,.back-top,.portal-body a,.friend-links-grid a,.backup-domains-grid a{color:{{ portalThemeColor }}}
+    a:focus-visible,button:focus-visible,input:focus-visible{outline-color:{{ portalThemeColor }}}
+    .search-form{border-color:{{ portalThemeColor }}}
+    .download-buttons a{background:{{ portalThemeColor }}}
+    .download-buttons a:hover{background:{{ portalThemeColor }}}
+    .download-buttons .desktop-download{background:#f6a23e}
+    .tag-row a,.gallery-controls button,.back-top{border-color:{{ portalThemeColor }}}
+    .home-banner{border-color:{{ portalThemeColor }}}
+    .app-card.search-match{outline-color:{{ portalThemeColor }}}
+  </style>
+  {% endif %}
+  <script src="/article_static/download_portal/site.js" defer></script>
+</head>
+<body>
+  {% if includeFanmuluArticle5Common %}<!-- fanmulu-article5-common-v1 -->{% include "template/components/common.html" %}{% endif %}
+  <div class="utility-bar"><div class="shell utility-inner"><span>发现好应用，让每一次下载都有所收获</span><nav aria-label="快捷导航">{% for item in portal.utility %}<a href="{{ item.url }}">{{ item.title }}</a>{% endfor %}</nav></div></div>
+  <header class="site-header shell">
+    <a class="brand" href="{{ portal.logoUrl }}"><img class="brand-icon brand-image" src="{{ portal.logoImage }}" alt="{{ portal.headerSiteName }}" width="48" height="48"><span><span class="brand-name">{{ portal.headerSiteName }}</span><small class="brand-subtitle">{{ portal.headerSubtitles | join(' · ') }}</small></span></a>
+    <nav class="main-nav{% if showArticleExtraNav or routeBasePath == '/Article' %} article-with-extra-nav{% endif %}" aria-label="主导航">{% for item in portal.nav %}<a href="{{ item.url }}"><span class="nav-symbol" aria-hidden="true">{{ ['▦','✚','◈','▣','⋯'][loop.index0] }}</span>{{ item.title }}</a>{% endfor %}{% include "article_movie_nav.html" %}</nav>
+    <div class="search-area"><form class="search-form" role="search"><label class="sr-only" for="portal-search">搜索本页应用</label><input id="portal-search" type="search" placeholder="搜索本页应用、游戏与教程" maxlength="100"><button type="submit" aria-label="搜索">⌕</button></form><div class="hot-search">{% for item in portal.hot %}<a href="{{ item.url }}">{{ item.title }}</a>{% endfor %}</div><output class="search-result" aria-live="polite"></output></div>
+  </header>
+  <main class="shell">
+    <nav class="breadcrumb" aria-label="当前位置"><a href="{{ portal.logoUrl }}">首页</a><span>›</span><a href="{{ portal.nav[0].url }}">应用下载</a><span>›</span><a href="{{ portal.nav[3].url }}">{{ portalHome and '精选推荐' or '软件详情' }}</a><span>›</span><span>{{ portal.title }}</span></nav>
+    {% if portalHome %}<section class="home-banner"><div><span class="eyebrow">每日发现 · 精选应用</span><h1>{{ pageTitle }}</h1><p>{{ pageDescription }}</p></div><div class="home-badge">APP<span>DOWNLOAD</span></div></section>{% endif %}
+    <div class="portal-layout">
+      <aside class="left-column">
+        <section class="product-card"><img class="product-icon" src="{{ portal.icon }}" alt="{{ portal.title }}" width="160" height="160" fetchpriority="high"><span class="eyebrow">{{ portalHome and '本期推荐' or '应用档案' }}</span><h{{ portalHome and '2' or '1' }}>{{ pageTitle }}</h{{ portalHome and '2' or '1' }}><p class="muted">{{ portal.version }}</p><div class="download-buttons"><a href="{{ portal.downloadUrls[0] }}">↓ 安卓版下载</a><a href="{{ portal.downloadUrls[1] }}">↓ iOS 版下载</a><a class="desktop-download" href="{{ portal.downloadUrls[2] }}">▣ 电脑版下载</a></div><p class="download-note">请在下载页核对版本与平台信息</p></section>
+        <section class="panel"><div class="section-heading"><h2>猜你喜欢</h2><span>精选 30 款</span></div><div class="featured-list">{% for item in portal.featured %}{{ card(item, 'compact') }}{% endfor %}</div></section>
+        <section class="panel sidebar-more-panel"><div class="section-heading"><h2>更多推荐</h2><span>精选 {{ portal.sidebarMore | length }} 条</span></div><div class="featured-list sidebar-more-list">{% for item in portal.sidebarMore %}{{ card(item, 'compact') }}{% endfor %}</div></section>
+      </aside>
+      <div class="main-column">
+        <section class="software-info"><div><span>分类</span> 应用 / 实用工具</div><div><span>大小</span> {{ portal.size }}</div><div><span>平台</span> Android / iOS / PC</div><div><span>语言</span> 简体中文</div><div><span>日期</span> {{ portal.date }}</div><div><span>版本</span> {{ portal.version }}</div><div class="tag-row"><span>标签</span>{% for item in portal.tags %}<a href="{{ item.url }}">{{ item.title }}</a>{% endfor %}</div></section>
+        <nav class="section-tabs" aria-label="详情导航"><a class="active" href="#screenshots">▤ 应用图集</a><a href="#introduction">▧ 内容介绍</a><a href="#more-apps">♡ 相关推荐</a></nav>
+        <section id="screenshots" class="panel content-panel"><div class="section-heading"><h2>应用图集</h2><div class="gallery-controls"><button type="button" data-gallery="prev" aria-label="上一组图片">‹</button><button type="button" data-gallery="next" aria-label="下一组图片">›</button></div></div><div class="screenshot-track">{% for item in portal.screenshots %}<a href="{{ item.url }}" title="{{ item.title }}"><img src="{{ item.image }}" alt="{{ item.title }}" width="280" height="370" loading="lazy" decoding="async"><span>{{ item.title }}</span></a>{% endfor %}</div></section>
+        {% include "download_portal_content.html" %}
+        <section id="more-apps" class="panel content-panel"><div class="section-heading"><h2>{{ portalHome and '精选应用库' or '更多应用下载' }}</h2><span>120 款推荐</span></div><div class="company-grid">{% for item in portal.company %}{{ card(item, 'tile') }}{% endfor %}</div></section>
+        <section class="panel content-panel directory-panel"><div class="section-heading"><h2>更多应用与文章</h2><span>按主题继续探索</span></div><div class="directory-grid">{% for item in portal.directory %}<a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a>{% endfor %}</div></section>
+        {% if portal.friendLinks.length %}<section class="panel content-panel portal-friend-links"><div class="section-heading"><h2>友情链接</h2></div><div class="friend-links-grid">{% for item in portal.friendLinks %}<a href="{{ item.url }}" title="{{ item.title }}" rel="nofollow noopener">{{ item.title }}</a>{% endfor %}</div></section>{% endif %}
+      </div>
+      <aside class="right-column"><section class="panel"><div class="section-heading"><h2>相关应用</h2><span>发现更多</span></div><div class="related-grid">{% for item in portal.related %}{{ card(item, 'tile') }}{% endfor %}</div></section><section class="panel ranking-panel"><div class="section-heading"><h2>应用推荐榜</h2><span>{{ portal.date }}</span></div><div class="ranking-list">{% for item in portal.ranking %}{{ card(item, 'ranking', loop.index) }}{% endfor %}</div></section></aside>
+    </div>
+    {% set backupDomain = footerDomain or domain %}
+    {% if backupDomain.isFan == 1 and portal.backupDomains.length %}
+    <section class="panel content-panel portal-backup-domains">
+      <div class="section-heading"><h2>备用网址</h2></div>
+      <div class="backup-domains-grid">{% for item in portal.backupDomains %}<a href="{{ item.url }}" title="{{ item.url }}" rel="nofollow noopener">{{ item.title }}</a>{% endfor %}</div>
+    </section>
+    {% endif %}
+  </main>
+  <footer class="site-footer"><div class="shell"><nav aria-label="页脚导航">{% for item in portal.footer %}<a href="{{ item.url }}">{{ item.title }}</a>{% endfor %}{% include "template/components/article_footer_links.html" %}</nav><p>© {{ portal.year }} {{ portal.siteName }} · 应用信息与下载指南</p><p class="muted">软件名称、图片及相关商标归各自权利人所有。</p></div></footer>
+  <button class="back-top" type="button" aria-label="返回顶部">↑</button>
+  {% block page_overlay %}{% endblock %}
+</body>
+</html>

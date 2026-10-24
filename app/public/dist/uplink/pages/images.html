@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>if (!localStorage.getItem('UPLINK_TOKEN')) window.location.replace('./login.html');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../pay/static/css/ele.css">
+</head>
+<style>
+    body,html{margin:0;padding:0;}
+    ul{display: flex;flex-wrap: wrap;margin:0;padding:0;justify-content: center;}
+    ul li{
+        list-style: none;
+        margin:5px 1px;
+    }
+    ul li .imgbox{
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        background-size: cover;
+        border-radius: 20px;
+        background-repeat: no-repeat;
+    }
+    ul li .el-button{margin-top:5px;width: 100%;}
+
+    .colorBox{position: fixed;color:#000;z-index: 10000000000;padding:10px;background-color: #fff;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;}
+    .colorBox h1{margin: 10px 0;}
+    .closrrrr{width: 30px;height: 30px;    border: 1px solid #f9f9f9;display: block;}
+    .clolrUl{display: flex; flex-wrap: wrap;padding-bottom:100px;}
+    .clolrUl li{width: 120px;margin:20px 0;}
+    .clolrUl li span.c1{display: block;width: 20px;height: 20px;border-radius: 2px;}
+    .clolrUl li span.c2{display: block;    display: block;margin-top: 7px;font-weight: 800;}
+    #openclolrcc{position: fixed;
+    left: 0px;
+    bottom: 36px;
+    width: 40px;
+    height: 25px;
+    padding: 4px 8px;
+    background: #0813d7;
+    z-index: 100000;
+    cursor: pointer;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 800;
+    text-align: center;
+    line-height: 25px;}
+</style>
+<script src="../pay/static/js/clipboard.min.js"></script>
+
+<body>
+    <div id="app">
+        <div class="colorBox" v-show="colorBoxshow">
+            <div class="closrrrr" @click="colorBoxshow=false"></div>
+            <h1>颜色选取工具</h1>
+            <ul class="clolrUl">
+                <li><span style="background: #800000;" class="c1"></span><span class="c2">#800000</span></li>
+                <li><span style="background: #FFFF00;" class="c1"></span><span class="c2">#FFFF00</span></li>
+                <li><span style="background: #808000;" class="c1"></span><span class="c2">#808000</span></li>
+                <li><span style="background: #00FF00;" class="c1"></span><span class="c2">#00FF00</span></li>
+                <li><span style="background: #008000;" class="c1"></span><span class="c2">#008000</span></li>
+                <li><span style="background: #00FFFF;" class="c1"></span><span class="c2">#00FFFF</span></li>
+                <li><span style="background: #008080;" class="c1"></span><span class="c2">#008080</span></li>
+                <li><span style="background: #0000FF;" class="c1"></span><span class="c2">#0000FF</span></li>
+                <li><span style="background: #000080;" class="c1"></span><span class="c2">#000080</span></li>
+                <li><span style="background: #FF00FF;" class="c1"></span><span class="c2">#FF00FF</span></li>
+                <li><span style="background: #800080;" class="c1"></span><span class="c2">#800080</span></li>
+                <li><span style="background: #65C06B;" class="c1"></span><span class="c2">#65C06B</span></li>
+                <li><span style="background: #D6AEA1;" class="c1"></span><span class="c2">#D6AEA1</span></li>
+                <li><span style="background: #6ADFC5;" class="c1"></span><span class="c2">#6ADFC5</span></li>
+                <li><span style="background: #75E18E;" class="c1"></span><span class="c2">#75E18E</span></li>
+                <li><span style="background: #BDE196;" class="c1"></span><span class="c2">#BDE196</span></li>
+                <li><span style="background: #46A324;" class="c1"></span><span class="c2">#46A324</span></li>
+                <li><span style="background: #048202;" class="c1"></span><span class="c2">#048202</span></li>
+                <li><span style="background: #65DB3F;" class="c1"></span><span class="c2">#65DB3F</span></li>
+                <li><span style="background: #83D4A2;" class="c1"></span><span class="c2">#83D4A2</span></li>
+                <li><span style="background: #A3F6EF;" class="c1"></span><span class="c2">#A3F6EF</span></li>
+                <li><span style="background: #C52232;" class="c1"></span><span class="c2">#C52232</span></li>
+                <li><span style="background: #B41AF6;" class="c1"></span><span class="c2">#B41AF6</span></li>
+                <li><span style="background: #26386F;" class="c1"></span><span class="c2">#26386F</span></li>
+                <li><span style="background: #959618;" class="c1"></span><span class="c2">#959618</span></li>
+                <li><span style="background: #96170A;" class="c1"></span><span class="c2">#96170A</span></li>
+                <li><span style="background: #266E4D;" class="c1"></span><span class="c2">#266E4D</span></li>
+                <li><span style="background: #4E6BEA;" class="c1"></span><span class="c2">#4E6BEA</span></li>
+                <li><span style="background: #D2BAFE;" class="c1"></span><span class="c2">#D2BAFE</span></li>
+                <li><span style="background: #450B36;" class="c1"></span><span class="c2">#450B36</span></li>
+                <li><span style="background: #2FB3F3;" class="c1"></span><span class="c2">#2FB3F3</span></li>
+                <li><span style="background: #A52690;" class="c1"></span><span class="c2">#A52690</span></li>
+                <li><span style="background: #56DF9F;" class="c1"></span><span class="c2">#56DF9F</span></li>
+                <li><span style="background: #491E61;" class="c1"></span><span class="c2">#491E61</span></li>
+                <li><span style="background: #C7EA99;" class="c1"></span><span class="c2">#C7EA99</span></li>
+                <li><span style="background: #881176;" class="c1"></span><span class="c2">#881176</span></li>
+                <li><span style="background: #C714CE;" class="c1"></span><span class="c2">#C714CE</span></li>
+                <li><span style="background: #2C4C79;" class="c1"></span><span class="c2">#2C4C79</span></li>
+                <li><span style="background: #4972F8;" class="c1"></span><span class="c2">#4972F8</span></li>
+                <li><span style="background: #224CB8;" class="c1"></span><span class="c2">#224CB8</span></li>
+                <li><span style="background: #EB8EE1;" class="c1"></span><span class="c2">#EB8EE1</span></li>
+                <li><span style="background: #010024;" class="c1"></span><span class="c2">#010024</span></li>
+                <li><span style="background: #482ACD;" class="c1"></span><span class="c2">#482ACD</span></li>
+                <li><span style="background: #0CFF71;" class="c1"></span><span class="c2">#0CFF71</span></li>
+                <li><span style="background: #A50BAF;" class="c1"></span><span class="c2">#A50BAF</span></li>
+                <li><span style="background: #3B37F1;" class="c1"></span><span class="c2">#3B37F1</span></li>
+                <li><span style="background: #7F589A;" class="c1"></span><span class="c2">#7F589A</span></li>
+                <li><span style="background: #00299B;" class="c1"></span><span class="c2">#00299B</span></li>
+                <li><span style="background: #648A33;" class="c1"></span><span class="c2">#648A33</span></li>
+                <li><span style="background: #F9360D;" class="c1"></span><span class="c2">#F9360D</span></li>
+                <li><span style="background: #AF2AA9;" class="c1"></span><span class="c2">#AF2AA9</span></li>
+                <li><span style="background: #53FC39;" class="c1"></span><span class="c2">#53FC39</span></li>
+                <li><span style="background: #4FDB29;" class="c1"></span><span class="c2">#4FDB29</span></li>
+                <li><span style="background: #51D6AE;" class="c1"></span><span class="c2">#51D6AE</span></li>
+                <li><span style="background: #AE21DA;" class="c1"></span><span class="c2">#AE21DA</span></li>
+                <li><span style="background: #B2BE09;" class="c1"></span><span class="c2">#B2BE09</span></li>
+                <li><span style="background: #CB64A7;" class="c1"></span><span class="c2">#CB64A7</span></li>
+                <li><span style="background: #3D021B;" class="c1"></span><span class="c2">#3D021B</span></li>
+                <li><span style="background: #EB96AC;" class="c1"></span><span class="c2">#EB96AC</span></li>
+                <li><span style="background: #B66B62;" class="c1"></span><span class="c2">#B66B62</span></li>
+                <li><span style="background: #84D56D;" class="c1"></span><span class="c2">#84D56D</span></li>
+                <li><span style="background: #D21AF7;" class="c1"></span><span class="c2">#D21AF7</span></li>
+                <li><span style="background: #C3D1BD;" class="c1"></span><span class="c2">#C3D1BD</span></li>
+                <li><span style="background: #D83D81;" class="c1"></span><span class="c2">#D83D81</span></li>
+                <li><span style="background: #CBF826;" class="c1"></span><span class="c2">#CBF826</span></li>
+                <li><span style="background: #329696;" class="c1"></span><span class="c2">#329696</span></li>
+                <li><span style="background: #11C01F;" class="c1"></span><span class="c2">#11C01F</span></li>
+                <li><span style="background: #BF7688;" class="c1"></span><span class="c2">#BF7688</span></li>
+                <li><span style="background: #114DB7;" class="c1"></span><span class="c2">#114DB7</span></li>
+                <li><span style="background: #E72392;" class="c1"></span><span class="c2">#E72392</span></li>
+                <li><span style="background: #F7D599;" class="c1"></span><span class="c2">#F7D599</span></li>
+                <li><span style="background: #5FFDBA;" class="c1"></span><span class="c2">#5FFDBA</span></li>
+                <li><span style="background: #1DEF00;" class="c1"></span><span class="c2">#1DEF00</span></li>
+                <li><span style="background: #0F2156;" class="c1"></span><span class="c2">#0F2156</span></li>
+                <li><span style="background: #BE508E;" class="c1"></span><span class="c2">#BE508E</span></li>
+                <li><span style="background: #ABB4B9;" class="c1"></span><span class="c2">#ABB4B9</span></li>
+                <li><span style="background: #0AE284;" class="c1"></span><span class="c2">#0AE284</span></li>
+                <li><span style="background: #605CAA;" class="c1"></span><span class="c2">#605CAA</span></li>
+                <li><span style="background: #DA4F57;" class="c1"></span><span class="c2">#DA4F57</span></li>
+                <li><span style="background: #F8A771;" class="c1"></span><span class="c2">#F8A771</span></li>
+                <li><span style="background: #7F8ACC;" class="c1"></span><span class="c2">#7F8ACC</span></li>
+                <li><span style="background: #5842C0;" class="c1"></span><span class="c2">#5842C0</span></li>
+                <li><span style="background: #929E74;" class="c1"></span><span class="c2">#929E74</span></li>
+                <li><span style="background: #DCA6CF;" class="c1"></span><span class="c2">#DCA6CF</span></li>
+                <li><span style="background: #F58673;" class="c1"></span><span class="c2">#F58673</span></li>
+                <li><span style="background: #D02E30;" class="c1"></span><span class="c2">#D02E30</span></li>
+                <li><span style="background: #4FCC36;" class="c1"></span><span class="c2">#4FCC36</span></li>
+                <li><span style="background: #DD73C3;" class="c1"></span><span class="c2">#DD73C3</span></li>
+                <li><span style="background: #503E38;" class="c1"></span><span class="c2">#503E38</span></li>
+                <li><span style="background: #82442F;" class="c1"></span><span class="c2">#82442F</span></li>
+                <li><span style="background: #06BBEA;" class="c1"></span><span class="c2">#06BBEA</span></li>
+                <li><span style="background: #7C79B6;" class="c1"></span><span class="c2">#7C79B6</span></li>
+                <li><span style="background: #5034A4;" class="c1"></span><span class="c2">#5034A4</span></li>
+                <li><span style="background: #F78856;" class="c1"></span><span class="c2">#F78856</span></li>
+                <li><span style="background: #C84B63;" class="c1"></span><span class="c2">#C84B63</span></li>
+                <li><span style="background: #F5E73A;" class="c1"></span><span class="c2">#F5E73A</span></li>
+                <li><span style="background: #81FE1B;" class="c1"></span><span class="c2">#81FE1B</span></li>
+                <li><span style="background: #32E97D;" class="c1"></span><span class="c2">#32E97D</span></li>
+                <li><span style="background: #4A6254;" class="c1"></span><span class="c2">#4A6254</span></li>
+                <li><span style="background: #11EE40;" class="c1"></span><span class="c2">#11EE40</span></li>
+                <li><span style="background: #631A38;" class="c1"></span><span class="c2">#631A38</span></li>
+                <li><span style="background: #2A162B;" class="c1"></span><span class="c2">#2A162B</span></li>
+                <li><span style="background: #4403F0;" class="c1"></span><span class="c2">#4403F0</span></li>
+                <li><span style="background: #66A94D;" class="c1"></span><span class="c2">#66A94D</span></li>
+                <li><span style="background: #FC1321;" class="c1"></span><span class="c2">#FC1321</span></li>
+                <li><span style="background: #72133A;" class="c1"></span><span class="c2">#72133A</span></li>
+                <li><span style="background: #5EF71A;" class="c1"></span><span class="c2">#5EF71A</span></li>
+                <li><span style="background: #3A135E;" class="c1"></span><span class="c2">#3A135E</span></li>
+                <li><span style="background: #BE4AAD;" class="c1"></span><span class="c2">#BE4AAD</span></li>
+                <li><span style="background: #471561;" class="c1"></span><span class="c2">#471561</span></li>
+                <li><span style="background: #800000;" class="c1"></span><span class="c2">#800000</span></li>
+                <li><span style="background: #FFFF00;" class="c1"></span><span class="c2">#FFFF00</span></li>
+                <li><span style="background: #808000;" class="c1"></span><span class="c2">#808000</span></li>
+                <li><span style="background: #00FF00;" class="c1"></span><span class="c2">#00FF00</span></li>
+            </ul>
+        </div>
+        <div style="margin: 10px;">
+            <el-input style="width: 300px;" v-model="imageHost"></el-input>
+            <el-button type="primary" @click="saveImageHost">保存</el-button>
+        </div>
+        <div style="margin: 10px;">
+            <el-input style="width: 300px;" v-model="imageIntUrl"></el-input>
+            <el-button type="warning" @click="getImageIntUrl">获取</el-button>
+        </div>
+        <div></div>
+        <ul>
+            <li v-for="(item,index) in imageList">
+                <div class="imgbox" :style="'background-image: url('+imageHost+'/logo/js/b'+item+'.js);'"></div>
+                <el-button class="btn" :data-clipboard-text="imageHost+'/logo/js/b'+item+'.js'" size="small" plain  type="primary">{{item}}</el-button>
+            </li>
+        </ul>
+        <div id="openclolrcc" @click="colorBoxshow=true">隐藏</div>
+    </div>
+    <script src="../pay/static/js/vue.js"></script>
+    <script src="../pay/static/js/ele.js"></script>
+    <script>
+
+        new Vue({
+                el: '#app',
+                data: {
+                    colorBoxshow:true,
+                    imageHost:new URL('../logo/', window.location.href).href.replace(/\/logo\/$/, ''),
+                    imageList:[],
+                    imageNUm:318,
+                    imageIntUrl:"",
+                },
+                mounted() {
+                    for(let ind = 0;ind<=this.imageNUm;ind++){
+                        this.imageList.push(ind)
+                    }
+                    const clipboard = new ClipboardJS('.btn');
+                    clipboard.on("success", (e) => {
+                        console.log("复制成功", e.text);
+                        this.$message({
+                            type:'success',
+                            message:'复制成功',
+                        })
+                        e.clearSelection();
+                    });
+
+                    let acs =  window.localStorage.getItem('UPLINK_IMAGEHOST')
+                    if(acs){
+                        this.imageHost = acs
+                    }
+                },
+                methods: {
+                    getImageIntUrl(){
+
+                    },
+                    saveImageHost(){
+                        if(this.imageHost&&this.imageHost.length>0){
+                            window.localStorage.setItem('UPLINK_IMAGEHOST',this.imageHost)
+                            this.$message.success("IP储存成功！");
+                        }
+                    }
+                }
+        })
+    </script>
+</body>
+</html>

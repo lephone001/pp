@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{detail.title|safe}}</title>
+        <meta charset="utf-8">
+        <meta name="copyright" content="{{detail.link}}">
+        <meta name="viewport" content="width=device-width,
+            initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+        <meta name="keywords" content="{{detail.keyWords|safe}}">
+        <meta data-hid="description" name="description"
+            content="{{detail.description|safe}}">
+        <meta data-hid="mobile-web-app-capable" name="mobile-web-app-capable"
+            content="yes">
+        <meta data-hid="apple-mobile-web-app-title"
+            name="apple-mobile-web-app-title" content="{{detail.title|safe}}">
+        <meta data-hid="author" name="author" content="{{detail.title|safe}}">
+        <meta data-hid="theme-color" name="theme-color"
+            content="{{detail.themeColor}}">
+        <meta data-hid="og:type" name="og:type" property="og:type"
+            content="website">
+        <meta data-hid="og:title" name="og:title" property="og:title"
+            content="{{detail.title|safe}}">
+        <meta data-hid="og:site_name" name="og:site_name"
+            property="og:site_name" content="{{detail.title|safe}}">
+        <meta data-hid="og:description" name="og:description"
+            property="og:description" content="{{detail.description|safe}}">
+        <meta name="shareaholic:image" content="/images/common/share.jpg">
+        <meta name="google" content="notranslate" />
+        <meta name="og:image" content="/images/common/share.jpg">
+        <link rel="stylesheet" type="text/css" href="/css/link.css">
+    </head>
+    <body>
+        <div class="header">
+            官网
+        </div>
+        <div id="home">
+            <main>
+                <div class="entry-meta">
+                    <span class="entry-date">
+                        {{domain.todayDay}}
+                    </span>
+                    <span class="entry-comment">评论15</span>
+                    <span class="entry-views">阅读<span class="view-count">6.5k</span>
+                    </span>
+                </div>
+                <article>
+                    <h1>{{detail.title|safe}}</h1>
+                    <div class="single-excerpt">
+                        <p>{{detail.description|safe}}</p>
+                    </div>
+                </article>
+            </main>
+            <nav>
+                <div class="red">
+                    {% for item in domains %}
+                    <a href="/w/{{item.title}}">
+                        {{item.title}}
+                    </a>
+                    <a href="/w/{{item.title}}.html">
+                        {{item.title}}
+                    </a>
+                    {% endfor %}
+                </div>
+                <div class="blue">
+                    {% for item in domains %}
+                    <a href="/wurl/{{item._id}}">{{item.title}}</a>
+                    <a href="/wurl/{{item._id}}.html">{{item.title}}</a>
+                    {% endfor %}
+                </div>
+                <div class="yellow">
+                    {% for item in domains %}
+                    <a href="/w/{{item.title}}">
+                        {{item.title}}
+                    </a>
+                    <a href="/w/{{item.title}}.html">
+                        {{item.title}}
+                    </a>
+                    {% endfor %}
+                </div>
+                <div class="yellow">
+                    {% for item in domains %}
+                    <a href="/wurl/{{item._id}}">
+                        {{item._id}}
+                    </a>
+                    <a href="/wurl/{{item._id}}">
+                        {{item.title}}
+                    </a>
+                    {% endfor %}
+                </nav>
+                <footer>
+                    <a href="http://{{domain.link}}{{domain.muluRandomMulu}}">首页</a>|
+                    <a href="http://{{domain.link}}/sitemap.xml">站点地图</a>
+                    <span>©2021{{domain.beiAnNumber}}</span>
+                </footer>
+            </div>
+            {% include "template/components/common.html" %}
+        </body>
+    </html>

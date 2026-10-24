@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>{{detail.title|safe}}-{{domain.beiAnName}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="{{detail.description}}">
+    <meta name="shareaholic:image" content="/images/article/mn2/{{ domain.imageNums }}.jpg">
+    <meta property="og:url" content="http://{{domain.fullDomain}}" />
+    <meta property="og:site_name" content="{{domain.title}}" />
+    <meta property="og:updated_time" content="{{domain.updatedAt}}" />
+    <meta property="og:image" content="/yn_lottery_01/wp-content/uploads/2022/10/favi-gamedoithuong89-300x300.jpg" />
+    <meta property="og:image:secure_url"
+        content="/yn_lottery_01/wp-content/uploads/2022/10/favi-gamedoithuong89-300x300.jpg" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="http://www.{{domain.link}}" />
+    <meta name="mobile-agent" content="format=xhtml;url=http://m.{{domain.link}}" />
+    <meta name="mobile-agent" content="format=html5;url=http://wap.{{domain.link}}" />
+    <meta name="mobile-agent" content="format=xhtml;url=http://h5.{{domain.link}}" />
+    <meta name="google" content="notranslate" />
+    <link rel="icon" type="image/png" href="/yn_lottery_01/wp-content/uploads/2022/10/favi-gamedoithuong89-300x300.jpg">
+    <link rel="stylesheet" type="text/css" href="/css/link.css" name="skin">
+</head>
+
+<body>
+    <div class="header">
+        <div class="span">
+            <a href="javascript:void(0)" onclick="window.history.back()">&larr;</a>
+        </div>
+        <div>
+            <a class="logo" href="/">Trang chủ</a>
+        </div>
+        <div class="span">
+            <a href="/gogogo" style="font-size: 18px;">Nhập</a>
+        </div>
+    </div>
+    <div id="home" class="s-{{domain.linkID}}">
+        {% if domain.isMuLu %}
+        <section class="c-sect m-app-pos">
+            <div class="inner" id="J_az">
+                <div class="info">
+                    <div class="detail">
+                        <h1 class="title">{{detail.title|safe}}</h1>
+                        <p>
+                            {% if imageNums %}
+                            <span>Phiên bản:v{{(imageNums%151)|replace('','.')|replace(r/^\.*|\.*$/g,'')}}</span>
+                            <span>Kích thước:{{ imageNums%120 }}M</span>
+                            {% else %}
+                            <span>Phiên bản:v{{(domain.imageNums%51)|replace('','.')|replace(r/^\.*|\.*$/g,'')}}</span>
+                            <span>Kích thước:{{ domain.imageNums%120 }}M</span>
+                            {% endif %}
+                        </p>
+                        <p>
+                            <span>Nền tảng:Android/IOS</span>
+                            {% if domain.createdAt %}
+                            <span>Ngày:{{ domain.createdAt|replace(r/((?=T).+)/ ,'') }}</span>
+                            {% else %}
+                            <span>Ngày:2023</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <a href="/gogogo?type=android" target="_blank" rel="nofollow" class="btn">Tải về Android</a>
+                    <a href="/gogogo?type=ios" target="_blank" rel="nofollow" class="btn">Tải về IOS</a>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        <main>
+            <article>
+                <h1>{{detail.title}}</h1>
+                <div class="single-excerpt">
+                    <p>{{ detail.title | safe }}-{{domain.beiAnName}}</p>
+                    <p>{{ detail.description | safe }}</p>
+                    {% if domain.isSo %}
+                    <a target="_blank" href="http://{{domain.fullDomain}}/so.html"></a>
+                    <a target="_blank" href="http://{{domain.fullDomain}}/so"></a>
+                    <a target="_blank" href="http://{{domain.fullDomain}}/so/{{detail.keywords}}"></a>
+                    {% endif %}
+                </div>
+                <div class="detail-list">
+                    {% for item in newArticleList %}
+                    <a href="/detail/{{item._id}}.html">
+                        <h1>
+                            {{item.title}}
+                        </h1>
+                    </a>
+                    {% endfor %}
+                </div>
+                {{muluContent|safe}}
+                {{fanContent|safe}}
+            </article>
+            <div class="entry-meta">
+                <span class="entry-date">
+                    {{detail.createdAt}}
+                </span>
+                <span class="entry-comment">Bình luận 15</span>
+                <span class="entry-views">Đọc tiếp<span class="view-count">6.5k</span> </span>
+                <span>{{detail.articleCategory}}</span>
+            </div>
+        </main>
+        <footer>
+            <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}"></a>
+            <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}"></a>|
+            <a href="http://{{domain.fullDomain}}/sitemap.xml"></a>
+            <span>©2023</span>
+        </footer>
+        {% include "template/components/common.html" %}
+        <nav>
+            <a href="/ml/{{domain.randomClass}}">Trang dưới</a>
+            <a href="/ml/{{domain.randomVersion}}.html">Hiện tại</a>
+            <a href="/ml/{{domain.randomClass}}.html">Trang sau</a>
+        </nav>
+        <footer>
+            <a href="/ml/1/index.html"></a>
+            <a href="http://www.{{domain.link}}"></a> 
+            <a href="/ml/1/m_0.html"></a>
+            <a href="http://h5.{{domain.link}}"></a>
+            <a href="http://wap.{{domain.link}}"></a>
+            <a href="/ml/map1/sitemap.html"></a>
+            <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}"></a>
+            <a href="http://m.{{domain.link}}">©2021-2023</a>
+        </footer>
+    </div>
+</body>
+</html>

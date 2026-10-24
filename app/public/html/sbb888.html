@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='robots' content='noindex,nofollow' />
+    <meta name='robots' content='noarchive' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.addEventListener(('orientationchange' in window ? 'orientationchange' : 'resize'), (function () {
+            function c() {
+                var d = document.documentElement;
+                var cw = d.clientWidth || 750;
+                d.style.fontSize = (20 * (cw / 375)) > 40 ? 40 + 'px' : (20 * (cw / 375)) + 'px';
+            }
+            c();
+            return c;
+        })(), false);
+        var AppList = []
+    </script>
+   
+   <script src="/html/app.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: 'iconfont';
+            font-display: block;
+            src: url('http://47.98.105.177:8889/font/iconfont.ttf?t=1718635045348') format('truetype');
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            font-size: 10px;
+            background: #1c2035;
+            height: 100%;
+        }
+
+        #page-content {
+            max-width: 768px;
+            margin: 0 auto;
+            
+        }
+
+        .hrader-top {
+            height: 2.6rem;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background-image: linear-gradient(to right, #fb00b7, #b704ef);
+        }
+
+        .logo-text {
+            font-weight: 800;
+            color: #fff;
+            font-size: 1rem;
+            font-family: fangsong;
+            padding: 0 20px;
+        }
+
+        @keyframes changeshadow {
+            0% {
+                text-shadow: 0 0 4px #e34000
+            }
+
+            50% {
+                text-shadow: 0 0 40px #fbff00
+            }
+
+            100% {
+                text-shadow: 0 0 4px #f70e0e
+            }
+        }
+
+        .content-app {
+            color: #ffffff;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .content-app h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            padding:5px 10px 10px 10px;
+            color: #fb00b7;
+        }
+
+        a {
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .app-list {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 5px;
+        }
+
+        .item-app {
+            width: 20%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .item-app .name-text {
+            font-size: 0.65rem;
+            color: #e1e1e1;
+            font-weight: 600;
+            padding: 5px 0;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+        }
+
+        .item-app .name-text.top-tag {
+            color: #fb00b7;
+            font-weight: bold;
+        }
+
+        .item-app .name-text.new-tag {
+            color: rgb(66, 187, 18)
+        }
+        .item-app .img-box{
+            width: 16vw;
+            height: 16vw;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .item-app img {
+            width: 100%;
+            min-width: 16vw;
+            min-height: 16vw;
+            max-width: 100px;
+            border-radius: 16px;
+            max-height: 100px;
+            border: 0;
+            background: #3c266773;
+        }
+
+        .app-button {
+            border-radius: 50px;
+            font-size: 0.7rem;
+            text-align: center;
+            color: #fb00b7;
+            padding: 0.2rem 0.8rem;
+            border: 1px solid #fb00b7;
+        }
+
+
+
+        .app-list-all .item-app {
+            width: 100%;
+            justify-content: flex-start;
+            padding: 8px 8px;
+            position: relative;
+            box-sizing: border-box;
+            margin-bottom: 0;
+        }
+
+        .c-right {
+            width: calc(100% - 18vw);
+            padding-left: 10px;
+            box-sizing: border-box;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .c-left {
+            width: 18vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .c-right .info-box {
+            margin-top: -5px;
+            max-width: 60%;
+        }
+
+        .app-button2 {
+            background-image: linear-gradient(to right, #9C27B0, #ff51e8);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            text-align: center;
+            color: #fff;
+            padding: 0.4rem 1.3rem;
+        }
+
+        .c-right .info-box .name-text {
+            text-align: left;
+            padding: 0;
+            font-size: 0.7rem;
+        }
+
+        .start-text {
+            font-size: 0.5rem;
+            color: #9b9b9b;
+            padding: 3px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .start-text span {
+            font-size: 0.56rem;
+        }
+
+        .desc-text {
+            font-size: 0.65rem;
+            color: #9b9b9b;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+        }
+
+       
+        @media screen and (min-width: 1024px) {
+
+            html,
+            body,
+            #page-content {
+                display: none;
+            }
+        }
+
+        #all {}
+
+        .bottom-app {
+            position: absolute;
+            z-index: 100;
+            width: 100%;
+            bottom: 0;
+            background-image: linear-gradient(to right, #b200f9, #ff0073);
+            box-sizing: border-box;
+            max-width: 768px;
+        }
+
+
+        .bottom-app .bt-item-app {
+            padding: 10px;
+            display: block;
+            overflow: hidden;
+        }
+
+        .bottom-app .bottom-left {
+            float: left;
+        }
+
+        .bottom-app .bottom-left img {
+            width: 16vw;
+            display: block;
+            height: 16vw;
+            max-width: 100px;
+            border-radius: 13px;
+            max-height: 100px;
+            border: 0;
+        }
+
+        .bottom-app .bottom-right {
+            float: left;
+            padding-left: 10px;
+        }
+
+        .bottom-app .bt-name {
+            font-size: 0.95rem;
+            color: rgb(255 255 255);
+            font-weight: 600;
+            text-shadow: 3px 1px 13px #696969;
+        }
+
+        .bottom-app .bt-desc {
+            font-size: 0.65rem;
+            margin-top: 5px;
+            color: #ffffff;
+            text-shadow: 3px 1px 13px #696969;
+        }
+
+        .bottom-app .bt-button {
+            position: absolute;
+            right: 10px;
+            top: 25px;
+            width: 5rem;
+            color: #fb00b7;
+            font-size: .8rem;
+            background: #ffffffe8;
+            text-align: center;
+            border-radius: 50rem;
+            padding: 5px;
+            box-sizing: border-box;
+            line-height: 31px;
+        }
+
+        span.device-desc {
+            font-size: 0.58rem;
+            color: #c8c8c8;
+            font-weight: 400;
+        }
+
+        .tag-c {
+            margin-right: 2px;
+            color: #00e35c;
+            font-weight: bold;
+        }
+
+        .android-tagc {
+            color: #00d26a;
+            font-size: 0.6rem;
+            margin-right: 3px;
+        }
+
+        #announcement {
+            height: 1.5em;
+            background: #363263;
+            margin: 0.5em;
+            border-radius: 5px;
+        }
+
+        #announcement a {
+            color: #cdcdcd;
+            display: block;
+            font-size: 0.65rem;
+            padding: 0 10px 0 1.6rem;
+            overflow: hidden;
+        }
+
+        #announcement .swiper-slide {
+            display: flex;
+            align-items: center;
+        }
+
+        .xlaba {
+            position: absolute;
+            left: 5px;
+            top: 0.1em;
+            font-size: 0.93rem;
+        }
+
+
+        #tabs-container {
+        }
+
+        .tabs {
+            margin: 0.5em;
+            background: #3c324fe3;
+            overflow: auto;
+            border-radius: 50px;
+            height: 2rem;
+            padding: 0 10px;
+        }
+
+        .tabs .tab-box {
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+
+        }
+
+        .tabs a {
+            font-weight: normal;
+            text-align: center;
+            width: 33.333%;
+            height: 2rem;
+            font-size: 0.8rem;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tabs a.active {
+            color: #fb00b7;
+            font-weight: 800;
+        }
+        .app-button{
+            display: none !important;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="page-content">
+        <div class="hrader-top">
+            <a href="/" class="logo-text">🍀性福草APP导航--------首页👈</a>
+        </div>
+        <div style="height: 25px;"></div>
+        <div class="content-app">
+            <div id="tabs-container" class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div id="tuijian">
+                            <div class="app-list-hot app-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: none;" class="bottom-app">
+
+        </div>
+    </div>
+
+    <script>
+        var screenWidth = window.innerWidth;
+        if (screenWidth > 1366) {
+            document.body.innerHTML = '';
+        }
+        var domTuiJian = document.querySelector(".app-list-hot");
+        // var domAllApp = document.querySelector(".app-list-all");
+        // var domShipin = document.querySelector(".app-list-shipin");
+        // var domZhibo = document.querySelector(".app-list-zhibo");
+
+        var btDom = document.querySelector(".bottom-app");
+        var uA = navigator.userAgent; //获取标识
+        if (uA) uA = uA.toLowerCase();
+        var isAndroid = uA.indexOf('android') > -1 || uA.indexOf('adr') > -1;  //android
+        var isIos = /iphone/.test(uA);;  //ios
+       
+        var domTuiJianStr = "";
+        var domAllAppStr = "";
+        var domShiPinStr = "";
+        var domZhiBoStr = "";
+        if (AppList && AppList.length > 0) {
+            AppList.sort(function (a, b) { return b.sort - a.sort })
+            AppList.sort(function (a, b) { return b.isHot - a.isHot })
+            AppList.sort(function (a, b) { return b.isTop - a.isTop });
+            var btItem = null;
+            AppList.forEach(function (item, index) {
+                let topStr = '';
+                let urlIsChange = item.url
+                if (isAndroid && item.androidUrl && item.androidUrl.length > 1) {
+                    urlIsChange = item.androidUrl;
+                }
+                let nowUrl = urlIsChange
+                let nowImage = item.image
+                let viewNum = Math.floor(Date.now().toString().slice(4, 11) / ((index + 9) / 8));
+                let nowImageb = item.imageb
+                if (item.isBt && item.isBt >= 1) {
+                    btDom.innerHTML = `<a class="bt-item-app" target="_blank" href="${nowUrl}"><div class="bottom-left">                        <div class="img-box"><img src="${nowImage}"></div>
+</div><div class="bottom-right"><div class="bt-name">${item.name}</div><div class="bt-desc">${item.desc}</div></div><div class="bt-button">立即进入</div></a>`
+                }
+                if (item.isTop) {
+                    topStr = ' top-tag'
+                }
+                let onlyAndroid = '';
+                if (item.isAPK) {
+                    onlyAndroid = '<span class="android-tagc iconfont">&#xe612;</span>'
+                }
+
+                //if (item.isHot) {
+                domTuiJianStr += `<a class="item-app zsb${item.type}" target="_blank" href="${nowUrl}">
+                        <div class="img-box"><img src="${nowImage}"></div>
+                        <div class="name-text${topStr}">${onlyAndroid}${item.name}</div>
+                        <div class="app-button">安装<span class="type${item.type}"></span></div>
+                    </a>`
+                
+            })
+            domTuiJian.innerHTML = domTuiJianStr
+            // domAllApp.innerHTML = domAllAppStr
+
+            // domShipin.innerHTML = domShiPinStr
+            // domZhibo.innerHTML = domZhiBoStr
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        
+    </script>
+</body>
+
+</html>

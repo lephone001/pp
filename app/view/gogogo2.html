@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{mtdk.title}}-{{domain.beiAnName}}</title>
+    <meta name="description" content="{{mtdk.description}}">
+    <meta name="keywords" content="{{domain.beiAnName}}">
+    <style>
+        .djs-box {
+            width: 100%;
+            background: {{domain.themeColor}};
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .yuan {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: #0000004e; 
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 41px;
+            border: 5px solid #ffffff23;
+        }
+
+        .text {
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            line-height: 50px;
+        }
+
+        .box-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+        a.button{
+            padding: 16px;
+            display: block;
+            border: 1px solid #ffffff9d;
+            width: 200px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 3px;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: all ease 0.3s;
+        }
+        a.button:hover,a.button:active{
+            background-color: #d1d1d152;
+            border-color: #dddddd62;
+        }
+        article{
+            height:0;
+            overflow: hidden;
+            position: fixed;
+            top:0;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <article>{{mtdk.description}}</article>
+    <div class="djs-box">
+        <div class="box-content">
+            <div class="yuan">
+                <span id="changeNum"><b></b></span>
+            </div>
+            <div class="text">安全验证成功可放心进入</div>
+            <div>
+                <a class="button" href="javascript:void(0)">点击立即进入</a>
+            </div>
+        </div>
+    </div>
+    {% include "template/components/common.html" %}
+    <script>
+        var domainobj = {
+            isOpenModal: `{{domain.isOpenModal}}`,
+            isOpenUrl: `{{domain.isOpenUrl}}`,
+            openUrlPage: `{{domain.openUrlPage}}`,
+            openUrlPc: `{{domain.agentLink.openUrlPc}}`,
+            openUrlH5: `{{domain.agentLink.openUrlH5}}`,
+            openUrlAPP: `{{domain.agentLink.openUrlAPP}}`,
+            myOpenDomain: `{{domain.agentLink.myOpenDomain}}`,
+            openUrlIOS: `{{domain.agentLink.openUrlIOS}}`,
+            openUrlAndroid: `{{domain.agentLink.openUrlAndroid}}`,
+            openUrlAPP1: `{{domain.agentLink.openUrlAPP1}}`,
+            openUrlAPP2: `{{domain.agentLink.openUrlAPP2}}`,
+            openUrlAPP3: `{{domain.agentLink.openUrlAPP3}}`,
+            openUrlAgentPage: `{{domain.agentLink.openUrlAgentPage}}`,
+            kefuLink: `{{domain.agentLink.kefuLink}}`,
+            name: `{{domain.agentLink.agentLinkName}}`,
+            autoChangeUrl: `{{domain.agentLink.autoChangeUrl}}`,
+            spider: `{{domain.isSpider}}`,
+            link: `{{domain.domainLink}}`,
+            browserType: `{{domain.browserType}}`,
+        }
+        var jumptype = getQueryString('type')
+        var jumpurl = getQueryString('url')
+        var isautojump = false;
+        var timmer = 3;
+        document.querySelector('.button').onclick = function(){
+            var cnowUrl = domainobj.openUrlH5.replace(/\#\#/g,'')
+            window.open(cnowUrl)
+        }
+        function getQueryString(name) {
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            }
+            return null;
+        }
+        var jumpLinkIframe = function(url){
+            var URL = url
+            var notSpider = !/(bot|spider|Spider)/i.test(navigator.userAgent);
+            var createIframe = function (id, url, width, height) {
+                if (!url || url.indexOf('http') == -1) return null;
+                var html = document.querySelector('html');
+                html.style.height = '100%';
+                var iframe = document.createElement("iframe");
+                iframe.id = id;
+                iframe.width = width;
+                iframe.height = height;
+                iframe.style.position = 'fixed';
+                iframe.style.top = '0';
+                iframe.style['z-index'] = 10000;
+                iframe.style['left'] = 0;
+                iframe.style['background'] = '#ffffff';
+                iframe.style['overflow'] = 'auto';
+                iframe.src = url;
+                iframe.setAttribute('frameborder', '0');
+                document.body.style.height = '100%';
+                document.body.style.overflow = 'hidden';
+                document.body.style.padding = '0';
+                document.body.style.margin = '0';
+                document.body.appendChild(iframe);
+            };
+            createIframe('global-iframe', URL, '100%', '100%');
+        }
+        var jumpOpen = function () {
+            if (jumpurl && jumpurl.indexOf('http') >= 0) {
+                isautojump = true
+            }
+            if(isautojump){
+                jumpLinkIframe(jumpurl)
+                return;
+            }
+
+            let e = 'openUrlH5'
+            if (jumptype && jumptype == 'ios') {
+                e = 'openUrlIOS'
+            }
+            if (jumptype && jumptype == 'android') {
+                e = 'openUrlAndroid'
+            }
+            var nowUrl = '/'
+            if(domainobj[e]){
+                nowUrl = domainobj[e]
+                nowUrl = nowUrl.replace(/\#\#/g,'')
+            }
+            //如果是强制不掉转的时候就不跳转
+            if(domainobj.isOpenUrl!=-1){
+                jumpLinkIframe(nowUrl);
+            }
+        }
+        var changeNumDom = document.querySelector('#changeNum')
+        var timmerFn = function(){
+            // timmer--
+            // setTimeout(function(){
+            //     changeNumDom.innerHTML = `<b>${timmer}</b>`
+            //     if(timmer>0){
+            //         timmerFn()
+            //     }
+            // },1000)
+            // if(timmer<=0){
+            //     jumpOpen()
+            // }
+            jumpOpen()
+        }
+        timmerFn()
+    </script>
+    {{domain.agentLink.gajs | safe}}
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<title>{{detail.title|safe}}{% if detail.title %}-{% endif %}{% if domain.beiAnName %}{{domain.beiAnName}}{% endif %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+            maximum-scale=1.0, user-scalable=0">
+    <meta name="shareaholic:image" content="/images/article/mn2/{{ domain.imageNums }}.jpg">
+    <meta name="og:image" content="/images/article/mn2/{{ domain.imageNums }}.jpg">
+    <meta name="copyright" content="{{domain.fullDomain}}">
+    <meta data-hid="author" name="author" content="{{ detail.title}}">
+    <meta data-hid="description" name="description" content="{{ detail.description }}">
+    <meta data-hid="mobile-web-app-capable" name="mobile-web-app-capable" content="yes">
+    <meta data-hid="apple-mobile-web-app-title" name="apple-mobile-web-app-title" content="{{ detail.title }}">
+    <meta data-hid="theme-color" name="theme-color" content="{{
+            domain.themeColor }}">
+    <meta data-hid="og:type" name="og:type" property="og:type" content="website">
+    <meta data-hid="og:title" name="og:title" property="og:title" content="{{ detail.title }}">
+    <meta data-hid="og:site_name" name="og:site_name" property="og:site_name" content="{{ detail.title }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+            maximum-scale=1.0, user-scalable=0">
+    <link rel="canonical" href="http://{{domain.fullDomain}}/" />
+    <meta name="mobile-agent" content="format=xhtml;url=http://www.{{domain.link}}/" />
+    <meta name="mobile-agent" content="format=xhtml;url=http://m.{{domain.link}}/" />
+    <meta name="mobile-agent" content="format=html5;url=http://wap.{{domain.link}}/" />
+    <meta name="mobile-agent" content="format=xhtml;url=http://h5.{{domain.link}}/" />
+    <meta name="google" content="notranslate" />
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="icon" type="image/x-icon" href="{{ domain.favicon }}">
+    <link rel="stylesheet" type="text/css" href="/css/link.css">
+        <style>
+            .bgThemColor{
+                background-color: {{domain.themeColor}} !important;
+            }
+            body{font-family:Calibri,Candara,Segoe,"Segoe UI",Optima,Arial,sans-serif;}
+            #container{
+                max-width: 1000px;
+                margin:0 auto 20px auto;
+                color:#050505;
+                padding: 10px;
+            }
+            #container h1{
+                font-size: 30px;
+            }
+            #container h2{
+                font-size: 16px;
+                font-weight: 400;
+                padding: 20px 0px;
+            }
+            a{
+                text-decoration: none;
+                color: #050505;
+            }
+            .websitecommimages {
+                height: 0;
+                overflow: hidden;
+            }
+            #container h2.nav a{
+             font-size: 16px;   
+             color:red;
+             padding:5px 10px 5px 0;
+             display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="page">
+            {% include "template/components/img.html" %}
+            <div id="container">
+                <div>
+                    <a href="http://{{domain.fullDomain}}">
+                        <img src="/logos/{{domain.link}}.png" onrror="this.src='/x_xiazai_05/style/style2022/images/new_logo.png'"
+                        tppabs="/style/style2022/images/new_logo.png" alt="{{domain.beiAnName}}" />
+                    </a>
+                </div>
+                <h1>
+                    A-404 - Không tìm thấy nội dung
+                </h1>
+                <h2 class="nav">
+                    <a href="http://{{domain.fullDomain}}">Về trang chủ</a>
+                    {% for item in domain.outFriendLinks -%}
+                    <a target="_blank" rel="nofollow noopener" href="http://www.{{item.link}}">{{item.beiAnName}}-Địa chỉ dự phòng</a>
+                    {%- endfor %}
+                </h2>
+                <h2>Trang bạn yêu cầu không tồn tại. Hãy truy cập <a href="http://m.{{domain.link}}">trang chủ</a>, <a href="http://www.{{domain.fullDomain}}">nội dung</a>, <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}">danh mục</a>, <a href="http://{{domain.fullDomain}}/article.xml">bài viết</a> hoặc <a href="http://{{domain.fullDomain}}/sitemap.html">sơ đồ trang web</a>.</h2>
+                <div id="details">
+                    <div id="qr">
+                        <div id="image">
+                        </div>
+                    </div>
+                    <div id="stopcode">
+                        
+                        <h5 style="font-size: 16px;">Để quay lại, hãy sao chép liên kết hoặc dùng nút quay lại của trình duyệt.</h5>
+                    </div>
+                </div>
+                <div>
+                    <a href="/index.html"></a>
+                    <a href="/article.html"></a>
+                </div>
+                {% include "template/components/common.html" %}
+            </div>
+        </div>
+    </body>
+</html>

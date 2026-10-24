@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../pay/static/css/ele.css">
+    <title>登陆</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            background: rgb(0, 53, 94);
+            height: 100%;
+        }
+
+        .page-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+
+        }
+
+        .login-box {
+            background: #fff;
+            height: auto;
+            padding: 20px;
+            width: 300px;
+        }
+
+        .login-box input {
+            outline: none;
+            height: 45px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            overflow: hidden;
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        .login-box a {
+            color: white;
+            background: #00355e;
+            display: block;
+            padding: 15px;
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+    <div id="app" class="page-content">
+        <div class="login-box">
+            <div>
+                <el-input  placeholder="用户名" type="text" v-model="dataFrom.username"></el-input>
+                <el-input  placeholder="密码" type="password" v-model="dataFrom.password"></el-input>
+            </div>
+            <div>
+                <el-button :loading="loginLoading" style="width:100%;margin-top:20px" size="large" type="primary" block @click="loginSubmit">登陆</el-button>
+                <!-- <a href="javascript:void(0)" @click="loginSubmit"> 登陆 </a> -->
+            </div>
+        </div>
+    </div>
+    <script src="../pay/static/js/vue.js"></script>
+    <script src="../pay/static/js/ele.js"></script>
+    <script src="../pay/static/js/vant.js"></script>
+    <script src="../pay/static/js/axios.min.js"></script>
+    <script src="../pay/static/js/crypto-js.min.js"></script>
+    <script>
+        const keycode = "jiamibijibenkey-123";
+        new Vue({
+            el: '#app',
+            data: {
+                loginLoading:false,
+                dataFrom: {
+                    username: '',
+                    password: ''
+                }
+            },
+            mounted() { },
+            methods: {
+                jiamiFn (datac) {
+                    let casd = datac
+                    if (typeof casd !== 'string') {
+                        casd = JSON.stringify(casd)
+                    }
+                    let content = CryptoJS.AES.encrypt(
+                        casd,
+                        keycode
+                    ).toString();
+                    return content;
+                },
+                jiemiFn (datac) {
+                    let casd = datac
+                    let isString = 1
+                    if (typeof datac !== 'string') {
+                        casd = JSON.stringify(casd)
+                        isString = 0
+                    }
+                    let bytes = CryptoJS.AES.decrypt(casd, keycode);
+                    let originalText = bytes.toString(CryptoJS.enc.Utf8);
+                    if (isString == 1) {
+                        originalText = JSON.parse(originalText)
+                    }
+                    return originalText
+                },
+                loginSubmit() {
+                    if (!this.dataFrom.username || !this.dataFrom.password) {
+                        return alert('填写错误！')
+                    }
+                    this.loginLoading = true;
+                    axios({
+                        method: "POST",
+                        url: '/api/uplink/user/login',
+                        data: {data:this.jiamiFn(this.dataFrom)}
+                    }).then((res) => {
+                      
+                        localStorage.removeItem('UPLINK_TOKEN')
+                        if (res.data.code == -1) {
+                            alert(res.data.message)
+                        } else if (res.data.data) {
+                            let resdata = res.data.data
+                            this.$message.success('登陆成功！')
+                            localStorage.setItem('UPLINK_TOKEN', resdata.token)
+                            this.dataFrom.username = ''
+                            this.dataFrom.password = ''
+                            window.location.href="./app.html"
+                        }
+                    }).finally(()=>{
+                        this.loginLoading = false;
+                    })
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>

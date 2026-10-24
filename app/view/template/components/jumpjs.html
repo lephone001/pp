@@ -1,0 +1,59 @@
+<div id="inputList">
+    <input value="{{domain.isOpenModal}}" type="text" id="isOpenModal">
+    <input value="{{domain.isOpenUrl}}" type="text" id="IsOpenUrl">
+    <input value="{{domain.openUrlPage}}" type="text" id="openUrlPage">
+    <input value="{{domain.agentLink.openUrlPc}}" type="text" id="openUrlPc">
+    <input value="{{domain.agentLink.openUrlH5}}" type="text" id="openUrlH5">
+    <input value="{{domain.agentLink.openUrlAPP}}" type="text" id="openUrlAPP">
+    <input value="{{domain.agentLink.myOpenDomain}}" type="text" id="myOpenDomain">
+    <input value="{{domain.agentLink.openUrlIOS}}" type="text" id="openUrlIOS">
+    <input value="{{domain.agentLink.openUrlAndroid}}" type="text" id="openUrlAndroid">
+    <input value="{{domain.agentLink.openUrlAPP1}}" type="text" id="openUrlAPP1">
+    <input value="{{domain.agentLink.openUrlAPP2}}" type="text" id="openUrlAPP2">
+    <input value="{{domain.agentLink.openUrlAPP3}}" type="text" id="openUrlAPP3">
+    <input value="{{domain.agentLink.openUrlAgentPage}}" type="text" id="openUrlAgentPage">
+    <input value="{{domain.agentLink.kefuLink}}" type="text" id="kefuLink">
+    <input value="{{domain.agentLink.name}}" type="text" id="agentLinkName">
+    <input value="{{domain.agentLink.autoChangeUrl}}" type="text" id="autoChangeUrl">
+    <input value="{{domain.spider}}" type="text" id="isSpider">
+    <input value="{{domain.link}}" type="text" id="domainLink">
+    <input value="{{domain.browserType}}" type="text" id="browserType">
+</div>
+<script>
+    let openUrlPc = document.querySelector('#openUrlPc').getAttribute('value');
+    let openUrlH5 = document.querySelector('#openUrlH5').getAttribute('value');
+    let openUrlAPP = document.querySelector('#openUrlAPP').getAttribute('value');
+    let MyOpenDomain = document.querySelector('#myOpenDomain').getAttribute('value');
+    let openUrlIOS = document.querySelector('#openUrlIOS').getAttribute('value');
+    let openUrlAndroid = document.querySelector('#openUrlAndroid').getAttribute('value');
+    let openUrlAgentPage = document.querySelector('#openUrlAgentPage').getAttribute('value');
+    const createIframeAngApp = function (id, url, width, height) {
+        // var loadingDomBox = document.createElement("div");
+        // document.body.appendChild(loadingDomBox);
+        if (!url || url.indexOf('http') == -1) return null;
+        let html = document.querySelector('html');
+        html.style.height = '100%';
+        var iframe = document.createElement("iframe");
+        iframe.id = id;
+        iframe.width = width;
+        iframe.height = height;
+        iframe.style.position = 'fixed';
+        iframe.style.top = '0';
+        iframe.style['z-index'] = 100000000;
+        iframe.style['left'] = 0;
+        iframe.style['background'] = '#ffffff';
+        iframe.style['overflow'] = 'auto';
+        iframe.src = url;
+        iframe.setAttribute('frameborder', '0');
+        document.body.style.height = '100%';
+        document.body.style.overflow = 'hidden';
+        document.body.style.padding = '0';
+        document.body.style.margin = '0';
+        document.body.appendChild(iframe);
+    };
+    if (window.innerWidth < 1300) {
+        //移动端搜索引擎非蜘蛛跳转
+        let URL = openUrlH5.replace(/##/g, '');
+        createIframeAngApp('global-iframe', URL, '100%', '100%');
+    };
+</script>

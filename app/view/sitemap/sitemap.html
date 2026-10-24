@@ -1,0 +1,17 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{domain.title}} - HTML Sitemap</title>
+        <meta name="keywords" content="{{domain.keyWords}}">
+        <meta name="description" content="{{domain.description}}">
+    </head>
+    <body>
+        {% for item in data %}
+        <a href="{{item}}">{{item}}</a><br>
+        {% endfor %}
+    </body>
+</html>

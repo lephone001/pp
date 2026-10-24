@@ -1,0 +1,6 @@
+/Article/{随机数字5}.html
+/Article/{随机字符5}/{随机数字5}.html
+http://av-{随机数字5}.{域名}.com/Article/{随机字符5}/{随机数字5}.html
+/app{随机数字5}.{域名}.com/Article/{随机数字9}.html
+/{随机字符3}.{域名}.com/Article/{随机数字9}.html
+/x{随机数字5}.{域名}.com/Article/{随机字符5}/{随机数字5}.html

@@ -1,0 +1,1 @@
+{% if routeBasePath == '/Article' or showArticleExtraNav %}<a class="article-movie-nav article-nav-entry" href="/Article/Movie/{% for i in range(12) %}{{ range(1 if loop.first else 0, 10) | random }}{% endfor %}.html">影视</a><a class="article-news-nav article-nav-entry" href="/WenZhang/list.html">资讯</a>{% endif %}

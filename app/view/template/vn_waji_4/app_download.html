@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{detail.title|safe}} | {{domain.titleText}}</title>
+  <meta name="description" content="{{detail.description}}">
+  <meta name="keywords" content="{{detail.keywords}}">
+  <meta property="og:title" content="{{detail.title|safe}}">
+  <meta property="og:description" content="{{detail.description}}">
+  <meta property="og:type" content="article">
+  <link rel="icon" href="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/css/style.css?v=366">
+  <style>
+    .cbd-detail-hero{padding:44px 0;background:{{domain.themeColor}};color:#fff}
+    .cbd-detail-hero h1{margin:0 0 12px;font-size:36px;line-height:1.22}
+    .cbd-detail-hero p{margin:0;max-width:820px;opacity:.92;line-height:1.7}
+    .cbd-detail-main{padding:42px 0 58px;background:#fff}
+    .cbd-detail-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px}
+    .cbd-content{font-size:17px;line-height:1.82;color:#233042}
+    .cbd-content img{max-width:100%;height:auto}
+    .cbd-content h2,.cbd-content h3{color:#9d1509;line-height:1.35}
+    .cbd-meta{font-size:14px;opacity:.86}
+    .article-rating{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;font-size:15px;line-height:24px;color:#fff}.article-rating .stars{color:#ffd45a;letter-spacing:1px}.article-rating strong{font-size:18px}.article-rating .score-text{width:100%;font-weight:700}
+    .cbd-page-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:28px;padding-top:22px;border-top:1px solid #e6ebf2}.cbd-page-link{display:block;min-width:0;padding:14px 16px;border:1px solid #e6ebf2;border-radius:8px;background:#f7f9fc;color:#253246;text-decoration:none}.cbd-page-link:last-child{text-align:right}.cbd-page-label{display:block;margin-bottom:6px;color:#6b788c;font-size:13px;line-height:18px}.cbd-page-title{display:block;color:#9d1509;font-size:15px;font-weight:700;line-height:22px;overflow-wrap:anywhere}@media(max-width:520px){.cbd-page-nav{gap:10px}.cbd-page-link{padding:12px 10px}.cbd-page-title{font-size:14px;line-height:20px}}
+    .cbd-sidebar{background:#f7f9fc;border:1px solid #e6ebf2;border-radius:8px;padding:18px;height:max-content}
+    .cbd-sidebar h3{margin:0 0 14px;color:{{domain.themeColor}}}
+    .cbd-sidebar a{display:block;padding:10px 0;border-bottom:1px solid #e6ebf2;color:#253246;text-decoration:none;line-height:1.45}
+    .cbd-sidebar a:last-child{border-bottom:0}
+    .price-table-wrapper {width: 100%;max-width: 100%;overflow-x: auto;overflow-y: hidden;-webkit-overflow-scrolling: touch;}
+    .price-table-wrapper .price-table {width: max-content;min-width: 600px;border-collapse: collapse;}
+    @media (max-width:900px){.cbd-detail-grid{display:block;grid-template-columns:1fr}.cbd-detail-hero h1{font-size:28px}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{detail.title|safe}}",
+    "description": "{{detail.description}}",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "{{ ratingValue or 4.8 }}",
+      "ratingCount": "{{ ratingCount or 12 }}",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
+</head>
+<body>
+  {% include "template/vn_waji_4/common_header.html" %}
+  <main>
+    <section class="cbd-detail-hero">
+      <div class="container">
+        <nav class="breadcrumb"><a href="/" aria-label="Trang chu">Trang chu</a><span>/</span><a href="/v-nl/list.html" aria-label="Danh sach bai viet">Bai viet</a></nav>
+        <p class="cbd-meta">{{detail.createdText}}</p>
+        <h1>{{detail.title|safe}}</h1>
+        <p>{{detail.description}}</p>
+        <div class="article-rating">
+          <span class="stars">★★★★★</span>
+          <strong>{{ ratingValue or 4.8 }}</strong>
+          <span>({{ ratingCount or 12 }} đánh giá)</span>
+          <span class="score-text">Điểm chất lượng: {{ ratingValue or 4.8 }}/5.0</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cbd-detail-main">
+      <div class="container cbd-detail-grid">
+        <article class="cbd-content">
+          {{detail.content|safe}}
+          <nav class="cbd-page-nav" aria-label="Bai viet truoc va tiep theo">
+            {% if detail.prevName %}
+            <a class="cbd-page-link" href="/v-n/{{detail.prevName}}.html" aria-label="Bai truoc {{detail.prevName}}">
+              <span class="cbd-page-label">B&agrave;i tr&#432;&#7899;c</span>
+              <span class="cbd-page-title">{{detail.prevName}}</span>
+            </a>
+            {% else %}
+            <a class="cbd-page-link" href="/v-n/{{detail.block.b_number or detail.id}}.html" aria-label="Bai truoc bai hien tai">
+              <span class="cbd-page-label">B&agrave;i tr&#432;&#7899;c</span>
+              <span class="cbd-page-title">{{detail.title|safe}}</span>
+            </a>
+            {% endif %}
+
+            {% if detail.nextName %}
+            <a class="cbd-page-link" href="/v-n/{{detail.nextName}}.html" aria-label="Bai tiep theo {{detail.nextName}}">
+              <span class="cbd-page-label">B&agrave;i ti&#7871;p theo</span>
+              <span class="cbd-page-title">{{detail.nextName}}</span>
+            </a>
+            {% else %}
+            <a class="cbd-page-link" href="/v-n/{{detail.block.b_number or detail.id}}.html" aria-label="Bai tiep theo bai hien tai">
+              <span class="cbd-page-label">B&agrave;i ti&#7871;p theo</span>
+              <span class="cbd-page-title">{{detail.title|safe}}</span>
+            </a>
+            {% endif %}
+          </nav>
+        </article>
+        <aside class="cbd-sidebar">
+          <h3>Bai viet lien quan</h3>
+          {% for item in relatedList %}
+          <a href="{{item.url}}" aria-label="{{item.title}}">
+            <div><img src="{{item.image}}" alt="{{item.title}}"></div>
+            <h3>{{item.title|safe}}</h3>
+            <div>{{item.description}}</div>
+          </a>
+          {% endfor %}
+        </aside>
+      </div>
+    </section>
+  </main>
+  {% include "template/vn_waji_4/common_footer.html" %}
+</body>
+</html>

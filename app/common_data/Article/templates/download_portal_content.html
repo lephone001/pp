@@ -1,0 +1,51 @@
+{% set body = portal.body %}
+<section id="introduction" class="panel content-panel prose portal-body">
+  <div class="section-heading"><h2>{{ portalHome and '应用资讯与下载指南' or '内容详情' }}</h2><span>{{ portal.date }}</span></div>
+  <p class="lead"><strong>🕊✨🕊{{ body.keyword }} · 应用地址：<a href="{{ body.address }}">{{ body.keyword }}</a>🎁</strong>（{{ portal.year }}版）<strong>系统类型：iOS / Android / PC</strong>。查看应用介绍、版本信息、下载方式与使用说明。<a href="{{ body.more }}">《{{ body.keyword }}》</a>{{ body.description }}</p>
+
+  <h3>{{ body.keyword }}介绍</h3>
+  {% for paragraph in portal.paragraphs %}<p class="source-paragraph">{{ paragraph }}</p>{% endfor %}
+  {% for item in body.introductions %}
+  <p class="intro-item">📛{{ portal.date }}「{{ item.tag }}」【<a href="{{ item.url }}"><strong>{{ body.keyword }}</strong></a>】💰支持：32位 / 64位；系统类型：iOS / Android 通用版 / 手机 APP（{{ portal.year }}版）。《{{ body.keyword }}》{{ item.sentence }}</p>
+  {% endfor %}
+
+  <h3>{{ body.keyword }}特色</h3>
+  {% for item in body.features %}
+  <p class="feature-item">{{ loop.index }}. 💮「{{ item.tag }}」💮 <a href="{{ item.url }}">{{ body.keyword }}</a> · APP下载🔥💮 支持：win7 / win10 / win11🌈 系统类型：{{ body.keyword }}下载（{{ portal.year }}版），iOS / Android；版本：{{ item.version }}。《{{ body.keyword }}》{{ item.sentence }}</p>
+  {% endfor %}
+
+  <h3 id="download-guide">{{ body.keyword }}下载方式</h3>
+  <h4>①通过浏览器下载</h4>
+  <p>打开浏览器，查找需要下载的应用全名。{{ body.keyword }}应用资料页：{{ body.download }}。下载前核对发布者、系统要求与文件来源。</p>
+  <h4>②使用设备自带的应用商店</h4>
+  <p>打开应用商店，搜索{{ body.keyword }}，确认应用名称与开发者信息后，按提示下载安装。</p>
+  <h4>③使用已有的安装资源</h4>
+  <p>如已有{{ body.keyword }}安装包，请确认来源可信，进行安全扫描后再安装，不要随意关闭设备安全防护。</p>
+
+  <h3>{{ body.keyword }}安装步骤</h3>
+  <p>🌈第一步：查找{{ body.keyword }}的官方发布渠道，核对应用名称与开发者信息。</p>
+  <p>🌈第二步：选择适合设备系统与位数的版本，包括 Windows、Mac、Linux 或移动端版本，以应用实际支持的平台为准。</p>
+  <p>🌈第三步：下载对应安装包，等待文件完整下载，检查文件大小与完整性。</p>
+  <p>🌈第四步：扫描安装包，阅读权限与安装选项，按照系统提示完成安装。</p>
+  <p>🌈第五步：打开{{ body.keyword }}，按需设置语言、保存位置与账号信息。</p>
+  <p>🌈第六步：查看更新与使用说明，保留重要资料备份；如需授权，请通过开发者提供的渠道办理。</p>
+  <div class="notice-box">平台兼容性、功能及授权以开发者说明为准。没有提供安装包地址时，本页下载按钮定位到此说明。</div>
+
+  <h3>{{ body.keyword }}使用讲解</h3>
+  {% for step in body.tutorials %}
+  <h4>{{ loop.index }}. {{ step.title }}</h4>
+  <p>{{ step.text }}</p>
+  <figure class="tutorial-figure"><img src="{{ step.image }}" alt="{{ body.keyword }}使用讲解：{{ step.title }}" width="640" height="420" loading="lazy" decoding="async"><figcaption>{{ body.keyword }} · {{ step.title }}</figcaption></figure>
+  {% endfor %}
+
+  <h3>{{ body.keyword }}特点</h3>
+  {% for item in body.characteristics %}
+  <p class="characteristic-item">{{ loop.index }}. {{ portal.date }}「{{ item.tag }}」【<a href="{{ item.url }}">{{ body.keyword }}</a>】🌈{{ item.sentence }}</p>
+  {% endfor %}
+  <h3>相关介绍</h3>
+  <p class="related-introduction">{{ portal.date }}「{{ body.related.tag }}」【<a href="{{ body.related.url }}">{{ body.keyword }}</a>】{{ body.related.sentence }}</p>
+
+  <h3>更新与使用说明</h3>
+  <h4>更新内容</h4>
+  {% for update in body.updates %}<p class="update-item">{{ ['一','二','三','四','五','六'][loop.index0] }}、{{ update }}</p>{% endfor %}
+</section>

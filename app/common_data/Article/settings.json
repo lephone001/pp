@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "friendLinksEnabled": true,
+  "spiderStrongEnabled": false,
+  "enabledTemplates": [
+    "legacy_portal",
+    "download_portal",
+    "appx_default",
+    "appx_download",
+    "legacy_news",
+    "legacy_download",
+    "legacy_gallery",
+    "legacy_page",
+    "fanmulu_article2",
+    "fanmulu_article1",
+    "legacy_directory",
+    "legacy_show",
+    "appx_movie",
+    "appx_compact",
+    "fanmulu_article5",
+    "fanmulu_article3"
+  ]
+}

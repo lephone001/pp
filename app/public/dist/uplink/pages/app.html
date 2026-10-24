@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <script>if (!localStorage.getItem('UPLINK_TOKEN')) window.location.replace('./login.html');</script>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,
+      initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" href="../pay/static/css/ele.css?v=34r5">
+        <link rel="stylesheet" rel="stylesheet"
+            href="../pay/static/css/common.css?v=d312234gddfgsdfersstyeras254dffdfsdfg">
+        <link rel="stylesheet" rel="stylesheet" href="../pay/static/css/vant.css">
+    <style>
+/* 更新列表在弹框内滚动，结果固定放在弹框底部。 */
+.uplink-update-dialog {
+    display: flex;
+    flex-direction: column;
+    max-height: 88vh;
+    max-height: 88dvh;
+    margin-bottom: 6vh;
+    overflow: hidden;
+}
+.uplink-update-dialog .el-dialog__header { flex-shrink: 0; }
+.uplink-update-dialog .el-dialog__body {
+    min-height: 0;
+    overflow-y: auto;
+    flex: 1 1 auto;
+    overscroll-behavior: contain;
+}
+.uplink-update-dialog .el-dialog__footer {
+    flex-shrink: 0;
+    max-height: 32vh;
+    overflow-y: auto;
+    text-align: left;
+    border-top: 1px solid #ebeef5;
+    padding: 12px 20px;
+}
+.uplink-update-results-title { margin: 0 0 8px; font-size: 14px; color: #606266; }
+</style>
+</head>
+<style>
+    .colorBox{position: fixed;color:#000;z-index: 10000000000;padding:10px;background-color: #fff;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;}
+    .colorBox h1{margin: 10px 0;}
+    .closrrrr{width: 30px;height: 30px;    border: 1px solid #f9f9f9;display: block;}
+    .clolrUl{display: flex; flex-wrap: wrap;padding-bottom:100px;}
+    .clolrUl li{width: 120px;margin:20px 0;}
+    .clolrUl li span.c1{display: block;width: 20px;height: 20px;border-radius: 2px;}
+    .clolrUl li span.c2{display: block;    display: block;margin-top: 7px;font-weight: 800;}
+    .color-red{color: red;}
+    .color-blue{color: blue;}
+    .name-fixed-num{    position: absolute;
+    bottom: 0;
+    font-size: 10px;
+    left: 0;
+    right: 0;}
+    .editinput-box small i.active{color:red;}
+    .color-zise{
+        color:rgb(251, 0, 255)
+    }
+</style>
+    <body>
+        <div id="app" class="page-content">
+            <div class="colorBox" v-show="colorBoxshow">
+                <div class="closrrrr" @click="colorBoxshow=false"></div>
+                <h1>颜色选取工具</h1>
+                <ul class="clolrUl">
+                    <li><span style="background: #800000;" class="c1"></span><span class="c2">#800000</span></li>
+                    <li><span style="background: #FFFF00;" class="c1"></span><span class="c2">#FFFF00</span></li>
+                    <li><span style="background: #808000;" class="c1"></span><span class="c2">#808000</span></li>
+                    <li><span style="background: #00FF00;" class="c1"></span><span class="c2">#00FF00</span></li>
+                    <li><span style="background: #008000;" class="c1"></span><span class="c2">#008000</span></li>
+                    <li><span style="background: #00FFFF;" class="c1"></span><span class="c2">#00FFFF</span></li>
+                    <li><span style="background: #008080;" class="c1"></span><span class="c2">#008080</span></li>
+                    <li><span style="background: #0000FF;" class="c1"></span><span class="c2">#0000FF</span></li>
+                    <li><span style="background: #000080;" class="c1"></span><span class="c2">#000080</span></li>
+                    <li><span style="background: #FF00FF;" class="c1"></span><span class="c2">#FF00FF</span></li>
+                    <li><span style="background: #800080;" class="c1"></span><span class="c2">#800080</span></li>
+                    <li><span style="background: #65C06B;" class="c1"></span><span class="c2">#65C06B</span></li>
+                    <li><span style="background: #D6AEA1;" class="c1"></span><span class="c2">#D6AEA1</span></li>
+                    <li><span style="background: #6ADFC5;" class="c1"></span><span class="c2">#6ADFC5</span></li>
+                    <li><span style="background: #75E18E;" class="c1"></span><span class="c2">#75E18E</span></li>
+                    <li><span style="background: #BDE196;" class="c1"></span><span class="c2">#BDE196</span></li>
+                    <li><span style="background: #46A324;" class="c1"></span><span class="c2">#46A324</span></li>
+                    <li><span style="background: #048202;" class="c1"></span><span class="c2">#048202</span></li>
+                    <li><span style="background: #65DB3F;" class="c1"></span><span class="c2">#65DB3F</span></li>
+                    <li><span style="background: #83D4A2;" class="c1"></span><span class="c2">#83D4A2</span></li>
+                    <li><span style="background: #A3F6EF;" class="c1"></span><span class="c2">#A3F6EF</span></li>
+                    <li><span style="background: #C52232;" class="c1"></span><span class="c2">#C52232</span></li>
+                    <li><span style="background: #B41AF6;" class="c1"></span><span class="c2">#B41AF6</span></li>
+                    <li><span style="background: #26386F;" class="c1"></span><span class="c2">#26386F</span></li>
+                    <li><span style="background: #959618;" class="c1"></span><span class="c2">#959618</span></li>
+                    <li><span style="background: #96170A;" class="c1"></span><span class="c2">#96170A</span></li>
+                    <li><span style="background: #266E4D;" class="c1"></span><span class="c2">#266E4D</span></li>
+                    <li><span style="background: #4E6BEA;" class="c1"></span><span class="c2">#4E6BEA</span></li>
+                    <li><span style="background: #D2BAFE;" class="c1"></span><span class="c2">#D2BAFE</span></li>
+                    <li><span style="background: #450B36;" class="c1"></span><span class="c2">#450B36</span></li>
+                    <li><span style="background: #2FB3F3;" class="c1"></span><span class="c2">#2FB3F3</span></li>
+                    <li><span style="background: #A52690;" class="c1"></span><span class="c2">#A52690</span></li>
+                    <li><span style="background: #56DF9F;" class="c1"></span><span class="c2">#56DF9F</span></li>
+                    <li><span style="background: #491E61;" class="c1"></span><span class="c2">#491E61</span></li>
+                    <li><span style="background: #C7EA99;" class="c1"></span><span class="c2">#C7EA99</span></li>
+                    <li><span style="background: #881176;" class="c1"></span><span class="c2">#881176</span></li>
+                    <li><span style="background: #C714CE;" class="c1"></span><span class="c2">#C714CE</span></li>
+                    <li><span style="background: #2C4C79;" class="c1"></span><span class="c2">#2C4C79</span></li>
+                    <li><span style="background: #4972F8;" class="c1"></span><span class="c2">#4972F8</span></li>
+                    <li><span style="background: #224CB8;" class="c1"></span><span class="c2">#224CB8</span></li>
+                    <li><span style="background: #EB8EE1;" class="c1"></span><span class="c2">#EB8EE1</span></li>
+                    <li><span style="background: #010024;" class="c1"></span><span class="c2">#010024</span></li>
+                    <li><span style="background: #482ACD;" class="c1"></span><span class="c2">#482ACD</span></li>
+                    <li><span style="background: #0CFF71;" class="c1"></span><span class="c2">#0CFF71</span></li>
+                    <li><span style="background: #A50BAF;" class="c1"></span><span class="c2">#A50BAF</span></li>
+                    <li><span style="background: #3B37F1;" class="c1"></span><span class="c2">#3B37F1</span></li>
+                    <li><span style="background: #7F589A;" class="c1"></span><span class="c2">#7F589A</span></li>
+                    <li><span style="background: #00299B;" class="c1"></span><span class="c2">#00299B</span></li>
+                    <li><span style="background: #648A33;" class="c1"></span><span class="c2">#648A33</span></li>
+                    <li><span style="background: #F9360D;" class="c1"></span><span class="c2">#F9360D</span></li>
+                    <li><span style="background: #AF2AA9;" class="c1"></span><span class="c2">#AF2AA9</span></li>
+                    <li><span style="background: #53FC39;" class="c1"></span><span class="c2">#53FC39</span></li>
+                    <li><span style="background: #4FDB29;" class="c1"></span><span class="c2">#4FDB29</span></li>
+                    <li><span style="background: #51D6AE;" class="c1"></span><span class="c2">#51D6AE</span></li>
+                    <li><span style="background: #AE21DA;" class="c1"></span><span class="c2">#AE21DA</span></li>
+                    <li><span style="background: #B2BE09;" class="c1"></span><span class="c2">#B2BE09</span></li>
+                    <li><span style="background: #CB64A7;" class="c1"></span><span class="c2">#CB64A7</span></li>
+                    <li><span style="background: #3D021B;" class="c1"></span><span class="c2">#3D021B</span></li>
+                    <li><span style="background: #EB96AC;" class="c1"></span><span class="c2">#EB96AC</span></li>
+                    <li><span style="background: #B66B62;" class="c1"></span><span class="c2">#B66B62</span></li>
+                    <li><span style="background: #84D56D;" class="c1"></span><span class="c2">#84D56D</span></li>
+                    <li><span style="background: #D21AF7;" class="c1"></span><span class="c2">#D21AF7</span></li>
+                    <li><span style="background: #C3D1BD;" class="c1"></span><span class="c2">#C3D1BD</span></li>
+                    <li><span style="background: #D83D81;" class="c1"></span><span class="c2">#D83D81</span></li>
+                    <li><span style="background: #CBF826;" class="c1"></span><span class="c2">#CBF826</span></li>
+                    <li><span style="background: #329696;" class="c1"></span><span class="c2">#329696</span></li>
+                    <li><span style="background: #11C01F;" class="c1"></span><span class="c2">#11C01F</span></li>
+                    <li><span style="background: #BF7688;" class="c1"></span><span class="c2">#BF7688</span></li>
+                    <li><span style="background: #114DB7;" class="c1"></span><span class="c2">#114DB7</span></li>
+                    <li><span style="background: #E72392;" class="c1"></span><span class="c2">#E72392</span></li>
+                    <li><span style="background: #F7D599;" class="c1"></span><span class="c2">#F7D599</span></li>
+                    <li><span style="background: #5FFDBA;" class="c1"></span><span class="c2">#5FFDBA</span></li>
+                    <li><span style="background: #1DEF00;" class="c1"></span><span class="c2">#1DEF00</span></li>
+                    <li><span style="background: #0F2156;" class="c1"></span><span class="c2">#0F2156</span></li>
+                    <li><span style="background: #BE508E;" class="c1"></span><span class="c2">#BE508E</span></li>
+                    <li><span style="background: #ABB4B9;" class="c1"></span><span class="c2">#ABB4B9</span></li>
+                    <li><span style="background: #0AE284;" class="c1"></span><span class="c2">#0AE284</span></li>
+                    <li><span style="background: #605CAA;" class="c1"></span><span class="c2">#605CAA</span></li>
+                    <li><span style="background: #DA4F57;" class="c1"></span><span class="c2">#DA4F57</span></li>
+                    <li><span style="background: #F8A771;" class="c1"></span><span class="c2">#F8A771</span></li>
+                    <li><span style="background: #7F8ACC;" class="c1"></span><span class="c2">#7F8ACC</span></li>
+                    <li><span style="background: #5842C0;" class="c1"></span><span class="c2">#5842C0</span></li>
+                    <li><span style="background: #929E74;" class="c1"></span><span class="c2">#929E74</span></li>
+                    <li><span style="background: #DCA6CF;" class="c1"></span><span class="c2">#DCA6CF</span></li>
+                    <li><span style="background: #F58673;" class="c1"></span><span class="c2">#F58673</span></li>
+                    <li><span style="background: #D02E30;" class="c1"></span><span class="c2">#D02E30</span></li>
+                    <li><span style="background: #4FCC36;" class="c1"></span><span class="c2">#4FCC36</span></li>
+                    <li><span style="background: #DD73C3;" class="c1"></span><span class="c2">#DD73C3</span></li>
+                    <li><span style="background: #503E38;" class="c1"></span><span class="c2">#503E38</span></li>
+                    <li><span style="background: #82442F;" class="c1"></span><span class="c2">#82442F</span></li>
+                    <li><span style="background: #06BBEA;" class="c1"></span><span class="c2">#06BBEA</span></li>
+                    <li><span style="background: #7C79B6;" class="c1"></span><span class="c2">#7C79B6</span></li>
+                    <li><span style="background: #5034A4;" class="c1"></span><span class="c2">#5034A4</span></li>
+                    <li><span style="background: #F78856;" class="c1"></span><span class="c2">#F78856</span></li>
+                    <li><span style="background: #C84B63;" class="c1"></span><span class="c2">#C84B63</span></li>
+                    <li><span style="background: #F5E73A;" class="c1"></span><span class="c2">#F5E73A</span></li>
+                    <li><span style="background: #81FE1B;" class="c1"></span><span class="c2">#81FE1B</span></li>
+                    <li><span style="background: #32E97D;" class="c1"></span><span class="c2">#32E97D</span></li>
+                    <li><span style="background: #4A6254;" class="c1"></span><span class="c2">#4A6254</span></li>
+                    <li><span style="background: #11EE40;" class="c1"></span><span class="c2">#11EE40</span></li>
+                    <li><span style="background: #631A38;" class="c1"></span><span class="c2">#631A38</span></li>
+                    <li><span style="background: #2A162B;" class="c1"></span><span class="c2">#2A162B</span></li>
+                    <li><span style="background: #4403F0;" class="c1"></span><span class="c2">#4403F0</span></li>
+                    <li><span style="background: #66A94D;" class="c1"></span><span class="c2">#66A94D</span></li>
+                    <li><span style="background: #FC1321;" class="c1"></span><span class="c2">#FC1321</span></li>
+                    <li><span style="background: #72133A;" class="c1"></span><span class="c2">#72133A</span></li>
+                    <li><span style="background: #5EF71A;" class="c1"></span><span class="c2">#5EF71A</span></li>
+                    <li><span style="background: #3A135E;" class="c1"></span><span class="c2">#3A135E</span></li>
+                    <li><span style="background: #BE4AAD;" class="c1"></span><span class="c2">#BE4AAD</span></li>
+                    <li><span style="background: #471561;" class="c1"></span><span class="c2">#471561</span></li>
+                    <li><span style="background: #800000;" class="c1"></span><span class="c2">#800000</span></li>
+                    <li><span style="background: #FFFF00;" class="c1"></span><span class="c2">#FFFF00</span></li>
+                    <li><span style="background: #808000;" class="c1"></span><span class="c2">#808000</span></li>
+                    <li><span style="background: #00FF00;" class="c1"></span><span class="c2">#00FF00</span></li>
+                </ul>
+            </div>
+            <div style="margin-bottom:10px;float: right;">
+                <el-button @click="bendiUpdate()" size="mini"
+                    type="danger">本地</el-button>
+                <el-button @click="imageAllShow()" size="mini"
+                    type="danger">图片</el-button>
+                <el-button @click="urlTest()" size="mini"
+                    type="danger">链测</el-button>
+                <el-button @click="appUpdate()" size="mini"
+                    type="danger">APP</el-button>
+                <el-button @click="imagesUrl()" size="mini"
+                    type="danger">批图</el-button>
+            </div>
+            <header v-if="isLogin">
+                <div class="h-left">
+                    <a href="./app.html">首页</a>
+                    <a target="_blank" href="./bc.html">BQ</a>
+                    <a href="javascript:void(0)" @click="hideIframe(0)"
+                        v-if="hiddenIframe==1">隐藏</a>
+                    <a href="javascript:void(0)" @click="hideIframe(1)"
+                        v-if="hiddenIframe==0">显示</a>
+                    <a href="javascript:void(0)" @click="initIframe()"
+                        v-if="hiddenIframe==1">刷新</a>
+                    <a href="javascript:void(0)" @click="openlink()">打开</a>
+                </div>
+                <div class="h-right">
+                    <span>{{userinfo.username}}</span>
+                    <span style="cursor:pointer;" @click="loginOut">登出</span>
+                </div>
+            </header>
+            <div id="search-box">
+                <el-form :inline="true" :model="fromSearchData"
+                    class="demo-form-inline">
+                    <el-form-item label>
+                        <el-select clearable
+                            @change="fromSearchDataChangeStatus"
+                            style="width: 80px;" size="mini"
+                            v-model="fromSearchData.status" placeholder="状态">
+                            <el-option label="开启" :value="1"></el-option>
+                            <el-option label="关闭" :value="0"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label>
+                        <el-select clearable
+                            v-model="fromSearchData.user"
+                            style="width: 100px;" size="mini"
+                            @change="fromSearchDataChange"
+                            placeholder="代理选择">
+                            <el-option v-for="item in typeSelectTableData"
+                                :key="item.user"
+                                :label="item.user+'-'+item.num"
+                                :value="item.user">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label>
+                        <el-input @input="searchList" size="mini"
+                        style="width: 80px;"
+                            v-model="fromSearchData.name"
+                            placeholder="名字"></el-input>
+                        
+                    </el-form-item>
+                    <el-form-item label>
+                        <el-select
+                        size="mini"
+                            v-model="copyapptype"
+                            style="width: 80px;"
+                            @change="copyapptypeChange"
+                            placeholder="复制类型">
+                            <el-option label="全部" :value="0"></el-option>
+                            <el-option label="视频A+B" :value="-1"></el-option>
+                            <el-option label="视频A" :value="1"></el-option>
+                            <el-option label="视频B" :value="5"></el-option>
+                            <el-option label="直播" :value="2"></el-option>
+                            <el-option label="动漫" :value="6"></el-option>
+                            <el-option label="bc" :value="3"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item class="buttongroupc" label>
+                        <el-button size="mini" @click="copyapp()" class="Cbtn"
+                            type="warning">复制</el-button>
+                        <el-button size="mini" @click="createDilog"
+                            type="success">添加</el-button>
+                        <el-button size="mini" @click="searchList()" type="primary">搜索
+                            {{tableData.length}} </el-button>
+                        <el-button size="mini" @click="getData(1)"
+                            type="warning">刷新</el-button>
+                        <el-button size="mini" @click="updateServer()"
+                            type="danger">更新</el-button>
+                        <el-button size="mini" @click="saveAppDb()"
+                            :loading="saveDbLoading" type="info">保存数据库</el-button>
+                    </el-form-item>
+                </el-form>
+            </div>
+            <el-table border :data="tableData" style="width: 100%">
+                <el-table-column prop="name" align="center" label="名称"
+                    width="100">
+                    <template slot-scope="scope">
+                        <div class="name-fixed-num"><small :class="scope.row.status==1?'color-blue':'color-red'">{{scope.row.status==1?'开':'关'}}-{{scope.row.sort}}</small></div>
+                        <a :class="'apptype'+scope.row.type" target="_blank"
+                            :href="scope.row.url">
+                            <b>{{scope.row.name}}</b>
+                            <small :class="'apptype'+scope.row.type"
+                                style="position: absolute;top:-1px;left: 40px;font-size: 10px;">{{scope.row.user}}</small>
+                        </a>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="index" align="center" label="IN">
+                    <template slot-scope="scope">
+                        <el-input size="small"
+                            v-model="scope.row.index"></el-input>
+                    </template>
+                </el-table-column>
+                <el-table-column align="center" label="链接" min-width="400">
+                    <template slot-scope="scope">
+                        <div
+                            style="position: absolute;left:10px;top:-5px;font-size: 12px;"
+                            v-if="clearId==scope.row.id">{{clearVal}}</div>
+                        <el-input size="small" v-model="scope.row.url"
+                            @clear="clearFn(scope.row.id)" clearable></el-input>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="name" align="center" label="顺序"
+                    width="70">
+                    <template slot-scope="scope">
+                        <el-input size="small"
+                            v-model="scope.row.sort"></el-input>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="name" align="center" label="底部"
+                    width="60">
+                    <template slot-scope="scope">
+                        <el-input size="small"
+                            v-model="scope.row.isBt"></el-input>
+                    </template>
+                </el-table-column>
+                <el-table-column align="center" label="状态" width="80">
+                    <template slot-scope="scope">
+                        <el-button size="mini" v-if="scope.row.status==-1"
+                            type="warning">禁止</el-button>
+                        <el-button size="mini"
+                            v-if="scope.row.status==1||scope.row.status==2"
+                            type="success">开启
+                        </el-button>
+                        <el-button size="mini" v-if="scope.row.status==0"
+                            type="danger">关闭</el-button>
+                    </template>
+                </el-table-column>
+                <el-table-column label="更新时间" class="timebox" align="center"
+                    width="85">
+                    <template slot-scope="scope">
+                        <small
+                            class="timebox">{{formateDate(scope.row.updateTime)}}</small>
+                    </template>
+                </el-table-column>
+                <!-- <el-table-column label="创建时间" align="center" width="160">
+                    <template slot-scope="scope">
+                        {{formateDate(scope.row.createTime)}} 
+                    </template>
+                </el-table-column> -->
+                <el-table-column fixed="right" align="center" label="操作"
+                    width="260">
+                    <template slot-scope="scope">
+                        <small :class="'apptype'+scope.row.type"
+                            style="position: absolute;top:-4px;left: 18px;font-size: 10px;">{{scope.row.name}}
+                            - {{scope.row.user}}</small>
+                        <el-button
+                            @click="handleClickEdit(scope.row);"
+                            type="warning" size="mini">查看/修改</el-button>
+                        <el-button @click="saveEdit(scope.row,2)"
+                            type="primary" size="mini">保存</el-button>
+                        <el-button @click="deleteApp(scope.row)"
+                            type="danger" size="mini">删除</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+            <!-- <div class="next-page" v-if="count>50&&showNextPage">
+                <a href="javascript:void(0)" @click="moreOrder">更多</a>
+            </div> -->
+            <!-- <div class="fixd-btn">
+                <el-button @click="hideIframe(0)" v-if="hiddenIframe==1" type="success">隐藏</el-button>
+                <el-button @click="hideIframe(1)" v-if="hiddenIframe==0" type="success">显示</el-button>
+                <el-button @click="initIframe()" type="success">刷新</el-button>
+                <el-button @click="openlink()" type="success">窗口打开</el-button>
+            </div> -->
+            <div class="fixd-right" v-if="hiddenIframe==1"></div>
+            <el-dialog show-close :close-on-click-modal="false"
+                :title="createType==1?'添加':'编辑'"
+                :visible.sync="dialogVisibleEdit"
+                :before-close="handleCloseEdit">
+                <div class="dialog-footer"
+                    style="display: flex;justify-content: center;margin-bottom: 10px;">
+                    <el-button v-if="createType==2" size="small" type="primary"
+                        style="width:45%"
+                        :loading="isUpdateLoading"
+                        @click="saveEdit(editItemData,1)">确定修改</el-button>
+                    <el-button v-else type="success" size="small"
+                        :loading="isUpdateLoading" style="width:45%"
+                        @click="createApp">确定添加</el-button>
+                    <el-button @click="dialogVisibleEdit = false" size="small"
+                        type="primary" plain style="width:45%">取
+                        消</el-button>
+                </div>
+                <div class="editinput-box">
+                    <el-form ref="editItemData" :model="editItemData"
+                        label-width="45px">
+                        <el-form-item label="链接">
+                            <div style="font-size: 12px;padding-left: 16px;"
+                                 :class="{'color-red':clearVal==editItemData.url,'color-zise':editItemData.url&&clearVal.split('').pop()!==editItemData.url.split('').pop()}"
+                                v-if="clearId==editItemData.id">{{clearVal}}</div>
+                            <el-input size="mini"
+                            @input="urlChangeNow()"
+                                v-model="editItemData.url" clearable
+                                @clear="clearFn(editItemData.id)"></el-input>
+                        </el-form-item>
+                        <el-form-item style="width:47%;float: left;" label="名称">
+                            <el-input size="mini"
+                                v-model="editItemData.name"></el-input>
+                        </el-form-item>
+                        <el-form-item style="width:50%;float: left;" label="描述">
+                            <el-input size="mini"
+                                v-model="editItemData.desc"></el-input>
+                        </el-form-item>
+                        <el-form-item label="图标" style="clear: both;">
+                            <el-input  placeholder="LOGO地址" clearable size="mini"
+                                v-model="editItemData.image"></el-input>
+                        </el-form-item>
+                        <div style="display: flex;padding: 2px;">
+                            <small @click="logoshowIcons=!logoshowIcons">【显示/隐藏】<img v-if="logoshowIcons&&editItemData.image" style="margin:0 5px;"
+                                :src="editItemData.image" width="20"
+                                height="20" alt>
+                                <i v-for="itemcd in bftableData" :class="{ active:itemcd.name == editItemData.name }">{{itemcd.sort}}|</i>
+                            </small>
+                        </div>
+                        <el-form-item label="类型" style="width:33%;float: left;">
+                            <!-- <el-input size="mini" v-model="editItemData.type"></el-input> -->
+                            <el-select size="mini" v-model="editItemData.type" placeholder="请选择">
+                                <el-option
+                                  v-for="item in editItemDataList"
+                                  :key="item.value"
+                                  :label="item.label"
+                                  :value="item.value">
+                                </el-option>
+                              </el-select>
+                        </el-form-item>
+                        <el-form-item label="安卓" style="width:33%;float: left;">
+                            <el-input size="mini"
+                                v-model="editItemData.androidUrl"
+                                clearable></el-input>
+                        </el-form-item>
+                        <el-form-item style="width:33%;float: left;" label="苹果">
+                            <el-input size="mini"
+                                v-model="editItemData.iosUrl"
+                                clearable></el-input>
+                        </el-form-item>
+                        <el-form-item style="width:33%;float: left;" label="状态">
+                            <!-- <el-input size="mini" v-model="editItemData.status"></el-input> -->
+                            <el-select size="mini" v-model="editItemData.status" placeholder="请选择">
+                                <el-option label="开启" :value="1"></el-option>
+                                <el-option label="关闭" :value="0"></el-option>
+                            </el-select>
+                        </el-form-item>
+                        <el-form-item style="width:33%;float: left;" label="索引">
+                            <el-input size="mini"
+                                v-model="editItemData.index"></el-input>
+                        </el-form-item>
+                        <el-form-item style="width:33%;float: left;"
+                            class="importText" label="排序">
+                            <el-input size="mini"
+                                v-model="editItemData.sort"></el-input>
+                        </el-form-item>
+
+                        <el-form-item style="width:33%;float: left;"
+                            class="importText" label="热门">
+                            <el-input size="mini"
+                                v-model="editItemData.isHot"></el-input>
+                        </el-form-item>
+                        <el-form-item style="width:33%;float: left;"
+                            class="importText" label="置顶">
+                            <el-input size="mini"
+                                v-model="editItemData.isTop"></el-input>
+                        </el-form-item>
+                        <el-form-item style="width:33%;float: left;" label="底部">
+                            <el-input size="mini"
+                                v-model="editItemData.isBt"></el-input>
+                        </el-form-item>
+                        <el-form-item style="width:33%;float: left;"
+                            label="Start">
+                            <el-input size="mini"
+                                v-model="editItemData.star"></el-input>
+                        </el-form-item>
+                        <el-form-item style="width:33%;float: left;" label="最新">
+                            <el-input size="mini"
+                                v-model="editItemData.isNew"></el-input>
+                        </el-form-item>
+                        <el-form-item style="width:50%;float: left;" label="代理">
+                            <el-input size="mini"
+                                v-model="editItemData.user" style="width:120px"></el-input>
+                            <el-select style="width: 120px;" size="mini"
+                                v-model="editItemData.user"
+                                placeholder="代理选择">
+                                <el-option v-for="item in this.typeSelectTableData"
+                                    :key="item.user"
+                                    :label="item.user"
+                                    :value="item.user">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                        <el-form-item style="clear: both;">
+                            <small>更新:{{formateDate(editItemData.updateTime)}}
+                                创建:{{formateDate(editItemData.createTime)}}</small>
+                        </el-form-item>
+                    </el-form>
+                </div>
+
+            </el-dialog>
+            <el-dialog show-close :close-on-click-modal="false"
+                title="更新服务器数据"
+                custom-class="uplink-update-dialog"
+                top="6vh"
+                :visible.sync="dialogServerUpdate">
+                <div>
+                    <el-button @click="updateServerNow()" style="width: 100%;;"
+                        size="small" type="success">批量更新</el-button>
+                </div>
+                <div
+                    class="desc-box-item"
+                    v-for="(item, index) in descListAll"
+                    :key="index">
+                    <div v-if="item.time"
+                        style="padding:0 5px"><small>上次更新：{{item.time}}</small></div>
+                    <div>
+                        <el-input
+                            v-model="item.val"
+                            size="mini"
+                            placeholder="地址"
+                            style="width:43%;"></el-input>
+                        <el-input
+                            v-model="item.des"
+                            size="mini"
+                            placeholder="描述"
+                            style="width:20%;"></el-input>
+
+                        <el-button
+                            type="danger"
+                            size="mini" plain
+                            @click="deleteDescListAll(index)"
+                            :disabled="descListAll.length == 1">删除</el-button>
+                        <el-button
+                            type="warning"
+                            size="mini" plain
+                            style="margin-left:1px"
+                            @click="updateServerNow(index)">更新</el-button>
+                    </div>
+                </div>
+                <div style="margin-top: 10px;">
+                    <el-button
+                        type="primary"
+                        size="mini"
+                        style="margin-left:1px"
+                        @click="addDescListAll()">新增</el-button>
+                    <el-button size="mini" type="success"
+                        @click="saveLinks()">保存</el-button>
+                </div>
+                <div slot="footer" v-if="successDateF.length" class="uplink-update-results">
+                    <p class="uplink-update-results-title">更新结果</p>
+                    <el-table
+                        :data="successDateF"
+                        border
+                        style="width: 100%">
+                        <el-table-column
+                            label="地址">
+                            <template slot-scope="scope">
+                                {{filUpres(scope.row.val) || scope.row.val}}
+                            </template>
+                        </el-table-column>
+                        <el-table-column
+                            prop="code"
+                            align="center"
+                            min-width="220"
+                            label="状态码">
+                            <template slot-scope="scope">
+                                <el-tag size="mini" v-if="scope.row.code==200"
+                                    type="success">成功-{{scope.row.code}}</el-tag>
+                                <el-button size="mini" v-else
+                                    type="danger">异常-{{scope.row.code}}</el-button>
+                            </template>
+                        </el-table-column>
+                        <el-table-column
+                            prop="message"
+                            align="center"
+                            min-width="220"
+                            label="消息">
+                        </el-table-column>
+                        <el-table-column
+                            prop="source"
+                            min-width="300"
+                            label="实际更新源">
+                            <template slot-scope="scope">
+                                {{scope.row.source || '-'}}
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </div>
+            </el-dialog>
+            <div id="gotopup" @click="updateServer()">更新</div>
+            <div id="openclolrcc" @click="colorBoxshow=true">隐藏</div>
+
+            <el-dialog show-close :close-on-click-modal="false"
+                title="图片地址替换"
+                :visible.sync="showImagesUtl">
+                <div>
+                    <div style="margin:5px 0;">替换前：<el-input
+                            v-model="utlpi.beforeUrl"></el-input></div>
+                    <div style="margin:5px 0;">替换后：<el-input v-model="utlpi.endUrl"></el-input></div>
+                </div>
+                <div style="margin:5px 0;" v-if="numc>0">
+                    <h3>成功修改{{numc}}条</h3>
+                </div>
+                <div><el-button block  @click="tihuanUrlFn" :loading="imageLoading"
+                        type="primary">替换</el-button></div>
+            </el-dialog>
+        </div>
+
+        <div id="gotop">顶部</div>
+        <script src="../preview-config.js"></script>
+        <script src="../link.js"></script>
+        <script src="../pay/static/js/axios.min.js"></script>
+        <script src="../pay/static/js/request.js"></script>
+        <script src="../pay/static/js/vue.js"></script>
+        <script src="../pay/static/js/ele.js"></script>
+        <script src="../pay/static/js/vant.js"></script>
+        <script src="../pay/static/js/moment.js"></script>
+        <script src="../pay/static/js/crypto-js.min.js"></script>
+        <script src="../pay/static/js/clipboard.min.js"></script>
+        <script>
+        document.querySelector("#gotop").addEventListener('click',  function(){
+            window.scrollTo(0, 0);
+        });
+        const keycode = "jiamibijibenkey-123";
+        const createIframe = function (id, url, width, height) {
+                document.querySelector('.fixd-right').innerHTML = '';
+                let html = document.querySelector('html');
+                html.style.height = '100%';
+                iframe = document.createElement("iframe");
+                iframe.id = id;
+                iframe.width = width;
+                iframe.height = height;
+                // iframe.style.position = 'fixed';
+                // iframe.style.top = '0';
+                // iframe.style['z-index'] = 10000;
+                // iframe.style['right'] = 0;
+                iframe.style['overflow'] = 'auto';
+                // iframe.style['display'] = 'none';
+                iframe.src = url;
+                iframe.setAttribute('frameborder', '0');
+                document.querySelector('.fixd-right').appendChild(iframe);
+        };
+        new Vue({
+            el: '#app',
+            data: {
+                colorBoxshow:true,
+                logoshowIcons:false,
+                dialogVisibleEdit: false,
+                serverUpdateLink:[],
+                editItemDataList:[
+                    {value:1,label:'视频'},
+                    {value:2,label:'直播'},
+                    {value:3,label:'bc'},
+                    {value:6,label:'漫画'},
+                    {value:5,label:'视频免费'},
+                ],
+                descListAll:(window.UPLINK_DEFAULT_LINKS || [{ val: "",time:'',des:'' }]).map(item => ({ ...item })),
+                copyapptype:1,
+                successDateF:[],
+                dialogServerUpdate:false,
+                tableData: [],
+                bftableData:[],
+                showNextPage: true,
+                addMoneyNum: '',
+                fromSearchData: {
+                    status: '',
+                    user: '',
+                    name: '',
+                },
+                clearVal:"",
+                clearId:"",
+                token:'',
+                editItemData: {
+
+                },
+                isUpdateLoading: false,
+                saveDbLoading: false,
+                userinfo: {},
+                isLogin: false,
+                count: 0,
+                typeSelectTableData: [],
+                createType:1,//1新增 2查看
+                hiddenIframe:0,
+                showImagesUtl:false,
+                imageLoading:false,
+                utlpi:{
+                    beforeUrl:"",
+                    endUrl:"",
+                },
+                numc:0
+            },
+            mounted() {
+                
+                this.getData();
+                this.token = localStorage.getItem('UPLINK_TOKEN')
+                // let hiddenIframe = localStorage.getItem('UPLINK_HIDDENIFRAME')
+                // if(hiddenIframe){
+                //     this.hiddenIframe = hiddenIframe;
+                //     if(hiddenIframe==0){
+                //         document.querySelector('.page-content').style.margin = "0 auto";
+                //     }else{
+                //         document.querySelector('.page-content').style.margin = "0";
+                //     }
+                // }
+
+                if (this.token) {
+                    this.isLogin = true;
+                }
+                this.$nextTick(()=>{
+                    if(this.hiddenIframe==1){
+                        this.initIframe()
+                    }
+                })
+
+                let uadeteLinks =localStorage.getItem('UPLINK_UPDATELINKS')
+                if(uadeteLinks){
+                    try {
+                        const savedLinks = JSON.parse(uadeteLinks);
+                        // 旧空白占位行不覆盖默认列表，有效自定义列表保持原样。
+                        if (Array.isArray(savedLinks) && savedLinks.some(item => item && typeof item.val === 'string' && item.val.trim())) {
+                            this.descListAll = savedLinks;
+                        }
+                    } catch (error) {
+                        // 无效的旧记录使用默认列表，不影响页面初始化。
+                    }
+                }
+            },
+            methods: {
+                copyapp(){
+                    let domTuiJianStr = '';
+                    let copyAppc = [];
+                    let AppList = JSON.parse(JSON.stringify(this.tableData));
+                    AppList.sort(function (a, b) { return b.sort - a.sort });
+                    AppList.sort(function (a, b) { return b.isHot - a.isHot });
+                    AppList.sort(function (a, b) { return b.isTop - a.isTop });
+                    copyAppc = AppList.filter(item=>item.type==this.copyapptype).map((item)=>{return {name:item.name,url:item.url}});
+                    if(this.copyapptype==0){ copyAppc = AppList }
+                    if(copyAppc&&copyAppc.length>0){
+                        copyAppc.forEach((item)=>{
+                            domTuiJianStr += `${item.name} ${item.url}\n`
+                        })
+                    }
+                    var clipboard = new ClipboardJS('.Cbtn', {
+                        text: function(trigger) {
+                            return domTuiJianStr;
+                        }
+                    });
+                    clipboard.on('success', (e)=>{
+                        this.$message({
+                            type:"success",
+                            message:'复制成功！'
+                        })
+                        e.clearSelection();
+                        clipboard.destroy();
+                    });
+                    clipboard.on('error', (e)=>{
+                        this.$message({
+                            type:"error",
+                            message:'复制失败XXX'
+                        })
+                    });
+                   
+                },
+                copyapptypeChange(type){
+                    // this.copyapptype = type
+                },
+               async tihuanUrlFn(){
+                    if(this.utlpi.beforeUrl&&this.utlpi.endUrl){
+                        this.imageLoading = true;
+                        await request({
+                            url: '/api/uplink/imagesUrl',
+                            data:{data: this.jiamiFn(this.utlpi)},
+                        }).then((data)=>{
+                            let result = this.jiemiFn(data)
+                            if(result){
+                                this.numc = result.numc
+                            }
+                            this.$message({
+                                type:'success',
+                                message:result.message||'不确定是否成功！'
+                            })
+                        }).finally(()=>{
+                            this.imageLoading = false;
+                        })
+                    }
+                },
+                imagesUrl(){
+                    this.showImagesUtl = true;
+                },
+                filUpres(val){
+                   let reditme = this.descListAll.find((item)=>{return item.val == val})
+                   if(reditme){
+                    return reditme.des
+                   }else{
+                    return ''
+                   }
+                },
+                clearFn(val){
+                    let fitem = this.bftableData.find(item=>item.id===val)
+                    if(fitem&&fitem.url){
+                        this.clearVal = fitem.url;
+                        this.clearId = val;
+                    }
+                },
+                urlChangeNow(){
+                    this.editItemData.url = this.editItemData.url.trim();
+                },
+                imageAllShow(){
+                    window.open('./images.html')
+                },
+                urlTest(){ window.open('./urltest.html')},
+                appUpdate(){
+                    window.open('./appdata.html')
+                },
+                fromSearchDataChange(val){
+                    this.tableData = JSON.parse(JSON.stringify(this.bftableData));
+                    let nowdata = JSON.parse(JSON.stringify(this.bftableData))
+                    this.tableData = nowdata.filter((item)=>{
+                        let namec = item.user;
+                        if(this.fromSearchData.status!==''){
+                            return namec == val&&item.status==this.fromSearchData.status
+                        }else{
+                            return namec == val
+                        }
+                    })
+                },
+                fromSearchDataChangeStatus(val){
+                    this.tableData = JSON.parse(JSON.stringify(this.bftableData));
+                    let nowdata = JSON.parse(JSON.stringify(this.bftableData))
+                    this.tableData = nowdata.filter((item)=>{
+                        if(this.fromSearchData.user!==''){
+                            return (item.status == val&&item.user==this.fromSearchData.user);
+                        }else{
+                            return item.status == val
+                        }
+
+                    })
+                },
+               async bendiUpdate(){
+                   await request({
+                        url: '/api/uplink/updateAdvLinks',
+                    }).then(res => {
+                        this.$message({
+                            type:'success',
+                            message:'本地更新成功！'
+                        })
+                        this.tableData = [];
+                        this.getData();
+                    }).finally(()=>{
+                        
+                    })
+                },
+                saveLinks(){
+                    let nodw = this.descListAll.filter(item=>item.val)
+                    if(nodw.length>0){
+                        window.localStorage.setItem('UPLINK_UPDATELINKS',JSON.stringify(this.descListAll))
+                    }
+                    this.$message({
+                        message:'保存成功！',
+                        type:'success'
+                    })
+                },
+               async updateServerNow(index){
+                let optios = null;
+                this.successDateF = [];
+                    if(index>=0){
+                        this.descListAll[index]
+                        optios = [this.descListAll[index]]
+                    }else{
+                        optios = this.descListAll
+                    }
+                    const loading = this.$loading({
+                        lock: true,
+                        text: 'Loading',
+                        spinner: 'el-icon-loading',
+                        background: 'rgba(0, 0, 0, 0.7)'
+                    });
+                    await request({
+                        url: '/api/uplink/updateServer',
+                        data:{
+                            data: this.jiamiFn(optios),
+                            source: window.location.origin.replace(/\/+$/, '') + '/html/'
+                        },
+                    }).then((data)=>{
+                        let resdata = this.jiemiFn(data)
+                        if(resdata){
+                            this.successDateF = resdata
+                        }
+                        const results = Array.isArray(resdata) ? resdata : [];
+                        const now = moment().format('YYYY-MM-DD HH:mm:ss');
+                        this.descListAll = this.descListAll.map(item => {
+                            return results.some(result => result.val === item.val && result.code == 200)
+                                ? { ...item, time: now } : item;
+                        });
+                        window.localStorage.setItem('UPLINK_UPDATELINKS', JSON.stringify(this.descListAll));
+                        const success = results.filter(item => item.code == 200).length;
+                        this.$message({
+                            message: '更新成功 ' + success + ' 台，失败 ' + (results.length - success) + ' 台',
+                            type: results.length && success === results.length ? 'success' : 'warning'
+                        });
+                    }).catch(() => {
+                        this.$message.error('更新请求失败，请检查网络或重新登录');
+                    }).finally(()=>{
+                        loading.close();
+                    })
+                    loading.close();
+                },
+                updateServer(){
+                    this.dialogServerUpdate = true;
+                    this.successDateF = [];
+                },
+                deleteDescListAll(index) {
+                    this.$confirm('删除！, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+          center: true
+        }).then(() => {
+            this.descListAll.splice(index, 1);
+                if (this.descListAll.length > 0 && this.descListAll[0]["val"]) {
+                    window.localStorage.setItem(
+                    "DESCLISTALL",
+                    JSON.stringify(this.descListAll)
+                    );
+                }
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
+
+
+                
+                },
+                addDescListAll() {
+                this.descListAll.push({ val: "" });
+                },
+                saveAppDb(){
+                    this.saveDbLoading = true;
+                    request({
+                        url: '/api/uplink/saveAppDb',
+                        data:{data:this.jiamiFn({})},
+                    }).then(res => {
+                        if(res){
+                            let resdata = this.jiemiFn(res)
+                            this.$message({
+                                message: resdata.message || '保存数据库成功！',
+                                type: resdata.fail > 0 ? 'warning' : 'success'
+                            });
+                        }
+                    }).finally(()=>{
+                        this.saveDbLoading = false;
+                    })
+                },
+                saveEdit(item,type){
+                    if(item.name&&item.url&&item.url.indexOf('http')===0){
+                        request({
+                        url: '/api/uplink/updateApp',
+                        data:{data:this.jiamiFn(item)},
+                    }).then(res => {
+                            if(res){
+                                let resdata = this.jiemiFn(res)
+                                this.$message({
+                                    message: "【"+item.name+"】"+resdata.message,
+                                    type: 'success'
+                                });
+                            }
+                            this.getData(2);
+                        }).finally(()=>{
+                            this.dialogVisibleEdit = false;
+                            this.initIframe();
+                        })
+                    }
+                },
+                previewUrl(){
+                    const random = String(Date.now()) + String(Math.floor(Math.random() * 1000000));
+                    return (window.UPLINK_PREVIEW_ORIGIN || '') + '/sbb02.html?v=' + random;
+                },
+                openlink(){
+                    window.open(this.previewUrl())
+                },
+                searchList(val){
+                    if(!val){
+                        this.tableData = JSON.parse(JSON.stringify(this.bftableData));
+                        return;
+                    }
+                    let nowval = val.toLowerCase()
+                    let nowdata = JSON.parse(JSON.stringify(this.bftableData))
+                    this.tableData = nowdata.filter((item)=>{
+                        let namec = item.name.toLowerCase();
+                        return namec.indexOf(nowval)>=0
+                    })
+                },
+                hideIframe(i){
+                    this.hiddenIframe = i;
+                    localStorage.setItem('UPLINK_HIDDENIFRAME',i)
+                    if(i==0){
+                        //隐藏
+                        document.querySelector('.page-content').style.margin = "0 auto";
+                    }else{
+                        //显示
+                        document.querySelector('.page-content').style.margin = "0";
+                        this.initIframe()
+                    }
+                },
+                deleteApp(datas){
+                    this.$confirm(datas.name+'-删除, 继续?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+                        if(datas.name&&datas.id){
+                            request({
+                                url: '/api/uplink/deleteApp',
+                                data:{data:this.jiamiFn(datas)},
+                            }).then(res => {
+                                if(res){
+                                    let resdata = this.jiemiFn(res)
+                                    this.$message({
+                                        message: datas.name+'-'+resdata.message,
+                                        type: 'success'
+                                    });
+                                }
+                                this.getData();
+                            }).finally(()=>{
+                                this.dialogVisibleEdit = false;
+                                 this.initIframe();
+                            })
+                        }
+                    }).catch(() => {
+                    
+                    });
+                },
+                createApp(){
+                    if(this.editItemData.name&&this.editItemData.url){
+                        request({
+                        url: '/api/uplink/createApp',
+                        data:{data:this.jiamiFn(this.editItemData)},
+                    }).then(res => {
+                            if(res){
+                                let resdata = this.jiemiFn(res)
+                                this.$message({
+                                    message: resdata.message,
+                                    type: 'success'
+                                });
+                            }
+                           this.getData();
+                        }).finally(()=>{
+                            this.dialogVisibleEdit = false;
+                            this.initIframe();
+                        })
+                    }
+                },
+                createDilog(){
+                    this.createType=1;
+                    this.dialogVisibleEdit=true;
+                    this.editItemData = {
+                        "index": this.tableData.length+Date.now().toString().slice(10)+Math.floor(Math.random() * 100) + 1,
+                        "name": "",
+                        "view": Date.now().toString().slice(6),
+                        "star": 4.5,
+                        "url": "",
+                        "image": "",
+                        "iosUrl": "",
+                        "desc": "",
+                        "isBt":0,
+                        "type": 1,
+                        "isHot": 1,
+                        "isNew": 0,
+                        "isTop": 1,
+                        "sort": 0,
+                        "user": "全部",
+                        "status": 1,
+                        "createTime": "",
+                        "updateTime": ""
+                }
+            },
+                jiamiFn (datac) {
+                    let casd = datac
+                    if (typeof casd !== 'string') {
+                        casd = JSON.stringify(casd)
+                    }
+                    let content = CryptoJS.AES.encrypt(
+                        casd,
+                        keycode
+                    ).toString();
+                    return content;
+                },
+                jiemiFn (datac) {
+                    let casd = datac
+                    let isString = 1
+                    if (typeof datac !== 'string') {
+                        casd = JSON.stringify(casd)
+                        isString = 0
+                    }
+                    let bytes = CryptoJS.AES.decrypt(casd, keycode);
+                    let originalText = bytes.toString(CryptoJS.enc.Utf8);
+                    if (isString == 1) {
+                        originalText = JSON.parse(originalText)
+                    }
+                    return originalText
+                },
+                formateDate(val) {
+                    if (val) {
+                        val = new Date(val)
+                        return moment(val).format('YYYY-MM-DD HH:mm:ss');
+                    }
+                },
+                loginOut() {
+                    localStorage.removeItem('UPLINK_TOKEN');
+                    window.location.href = './login.html'
+                },
+                moreOrder() {
+                    if (this.count > 10) {
+                        let len = this.tableData.length - 1
+                        if (len) {
+                            this.fromSearchData.offset = this.tableData[len]['_id']
+                        }
+                    }
+                    this.getData();
+                },
+                getData(i) {
+                    let options = {}
+                    for (let key in this.fromSearchData) {
+                        if (this.fromSearchData[key]) {
+                            options[key] = this.fromSearchData[key]
+                        }
+                    }
+                    request({
+                        url: '/api/uplink/appList',
+                        data:this.jiamiFn(options),
+                    }).then(res => {
+                        if(res){
+                            this.tableData = this.jiemiFn(res)
+                            this.bftableData = this.jiemiFn(res)
+                            this.typeSelectTableData = this.jiemiFn(res).map((item)=>{return {user:item.user}})
+                            this.tableData = this.tableData.sort((a, b) => a.user.localeCompare(b.user, 'zh-CN'))
+                            this.bftableData = this.bftableData.sort((a, b) => a.user.localeCompare(b.user, 'zh-CN'))
+                            const uniqueArr = [...new Map(this.typeSelectTableData.map(obj => [obj.user, obj])).values()];
+                            this.typeSelectTableData = uniqueArr;
+                            this.typeSelectTableData.forEach((itemd,indexd)=>{
+                                let i = 0;
+                                this.tableData.forEach((itemc,indexc)=>{
+                                    if(itemd.user===itemc.user){
+                                        i++
+                                    }
+                                })
+                                this.typeSelectTableData[indexd].num = i
+                            })
+                            // console.log(this.typeSelectTableData)
+                        }
+                        if(i==1){
+                            this.$message({
+                                message: '数据刷新成功！',
+                                type: 'success'
+                            });
+                        }
+                        if(i==2){
+
+                        }
+                    })
+                    
+                },
+                handleClickEdit(item) {
+                    this.dialogVisibleEdit = true;
+                    this.createType = 2;
+                    this.editItemData = { ...item };
+                },
+                handleCloseEdit() {
+                    this.dialogVisibleEdit = false
+                },
+                initIframe(){
+                    let nowurl = this.previewUrl()
+                    if(this.hiddenIframe==1){
+                        setTimeout(function(){
+                            createIframe('box-iframe',nowurl,'100%','100%');
+                        },1000)
+                    }
+                },
+            }
+        })
+
+    </script>
+    </body>
+
+</html>

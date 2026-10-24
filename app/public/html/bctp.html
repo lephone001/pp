@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title></title>
+        <meta name="description" content="description" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta data-hid="theme-color" name="theme-color" content="#ffffff">
+        <style>
+        *{margin:0;padding:0;box-sizing: border-box;}
+            html{font-size:10px;height:100%}
+            body{height: 100%;display:flex;justify-content: center;align-items: center;flex-wrap: wrap;background: #ffffff no-repeat center;background-size: cover;}
+            #page-content{max-width: 768px;width: 96%;margin: 0 auto;background: #ffffffcc;padding: 2% 1%;border-radius: 10px;}
+            .item-app{width: 48%;display: flex;justify-content: left;margin: 5px auto;padding: 10px;border-radius: 10px;border: 2px solid #2196f32e;}
+            a{text-decoration: none;}
+            .app-list{display: flex;flex-wrap: wrap;}
+            .app-desc a{font-size: 13px;color:#6f6f6f;display: block;}
+            .info-r{margin-left:10px;width: calc(100% - 80px);}
+            .item-app .name-text{font-size:16px;color:#03a9f4;font-weight:600;padding:2px 0;width:100%;position:relative;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;}
+            .item-app .name-text.top-tag a{color:#03a9f4;font-weight:bold;display: block;}
+            .item-app .name-text.top-tag a:hover{text-decoration: underline;}
+            .item-app .name-text.new-tag{color:rgb(66,187,18)}
+            .item-app .img-box{width:65px;height:65px;border-radius:16px;overflow:hidden;    background-size: 95%;background-color: #f9f9f9;border: 1px solid #f7f7f7;padding: 2px;box-shadow: 1px 1px 1px #c8c8c8;}
+            .app-button{border-radius:50px;font-size:0.56rem;text-align:center;color:#03a9f4;padding:0.2rem 0.8rem;border:0.04rem solid #03a9f4;}
+            .app-btn{margin-top:4px;font-size: 14px;}
+            .app-btn a{padding: 4px 6px;font-size: 13px;border: 1px solid #03A9F4;border-radius: 3px;color: #03A9F4;margin-right: 5px;display: inline-block;}
+            .app-btn a:hover{color:#fff;background-color: #03A9F4;}
+            @media screen and (min-width: 1366px) {
+                .item-app .img-box{width:100px;height:100px;}
+                .info-r{margin-left:10px;width: calc(100% - 100px);}
+                .item-app .name-text{font-size: 20px;}
+                .app-desc{font-size: 14px;}
+                .app-btn{margin-top:8px;}
+                .app-btn a{padding: 5px 8px;}
+                #page-content{max-width: 800px;}
+            }
+            .hidden{overflow: auto;height: 1px;opacity: 0.2;}
+            @media screen and (max-width: 768px){
+                .item-app{width: 98%;}
+            }
+        </style>
+        <script>
+        window.addEventListener(('orientationchange' in window ? 'orientationchange' : 'resize'), (function () {
+            function c() {
+                var d = document.documentElement;
+                var cw = d.clientWidth || 750;
+                d.style.fontSize = (20 * (cw / 375)) > 40 ? 40 + 'px' : (20 * (cw / 375)) + 'px';
+            }
+            c();
+            return c;
+        })(), false);
+    </script>
+    <script>
+        ####JAVASCRIPT####
+    </script>
+    </head>
+    <body>
+        <div id="page-content">
+            <div class="content-app">
+                <div class="app-list-hot app-list"></div>
+            </div>
+        </div>
+        <script>
+            var domTuiJian = document.querySelector(".app-list-hot");
+            var btDom = document.querySelector(".bottom-app");
+            var uA = navigator.userAgent; //获取标识
+            if (uA) uA = uA.toLowerCase();
+            var isAndroid = uA.indexOf('android') > -1 || uA.indexOf('adr') > -1;  //android
+            var isIos = uA.indexOf('iphone') > -1 || uA.indexOf('ipad') > -1;  //ios
+            var isSpider = uA.indexOf('bot') > -1 || uA.indexOf('spider') > -1;  //ios
+            var domTuiJianStr = "";
+            var btItemArr = [];
+           
+            if (AppList && AppList.length > 0) {
+                AppList.sort(function (a, b) { return b.sort - a.sort })
+                AppList.sort(function (a, b) { return b.isHot - a.isHot })
+                AppList.sort(function (a, b) { return b.isTop - a.isTop });
+                AppList.forEach(function (item, index) {
+                    let topStr = '';
+                    let btnlist = ''
+                    let urlIsChange = item.url
+                    if (isAndroid && item.androidUrl && item.androidUrl.length > 1) {
+                        urlIsChange = item.androidUrl;
+                    }
+                    let nowUrl = urlIsChange
+                    let nowImage = item.image
+                    let viewNum = Math.floor(Date.now().toString().slice(4, 13) / ((index + 9) / 8));
+                    if (item.isBt && item.isBt >= 1) {
+                        btItemArr.push(item)
+                    }
+                    if (item.isTop) {
+                        topStr = ' top-tag'
+                    }
+                    let onlyAndroid = '';
+                    if (item.isAPK) {
+                        onlyAndroid = '<span class="android-tagc">🦖</span>'
+                    }
+                    
+                    if(!document.referrer||document.referrer==''||isSpider){
+                        nowUrl = '/bc123/'+item.index
+                    }
+                    if(item.androidUrl){
+                            btnlist += `<a target="_blank" href="${item.url}">手机H5</a>`
+                        }
+                        if(item.androidUrl){
+                            //app
+                            btnlist += `<a target="_blank" href="${item.androidUrl}">官方APP</a>`
+                        }
+                        if(item.iosUrl){
+                            //pc
+                            btnlist += `<a target="_blank" href="${item.iosUrl}">电脑端PC</a>`
+                        }
+                        domTuiJianStr += `<div class="item-app zsb${item.type}">
+                                <a target="_blank" href="${nowUrl}"><div class="img-box" style="background:url(${nowImage}) no-repeat center center;background-size:contain;"></div></a>
+                                <div class="info-r">
+                                    <div class="name-text${topStr}"><a class="title" target="_blank" href="${nowUrl}">${item.name}</a></div>
+                                    <div class="app-desc"><a class="title" target="_blank" href="${nowUrl}">${item.desc}</a></div>
+                                    <div class="app-btn">
+                                        ${btnlist}
+                                    </div>
+                                </div>
+                            </div>`
+                        
+                    })
+                domTuiJian.innerHTML = domTuiJianStr
+            
+                var btDomStr = ""
+                if(btItemArr&&btItemArr.length>0){
+                    btItemArr=btItemArr.sort(function(){return Math.random() - 0.5})
+                }
+                btItemArr.forEach((btItem,index)=>{
+                var btInto = btItem.url
+                if(!document.referrer||document.referrer==''||isSpider){
+                    btInto = '/bc123/'+btItem.index
+                }
+                    btDomStr+=`<div class="swiper-slide"><a class="bt-item-app" target="_blank" href="${btInto}"><div class="bottom-left"><div class="image-bot" style="background:url(${btItem.image}) no-repeat center #ffffff;background-size:cover;"></div></div><div class="bottom-right"><div class="bt-name">${btItem.name}</div><div class="bt-desc">${btItem.desc}</div></div><div class="bt-button">立即进入</div></a></div>`
+                })
+                // btDom.innerHTML = `<div class="swiper-wrapper">${btDomStr}</div><div class="swiper-pagination"></div>`
+            }
+        </script>
+    </body>
+</html>

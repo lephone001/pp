@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>{% if searchval %}{{searchval}}:{% endif %}{{sodomain.title}} </title>
+    <meta charset="utf-8">
+    <meta name="copyright" content="{{domain.fullDomain}}">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="description" content="{% if searchval %}-{{searchval}}{% endif %}{{sodomain.description|safe}}">
+    <meta data-hid="mobile-web-app-capable" name="mobile-web-app-capable" content="yes">
+    <meta data-hid="theme-color" name="theme-color" content="{{sodomain.themeColor}}">
+    <meta name="google" content="notranslate" />
+    <meta name="referrer" content="always">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/css/so.css">
+</head>
+<body>
+    <div class="header">
+        <img src="/images/article/mn2/{{imageNums}}.jpg">
+        <p>{{sodomain.description|safe}}{% if searchval %}-{{searchval}}{% endif %}</p>
+        <p>《{{sodomain.title}}》- {% if searchval %}{{searchval}}{% endif %}</p>
+    </div>
+    <div class="search-content">
+        <div class="search-con-body">
+            <div class="logo">
+                <a href="/so">
+                    <img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+                        alt="{{sodomain.title}}">
+                </a>
+            </div>
+            <div class="search-box">
+                <div class="search-input">
+                    <div class="input-box">
+                        <input type="text" class="search-input-value">
+                    </div>
+                </div>
+                <div class="search-button">
+                    <button onclick="searchClick()">百度一下</button>
+                </div>
+            </div>
+            <div class="seo-biying-images">
+                {% for item in images %}
+                <a href="{{item.search}}" data-img="https://bing.com/{{item.image}}"></a>
+                {% endfor %}
+            </div>
+            <div class="nav-bot nav-bot-word"></div>
+        </div>
+        {% include "template/components/common.html" %}
+    </div>
+    <script>
+        var arraysObject = null
+        window.baidu = {
+            sug: function (json) {
+                arraysObject = json
+            }
+        }
+    </script>
+    <script src="http://suggestion.baidu.com/su?wd={{searchval}}"></script>
+    <script src="/js/so.js"></script>
+    {{jumpHTML|safe}}
+</body>

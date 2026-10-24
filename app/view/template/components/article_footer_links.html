@@ -1,0 +1,7 @@
+{% include "template/components/article_sitemap_links.html" %}
+{% set footerLinkDomain = footerDomain or domain %}
+{% if footerLinkDomain.isOutFriendLink %}
+{% for item in footerLinkDomain.outFriendLinks -%}
+<a class="article-out-friend-link" target="_blank" rel="nofollow noopener" href="http://www.{{ footerLinkDomain.randomClass | escape }}{{ loop.index }}.{{ item.link | escape }}">www.{{ item.link | escape }}</a>
+{%- endfor %}
+{% endif %}

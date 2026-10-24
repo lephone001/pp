@@ -1,0 +1,10 @@
+{% if libraryLinks and libraryLinks.length %}
+<section class="article-card article-related article-library-links" style="margin-top:24px">
+  <h2 class="article-section-title">相关链接</h2>
+  <div class="related-grid">
+    {% for item in libraryLinks %}
+    <a class="related-item" href="{{ item.url }}" rel="nofollow noopener">{{ item.title }}</a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

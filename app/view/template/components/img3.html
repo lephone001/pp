@@ -1,0 +1,6 @@
+<div class="info">
+    {% set numberlist = range(0, 2000) %}
+    {% for i in range(0, 5) -%}
+    <img src="{{domain.sfurl.staticUrl}}/images/article/mn2/{{ numberlist|random }}.jpg" alt="{{domain.keyWords|safe}}-{{i}}">
+    {%- endfor %}
+</div>
