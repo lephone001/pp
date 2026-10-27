@@ -1,15 +1,1 @@
-{% if domain.agentLink.noticeDom %}
-<div class="contact-24h{% if contactAtTop %} contact-24h--inline{% endif %}">
-  <a class="contact-24h__item" href="tel:{{domain.agentLink.noticeDom}}" aria-label="Hotline 7x24">
-    <span class="contact-24h__symbol" aria-hidden="true">&#9742;</span>
-    <span class="contact-24h__copy">Hotline<small>{{domain.agentLink.noticeDom}}</small></span>
-    <span class="contact-24h__badge" aria-hidden="true">7X24</span>
-  </a>
-  <a class="contact-24h__item contact-24h__item--zalo" href="https://zalo.me/{{domain.agentLink.noticeDom}}" aria-label="Zalo 7x24">
-    <span class="contact-24h__symbol contact-24h__symbol--zalo" aria-hidden="true">Z</span>
-    <span class="contact-24h__copy">Zalo<small>HỖ TRỢ7X24 · NHẮN NGAY</small></span>
-    <span class="contact-24h__badge" aria-hidden="true">7X24</span>
-  </a>
-</div>
-{% endif %}
-
+<div class="header-contact" style="color: {{domain.themeColor}};">{{domain.agentLink.connect|safe}}</div>

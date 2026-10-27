@@ -20,7 +20,7 @@
       <p class="brand-slogan-marquee">
         <span class="brand-slogan-track">
           <span class="brand-slogan-copy">
-            {{domain.titleText2 |safe}}
+            <span class="brand-slogan-title">{{domain.titleText2}}</span>
             <small class="brand-slogan-description">{{domain.description}}</small>
           </span>
         </span>
@@ -103,3 +103,19 @@
 </nav>
 
 <script src="/vn_waji_4/static/assets/js/logo-particles.js?v=12" defer></script>
+<script>
+  (function () {
+    var title = document.querySelector('.brand-slogan-title');
+    if (!title) return;
+    var original = title.textContent;
+    if (original.indexOf(',') === -1) return;
+    var desktop = window.matchMedia('(min-width: 721px)');
+    function updateSlogan() {
+      title.classList.toggle('has-comma-breaks', desktop.matches);
+      title.textContent = desktop.matches ? original.replace(/,\s*/g, ' \n') : original;
+    }
+    updateSlogan();
+    if (desktop.addEventListener) desktop.addEventListener('change', updateSlogan);
+    else desktop.addListener(updateSlogan);
+  })();
+</script>
