@@ -71,7 +71,7 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "cross-env NODE_OPTIONS=--max-old-space-size=1024 egg-scripts start --daemon --env=prod --title=egg-server-ror_seo --workers=32",
+    "start": "cross-env NODE_OPTIONS=--max-old-space-size=1024 egg-scripts start --daemon --env=prod --title=egg-server-ror_seo --workers=2",
     "stop": "egg-scripts stop --title=egg-server-ror_seo",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
