@@ -6,7 +6,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 const logoIcon = L.icon({
-  iconUrl: '/vn_waji_4/static/img/logo.png',
+  iconUrl: '/vn_waji_4/static/assets/img/logo.png',
   iconSize: [36, 36],
   iconAnchor: [21, 42],
   popupAnchor: [0, -42]
