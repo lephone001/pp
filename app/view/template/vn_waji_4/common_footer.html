@@ -319,7 +319,8 @@
       <button id="region-announcement-close" class="region-announcement__close" type="button">Đã hiểu</button>
     </footer>
   </section>
-</div>{% if not contactAtTop %}{% include "template/vn_waji_4/common_footer_contact.html" %}{% endif %}
+</div>
+{% include "template/vn_waji_4/common_footer_contact.html" %}
 {% if domain.agentLink.noticeDom %}
 <button id="back-to-top" class="back-to-top" type="button" aria-label="Quay lại đầu trang" aria-hidden="true" tabindex="-1"><img class="back-to-top__rocket" src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/rocket-back-to-top.png" alt=""></button>
 <div id="energy-ribbon-layer" class="energy-ribbon-layer" aria-hidden="true" hidden></div>
