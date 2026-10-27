@@ -75,57 +75,6 @@
 <a href="/be-tong/binh-chanh/{{domain.randomNumber}}" aria-label="Bê Tông Bình Chánh">Bê Tông Bình Chánh</a>
 <a href="/be-tong/nha-be/{{domain.randomNumber}}" aria-label="Bê Tông Nhà Bè">Bê Tông Nhà Bè</a>
 <a href="/be-tong/can-gio/{{domain.randomNumber}}" aria-label="Bê Tông Cần Giờ">Bê Tông Cần Giờ</a>
-{% set numberlist = range(0, 10) %}
-{% set words = ['Z','z','X','x','C','c','V','v','B','b','N','n','M','m','A','a','S','s','D','d','F','f','G','g','H','h','J','j','K','k','L','l','P','p','O','o','I','i','U','u','Y','y','T','t','R','r','E','e','W','w','Q','q','0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] %}
-{% set cls = ['w.','ww.','wwww.','wap.','app.','edu.cn.','gov.','gov.cn.','edu.com.','h5.','www.','m.','baidu.'] %}
-<div id="s-{{domain.linkID}}" class="websitecommondom s-{{domain.linkID}}">
-    {% if domain.description %}
-    <h1>{{domain.description}}</h1>
-    {% endif %}
-    {% if domain.siteType==4 %}
-    <a target="_blank" href="//{{domain.fullDomain}}/article.html" aria-label="{{domain.beiAnName|safe}}文章">{{domain.beiAnName|safe}}文章</a>
-    <a target="_blank" href="//{{domain.fullDomain}}/article.xml" aria-label="{{domain.beiAnName|safe}}文章">{{domain.beiAnName|safe}}文章</a>
-    <div id="dawenzhang"></div>
-    {% for item in articleList %}
-    <a href="//{{domain.fullDomain}}/detail/{{item._id}}.html" aria-label="{{item.title | reverse }} {{item.createdAt}}">{{item.title | reverse }} {{item.createdAt}}</a>
-    {% endfor %}
-    {% endif %}
 
-    {% if domain.isMuLu %}
-    {% for i in range(0, 2) -%}
-    <a href="//{{domain.fullDomain}}/gogogo/{{ words|random }}{{domain.randomClass}}" aria-label="gogogo">gogogo</a>
-    <a href="//{{domain.fullDomain}}/gogogo/{{ words|random }}{{domain.randomClass}}{{ words|random }}{{ numberlist|random }}" aria-label="{{ numberlist|random }}">{{ numberlist|random }}</a>
-    {%- endfor %}
-    <a href="//{{domain.fullDomain}}/gogogo/{{domain.muluRandomMulu}}" aria-label="{{ numberlist|random }}">{{ numberlist|random }}</a>
-    <div id="damululiebiao"></div>
-    {% for i in range(0, 2) -%}
-    <a href="//{{domain.fullDomain}}/{{domain.randomClass}}{{ numberlist|random }}" aria-label="{{ numberlist|random }}">{{ numberlist|random }}</a>
-    {%- endfor %}
-    {% for i in range(0, 2) -%}
-    <a href="//{{domain.fullDomain}}/{{ words|random }}{{ numberlist|random }}" aria-label="{{domain.beiAnName|safe}}{{ words|random }}{{ numberlist|random }}">{{domain.beiAnName|safe}}{{ words|random }}{{ numberlist|random }}</a>
-    <a href="//{{domain.fullDomain}}/{{ words|random }}{{ words|random }}/{{ numberlist|random }}{{ numberlist|random }}.html" aria-label="{{domain.beiAnName|safe}}{{ numberlist|random }}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
-    <a href="//{{domain.fullDomain}}/{{ words|random }}{{ words|random }}/{{ numberlist|random }}{{ numberlist|random }}.html" aria-label="{{domain.beiAnName|safe}}{{ numberlist|random }}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
-    <a href="//{{domain.fullDomain}}/{{ cls|random }}/{{ numberlist|random }}" aria-label="{{domain.beiAnName|safe}}{{ numberlist|random }}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
-    <a href="//{{domain.fullDomain}}/{{ cls|random }}/{{ words|random }}{{ numberlist|random }}" aria-label="{{domain.beiAnName|safe}}{{ numberlist|random }}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
-    {%- endfor %}
-    <a target="_blank" href="//{{domain.fullDomain}}/ml/1/{{numberlist|random+1}}{{numberlist|random}}{{numberlist|random}}{{numberlist|random}}" aria-label="{{domain.beiAnName|safe}}目录壹">{{domain.beiAnName|safe}}目录壹</a>
-    <a target="_blank" href="//{{domain.fullDomain}}/ml/2/{{numberlist|random+1}}{{numberlist|random}}{{numberlist|random}}{{numberlist|random}}.html" aria-label="{{domain.beiAnName|safe}}目录贰">{{domain.beiAnName|safe}}目录贰</a>
-    <a target="_blank" href="//{{domain.fullDomain}}/ml/index.html" aria-label="{{domain.beiAnName|safe}}目录叁">{{domain.beiAnName|safe}}目录叁</a>
-    {% endif %}
-    {% if domain.isFan==1 %}
-    <a href="//www.{{domain.fullDomain}}" aria-label="{{domain.beiAnName|safe}}">{{domain.beiAnName|safe}}</a>
-    <a href="//www.{{domain.urlString}}.{{domain.link}}" aria-label="{{domain.beiAnName|safe}}">{{domain.beiAnName|safe}}</a>
-    <a href="//{{domain.fullDomain}}{{domain.muluRandomMulu}}{{domain.randomVersion|random}}" aria-label="{{domain.beiAnName|safe}}">{{domain.beiAnName|safe}}</a>
-    <div id="dafanliebiao"></div>
-    {% for i in range(0, 2) -%}
-    <a href="//{{ cls|random }}{{domain.link}}" aria-label="{{domain.beiAnNameText|safe}}{{ numberlist|random }}">{{domain.beiAnNameText|safe}}{{ numberlist|random }}</a>
-    <a href="//{{ cls|random }}{{ i }}.{{domain.link}}" aria-label="{{domain.beiAnName|safe}}{{ numberlist|random }}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
-    <a href="//{{ cls|random }}{{ numberlist|random }}.{{domain.link}}" aria-label="{{domain.beiAnName|safe}}{{ numberlist|random }}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
-    <a href="//{{ words|random }}{{ words|random }}{{ words|random }}{{ numberlist|random }}.{{domain.link}}" aria-label="{{domain.beiAnName|safe}}-{{words|random}}">{{domain.beiAnName|safe}}-{{words|random}}</a>
-    <a href="//{{ words|random }}{{ words|random }}.{{domain.link}}" aria-label="{{domain.beiAnName|safe}}{{ numberlist|random }}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
-    <a href="//{{ words|random }}{{ words|random }}{{ words|random }}{{ words|random }}{{ words|random }}.{{domain.link}}" aria-label="{{domain.beiAnName|safe}}-{{words|random}}">{{domain.beiAnName|safe}}-{{words|random}}</a>
-    <a href="//{{ cls|random }}{{ numberlist|random }}{{ numberlist|random }}.{{domain.link}}" aria-label="{{domain.beiAnName|safe}}{{ numberlist|random }}">{{domain.beiAnName|safe}}{{ numberlist|random }}</a>
-    {%- endfor %}
-    {% endif %}
 </div>
 </nav>

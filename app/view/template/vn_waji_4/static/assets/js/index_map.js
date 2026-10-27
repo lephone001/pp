@@ -46,3 +46,12 @@ khuVuc.forEach(item => {
       <a href="tel:0972112131">Gọi ngay</a>
     `);
 });
+// Keep all service locations visible in the narrower showcase column.
+map.fitBounds(L.latLngBounds(khuVuc.map(item => [item.lat, item.lng])), {
+  padding: [24, 24],
+  maxZoom: 9
+});
+if (window.ResizeObserver) {
+  new ResizeObserver(function () { map.invalidateSize({ pan: false }); })
+    .observe(document.getElementById('serviceMap'));
+}

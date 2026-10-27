@@ -39,9 +39,6 @@ app/public/html/bc01.html
 app/public/html/bc.js
 app/public/html/bc.json
 app/public/html/bc-adv.html
-app/public/images/article/mn7
-app/public/images/article/mn8
-app/public/images
 package-lock.json
 yarn.lock
 coverage/

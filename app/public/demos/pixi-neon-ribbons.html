@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>PixiJS 红蓝流体霓虹光带 Demo</title>
+  <style>
+    :root{font-family:Inter,"Segoe UI",system-ui,-apple-system,sans-serif;color:#f4f7ff;background:#060914;font-synthesis:none;text-rendering:optimizeLegibility}
+    *{box-sizing:border-box}
+    html,body{width:100%;height:100%;min-height:100%;margin:0;overflow:hidden}
+    body{position:relative;background:radial-gradient(ellipse at 77% 87%,rgba(3,54,124,.17),transparent 39%),radial-gradient(ellipse at 66% 87%,rgba(120,12,43,.12),transparent 36%),#060914;color:#f4f7ff;transition:background .35s ease,color .35s ease}
+    body[data-theme="light"]{background:radial-gradient(ellipse at 77% 87%,rgba(0,122,219,.08),transparent 42%),radial-gradient(ellipse at 64% 89%,rgba(223,35,65,.08),transparent 36%),#f4f6fa;color:#172135}
+    #pixi-root{position:fixed;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+    #pixi-root canvas{position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none}
+    #fallback-ribbons{position:fixed;inset:0;z-index:1;width:100%;height:100%;pointer-events:none;opacity:.9}
+    body[data-theme="light"] #fallback-ribbons{opacity:.48}
+    [hidden]{display:none!important}
+    .demo-panel{position:fixed;z-index:5;top:22px;left:22px;width:min(354px,calc(100vw - 44px));max-height:calc(100vh - 44px);overflow:auto;padding:21px;border:1px solid rgba(174,192,230,.16);border-radius:18px;background:rgba(10,16,31,.78);box-shadow:0 20px 70px rgba(0,0,0,.28);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+    body[data-theme="light"] .demo-panel{border-color:rgba(44,59,82,.13);background:rgba(255,255,255,.83);box-shadow:0 18px 55px rgba(45,66,98,.12)}
+    .demo-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px}
+    .demo-heading h1{margin:0;color:inherit;font-size:20px;font-weight:800;letter-spacing:-.035em;line-height:1.2}
+    .demo-heading p{margin:6px 0 0;color:#9ca9c1;font-size:12px;line-height:1.5}
+    body[data-theme="light"] .demo-heading p{color:#68758c}
+    .version-tag{flex:none;padding:5px 8px;border:1px solid rgba(58,151,244,.32);border-radius:99px;background:rgba(0,112,220,.12);color:#7ec7ff;font-size:10px;font-weight:800;letter-spacing:.05em}
+    .status-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 17px;padding:10px 11px;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(255,255,255,.035)}
+    body[data-theme="light"] .status-row{border-color:rgba(34,54,82,.1);background:rgba(36,68,105,.035)}
+    #demo-status{display:flex;align-items:center;gap:8px;color:#c8d4e8;font-size:11px;line-height:1.4}
+    body[data-theme="light"] #demo-status{color:#4e5b70}
+    #status-dot{width:7px;height:7px;flex:none;border-radius:50%;background:#f2b452;box-shadow:0 0 10px currentColor}
+    #status-dot.is-on{background:#43e0a1;color:#43e0a1}
+    #fps-readout{color:#8fcaFF;font-size:11px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+    body[data-theme="light"] #fps-readout{color:#086bbd}
+    .control{margin:0 0 15px}
+    .control-label{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;color:#e3e9f4;font-size:12px;font-weight:650}
+    body[data-theme="light"] .control-label{color:#28364c}
+    .control output{min-width:43px;color:#86caff;font-size:11px;font-variant-numeric:tabular-nums;text-align:right}
+    body[data-theme="light"] .control output{color:#066bbf}
+    .control input[type="range"]{display:block;width:100%;height:5px;margin:0;accent-color:#148de8;cursor:pointer}
+    .demo-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:19px}
+    .demo-actions button{min-height:39px;padding:0 12px;border:1px solid rgba(153,175,214,.2);border-radius:9px;background:rgba(255,255,255,.07);color:#eef5ff;font:700 12px/1 inherit;cursor:pointer;transition:transform .18s ease,filter .18s ease,border-color .18s ease}
+    body[data-theme="light"] .demo-actions button{border-color:rgba(33,55,85,.15);background:#fff;color:#24334a}
+    .demo-actions button:hover{transform:translateY(-1px);filter:brightness(1.12)}
+    .demo-actions .primary{border-color:transparent;background:linear-gradient(105deg,#a30d25 0%,#ed2341 45%,#0758b6 56%,#138ce7 100%);color:#fff;box-shadow:0 7px 18px rgba(0,89,181,.22)}
+    .demo-note{display:block;margin-top:13px;color:#7e8ba3;font-size:10px;line-height:1.55}
+    body[data-theme="light"] .demo-note{color:#68758c}
+    .bolt-button{position:fixed;right:20px;bottom:20px;z-index:10;display:grid;place-items:center;width:52px;height:52px;padding:0;border:1px solid rgba(255,255,255,.82);border-radius:50%;background:linear-gradient(128deg,#f52341 0%,#bd1b63 45%,#3150ce 56%,#0788ed 100%);color:#fff;box-shadow:0 0 12px rgba(239,30,65,.45),0 0 24px rgba(0,134,255,.43),inset 0 0 10px rgba(255,255,255,.28);cursor:pointer;animation:bolt-pulse 2.2s ease-in-out infinite;transition:filter .2s ease,transform .2s ease}
+    .bolt-button:hover{filter:brightness(1.15);transform:scale(1.04)}
+    .bolt-button:focus-visible,.demo-actions button:focus-visible{outline:3px solid #56c7ff;outline-offset:4px}
+    .bolt-button svg{width:23px;height:31px;filter:drop-shadow(0 1px 3px rgba(13,20,48,.55))}
+    .bolt-button.is-off{filter:saturate(.62);opacity:.78}
+    @keyframes bolt-pulse{0%,100%{box-shadow:0 0 12px rgba(239,30,65,.4),0 0 24px rgba(0,134,255,.37),inset 0 0 9px rgba(255,255,255,.22)}50%{box-shadow:0 0 19px rgba(239,30,65,.62),0 0 34px rgba(0,134,255,.58),inset 0 0 12px rgba(255,255,255,.34)}}
+    @media(max-width:620px){.demo-panel{top:12px;left:12px;width:min(330px,calc(100vw - 24px));max-height:calc(100vh - 85px);padding:16px;border-radius:15px}.demo-heading h1{font-size:18px}.control{margin-bottom:12px}.demo-actions{margin-top:15px}.bolt-button{right:16px;bottom:16px;width:50px;height:50px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body data-theme="dark">
+  <div id="pixi-root" aria-hidden="true"></div>
+  <svg id="fallback-ribbons" viewBox="0 0 1600 900" preserveAspectRatio="none" hidden aria-hidden="true">
+    <defs>
+      <linearGradient id="ribbon-red" x1="1" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff526b"/><stop offset=".38" stop-color="#f02155"/><stop offset=".72" stop-color="#eb2847" stop-opacity=".82"/><stop offset="1" stop-color="#e63c6a" stop-opacity=".05"/></linearGradient>
+      <linearGradient id="ribbon-blue" x1="1" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#6eeaff"/><stop offset=".35" stop-color="#168aff"/><stop offset=".74" stop-color="#0871e1" stop-opacity=".8"/><stop offset="1" stop-color="#5ed9ff" stop-opacity=".04"/></linearGradient>
+      <filter id="ribbon-blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="11"/></filter>
+    </defs>
+    <g fill="none" stroke-linecap="round">
+      <path d="M1570 860 C1285 790 1350 610 1105 530 S730 545 495 375 210 200 8 110" stroke="url(#ribbon-red)" stroke-width="70" opacity=".22" filter="url(#ribbon-blur)"/>
+      <path d="M1570 860 C1285 790 1350 610 1105 530 S730 545 495 375 210 200 8 110" stroke="url(#ribbon-red)" stroke-width="30" opacity=".62"/>
+      <path d="M1570 860 C1340 685 1155 760 940 585 S610 420 405 470 120 385 0 315" stroke="url(#ribbon-blue)" stroke-width="66" opacity=".22" filter="url(#ribbon-blur)"/>
+      <path d="M1570 860 C1340 685 1155 760 940 585 S610 420 405 470 120 385 0 315" stroke="url(#ribbon-blue)" stroke-width="28" opacity=".64"/>
+    </g>
+  </svg>
+
+  <main class="demo-panel" aria-label="PixiJS 流体光带动画控制面板">
+    <header class="demo-heading">
+      <div><h1>NEON RIBBON FLOW</h1><p>红蓝流体霓虹光带 · GPU Shader 实验台</p></div>
+      <span class="version-tag">PIXI v8.22</span>
+    </header>
+    <div class="status-row"><div id="demo-status"><span id="status-dot"></span><span id="status-text">正在初始化 WebGL…</span></div><output id="fps-readout">-- FPS</output></div>
+    <div class="control"><span class="control-label">能量光带</span><output class="fixed-setting">2 条 · 红色 + 蓝色</output></div>
+    <div class="control"><label class="control-label" for="ribbon-speed">流动速度 <output id="ribbon-speed-value">0.62×</output></label><input id="ribbon-speed" type="range" min="0.2" max="1.4" step="0.02" value="0.62"></div>
+    <div class="control"><label class="control-label" for="ribbon-amplitude">波浪幅度 <output id="ribbon-amplitude-value">58 px</output></label><input id="ribbon-amplitude" type="range" min="12" max="120" step="1" value="58"></div>
+    <div class="control"><label class="control-label" for="ribbon-width">光带宽度 <output id="ribbon-width-value">34 px</output></label><input id="ribbon-width" type="range" min="12" max="68" step="1" value="34"></div>
+    <div class="control"><label class="control-label" for="ribbon-glow">发光强度 <output id="ribbon-glow-value">0.85</output></label><input id="ribbon-glow" type="range" min="0.1" max="1.5" step="0.05" value="0.85"></div>
+    <div class="demo-actions"><button class="primary" id="animation-toggle" type="button">暂停动画</button><button id="theme-toggle" type="button">切换浅色背景</button></div>
+    <small class="demo-note">双 Mesh 流体光带 · 红蓝双带向闪电汇聚 · WebGL2 · 内部渲染分辨率 1.0 · 目标 30 FPS。移动端默认关闭，可点击右下角闪电启动。</small>
+  </main>
+
+  <button id="bolt-toggle" class="bolt-button" type="button" aria-label="启动红蓝能量光带" aria-pressed="false" title="启动动画">
+    <svg viewBox="0 0 24 32" focusable="false" aria-hidden="true"><path d="M14.2 1 3.9 18.1h7.3L10 31l10.2-18h-7.1L14.2 1Z" fill="currentColor"/></svg>
+  </button>
+
+  <script type="module">
+    const PIXI_MODULE_URL = "https://cdn.jsdelivr.net/npm/pixi.js@8.22.0/dist/pixi.min.mjs";
+    const MAX_RIBBONS = 2;
+    const SEGMENTS = 240;
+    const root = document.getElementById("pixi-root");
+    const fallback = document.getElementById("fallback-ribbons");
+    const statusText = document.getElementById("status-text");
+    const statusDot = document.getElementById("status-dot");
+    const fpsReadout = document.getElementById("fps-readout");
+    const animationToggle = document.getElementById("animation-toggle");
+    const boltToggle = document.getElementById("bolt-toggle");
+    const themeToggle = document.getElementById("theme-toggle");
+    const fields = {
+      speed: document.getElementById("ribbon-speed"),
+      amplitude: document.getElementById("ribbon-amplitude"),
+      width: document.getElementById("ribbon-width"),
+      glow: document.getElementById("ribbon-glow")
+    };
+    const valueNodes = {
+      speed: document.getElementById("ribbon-speed-value"),
+      amplitude: document.getElementById("ribbon-amplitude-value"),
+      width: document.getElementById("ribbon-width-value"),
+      glow: document.getElementById("ribbon-glow-value")
+    };
+    let app = null;
+    let entries = [];
+    let elapsed = 0;
+    let fpsElapsed = 0;
+    let running = false;
+    let userPaused = false;
+    let suspended = false;
+    let destroyed = false;
+    let initialization = null;
+    let PIXI = null;
+
+    const vertexShader = `
+      precision highp float;
+      attribute vec2 aPosition;
+      attribute vec2 aUV;
+      uniform vec2 uResolution;
+      uniform vec2 uOrigin;
+      uniform float uTime;
+      uniform float uLane;
+      uniform float uSpeed;
+      uniform float uAmplitude;
+      uniform float uRibbonWidth;
+      uniform float uPhase;
+      varying float vT;
+      varying float vAcross;
+      varying float vFade;
+      varying float vPhase;
+      void main(void) {
+        float t = aPosition.x;
+        float side = aPosition.y;
+        float lane = uLane - 0.5;
+        vec2 redEnd = vec2(-uResolution.x * 0.08, uResolution.y * 0.35);
+        vec2 blueEnd = vec2(uResolution.x * 0.64, -uResolution.y * 0.08);
+        vec2 endpoint = mix(redEnd, blueEnd, uLane);
+        vec2 source = uOrigin + vec2(17.0 * uLane, 0.0);
+        vec2 blueControl = vec2(source.x, mix(source.y, endpoint.y, 0.4));
+        vec2 tangent = mix(endpoint - source,
+          2.0 * mix(blueControl - source, endpoint - blueControl, t), uLane);
+        vec2 normal = normalize(vec2(-tangent.y, tangent.x));
+        float flowTime = -uTime;
+        float wave = sin(t * 5.2 - flowTime * uSpeed + uPhase);
+        wave += 0.42 * sin(t * 11.6 - flowTime * uSpeed * 0.68 + uPhase * 1.53);
+        wave += 0.18 * sin(t * 2.25 + flowTime * uSpeed * 0.22 + uPhase * 2.1);
+        vec2 straight = mix(source, endpoint, t);
+        vec2 blueCurve = mix(mix(source, blueControl, t), mix(blueControl, endpoint, t), t);
+        vec2 center = mix(straight, blueCurve, uLane);
+        float fanSpread = lane * uResolution.x * 0.11 * pow(t, 1.8);
+        float flowEnvelope = sin(3.14159 * t) * smoothstep(0.0, 0.18, t);
+        float waveEnvelope = flowEnvelope * (0.58 + 0.42 * t);
+        float slowSway = sin(t * 3.0 - flowTime * 0.19 + uPhase * 1.7) * uAmplitude * 0.2 * flowEnvelope;
+        center += normal * (fanSpread + wave * uAmplitude * waveEnvelope + slowSway);
+        float widthPulse = 1.0 + 0.16 * sin(t * 8.4 - flowTime * uSpeed * 0.72 + uPhase * 1.4);
+        float taper = smoothstep(0.0, 0.018, t);
+        float halfWidth = uRibbonWidth * (0.24 + 3.9 * pow(t, 1.6)) * widthPulse * taper;
+        vec2 position = center + normal * side * halfWidth;
+        vec2 clipPosition = vec2(position.x / uResolution.x * 2.0 - 1.0, 1.0 - position.y / uResolution.y * 2.0);
+        gl_Position = vec4(clipPosition, 0.0, 1.0);
+        vT = aUV.x;
+        vAcross = side;
+        vFade = mix(1.0, 0.12, smoothstep(0.0, 1.0, t));
+        vPhase = uPhase;
+      }
+    `;
+
+    const fragmentShader = `
+      precision highp float;
+      varying float vT;
+      varying float vAcross;
+      varying float vFade;
+      varying float vPhase;
+      uniform float uTime;
+      uniform float uSpeed;
+      uniform float uGlow;
+      uniform float uOpacity;
+      uniform vec3 uRibbonColor;
+      uniform vec3 uAccent;
+      void main(void) {
+        float across = abs(vAcross);
+        float body = exp(-pow(across * 1.52, 4.0));
+        float core = exp(-pow(across / 0.105, 2.0));
+        float rim = exp(-pow((across - 0.78) / 0.15, 2.0));
+        float edgeCore = exp(-pow((across - 0.965) / 0.045, 2.0));
+        float flowTime = -uTime;
+        float grain = 0.5 + 0.5 * sin(vT * 118.0 - flowTime * uSpeed * 3.15 + sin(vT * 16.0 + vPhase) * 2.4);
+        float filamentWave = 0.5 + 0.5 * sin(vT * 39.0 - flowTime * uSpeed * 2.4 + vPhase + sin(vT * 9.0) * 1.7);
+        float filament = exp(-pow((across - (0.34 + 0.075 * sin(vT * 8.0 - flowTime * 0.26 + vPhase))) / 0.055, 2.0)) * filamentWave;
+        float shimmer = pow(max(0.0, sin(vT * 31.0 - flowTime * uSpeed * 2.0 + vPhase + sin(vT * 7.0) * 1.3)), 18.0);
+        float blend = smoothstep(0.08, 0.95, vT) * 0.58;
+        vec3 color = mix(uRibbonColor, uAccent, blend);
+        color = mix(color, vec3(0.94, 0.91, 1.0), clamp(core * 0.42 + edgeCore * 0.3 + shimmer * 0.58, 0.0, 0.82));
+        color += uAccent * (rim * 0.18 + filament * 0.26 + shimmer * 0.2) * uGlow;
+        float sourceGlow = exp(-pow(vT / 0.12, 2.0));
+        float alpha = (body * 0.24 + core * 0.25 + rim * 0.22 + edgeCore * 0.18 + filament * 0.2 + shimmer * 0.26) + sourceGlow * 0.28;
+        alpha *= vFade * uOpacity * (0.88 + grain * 0.12) * (0.78 + uGlow * 0.22);
+        float finalAlpha = clamp(alpha, 0.0, 0.9);
+        gl_FragColor = vec4(color * (1.0 + uGlow * 0.28) * finalAlpha, finalAlpha);
+      }
+    `;
+
+    function getSettings() {
+      return {
+
+        speed: Number(fields.speed.value),
+        amplitude: Number(fields.amplitude.value),
+        width: Number(fields.width.value),
+        glow: Number(fields.glow.value)
+      };
+    }
+
+    function setStatus(text, active) {
+      statusText.textContent = text;
+      statusDot.classList.toggle("is-on", Boolean(active));
+    }
+
+    function syncButtons() {
+      const label = running ? "暂停动画" : "启动动画";
+      animationToggle.textContent = label;
+      boltToggle.classList.toggle("is-off", !running);
+      boltToggle.setAttribute("aria-pressed", String(running));
+      boltToggle.setAttribute("aria-label", label + "：红蓝能量光带");
+      boltToggle.title = label;
+    }
+
+    function updateValueLabels() {
+      const values = getSettings();
+      valueNodes.speed.textContent = values.speed.toFixed(2) + "×";
+      valueNodes.amplitude.textContent = values.amplitude + " px";
+      valueNodes.width.textContent = values.width + " px";
+      valueNodes.glow.textContent = values.glow.toFixed(2);
+      entries.forEach(function (entry, index) {
+        entry.mesh.visible = true;
+        entry.uniforms.uniforms.uLane = index;
+        entry.uniforms.uniforms.uSpeed = values.speed;
+        entry.uniforms.uniforms.uAmplitude = values.amplitude;
+        entry.uniforms.uniforms.uRibbonWidth = values.width;
+        entry.uniforms.uniforms.uGlow = values.glow;
+      });
+    }
+
+    function viewportSize() {
+      return {
+        width: Math.max(1, root.clientWidth || window.innerWidth),
+        height: Math.max(1, root.clientHeight || window.innerHeight)
+      };
+    }
+
+    function boltOriginInCanvas() {
+      const boltRect = boltToggle.getBoundingClientRect();
+      const canvasRect = root.getBoundingClientRect();
+      return [
+        boltRect.left + boltRect.width * 0.5 - canvasRect.left,
+        boltRect.top + boltRect.height * 0.5 - canvasRect.top
+      ];
+    }
+
+    function updateViewportUniforms() {
+      if (!app) return;
+      const size = viewportSize();
+      const origin = boltOriginInCanvas();
+      entries.forEach(function (entry) {
+        const u = entry.uniforms.uniforms;
+        u.uResolution[0] = size.width;
+        u.uResolution[1] = size.height;
+        u.uOrigin[0] = origin[0];
+        u.uOrigin[1] = origin[1];
+      });
+    }
+
+    function makeGeometry(Geometry) {
+      const positions = new Float32Array((SEGMENTS + 1) * 4);
+      const uvs = new Float32Array((SEGMENTS + 1) * 4);
+      const indices = new Uint32Array(SEGMENTS * 6);
+      for (let i = 0; i <= SEGMENTS; i += 1) {
+        const t = i / SEGMENTS;
+        const vertex = i * 4;
+        positions[vertex] = t;
+        positions[vertex + 1] = -1;
+        positions[vertex + 2] = t;
+        positions[vertex + 3] = 1;
+        uvs[vertex] = t;
+        uvs[vertex + 1] = 0;
+        uvs[vertex + 2] = t;
+        uvs[vertex + 3] = 1;
+        if (i < SEGMENTS) {
+          const a = i * 2;
+          const index = i * 6;
+          indices[index] = a;
+          indices[index + 1] = a + 1;
+          indices[index + 2] = a + 2;
+          indices[index + 3] = a + 1;
+          indices[index + 4] = a + 3;
+          indices[index + 5] = a + 2;
+        }
+      }
+      return new Geometry({
+        attributes: { aPosition: positions, aUV: uvs },
+        indexBuffer: indices
+      });
+    }
+
+    function makeUniforms(UniformGroup, lane, phase, color, accent) {
+      const size = viewportSize();
+      const origin = boltOriginInCanvas();
+      const settings = getSettings();
+      return new UniformGroup({
+        uResolution: { value: new Float32Array([size.width, size.height]), type: "vec2<f32>" },
+        uOrigin: { value: new Float32Array(origin), type: "vec2<f32>" },
+        uTime: { value: 0, type: "f32" },
+        uLane: { value: lane, type: "f32" },
+        uSpeed: { value: settings.speed, type: "f32" },
+        uAmplitude: { value: settings.amplitude, type: "f32" },
+        uRibbonWidth: { value: settings.width, type: "f32" },
+        uPhase: { value: phase, type: "f32" },
+        uGlow: { value: settings.glow, type: "f32" },
+        uOpacity: { value: 1.0, type: "f32" },
+        // Pixi Mesh owns uColor (vec4); keep this RGB palette uniform separate.
+        uRibbonColor: { value: new Float32Array(color), type: "vec3<f32>" },
+        uAccent: { value: new Float32Array(accent), type: "vec3<f32>" }
+      });
+    }
+
+    function buildScene(pixi) {
+      const geometry = makeGeometry(pixi.Geometry);
+      const palette = [
+        [[1.0, 0.045, 0.16], [1.0, 0.29, 0.57]],
+        [[0.035, 0.39, 1.0], [0.22, 0.88, 1.0]]
+      ];
+      for (let i = 0; i < MAX_RIBBONS; i += 1) {
+        const colorSet = palette[i % palette.length];
+        const uniforms = makeUniforms(pixi.UniformGroup, 0.5, i * 2.399, colorSet[0], colorSet[1]);
+        const shader = pixi.Shader.from({
+          gl: { vertex: vertexShader, fragment: fragmentShader },
+          resources: { ribbonUniforms: uniforms }
+        });
+        const mesh = new pixi.Mesh({ geometry, shader });
+        mesh.visible = true;
+        mesh.blendMode = "normal";
+        app.stage.addChild(mesh);
+        entries.push({ mesh: mesh, uniforms: uniforms });
+      }
+      updateValueLabels();
+      updateViewportUniforms();
+      fallback.hidden = true;
+    }
+
+    function onTick(ticker) {
+      const delta = Math.min(ticker.deltaMS || 16.67, 80) / 1000;
+      elapsed += delta;
+      fpsElapsed += delta;
+      for (let i = 0; i < entries.length; i += 1) {
+        entries[i].uniforms.uniforms.uTime = elapsed;
+      }
+      if (fpsElapsed >= 0.35) {
+        fpsReadout.textContent = Math.round(ticker.FPS || 0) + " FPS";
+        fpsElapsed = 0;
+      }
+    }
+
+    async function initialize() {
+      if (app) return;
+      const probe = document.createElement("canvas");
+      const webgl2 = probe.getContext("webgl2", { alpha: true, powerPreference: "low-power" });
+      if (!webgl2) throw new Error("此浏览器没有可用的 WebGL2。");
+      const loseContext = webgl2.getExtension("WEBGL_lose_context");
+      if (loseContext) loseContext.loseContext();
+      const pixi = await import(PIXI_MODULE_URL);
+      PIXI = pixi;
+      const candidate = new pixi.Application();
+      await candidate.init({
+        preference: "webgl",
+        preferWebGLVersion: 2,
+        resizeTo: window,
+        resolution: 1.0,
+        autoDensity: true,
+        backgroundAlpha: 0,
+        antialias: true,
+        clearBeforeRender: true,
+        powerPreference: "low-power",
+        autoStart: false,
+        sharedTicker: false
+      });
+      app = candidate;
+      app.canvas.className = "pixi-ribbon-canvas";
+      app.canvas.setAttribute("aria-hidden", "true");
+      root.appendChild(app.canvas);
+      app.ticker.maxFPS = 30;
+      app.ticker.minFPS = 15;
+      buildScene(pixi);
+      app.ticker.add(onTick);
+      window.addEventListener("resize", updateViewportUniforms, { passive: true });
+      document.fonts && document.fonts.ready.then(updateViewportUniforms);
+    }
+
+    async function start() {
+      if (destroyed || running) return;
+      userPaused = false;
+      if (document.hidden) {
+        setStatus("页面切回前台后继续播放", false);
+        return;
+      }
+      if (initialization) return initialization;
+      setStatus("正在启动 WebGL 光带…", false);
+      initialization = initialize().then(function () {
+        if (!userPaused && !document.hidden && app) {
+          app.start();
+          running = true;
+          setStatus("PixiJS WebGL 光带运行中", true);
+          syncButtons();
+        }
+      }).catch(function (error) {
+        fallback.hidden = false;
+        const message = error && error.message ? error.message : "PixiJS 初始化失败";
+        setStatus(message + " · 显示静态预览", false);
+        boltToggle.disabled = true;
+        animationToggle.disabled = true;
+        console.warn("PixiJS ribbon demo fallback:", error);
+      }).finally(function () {
+        initialization = null;
+        syncButtons();
+      });
+      return initialization;
+    }
+
+    function stop() {
+      userPaused = true;
+      suspended = false;
+      if (app && running) app.stop();
+      running = false;
+      fpsReadout.textContent = "暂停";
+      setStatus("动画已暂停", false);
+      syncButtons();
+    }
+
+    function toggleAnimation() {
+      if (running) stop();
+      else start();
+    }
+
+    function destroy() {
+      if (destroyed) return;
+      destroyed = true;
+      userPaused = true;
+      running = false;
+      window.removeEventListener("resize", updateViewportUniforms);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      if (app) {
+        app.stop();
+        app.ticker.remove(onTick);
+        app.destroy({ removeView: true }, { children: true, context: true });
+        app = null;
+      }
+      entries = [];
+      setStatus("PixiJS 资源已销毁", false);
+      syncButtons();
+    }
+
+    function onVisibilityChange() {
+      if (document.hidden && running) {
+        suspended = true;
+        running = false;
+        app.stop();
+        setStatus("页面隐藏，已暂停渲染", false);
+        syncButtons();
+      } else if (!document.hidden && suspended && !userPaused) {
+        suspended = false;
+        start();
+      }
+    }
+
+    function applyTheme(theme) {
+      document.body.dataset.theme = theme;
+      themeToggle.textContent = theme === "dark" ? "切换浅色背景" : "切换深色背景";
+    }
+
+    Object.keys(fields).forEach(function (key) {
+      fields[key].addEventListener("input", updateValueLabels);
+      fields[key].addEventListener("change", updateValueLabels);
+    });
+    animationToggle.addEventListener("click", toggleAnimation);
+    boltToggle.addEventListener("click", toggleAnimation);
+    themeToggle.addEventListener("click", function () {
+      applyTheme(document.body.dataset.theme === "dark" ? "light" : "dark");
+    });
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    window.NeonRibbonDemo = { start: start, stop: stop, destroy: destroy, getApp: function () { return app; } };
+    updateValueLabels();
+    syncButtons();
+
+    const mobileDefaultOff = window.matchMedia("(pointer: coarse) and (max-width: 900px)").matches;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (mobileDefaultOff || reducedMotion) {
+      userPaused = true;
+      fallback.hidden = false;
+      setStatus(mobileDefaultOff ? "移动端动画默认关闭，点击闪电启动" : "系统减少动态效果已启用，点击闪电启动", false);
+    } else {
+      start();
+    }
+  </script>
+</body>
+</html>

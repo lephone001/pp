@@ -5,64 +5,59 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Tin giá đục phá bê tông 2026 | {{domain.titleText}}</title>
   <meta name="description" content="Tin tức bảng giá đục phá bê tông, giá khoan cắt bê tông, giá thuê máy xúc, báo giá tháo dỡ công trình và vận chuyển xà bần năm 2026.">
-  <link rel="canonical" href="/tin-gia-duc-pha-be-tong">
+  <link rel="canonical" href="{{domain.httpFullDomain}}/article.html">
   <meta property="og:title" content="Tin giá đục phá bê tông 2026">
   <meta property="og:description" content="Cập nhật đơn giá đục phá bê tông, khoan cắt bê tông, thuê máy xúc và vận chuyển xà bần.">
   <meta property="og:type" content="website">
   <link rel="icon" href="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/css/style.css?v=366">
+  <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/css/style.css?v=380">
+  <link rel="stylesheet" href="/vn_waji_4/static/assets/css/article-list.css?v=2">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"CollectionPage","name":"Tin giá đục phá bê tông 2026","description":"Danh sách bài viết về bảng giá thi công bê tông, khoan cắt, thuê máy xúc và vận chuyển xà bần."}
   </script>
 </head>
-<body>
+<body class="article-directory-page">
   {% include "template/vn_waji_4/common_header.html" %}
 
   <main>
     <section class="page-hero">
       <div class="container">
+        <nav class="breadcrumb" aria-label="Điều hướng"><a href="/">Trang chủ</a><span>/</span><span>Bài viết</span></nav>
         <p class="eyebrow">Tin giá 2026</p>
         <h1>Tin tức bảng giá đục phá bê tông và khoan cắt bê tông</h1>
         <p>Cập nhật đơn giá thi công, báo giá tháo dỡ công trình, thuê máy xúc và vận chuyển xà bần.</p>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section article-directory-section">
       <div class="container article-layout">
-        <div class="article-item-listt">
-                {% for item in articleList %}
-                <article>
-                    <a href="/detail/{{item._id}}.html">
-                        {% if item.image %}
-                        <div class="a-img" style="background-image: url({{item.image}});"></div>
-                        {% endif %}
-                        {% if item.image %}
-                        <div class="a-content">
-                            {% else %}
-                            <div class="no-image">
-                                {% endif %}
-                                <h1>
-                                    {{item.title}}
-                                </h1>
-                                {% if item.description.length>0 %}
-                                <h4>
-                                    {{item.description}}
-                                </h4>
-                                {% endif %}
-                                <div class="detailInfo">
-                                    <span class="time">时间:{{item.time}}</span>
-                                    <span class="tag">
-                                        分类: {{ item.articleCategory }}
-                                    </span>
-                                    <span class="tag">
-                                        下载: {{ item.view }}次
-                                    </span>
-                                </div>
-                            </div>
-                    </a>
-                </article>
-                {% endfor %}
+        <div class="article-directory-list">
+          <div class="article-directory-heading"><h2>Bài viết mới nhất</h2><span>Tin tức &amp; báo giá</span></div>
+          {% for item in articleList %}
+          <article class="directory-card">
+            <a class="directory-card-image" href="/detail/{{item._id}}.html" aria-label="{{item.title}}">
+              <img src="{{item.image or 'https://www.earthmoversmagazine.co.uk/ugc-1/1/6/0/2119_big.jpg'}}" alt="{{item.title}}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <div class="directory-card-content">
+              <div class="directory-card-meta">
+                {% if item.articleCategory %}<span class="directory-category">{{item.articleCategory}}</span>{% endif %}
+                {% if item.dateText %}<time datetime="{{item.dateISO}}">{{item.dateText}} (GMT+7)</time>{% endif %}
+                <span>{{item.view or 0}} lượt xem</span>
+              </div>
+              <h2><a href="/detail/{{item._id}}.html">{{item.title}}</a></h2>
+              {% if item.description %}<p>{{item.description | striptags | truncate(160, true)}}</p>{% endif %}
+              <a class="directory-read-more" href="/detail/{{item._id}}.html" aria-label="Đọc tiếp: {{item.title}}">Đọc tiếp <span aria-hidden="true">→</span></a>
             </div>
+          </article>
+          {% else %}
+          <div class="directory-empty"><h2>Bài viết đang được cập nhật</h2><p>Vui lòng quay lại sau hoặc liên hệ để được tư vấn báo giá.</p><a href="/lien-he.html">Liên hệ tư vấn →</a></div>
+          {% endfor %}
+          <nav class="article-pagination" aria-label="Phân trang bài viết">
+            {% if pagination.previousUrl %}<a rel="prev" href="{{pagination.previousUrl}}">← Trang trước</a>{% else %}<span class="pagination-disabled" aria-disabled="true">← Trang trước</span>{% endif %}
+            <a href="/article.html">Trang đầu</a>
+            {% if pagination.nextUrl %}<a rel="next" href="{{pagination.nextUrl}}">Trang sau →</a>{% else %}<span class="pagination-disabled" aria-disabled="true">Trang sau →</span>{% endif %}
+          </nav>
+        </div>
         <aside class="article-sidebar">
           <div class="side-box"><h3>Nhóm báo giá</h3><a href="index.html#duc-pha" aria-label="Giá đục phá bê tông">Giá đục phá bê tông</a><a href="index.html#khoan-cat" aria-label="Giá khoan cắt bê tông">Giá khoan cắt bê tông</a><a href="index.html#may-xuc" aria-label="Giá thuê máy xúc">Giá thuê máy xúc</a><a href="index.html#xa-ban" aria-label="Giá vận chuyển xà bần">Giá vận chuyển xà bần</a></div>
           <div class="side-box contact-box"><h3>Nhận báo giá</h3><p>Gửi thông tin công trình để nhận đơn giá chính xác.</p><a href="tel:{{domain.agentLink.noticeDom}}" aria-label="Gọi {{domain.agentLink.noticeDom}}">Gọi {{domain.agentLink.noticeDom}}</a></div>
@@ -72,7 +67,5 @@
   </main>
 
   {% include "template/vn_waji_4/common_footer.html" %}
-  <div class="fixed-contact"><a href="tel:{{domain.agentLink.noticeDom}}" aria-label="Gọi ngay">Gọi ngay</a><a href="index.html#bao-gia" aria-label="Báo giá">Báo giá</a></div>
-  <script src="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/js/main.js"></script>
 </body>
 </html>

@@ -144,6 +144,21 @@ module.exports = class IndexController extends egg.Controller {
     }
     async articleList() {
         const { ctx } = this;
+        const { domain } = await ctx.service.utils.getSiteInfo();
+        if (domain.tname === 'vn_waji_4') {
+            const formatDate = require('../../utils/vietnamArticleDate');
+            const listing = await ctx.service.article.publicCursorList(ctx.query);
+            const rows = listing.rows.map(formatDate);
+            return ctx.render('template/vn_waji_4/article_list.html', {
+                domain,
+                articleList: rows,
+                pagination: {
+                    previousUrl: listing.hasPrev ? '/article.html?direction=prev&cursor=' + rows[0]._id : '',
+                    nextUrl: listing.hasNext ? '/article.html?direction=next&cursor=' + rows[rows.length - 1]._id : '',
+                    isCursorPage: Boolean(ctx.query.cursor),
+                },
+            });
+        }
         let rows = []
         let cachePageFilePath = this.ctx.app.config.cacheFile + 'article_list'
 
@@ -162,7 +177,6 @@ module.exports = class IndexController extends egg.Controller {
                 fs.mkdirSync(cachePageFilePath);
             }
         }
-        let { domain } = await ctx.service.utils.getSiteInfo();
         let result = {};
         result.articleList = rows
         result.domain = domain;

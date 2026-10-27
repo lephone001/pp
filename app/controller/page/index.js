@@ -77,6 +77,12 @@ const hydrateOldArticleDetailResult = async (result, { ctx, site, domain }) => {
   };
   result.articleNext = detailList[1];
   result.articlePrve = detailList[2];
+  if (domain.tname === 'vn_waji_4') {
+    const neighbors = await ctx.service.article.publicNeighbors(String(result.detail._id));
+    result.previousArticle = neighbors.previous;
+    result.nextArticle = neighbors.next;
+    result.detail = require('../../utils/vietnamArticleDate')(result.detail);
+  }
   result.detail.nowJump = false;
   result.titleCP = result.detail.title;
 

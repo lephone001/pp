@@ -1,6 +1,6 @@
             
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"
@@ -27,8 +27,13 @@
                 font-weight: 400;
             }
         </style>
-    </head>
-    <body>
+<link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl or ''}}/{{domain.tname or 'vn_waji_4'}}/static/assets/css/style.css?v=366">
+</head>
+    <body class="bgThemColor site-error-page">
+{% set contactAtTop = true %}
+{% include "template/vn_waji_4/common_header.html" %}
+{% include "template/vn_waji_4/common_contact.html" %}
+<main class="error-page-main">
         <div id="page">
             <div id="container">
                 <h1>
@@ -54,6 +59,8 @@
                 </div>
             </div>
         </div>
-    </body>
+    </main>
+{% include "template/vn_waji_4/common_footer.html" %}
+</body>
 </html>
     

@@ -28,8 +28,8 @@
   <meta name="twitter:creator" content="{{domain.titleText}}">
   <link rel="icon" href="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/favicon.ico" sizes="any">
   <link rel="canonical" href="{{domain.httpFullDomain}}" />
-  <style>.bgThemColor{background-color: {{domain.themeColor}} !important;}:root {--theme-color: {{domain.themeColor}};}</style>
-  <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/css/style.css?v=366">
+  
+  <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/css/style.css?v=384">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -71,17 +71,17 @@
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 </head>
-<body class="bgThemColor">
+<body class="bgThemColor home-page">
   {% include "template/vn_waji_4/common_header.html" %}
   <main>
     <section class="hero demolition-hero">
             <div class="demolition-slides" aria-hidden="true">
-        <div class="demolition-slide is-active" style="background-image:url('https://productdata.hilti.com/APQ_HC_f2000/L074277_cropped.jpg')"></div>
-        <div class="demolition-slide" style="background-image:url('https://img.vevorstatic.com/mx/DXDHYCPZJZKJ1XQ8GV1/goods_img_big-v4/jack-hammer-m100-1.12.jpg?format=webp')"></div>
-        <div class="demolition-slide" style="background-image:url('https://www.avenir-renovations.fr/uploads/conseil/travaux-de-demolition-pour-renovation-guide-detaille-cSCBX.jpg')"></div>
-        <div class="demolition-slide" style="background-image:url('https://topnotchsteel.com/images/wall-demolition-uae/3.jpg')"></div>
-        <div class="demolition-slide" style="background-image:url('https://images.unsplash.com/photo-1562860434-78365856273d?auto=format&fit=crop&w=2560&q=90')"></div>
-        <div class="demolition-slide" style="background-image:url('https://images.unsplash.com/photo-1560288852-b9dcc5efd0a4?auto=format&fit=crop&w=2560&q=90')"></div>
+        <div class="demolition-slide is-active"></div>
+        <div class="demolition-slide"></div>
+        <div class="demolition-slide"></div>
+        <div class="demolition-slide"></div>
+        <div class="demolition-slide"></div>
+        <div class="demolition-slide"></div>
       </div>
       <div class="hero-caption wow fadeInUp" data-wow-duration="1s">
         <h2 class="hero-titleh2">NHANH <br>HIỆU QUẢ <br>CHÍNH XÁC</h2>
@@ -107,7 +107,7 @@
           <button class="demolition-dot" type="button" aria-label="Ảnh 6" aria-pressed="false"></button></div>
         <button class="demolition-arrow demolition-next" type="button" aria-label="Ảnh tiếp theo">›</button>
       </div></section>
-  {% include "template/vn_waji_5/common_contact.html" %}
+  {% set contactAtTop = true %}{% include "template/vn_waji_4/common_contact.html" %}
     <section id="gioi-thieu" class="intro section">
       <div class="container intro-grid">
         <div class="intro-copy">
@@ -122,8 +122,8 @@
           </ul>
         </div>
         <div class="intro-images">
-          <img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/news-oil.jpg" alt="Công trình Đức Toàn sơn dầu">
-          <img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/cutting-oil.jpg" alt="Khoan cắt bê tông sơn dầu">
+          <img src="https://www.lynxenv.com/cdn/shop/files/Page_1_demo_1400x.jpg?v=1683921636" alt="Máy xúc thi công tháo dỡ công trình" width="1400" height="1050" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+          <img src="https://static.wixstatic.com/media/b80bf9_b0b2ce465777439aa524323fdf62f437~mv2.jpg" alt="Công nhân sử dụng máy cắt bê tông chuyên dụng" width="1000" height="1000" loading="lazy" decoding="async" referrerpolicy="no-referrer">
         </div>
       </div>
     </section>
@@ -179,11 +179,11 @@
           <p>Dịch vụ của chúng tôi</p>
           <h2>Tháo Dỡ Công Trình - Khoan Cắt Bê Tông</h2>
         </div>
-        <div class="service-grid">
-          <article><img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/leveling-oil.jpg" alt="San lấp mặt bằng"><h3 style="color: {{domain.themeColor}};">San lấp mặt bằng</h3><p>Chuẩn bị mặt bằng thi công nhanh gọn, đúng tiến độ và đảm bảo an toàn.</p></article>
-          <article><img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/cutting-oil.jpg" alt="Khoan cắt bê tông"><h3 style="color: {{domain.themeColor}};">Khoan cắt bê tông</h3><p>Khoan rút lõi, cắt sàn, cắt tường bằng thiết bị chuyên dụng.</p></article>
-          <article><img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/hero-oil.jpg" alt="Đục phá bê tông"><h3 style="color: #145da0;">Đục Phá Bê Tông</h3><p>Đục phá bê tông Bình Dương, miền Nam Việt Nam, TP HCM với quy trình khoa học.</p></article>
-          <article><img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/salvage-oil.jpg" alt="Thu mua xác nhà"><h3 style="color: #145da0;">Thu Mua Xác Nhà</h3><p>Thu mua xác nhà, tháo dỡ công trình trọn gói, khảo sát nhanh.</p></article>
+        <div class="service-grid home-service-grid">
+          <article><img src="https://images.pexels.com/photos/29506754/pexels-photo-29506754.jpeg?auto=compress&amp;cs=tinysrgb&amp;fm=webp&amp;w=1400" alt="San lấp mặt bằng - máy xúc đổ đất lên xe tải" width="1400" height="1050" loading="lazy" decoding="async"><h3>San lấp mặt bằng</h3><p>Chuẩn bị mặt bằng thi công nhanh gọn, đúng tiến độ và đảm bảo an toàn.</p></article>
+          <article><img src="https://images.pexels.com/photos/15392937/pexels-photo-15392937.jpeg?auto=compress&amp;cs=tinysrgb&amp;fm=webp&amp;w=1400" alt="Công nhân dùng máy cắt bê tông tại công trường" width="1400" height="1050" loading="lazy" decoding="async"><h3>Khoan cắt bê tông</h3><p>Khoan rút lõi, cắt sàn, cắt tường bằng thiết bị chuyên dụng.</p></article>
+          <article><img src="https://images.pexels.com/photos/15109996/pexels-photo-15109996.jpeg?auto=compress&amp;cs=tinysrgb&amp;fm=webp&amp;w=1400" alt="Máy xúc đang tháo dỡ công trình" width="1400" height="1050" loading="lazy" decoding="async"><h3>Đục Phá Bê Tông</h3><p>Đục phá bê tông Bình Dương, miền Nam Việt Nam, TP HCM với quy trình khoa học.</p></article>
+          <article><img src="https://images.pexels.com/photos/35390345/pexels-photo-35390345.jpeg?auto=compress&amp;cs=tinysrgb&amp;fm=webp&amp;w=1400" alt="Công nhân trang bị bảo hộ xử lý vật liệu tại công trường" width="1400" height="1050" loading="lazy" decoding="async"><h3>Thu Mua Xác Nhà</h3><p>Thu mua xác nhà, tháo dỡ công trình trọn gói, khảo sát nhanh.</p></article>
         </div>
       </div>
     </section>
@@ -237,40 +237,16 @@
         </div>
       </div>
     </section>
-    <section id="video" class="video-band section">
-      <div class="container video-grid">
-        <div>
-          <p class="eyebrow">Video thi công đục phá bê tông</p>
-          <h2>Công Ty TNHH Vận Tải Xây Dựng Phát Triển ĐỨC TOÀN</h2>
-          <p>Chuyên cung cấp dịch vụ đục phá bê tông, tháo dỡ công trình uy tín, thu mua xác nhà, khoan cắt bê tông an toàn, nhanh chóng.</p>
-          <a href="tel:{{domain.agentLink.noticeDom}}" aria-label="Tư vấn báo giá">Tư vấn báo giá</a>
-        </div>
-        <div class="video-cards">
-          <img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/hero-oil.jpg" alt="Xây dựng vận tải Đức Toàn">
-          <img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/cutting-oil.jpg" alt="Video thi công">
-          <img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/salvage-oil.jpg" alt="Vận tải xây dựng Đức Toàn">
-        </div>
-      </div>
-    </section>
-
-    <section id="map-tuc" class="news section">
-        <div class="title">
-          <p>{{domain.titleText}} - Khu Vực Phục Vụ</p>
-          <h2>Phục vụ TPHCM, Bình Dương, Đồng Nai và toàn bộ khu vực miền Nam.</h2>
-        </div>
-        <div id="serviceMap" style="width:100%;height:650px;"></div>
-    </section>
-
     <section id="tin-tuc" class="news section">
       <div class="container">
         <div class="title">
           <p>{{domain.titleText}} - sự kiện nổi bật</p>
           <h2>Đơn vị uy tín đục phá bê tông Bình Dương, miền Nam Việt Nam</h2>
         </div>
-        <article class="news-card">
-          <img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/news-oil.jpg" alt="Đơn vị uy tín đục phá bê tông Bình Dương, miền Nam Việt Nam">
+        <article class="news-card home-news">
+          <img src="https://www.earthmoversmagazine.co.uk/ugc-1/1/6/0/2119_big.jpg" width="1100" height="941" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="Đơn vị uy tín đục phá bê tông Bình Dương, miền Nam Việt Nam">
           <div>
-            <time style="color: {{domain.themeColor}};" >Monday, 29/09/2025</time>
+            <time>Monday, 29/09/2025</time>
             <h3><a href="news-detail.html" aria-label="Đơn vị uy tín đục phá bê tông Bình Dương, miền Nam Việt Nam">Đơn vị uy tín đục phá bê tông Bình Dương, miền Nam Việt Nam</a></h3>
             <p>Tìm kiếm đơn vị đục phá bê tông Bình Dương, miền Nam Việt Nam uy tín? Đức Toàn cung cấp dịch vụ chuyên nghiệp, an toàn, giá tốt nhất. Liên hệ ngay để được tư vấn và báo giá chi tiết!</p>
           </div>
@@ -278,18 +254,24 @@
       </div>
     </section>
 
-    <section class="quote">
-      <div class="container quote-grid">
-        <div>
-          <p>giải pháp thi công trọn gói</p>
+    <section id="map-tuc" class="quote service-map-section" aria-label="Khu vực phục vụ">
+      <div class="container service-benefits-grid">
+        <div class="service-benefits-copy">
+          <p>Giải pháp thi công trọn gói</p>
           <h2>Tư vấn dịch vụ tháo dỡ phù hợp giúp giải quyết nhanh gọn vấn đề của bạn</h2>
-        </div>
-        <ul>
+        <ul class="service-benefits">
           <li>Tư vấn toàn diện các chi phí</li>
           <li>Dự toán chi tiết & chính xác đến 90%</li>
           <li>Cam kết không phát sinh suốt quá trình</li>
           <li>Minh bạch về chi phí</li>
         </ul>
+        </div>
+        <div class="service-showcase-map">
+        <div class="title">
+          <p>{{domain.titleText}} - Khu Vực Phục Vụ</p>
+        </div>
+        <div id="serviceMap"></div>
+        </div>
       </div>
     </section>
     
@@ -297,7 +279,7 @@
 {% include "template/vn_waji_4/common_footer.html" %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/js/index_map.js?v=27"></script>
+<script src="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/js/index_map.js?v=28"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 <script>
 (function () {
@@ -441,5 +423,104 @@
   if (window.WOW) new window.WOW({ offset: 0, mobile: true, live: false }).init();
 }());
 </script>
-</body>
+<script>
+(function () {
+  var wall = document.querySelector("body.home-page .case-section.case-gallery .case-gallery-grid");
+  if (!wall || wall.dataset.photoWallReady === "true") return;
+  var cards = Array.prototype.slice.call(wall.children).filter(function (card) {
+    return card.classList.contains("case-card");
+  });
+  if (!cards.length) return;
+
+  var track = document.createElement("div");
+  track.className = "case-gallery-track";
+  cards.forEach(function (card) {
+    var image = card.querySelector("img");
+    if (image) image.draggable = false;
+    track.appendChild(card);
+  });
+  cards.forEach(function (card) {
+    var clone = card.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    var image = clone.querySelector("img");
+    if (image) {
+      image.alt = "";
+      image.loading = "lazy";
+      image.draggable = false;
+    }
+    track.appendChild(clone);
+  });
+  wall.appendChild(track);
+  wall.dataset.photoWallReady = "true";
+
+  var pointerId = null;
+  var startX = 0;
+  var startY = 0;
+  var startTime = 0;
+  var startScroll = 0;
+  var duration = 0;
+  var distance = 0;
+  var dragged = false;
+  var animation = null;
+  var resumeTimer = 0;
+
+  function wrapTime(value, length) {
+    return ((value % length) + length) % length;
+  }
+
+  wall.addEventListener("dragstart", function (event) { event.preventDefault(); });
+
+  wall.addEventListener("pointerdown", function (event) {
+    if (pointerId !== null || (event.pointerType === "mouse" && event.button !== 0)) return;
+    window.clearTimeout(resumeTimer);
+    animation = track.getAnimations ? track.getAnimations().filter(function (item) {
+      return item.animationName === "case-gallery-drift-right";
+    })[0] : null;
+    if (animation) animation.pause();
+    duration = parseFloat(window.getComputedStyle(track).animationDuration) * 1000;
+    distance = track.getBoundingClientRect().width / 2;
+    startTime = animation && animation.currentTime !== null ? Number(animation.currentTime) : 0;
+    startScroll = wall.scrollLeft;
+    startX = event.clientX;
+    startY = event.clientY;
+    dragged = false;
+    pointerId = event.pointerId;
+    wall.setPointerCapture(event.pointerId);
+  });
+
+  wall.addEventListener("pointermove", function (event) {
+    if (event.pointerId !== pointerId) return;
+    var deltaX = event.clientX - startX;
+    var deltaY = event.clientY - startY;
+    if (!dragged) {
+      if (Math.abs(deltaX) < 5 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+      dragged = true;
+      wall.classList.add("is-dragging");
+    }
+    if (animation && duration > 0 && distance > 0) {
+      animation.currentTime = wrapTime(startTime + deltaX * duration / distance, duration);
+    } else {
+      wall.scrollLeft = startScroll - deltaX;
+    }
+    if (event.cancelable) event.preventDefault();
+  });
+
+  function finishDrag(event) {
+    if (event.pointerId !== pointerId) return;
+    pointerId = null;
+    wall.classList.remove("is-dragging");
+    if (wall.hasPointerCapture(event.pointerId)) wall.releasePointerCapture(event.pointerId);
+    if (animation) {
+      resumeTimer = window.setTimeout(function () {
+        animation.play();
+        resumeTimer = 0;
+      }, 2000);
+    }
+  }
+
+  wall.addEventListener("pointerup", finishDrag);
+  wall.addEventListener("pointercancel", finishDrag);
+  wall.addEventListener("lostpointercapture", finishDrag);
+})();
+</script></body>
 </html>

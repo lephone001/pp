@@ -1,95 +1,159 @@
 <footer id="lien-he" class="footer">
   <div class="container footer-grid">
-    <div><h2>{{domain.title}}</h2><p>Địa chỉ 573/5, Khu phố 4, Phường An Phú, TP HCM</p><p>Email: ductoanktnt@gmail.com</p><p>Hotline: {{domain.agentLink.noticeDom}} <small>(7x24)</small></p><p>Website: https://{{domain.fullDomain}}</p></div>
-    <div><h3>CHÍNH SÁCH HỖ TRỢ/h3>
-      <a href="/chinh-sach-bao-hanh" aria-label="Chính Sách Bảo Hành">Chính Sách Bảo Hành</a>
-      <a href="/chinh-sach-doi-tra" aria-label="Chính Sách Đổi Trả>Chính Sách Đổi Trả/a>
-      <a href="/chinh-sach-van-chuyen" aria-label="Chính Sách Vận Chuyển">Chính Sách Vận Chuyển</a>
-      <a href="/chinh-sach-thanh-toan" aria-label="Chính Sách Thanh Toán">Chính Sách Thanh Toán</a>
-      <a href="/chinh-sach-bao-mat" aria-label="Chính Sách Bảo Mật">Chính Sách Bảo Mật</a>
-      <a href="/gioi-thieu" aria-label="Giới Thiệu">Giới Thiệu</a>
-      <a href="/lien-he" aria-label="Liên Hệ>Liên Hệ/a>
-      <a href="/bao-gia" aria-label="Báo Giá">Báo Giá</a>
-      <a href="/du-an" aria-label="Dự Án Đã Thi Công">Dự Án Đã Thi Công</a>
-      <a href="/cam-ket-chat-luong" aria-label="Cam Kết Chất Lượng">Cam Kết Chất Lượng</a>
-      <a href="/dieu-khoan-su-dung" aria-label="Điều Khoản Sử Dụng">Điều Khoản Sử Dụng</a>
-    </div>
-    <div><h3>THỐNG KÊ TRUY CẬP</h3><p>Đang online: {{domain.urlNumber%999}}</p><p>Trong tuần: {{domain.urlNumber%55555}}</p><p>Trong tháng: {{domain.urlNumber%99999}}</p><p>Tổng truy cập: {{domain.urlNumber%888888}}</p></div>
-    <div><h3>Links</h3>
+    <div class="footer-company"><h2>{{domain.title}}</h2><p>Địa chỉ 573/5, Khu phố 4, Phường An Phú, TP HCM</p><p>Email: ductoanktnt@gmail.com</p><p>Hotline: {{domain.agentLink.noticeDom}} <small>(7x24)</small></p><p>Website: https://{{domain.fullDomain}}</p></div>
+    <section class="footer-column"><h3>CHÍNH SÁCH HỖ TRỢ</h3>
+      <ul class="footer-link-list">
+        <li><a href="/chinh-sach-bao-hanh" aria-label="Chính Sách Bảo Hành">Chính Sách Bảo Hành</a></li>
+        <li><a href="/chinh-sach-doi-tra" aria-label="Chính Sách Đổi Trả">Chính Sách Đổi Trả</a></li>
+        <li><a href="/chinh-sach-van-chuyen" aria-label="Chính Sách Vận Chuyển">Chính Sách Vận Chuyển</a></li>
+        <li><a href="/chinh-sach-thanh-toan" aria-label="Chính Sách Thanh Toán">Chính Sách Thanh Toán</a></li>
+        <li><a href="/chinh-sach-bao-mat" aria-label="Chính Sách Bảo Mật">Chính Sách Bảo Mật</a></li>
+        <li><a href="/cam-ket-chat-luong" aria-label="Cam Kết Chất Lượng">Cam Kết Chất Lượng</a></li>
+        <li><a href="/dieu-khoan-su-dung" aria-label="Điều Khoản Sử Dụng">Điều Khoản Sử Dụng</a></li>
+      </ul>
+    </section>
+    <section class="footer-column"><h3>LIÊN KẾT HỮU ÍCH</h3>
+      <ul class="footer-link-list">
+        <li><a href="/gioi-thieu" aria-label="Giới Thiệu">Giới Thiệu</a></li>
+        <li><a href="/lien-he" aria-label="Liên Hệ">Liên Hệ</a></li>
+        <li><a href="/bao-gia" aria-label="Báo Giá">Báo Giá</a></li>
+        <li><a href="/du-an" aria-label="Dự Án Đã Thi Công">Dự Án Đã Thi Công</a></li>
+        <li><a href="/sitemap.html" aria-label="SiteMap">Sơ đồ trang web</a></li>
+      </ul>
       {% if domain.isOutFriendLink %}
       {% for item in domain.outFriendLinks -%}
       <a target="_blank" rel="nofollow noopener" href="http://www.{{item.link}}" aria-label="{{item.title}}">{{item.title}}</a>
       {%- endfor %}
       {% endif %}
-      <a href="/sitemap.html" aria-label="SiteMap">SiteMap</a>
-    </div>
-    <div>
-      <h3>SERVICE</h3>
-        <a href="/duc-pha-be-tong.html" aria-label="đục phá bê tông">đục phá bê tông</a>
-        <a href="/thao-do-cong-trinh.html" aria-label="tháo dở công trình">tháo dở công trình</a>
-        <a href="/pha-do-nha.html" aria-label="phá dở nhà">phá dở nhà</a>
-        <a href="/pha-do-nha-xuong.html" aria-label="phá dở nhà xưởng">phá dở nhà xưởng</a>
-        <a href="/khoan-cat-be-tong.html" aria-label="khoan cắt bê tông">khoan cắt bê tông</a>
-        <a href="/khoan-rut-loi-be-tong.html" aria-label="khoan rút lõi bê tông">khoan rút lõi bê tông</a>
-        <a href="/cat-san-be-tong.html" aria-label="cắt sàn bê tông">cắt sàn bê tông</a>
-        <a href="/cat-tuong-be-tong.html" aria-label="cắt tường bê tông">cắt tường bê tông</a>
-        <a href="/duc-nen-be-tong.html" aria-label="đục nền bê tông">đục nền bê tông</a>
-        <a href="/dap-be-tong.html" aria-label="đập bê tông">đập bê tông</a>
-        <a href="/pha-be-tong-bang-may.html" aria-label="phá bê tông bằng máy">phá bê tông bằng máy</a>
-        <a href="/thue-may-duc-be-tong.html" aria-label="thuê máy đục bê tông">thuê máy đục bê tông</a>
-        <a href="/thue-may-xuc-pha-do.html" aria-label="thuê máy xúc phá dở >thuê máy xúc phá dở /a>
-        <a href="/thue-may-dao.html" aria-label="thuê máy đào">thuê máy đào</a>
-        <a href="/bao-gia-duc-pha-be-tong.html" aria-label="báo giá đục phá bê tông">báo giá đục phá bê tông</a>
-        <a href="/gia-duc-pha-be-tong-m2.html" aria-label="giá đục phá bê tông m2">giá đục phá bê tông m2</a>
-        <a href="/don-gia-duc-pha-be-tong.html" aria-label="đơn giá đục phá bê tông">đơn giá đục phá bê tông</a>
-        <a href="/chi-phi-thao-do-cong-trinh.html" aria-label="chi phí tháo dở công trình">chi phí tháo dở công trình</a>
-        <a href="/gia-thao-do-nha.html" aria-label="giá tháo dở nhà">giá tháo dở nhà</a>
-        <a href="/gia-khoan-cat-be-tong.html" aria-label="giá khoan cắt bê tông">giá khoan cắt bê tông</a>
-        <a href="/gia-khoan-rut-loi-be-tong.html" aria-label="giá khoan rút lõi bê tông">giá khoan rút lõi bê tông</a>
-        <a href="/bao-gia-pha-do-nha-xuong.html" aria-label="báo giá phá dở nhà xưởng">báo giá phá dở nhà xưởng</a>
-        <a href="/duc-pha-be-tong-tphcm.html" aria-label="đục phá bê tông TPHCM">đục phá bê tông TPHCM</a>
-        <a href="/thao-do-cong-trinh-tphcm.html" aria-label="tháo dở công trình TPHCM">tháo dở công trình TPHCM</a>
-        <a href="/khoan-cat-be-tong-tphcm.html" aria-label="khoan cắt bê tông TPHCM">khoan cắt bê tông TPHCM</a>
-        <a href="/duc-pha-be-tong-binh-duong.html" aria-label="đục phá bê tông Bình Dương">đục phá bê tông Bình Dương</a>
-        <a href="/thao-do-cong-trinh-binh-duong.html" aria-label="tháo dở công trình Bình Dương">tháo dở công trình Bình Dương</a>
-        <a href="/duc-pha-be-tong-dong-nai.html" aria-label="đục phá bê tông Đồng Nai">đục phá bê tông Đồng Nai</a>
-        <a href="/pha-do-nha-dong-nai.html" aria-label="phá dở nhà Đồng Nai">phá dở nhà Đồng Nai</a>
-        <a href="/khoan-cat-be-tong-long-an.html" aria-label="khoan cắt bê tông Long An">khoan cắt bê tông Long An</a>
-        <a href="/tay-ninh.html" aria-label="Tây Ninh">Tây Ninh</a>
-        <a href="/binh-phuoc.html" aria-label="Bình Phước">Bình Phước</a>
-        <a href="/ba-ria-vung-tau.html" aria-label="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</a>
-        <a href="/tien-giang.html" aria-label="Tiền Giang">Tiền Giang</a>
-        <a href="/dong-thap.html" aria-label="Đồng Tháp">Đồng Tháp</a>
-        <a href="/can-tho.html" aria-label="Cần Thơ">Cần Thơ</a>
-        <a href="/thao-do-nha-pho.html" aria-label="tháo dở nhà phố >tháo dở nhà phố /a>
-        <a href="/thao-do-biet-thu.html" aria-label="tháo dở biệt thự>tháo dở biệt thự/a>
-        <a href="/thao-do-nha-cap-4.html" aria-label="tháo dở nhà cấp 4">tháo dở nhà cấp 4</a>
-        <a href="/thao-do-nha-xuong.html" aria-label="tháo dở nhà xưởng">tháo dở nhà xưởng</a>
-        <a href="/thao-do-nha-kho.html" aria-label="tháo dở nhà kho">tháo dở nhà kho</a>
-        <a href="/pha-do-nha-cu.html" aria-label="phá dở nhà cũ">phá dở nhà cũ</a>
-        <a href="/thao-do-cau-thang-be-tong.html" aria-label="tháo dở cầu thang bê tông">tháo dở cầu thang bê tông</a>
-        <a href="/pha-san-be-tong.html" aria-label="phá sàn bê tông">phá sàn bê tông</a>
-        <a href="/pha-mong-be-tong.html" aria-label="phá móng bê tông">phá móng bê tông</a>
-        <a href="/pha-tuong-be-tong.html" aria-label="phá tường bê tông">phá tường bê tông</a>
-        <a href="/may-xuc-pha-do.html" aria-label="máy xúc phá dở >máy xúc phá dở /a>
-        <a href="/may-dao-pha-be-tong.html" aria-label="máy đào phá bê tông">máy đào phá bê tông</a>
-        <a href="/bua-pha-da.html" aria-label="búa phá đá">búa phá đá</a>
-        <a href="/bua-thuy-luc.html" aria-label="búa thủy lực">búa thủy lực</a>
-        <a href="/xe-cuoc-pha-do.html" aria-label="xe cuốc phá dở >xe cuốc phá dở /a>
-        <a href="/robot-pha-be-tong.html" aria-label="robot phá bê tông">robot phá bê tông</a>
-        <a href="/duc-pha-be-tong-la-gi.html" aria-label="đục phá bê tông là gì">đục phá bê tông là gì</a>
-        <a href="/pha-do-nha-can-giay-phep-khong.html" aria-label="phá dở nhà cần giấy phép không">phá dở nhà cần giấy phép không</a>
-        <a href="/khoan-rut-loi-de-lam-gi.html" aria-label="khoan rút lõi để làm gì">khoan rút lõi để làm gì</a>
-        <a href="/gia-duc-be-tong-bao-nhieu.html" aria-label="giá đục bê tông bao nhiêu">giá đục bê tông bao nhiêu</a>
-        <a href="/mat-bao-lau-de-thao-do-nha.html" aria-label="mất bao lâu để tháo dở nhà">mất bao lâu để tháo dở nhà</a>
-        <a href="/pha-do-cong-trinh-can-luu-y-gi.html" aria-label="phá dở công trình cần lưu ý gì">phá dở công trình cần lưu ý gì</a>
-        <a href="/quy-trinh-thao-do-cong-trinh.html" aria-label="quy trình tháo dở công trình">quy trình tháo dở công trình</a>
-        <a href="/cach-cat-be-tong-an-toan.html" aria-label="cách cắt bê tông an toàn">cách cắt bê tông an toàn</a>
-        <a href="/bao-gia-thao-do-cong-trinh.html" aria-label="báo giá tháo dở công trình">báo giá tháo dở công trình</a>
-    </div>
+
+    </section>
+    <div class="footer-stats"><h3>THỐNG KÊ TRUY CẬP</h3><p>Đang online: {{domain.urlNumber%999}}</p><p>Trong tuần: {{domain.urlNumber%55555}}</p><p>Trong tháng: {{domain.urlNumber%99999}}</p><p>Tổng truy cập: {{domain.urlNumber%888888}}</p></div>
   </div>
+  <section class="container footer-directory" aria-label="Danh mục dịch vụ">
+    <h3>DỊCH VỤ & THÔNG TIN</h3>
+    <div class="footer-directory-grid">
+      <details class="footer-link-group">
+        <summary>Dịch vụ bê tông <small>15</small></summary>
+        <ul class="footer-link-list">
+        <li><a href="/duc-pha-be-tong.html" aria-label="đục phá bê tông">đục phá bê tông</a></li>
+        <li><a href="/thao-do-cong-trinh.html" aria-label="tháo dở công trình">tháo dở công trình</a></li>
+        <li><a href="/pha-do-nha.html" aria-label="phá dở nhà">phá dở nhà</a></li>
+        <li><a href="/khoan-cat-be-tong.html" aria-label="khoan cắt bê tông">khoan cắt bê tông</a></li>
+        <li><a href="/khoan-rut-loi-be-tong.html" aria-label="khoan rút lõi bê tông">khoan rút lõi bê tông</a></li>
+        <li><a href="/cat-san-be-tong.html" aria-label="cắt sàn bê tông">cắt sàn bê tông</a></li>
+        <li><a href="/cat-tuong-be-tong.html" aria-label="cắt tường bê tông">cắt tường bê tông</a></li>
+        <li><a href="/duc-nen-be-tong.html" aria-label="đục nền bê tông">đục nền bê tông</a></li>
+        <li><a href="/dap-be-tong.html" aria-label="đập bê tông">đập bê tông</a></li>
+        <li><a href="/pha-be-tong-bang-may.html" aria-label="phá bê tông bằng máy">phá bê tông bằng máy</a></li>
+        <li><a href="/pha-san-be-tong.html" aria-label="phá sàn bê tông">phá sàn bê tông</a></li>
+        <li><a href="/pha-mong-be-tong.html" aria-label="phá móng bê tông">phá móng bê tông</a></li>
+        <li><a href="/pha-tuong-be-tong.html" aria-label="phá tường bê tông">phá tường bê tông</a></li>
+        <li><a href="/quy-trinh-thao-do-cong-trinh.html" aria-label="quy trình tháo dở công trình">quy trình tháo dở công trình</a></li>
+        <li><a href="/cach-cat-be-tong-an-toan.html" aria-label="cách cắt bê tông an toàn">cách cắt bê tông an toàn</a></li>
+      </ul>
+      </details>
+      <details class="footer-link-group">
+        <summary>Báo giá & chi phí <small>9</small></summary>
+        <ul class="footer-link-list">
+        <li><a href="/bao-gia-duc-pha-be-tong.html" aria-label="báo giá đục phá bê tông">báo giá đục phá bê tông</a></li>
+        <li><a href="/gia-duc-pha-be-tong-m2.html" aria-label="giá đục phá bê tông m2">giá đục phá bê tông m2</a></li>
+        <li><a href="/don-gia-duc-pha-be-tong.html" aria-label="đơn giá đục phá bê tông">đơn giá đục phá bê tông</a></li>
+        <li><a href="/chi-phi-thao-do-cong-trinh.html" aria-label="chi phí tháo dở công trình">chi phí tháo dở công trình</a></li>
+        <li><a href="/gia-thao-do-nha.html" aria-label="giá tháo dở nhà">giá tháo dở nhà</a></li>
+        <li><a href="/gia-khoan-cat-be-tong.html" aria-label="giá khoan cắt bê tông">giá khoan cắt bê tông</a></li>
+        <li><a href="/gia-khoan-rut-loi-be-tong.html" aria-label="giá khoan rút lõi bê tông">giá khoan rút lõi bê tông</a></li>
+        <li><a href="/bao-gia-pha-do-nha-xuong.html" aria-label="báo giá phá dở nhà xưởng">báo giá phá dở nhà xưởng</a></li>
+        <li><a href="/bao-gia-thao-do-cong-trinh.html" aria-label="báo giá tháo dở công trình">báo giá tháo dở công trình</a></li>
+      </ul>
+      </details>
+      <details class="footer-link-group">
+        <summary>Khu vực thi công <small>14</small></summary>
+        <ul class="footer-link-list">
+        <li><a href="/duc-pha-be-tong-tphcm.html" aria-label="đục phá bê tông TPHCM">đục phá bê tông TPHCM</a></li>
+        <li><a href="/thao-do-cong-trinh-tphcm.html" aria-label="tháo dở công trình TPHCM">tháo dở công trình TPHCM</a></li>
+        <li><a href="/khoan-cat-be-tong-tphcm.html" aria-label="khoan cắt bê tông TPHCM">khoan cắt bê tông TPHCM</a></li>
+        <li><a href="/duc-pha-be-tong-binh-duong.html" aria-label="đục phá bê tông Bình Dương">đục phá bê tông Bình Dương</a></li>
+        <li><a href="/thao-do-cong-trinh-binh-duong.html" aria-label="tháo dở công trình Bình Dương">tháo dở công trình Bình Dương</a></li>
+        <li><a href="/duc-pha-be-tong-dong-nai.html" aria-label="đục phá bê tông Đồng Nai">đục phá bê tông Đồng Nai</a></li>
+        <li><a href="/pha-do-nha-dong-nai.html" aria-label="phá dở nhà Đồng Nai">phá dở nhà Đồng Nai</a></li>
+        <li><a href="/khoan-cat-be-tong-long-an.html" aria-label="khoan cắt bê tông Long An">khoan cắt bê tông Long An</a></li>
+        <li><a href="/tay-ninh.html" aria-label="Tây Ninh">Tây Ninh</a></li>
+        <li><a href="/binh-phuoc.html" aria-label="Bình Phước">Bình Phước</a></li>
+        <li><a href="/ba-ria-vung-tau.html" aria-label="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</a></li>
+        <li><a href="/tien-giang.html" aria-label="Tiền Giang">Tiền Giang</a></li>
+        <li><a href="/dong-thap.html" aria-label="Đồng Tháp">Đồng Tháp</a></li>
+        <li><a href="/can-tho.html" aria-label="Cần Thơ">Cần Thơ</a></li>
+      </ul>
+      </details>
+      <details class="footer-link-group">
+        <summary>Thiết bị & cho thuê <small>9</small></summary>
+        <ul class="footer-link-list">
+        <li><a href="/thue-may-duc-be-tong.html" aria-label="thuê máy đục bê tông">thuê máy đục bê tông</a></li>
+        <li><a href="/thue-may-xuc-pha-do.html" aria-label="thuê máy xúc phá dở">thuê máy xúc phá dở</a></li>
+        <li><a href="/thue-may-dao.html" aria-label="thuê máy đào">thuê máy đào</a></li>
+        <li><a href="/may-xuc-pha-do.html" aria-label="máy xúc phá dở">máy xúc phá dở</a></li>
+        <li><a href="/may-dao-pha-be-tong.html" aria-label="máy đào phá bê tông">máy đào phá bê tông</a></li>
+        <li><a href="/bua-pha-da.html" aria-label="búa phá đá">búa phá đá</a></li>
+        <li><a href="/bua-thuy-luc.html" aria-label="búa thủy lực">búa thủy lực</a></li>
+        <li><a href="/xe-cuoc-pha-do.html" aria-label="xe cuốc phá dở">xe cuốc phá dở</a></li>
+        <li><a href="/robot-pha-be-tong.html" aria-label="robot phá bê tông">robot phá bê tông</a></li>
+      </ul>
+      </details>
+      <details class="footer-link-group">
+        <summary>Phá dỡ nhà & công trình <small>8</small></summary>
+        <ul class="footer-link-list">
+        <li><a href="/pha-do-nha-xuong.html" aria-label="phá dở nhà xưởng">phá dở nhà xưởng</a></li>
+        <li><a href="/thao-do-nha-pho.html" aria-label="tháo dở nhà phố">tháo dở nhà phố</a></li>
+        <li><a href="/thao-do-biet-thu.html" aria-label="tháo dở biệt thự">tháo dở biệt thự</a></li>
+        <li><a href="/thao-do-nha-cap-4.html" aria-label="tháo dở nhà cấp 4">tháo dở nhà cấp 4</a></li>
+        <li><a href="/thao-do-nha-xuong.html" aria-label="tháo dở nhà xưởng">tháo dở nhà xưởng</a></li>
+        <li><a href="/thao-do-nha-kho.html" aria-label="tháo dở nhà kho">tháo dở nhà kho</a></li>
+        <li><a href="/pha-do-nha-cu.html" aria-label="phá dở nhà cũ">phá dở nhà cũ</a></li>
+        <li><a href="/thao-do-cau-thang-be-tong.html" aria-label="tháo dở cầu thang bê tông">tháo dở cầu thang bê tông</a></li>
+      </ul>
+      </details>
+      <details class="footer-link-group">
+        <summary>Tư vấn & kiến thức <small>6</small></summary>
+        <ul class="footer-link-list">
+        <li><a href="/duc-pha-be-tong-la-gi.html" aria-label="đục phá bê tông là gì">đục phá bê tông là gì</a></li>
+        <li><a href="/pha-do-nha-can-giay-phep-khong.html" aria-label="phá dở nhà cần giấy phép không">phá dở nhà cần giấy phép không</a></li>
+        <li><a href="/khoan-rut-loi-de-lam-gi.html" aria-label="khoan rút lõi để làm gì">khoan rút lõi để làm gì</a></li>
+        <li><a href="/gia-duc-be-tong-bao-nhieu.html" aria-label="giá đục bê tông bao nhiêu">giá đục bê tông bao nhiêu</a></li>
+        <li><a href="/mat-bao-lau-de-thao-do-nha.html" aria-label="mất bao lâu để tháo dở nhà">mất bao lâu để tháo dở nhà</a></li>
+        <li><a href="/pha-do-cong-trinh-can-luu-y-gi.html" aria-label="phá dở công trình cần lưu ý gì">phá dở công trình cần lưu ý gì</a></li>
+      </ul>
+      </details>
+    </div>
+  </section>
 </footer>
 <style>
+#lien-he.footer{padding:40px 0 28px;border-top:3px solid transparent;background:linear-gradient(#131a26,#131a26) padding-box,linear-gradient(to right,#185cb5 0%,#185cb5 50%,#ef1535 50%,#ef1535 100%) border-box;color:#b9c5d6;font:14px/1.65 Arial,Helvetica,sans-serif;text-align:left}
+#lien-he.footer .container{box-sizing:border-box;width:min(1180px,calc(100% - 32px));max-width:1180px;margin:0 auto}
+#lien-he.footer .footer-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr .9fr;gap:32px;align-items:start}
+#lien-he.footer .footer-grid>div{min-width:0;max-height:none;overflow:visible}
+#lien-he.footer h2,#lien-he.footer h3{margin:0 0 16px;color:#f4f7fc;font-weight:700;line-height:1.4;word-break:normal;overflow-wrap:anywhere}
+#lien-he.footer h2{font-size:21px}
+#lien-he.footer h3{font-size:14px;letter-spacing:.04em}
+#lien-he.footer p{margin:0 0 9px}
+#lien-he.footer a{display:block;margin:0;padding:5px 0;color:#b9c5d6;font-size:13px;line-height:1.5;text-decoration:none;overflow-wrap:anywhere;transition:color .15s ease}
+#lien-he.footer a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+#lien-he.footer a:focus-visible,#lien-he.footer summary:focus-visible{outline:2px solid #69baff;outline-offset:3px;border-radius:3px}
+#lien-he.footer .footer-link-list{margin:0;padding:0;list-style:none}
+#lien-he.footer .footer-link-list li{margin:0;padding:0}
+#lien-he.footer .footer-stats p{display:flex;justify-content:space-between;padding:7px 0;margin:0;border-bottom:1px solid #ffffff0c;font-size:13px}
+#lien-he.footer .footer-directory{margin-top:30px;padding-top:24px;border-top:1px solid #ffffff1a}
+#lien-he.footer .footer-directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#lien-he.footer .footer-link-group{min-width:0;align-self:start;border:1px solid #ffffff14;border-radius:9px;background:#ffffff03}
+#lien-he.footer summary{position:relative;padding:13px 38px 13px 15px;color:#e3eaf4;font-size:14px;font-weight:700;cursor:pointer;list-style:none}
+#lien-he.footer summary::-webkit-details-marker{display:none}
+#lien-he.footer summary::after{content:'+';position:absolute;right:15px;top:11px;color:#77b5ff;font-size:19px;font-weight:400}
+#lien-he.footer details[open]>summary::after{content:'−'}
+#lien-he.footer summary small{display:inline-block;margin-left:5px;padding:1px 6px;border-radius:4px;background:#ffffff09;color:#8ea2bd;font-size:11px;font-weight:400}
+#lien-he.footer .footer-link-group .footer-link-list{padding:4px 15px 12px;border-top:1px solid #ffffff0c}
+@media(max-width:980px){ #lien-he.footer .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px} #lien-he.footer .footer-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){ #lien-he.footer{padding-top:28px} #lien-he.footer .footer-grid{grid-template-columns:1fr;gap:24px} #lien-he.footer .footer-directory-grid{grid-template-columns:1fr} #lien-he.footer a{padding:8px 0} #lien-he.footer summary{padding-top:15px;padding-bottom:15px}}
+@media(prefers-reduced-motion:reduce){ #lien-he.footer a{transition:none}}
+
 .contact-24h{position:fixed;z-index:9999;left:20px;right:20px;bottom:22px;display:flex;justify-content:space-between;align-items:flex-end;pointer-events:none}
 .contact-24h__item{position:relative;box-sizing:border-box;display:flex;align-items:center;gap:13px;width:260px;min-height:82px;padding:13px 18px;border:1px solid rgba(255,255,255,.55);border-radius:20px;color:#fff;text-decoration:none!important;background:linear-gradient(110deg,#850014 0%,#c5001d 13%,#ef1535 28%,#a70018 44%,#e51732 49.3%,#082c94 50.7%,#0055c9 63%,#1597ef 78%,#0d3ba8 91%,#071c69 100%);box-shadow:0 12px 30px rgba(80,25,5,.32),0 0 18px rgba(255,105,45,.28);pointer-events:auto;animation:contact24hFloat 2.5s ease-in-out infinite}
 .contact-24h__item--zalo{background:linear-gradient(70deg,#850014 0%,#c5001d 13%,#ef1535 28%,#a70018 44%,#e51732 49.3%,#082c94 50.7%,#0055c9 63%,#1597ef 78%,#0d3ba8 91%,#071c69 100%);box-shadow:0 12px 30px rgba(95,58,0,.32),0 0 18px rgba(224,168,0,.3);animation-delay:.35s}
@@ -140,7 +204,7 @@
 }
 .contact-24h{left:auto;right:20px;flex-direction:column;align-items:flex-end;gap:12px}
 .contact-24h__item{flex:none}
-@media(max-width:720px){.contact-24h{left:50%;right:auto;transform:translateX(-50%);width:calc(100vw - 24px);max-width:560px;flex-direction:row;align-items:flex-end;justify-content:center;gap:12px}.contact-24h__item{width:auto;max-width:280px;flex:1;min-width:0}}.demolition-plan{position:fixed;display:none;z-index:1000;left:2px;bottom:25px;box-sizing:border-box;width:170px;height:760px;display:flex;flex-direction:column;overflow:visible;padding:10px 8px 8px;border:1px solid rgba(204,39,2,.2);transition:transform .35s ease;border-radius:18px;background:linear-gradient(160deg,#fffdf7 0%,#fff7e5 58%,#ffefd0 100%);color:#422f1d;box-shadow:0 12px 34px rgba(75,43,8,.2),0 0 18px rgba(255,177,34,.2);animation:demolitionPlanGlow 3.2s ease-in-out infinite}
+@media(max-width:720px){.contact-24h{left:50%;right:auto;transform:translateX(-50%);width:calc(100vw - 24px);max-width:560px;flex-direction:row;align-items:flex-end;justify-content:center;gap:12px}.contact-24h__item{width:auto;max-width:280px;flex:1;min-width:0}}.demolition-plan{position:fixed;display:none;z-index:1000;left:2px;bottom:25px;box-sizing:border-box;width:170px;height:760px;display:flex;flex-direction:column;overflow:visible;padding:10px 8px 8px;border:1px solid rgba(204,39,2,.2);transition:transform .35s ease;border-radius:18px;background: linear-gradient(160deg, #ffe3e3 0%, #ffffff 58%, #b9e1ff 100%);color:#422f1d;box-shadow:0 12px 34px rgba(75,43,8,.2),0 0 18px rgba(255,177,34,.2);animation:demolitionPlanGlow 3.2s ease-in-out infinite}
 .demolition-plan.is-hidden{transform:translateX(-102%)}.demolition-plan__heading{text-align:center;padding-bottom:7px;border-bottom:1px solid rgba(204,39,2,.15);color:#a82008}
 .demolition-plan__toggle{position:absolute;right:-32px;top:50%;transform:translateY(-50%);z-index:10000;width:32px;height:58px;padding:4px 2px;border:1px solid #ff2f00;border-left:0;border-radius:0 10px 10px 0;background:linear-gradient(70deg,#850014 0%,#c5001d 13%,#ef1535 28%,#a70018 44%,#e51732 49.3%,#082c94 50.7%,#0055c9 63%,#1597ef 78%,#0d3ba8 91%,#071c69 100%);color:#fff;font:800 10px/1.1 sans-serif;writing-mode:vertical-rl;cursor:pointer;box-shadow:0 2px 8px rgba(90,30,0,.28)}.demolition-plan__toggle:focus-visible{outline:2px solid #1d4ed8;outline-offset:2px}.demolition-plan__heading strong{display:block;font-size:9px;line-height:1.15;letter-spacing:.04em}
 .demolition-plan__heading small{display:block;margin-top:4px;color:#95600b;font-size:7px;font-weight:800;letter-spacing:.06em}
@@ -158,7 +222,31 @@
 @media(max-width:720px){.demolition-plan{display:none;left:10px;bottom:174px;height:min(650px,calc(100vh - 184px))}}
 @media(max-width:380px){.demolition-plan{left:8px}}
 @media(max-height:700px){.demolition-plan{height:min(650px,calc(100vh - 184px))}}
-@media(prefers-reduced-motion:reduce){.demolition-plan,.demolition-plan__step,.demolition-plan__steps:after{animation:none}}.region-announcement[hidden]{display:none!important}.region-announcement{position:fixed;inset:0;z-index:20000;display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:16px;background:rgba(15,23,42,.58);font-family:Arial,"Helvetica Neue",sans-serif;color:#292d32}.region-announcement__panel{width:50vw;max-width:720px;max-height:80vh;overflow:auto;box-sizing:border-box;padding:12px 18px 14px;border-radius:12px;background:#fff;box-shadow:0 18px 60px rgba(0,0,0,.28);text-align:center}.region-announcement__title{margin:0 0 10px;color:#d83b31;font-size:clamp(20px,2.6vw,32px);line-height:1.2;font-weight:500}.region-announcement__lead{margin:0;font-size:clamp(13px,1.45vw,18px);line-height:1.6}.region-announcement__services{margin:12px 0 10px;text-align:left;font-size:clamp(13px,1.35vw,17px);line-height:1.55}.region-announcement__services h2{margin:0 0 6px;text-align:center;font-size:inherit;font-weight:700}.region-announcement__services ul{margin:0;padding-left:1.35em}.region-announcement__services .is-link{color:#0784ff}.region-announcement__hotline{margin:10px 0;font-size:clamp(13px,1.4vw,18px);line-height:1.6}.region-announcement__hotline a{color:#0784ff;text-decoration:none}.region-announcement__close{min-width:128px;min-height:46px;padding:8px 20px;border:0;border-radius:10px;background:#d83b31;color:#fff;font-size:clamp(18px,2.4vw,27px);cursor:pointer}.region-announcement__close:hover{background:#bd2d25}.region-announcement-open{overflow:hidden}@media(max-width:600px){.region-announcement{padding:10px}.region-announcement__panel{width:100%;max-height:calc(100vh - 20px);padding:18px 17px}.region-announcement__title{margin-bottom:14px}.region-announcement__services{margin:18px 0}.region-announcement__hotline{margin:16px 0}.region-announcement__panel{width:min(90vw,480px);max-height:85vh;padding:14px}.region-announcement__lead{font-size:14px}.region-announcement__services{font-size:14px}.region-announcement__hotline{font-size:14px}.region-announcement__close{min-height:46px}}/* Split step 4 color and make steps 5-7 blue */
+@media(prefers-reduced-motion:reduce){.demolition-plan,.demolition-plan__step,.demolition-plan__steps:after{animation:none}}.region-announcement[hidden]{display:none!important}
+.region-announcement{position:fixed;inset:0;z-index:20000;display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:20px;background:rgba(10,21,44,.68);backdrop-filter:blur(5px);font-family:Arial,"Helvetica Neue",sans-serif;color:#293548}
+.region-announcement__panel{display:flex;flex-direction:column;width:50vw;max-width:760px;max-height:85vh;max-height:85dvh;min-height:0;overflow:hidden;box-sizing:border-box;padding:0;border-radius:20px;background:#fff;box-shadow:0 24px 80px rgba(5,18,45,.36);text-align:center}
+.region-announcement__header{flex:none;padding:25px 24px;background:linear-gradient(115deg,#d82737 0%,#ec3445 49.8%,#1463d6 50%,#093d9c 100%)}
+.region-announcement__title{margin:0;color:#fff;font-size:clamp(20px,2.25vw,30px);line-height:1.35;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.16)}
+.region-announcement__body{min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:24px 28px;background:linear-gradient(180deg,#fff 0%,#f7faff 100%)}
+.region-announcement__lead{margin:0;text-align:left;font-size:clamp(14px,1.2vw,17px);line-height:1.8}
+.region-announcement__lead strong{color:#173e75}
+.region-announcement__services{margin:20px 0;padding:18px 20px;border:1px solid #e1e9f5;border-radius:14px;background:#fff;text-align:left;font-size:clamp(14px,1.15vw,16px);line-height:1.65}
+.region-announcement__services h2{margin:0 0 12px;color:#173e75;font-size:17px;font-weight:700}
+.region-announcement__services ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 24px;margin:0;padding-left:20px}
+.region-announcement__services li::marker{color:#de3041}
+.region-announcement__services .is-link{color:#1265cf;text-decoration:none}
+.region-announcement__services .is-link:hover{text-decoration:underline}
+.region-announcement__hotline{margin:0;font-size:14px;line-height:1.7;color:#5c6b80}
+.region-announcement__hotline a{display:inline-block;margin-top:6px;color:#d82737;font-size:22px;font-weight:700;text-decoration:none}
+.region-announcement__footer{flex:none;display:flex;align-items:center;justify-content:center;padding:16px 24px;border-top:1px solid #dfe7f2;background:#fff}
+.region-announcement__close{min-width:164px;min-height:46px;padding:11px 28px;border:0;border-radius:10px;background:linear-gradient(115deg,#d82737 0%,#ec3445 49.8%,#1463d6 50%,#093d9c 100%);box-shadow:0 5px 14px rgba(24,69,138,.2);color:#fff;font:700 17px/1.4 Arial,sans-serif;cursor:pointer;transition:filter .2s ease,transform .2s ease}
+.region-announcement__close:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.region-announcement__close:focus-visible{outline:3px solid #1463d6;outline-offset:3px}
+.region-announcement-open{overflow:hidden}
+@media(max-width:900px){.region-announcement__panel{width:min(92vw,680px)}}
+@media(max-width:600px){.region-announcement{padding:12px}.region-announcement__panel{width:100%;max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);border-radius:16px}.region-announcement__header{padding:20px 16px}.region-announcement__title{font-size:21px}.region-announcement__body{padding:20px 16px}.region-announcement__services{padding:15px 17px;margin:16px 0}.region-announcement__services ul{grid-template-columns:1fr;gap:7px}.region-announcement__footer{padding:14px 16px}.region-announcement__close{width:100%}}
+@media(prefers-reduced-motion:reduce){.region-announcement__close{transition:none}}
+/* Split step 4 color and make steps 5-7 blue */
 .demolition-plan__steps>.demolition-plan__step:nth-child(4) .demolition-plan__number{background:linear-gradient(to bottom,#cc2702 0 50%,#145da0 50% 100%)}
 .demolition-plan__steps>.demolition-plan__step:nth-child(n+5) .demolition-plan__number{background:#145da0}
 /* Toggle button color follows plan visibility */
@@ -167,10 +255,52 @@
 @keyframes demolitionDotDown{0%{top:7%;opacity:0;transform:scale(.65);background:#cc2702;box-shadow:0 0 0 2px rgba(204,39,2,.24),0 0 12px rgba(204,39,2,.65)}6%{opacity:1;transform:scale(1)}53.9%{top:52%;background:#cc2702;box-shadow:0 0 0 2px rgba(204,39,2,.24),0 0 12px rgba(204,39,2,.65)}54%{top:52.2%;background:#145da0;box-shadow:0 0 0 2px rgba(20,93,160,.24),0 0 12px rgba(20,93,160,.65)}94%{top:91%;opacity:1;transform:scale(1);background:#145da0;box-shadow:0 0 0 2px rgba(20,93,160,.24),0 0 12px rgba(20,93,160,.65)}100%{top:91%;opacity:0;transform:scale(.65);background:#145da0;box-shadow:0 0 0 2px rgba(20,93,160,0),0 0 12px rgba(20,93,160,0)}}
 /* Split the process connector line red above and blue below */
 .demolition-plan__steps:before{background:linear-gradient(to bottom,#cc2702 0 50%,#145da0 50% 100%)}
+/* Keep the rocket above the energy button and contact cards. */
+.back-to-top{position:fixed;z-index:10000;right:20px;bottom:270px;min-width:64px;height:38px;padding:0 16px;border:1px solid rgba(255,255,255,.78);border-radius:20px;background:linear-gradient(110deg,#850014 0%,#c5001d 13%,#ef1535 28%,#a70018 44%,#e51732 49.3%,#082c94 50.7%,#0055c9 63%,#1597ef 78%,#0d3ba8 91%,#071c69 100%);color:#fff;font:900 13px/1 Arial,sans-serif;letter-spacing:.12em;box-shadow:0 8px 20px rgba(12,37,85,.28);cursor:pointer;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px);transition:opacity .22s ease,transform .22s ease,visibility .22s ease}
+.back-to-top.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.back-to-top:focus-visible{outline:3px solid #1597ef;outline-offset:3px}
+.site-error-page .back-to-top{display:none!important}
+
+@media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
+/* Use the single rocket image for the immediate scale, wobble, and launch. */
+.back-to-top{display:grid;place-items:center;width:60px;height:auto;aspect-ratio:897/1754;min-width:0;padding:0;border:0;border-radius:0;background:transparent;color:transparent;font-size:0;letter-spacing:0;box-shadow:none;overflow:visible}
+.back-to-top__rocket{display:block;width:60px;max-width:100%;height:auto;object-fit:contain;transform-origin:50% 82%;filter:drop-shadow(0 8px 14px rgba(12,37,85,.24));animation:back-to-top-wobble 4.8s ease-in-out infinite;animation-play-state:paused}
+.back-to-top.is-visible .back-to-top__rocket{animation-play-state:running}
+@keyframes back-to-top-wobble{0%,76%,100%{transform:translateX(0) rotate(0)}80%{transform:translateX(-5px) rotate(-5deg)}84%{transform:translateX(5px) rotate(5deg)}88%{transform:translateX(-3px) rotate(-3deg)}92%{transform:translateX(0) rotate(0)}}
+@keyframes back-to-top-launch{0%{transform:translateY(0) scale(1) rotate(0);opacity:1}12%{transform:translateY(0) scale(1.22) rotate(-8deg);opacity:1}22%{transform:translateY(0) scale(1.22) rotate(8deg);opacity:1}32%{transform:translateY(0) scale(1.16) rotate(-5deg);opacity:1}44%{transform:translateY(-14px) scale(1.08) rotate(4deg);opacity:1}100%{transform:translateY(-130vh) scale(.72) rotate(8deg);opacity:0}}
+.back-to-top.is-launching{pointer-events:none}
+.back-to-top.is-launching .back-to-top__rocket{animation:back-to-top-launch 1.8s cubic-bezier(.2,.75,.25,1) forwards}
+@media(max-width:720px){.back-to-top{left:auto;right:12px;bottom:110px;width:60px;height:auto;transform:translateY(8px)}.back-to-top.is-visible{transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.back-to-top__rocket{animation:none!important}.back-to-top.is-launching .back-to-top__rocket{animation:none!important}}
+/* The rocket glides in from the upper-right whenever it becomes visible. */
+.back-to-top.is-entering .back-to-top__rocket{animation:back-to-top-land 3.6s linear both}
+.back-to-top.is-entering{--back-to-top-upper-y:calc(505px - 100vh);--back-to-top-mid-y:calc(505px - 50vh)}
+@media(max-width:720px){.back-to-top.is-entering{--back-to-top-upper-y:calc(227px - 100vh);--back-to-top-mid-y:calc(227px - 50vh)}}
+@keyframes back-to-top-land{0%{transform:translate(160px,var(--back-to-top-upper-y)) rotate(10deg) scale(.78);opacity:0;animation-timing-function:cubic-bezier(.15,.8,.3,1)}23%{transform:translate(0,var(--back-to-top-mid-y)) rotate(0) scale(1);opacity:1;animation-timing-function:linear}30%{transform:translate(0,var(--back-to-top-mid-y)) rotate(0) scale(1);opacity:1;animation-timing-function:cubic-bezier(.4,0,.2,1)}100%{transform:translate(0,0) rotate(0) scale(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.back-to-top.is-entering .back-to-top__rocket{animation:none!important}}
+.energy-ribbon-layer{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;pointer-events:none;z-index:9900;overflow:hidden}
+.energy-ribbon-layer[hidden]{display:none!important}
+.energy-ribbon-layer canvas{display:block;width:100%;height:100%}
+.energy-ribbon-toggle{position:fixed;z-index:10001;right:22px;bottom:220px;display:grid;place-items:center;width:52px;height:52px;padding:0;border:1px solid rgba(255, 255, 255, 0);border-radius:50%;background:transparent;isolation:isolate;cursor:pointer;box-shadow:0 4px 16px rgba(11,51,132,.28);transition:transform .2s ease,box-shadow .2s ease}
+.energy-ribbon-toggle::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:linear-gradient(196deg,#850014 0%,#ef1535 34%,#082c94 82%,#1597ef 91%,#071c69 100%);pointer-events:none;animation:energy-ribbon-toggle-spin 16s linear infinite,energy-ribbon-toggle-color 12s linear infinite}
+@keyframes energy-ribbon-toggle-spin{to{transform:rotate(360deg)}}
+@keyframes energy-ribbon-toggle-color{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+.energy-ribbon-toggle:hover{transform:scale(1.07)}
+.energy-ribbon-toggle:focus-visible{outline:3px solid #1597ef;outline-offset:3px}
+.energy-ribbon-toggle img{display:block;width:35px;height:35px;object-fit:contain;border-radius:50%;background:#fff}
+.energy-ribbon-toggle:not(.is-active){filter:saturate(.6)}
+.site-error-page .energy-ribbon-toggle,.site-error-page .energy-ribbon-layer{display:none!important}
+@media(max-width:720px){.energy-ribbon-toggle{left:50%;right:auto;bottom:92px;transform:translateX(-50%)}.energy-ribbon-toggle:hover{transform:translateX(-50%) scale(1.07)}}
+@media(prefers-reduced-motion:reduce){.energy-ribbon-toggle{transition:none}.energy-ribbon-toggle::before{animation:none}}
+.demolition-plan__steps:after{animation-iteration-count:1;animation-fill-mode:both}
+.demolition-plan.is-hidden .demolition-plan__steps:after{animation-name:none}
 </style>
 <div id="region-announcement" class="region-announcement" role="dialog" aria-modal="true" aria-labelledby="region-announcement-title" aria-describedby="region-announcement-description">
   <section class="region-announcement__panel">
+    <header class="region-announcement__header">
     <h1 id="region-announcement-title" class="region-announcement__title">Thông Báo Khu Vực Hoạt Động</h1>
+    </header>
+    <div class="region-announcement__body">
     <p id="region-announcement-description" class="region-announcement__lead"><strong>{{domain.titleText}}</strong> hiện chỉ nhận thi công tại khu vực <strong>Đông Nam Bộ</strong> bao gồm các tỉnh sau: Thành phố Hồ Chí Minh, Đồng Nai, Bình Dương, Bà Rịa - Vũng Tàu, Tây Ninh, Bình Phước, Long An và các tỉnh lân cận Hồ Chí Minh. Các tỉnh miền bắc chúng tôi không hoạt động nhé. Cảm ơn khách hàng!</p>
     <div class="region-announcement__services">
       <h2>Dịch vụ cung cấp:</h2>
@@ -184,20 +314,17 @@
       </ul>
     </div>
     <p class="region-announcement__hotline">Quý khách ngoài khu vực vui lòng liên hệ để được tư vấn: Hotline:<br><a href="tel:{{domain.agentLink.noticeDom}}">{{domain.agentLink.noticeDom}}</a>.</p>
-    <button id="region-announcement-close" class="region-announcement__close" type="button">Đã hiểu</button>
+    </div>
+    <footer class="region-announcement__footer">
+      <button id="region-announcement-close" class="region-announcement__close" type="button">Đã hiểu</button>
+    </footer>
   </section>
-</div><div class="contact-24h">
-  <a class="contact-24h__item" href="tel:{{domain.agentLink.noticeDom}}" aria-label="Hotline 7x24">
-    <span class="contact-24h__symbol" aria-hidden="true">&#9742;</span>
-    <span class="contact-24h__copy">Hotline<small>{{domain.agentLink.noticeDom}}</small></span>
-    <span class="contact-24h__badge" aria-hidden="true">7X24</span>
-  </a>
-  <a class="contact-24h__item contact-24h__item--zalo" href="https://zalo.me/{{domain.agentLink.noticeDom}}" aria-label="Zalo 7x24">
-    <span class="contact-24h__symbol contact-24h__symbol--zalo" aria-hidden="true">Z</span>
-    <span class="contact-24h__copy">Zalo<small>HỖ TRỢ7X24 · NHẮN NGAY</small></span>
-    <span class="contact-24h__badge" aria-hidden="true">7X24</span>
-  </a>
-</div>
+</div>{% if not contactAtTop %}{% include "template/vn_waji_4/common_contact.html" %}{% endif %}
+{% if domain.agentLink.noticeDom %}
+<button id="back-to-top" class="back-to-top" type="button" aria-label="Quay lại đầu trang" aria-hidden="true" tabindex="-1"><img class="back-to-top__rocket" src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/rocket-back-to-top.png" alt=""></button>
+<div id="energy-ribbon-layer" class="energy-ribbon-layer" aria-hidden="true" hidden></div>
+<button id="energy-ribbon-toggle" class="energy-ribbon-toggle" type="button" aria-label="Bật hiệu ứng ánh sáng" aria-pressed="false"><img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/logo.jpg" width="30" height="30" alt=""></button>
+{% endif %}
 <aside id="demolition-plan" class="demolition-plan is-hidden" aria-label="Quy trình tháo dở công trình">
   <div class="demolition-plan__heading"><strong>KẾ HOẠCH</strong><small>QUY TRÌNH PHÁ DỠ</small></div><button id="demolition-plan-toggle" class="demolition-plan__toggle" type="button" aria-controls="demolition-plan" aria-expanded="false" aria-label="Hiển thị quy trình">Hiện</button>
   <ol class="demolition-plan__steps">
@@ -211,7 +338,36 @@
   </ol>
   <div class="demolition-plan__footer">AN TOÀN · ĐÚNG TIẾN ĐỘ</div>
 </aside>
-<script>(function(){var plan=document.getElementById("demolition-plan");var toggle=document.getElementById("demolition-plan-toggle");if(!plan||!toggle)return;var manual=false;function setHidden(hidden){plan.classList.toggle("is-hidden",hidden);toggle.textContent=hidden?"Hiện":"Ẩn";toggle.setAttribute("aria-expanded",String(!hidden));toggle.setAttribute("aria-label",hidden?"Hiển thị quy trình":"Ẩn quy trình")}var autoShow=window.setTimeout(function(){if(!manual)setHidden(false)},5000);toggle.addEventListener("click",function(){manual=true;window.clearTimeout(autoShow);setHidden(!plan.classList.contains("is-hidden"))})})();</script>
+<script>
+(function () {
+  var plan = document.getElementById("demolition-plan");
+  var toggle = document.getElementById("demolition-plan-toggle");
+  if (!plan || !toggle) return;
+  var manual = false;
+  var collapseTimer = 0;
+  function setHidden(hidden) {
+    window.clearTimeout(collapseTimer);
+    if (!hidden) {
+      plan.classList.add("is-hidden");
+      void plan.offsetWidth;
+    }
+    plan.classList.toggle("is-hidden", hidden);
+    toggle.textContent = hidden ? "Hiện" : "Ẩn";
+    toggle.setAttribute("aria-expanded", String(!hidden));
+    toggle.setAttribute("aria-label", hidden ? "Hiển thị quy trình" : "Ẩn quy trình");
+    if (!hidden) collapseTimer = window.setTimeout(function () { setHidden(true); }, 5700);
+  }
+  plan.addEventListener("animationend", function (event) {
+    if (event.animationName === "demolitionDotDown" && !plan.classList.contains("is-hidden")) setHidden(true);
+  });
+  var autoShow = window.setTimeout(function () { if (!manual) setHidden(false); }, 5000);
+  toggle.addEventListener("click", function () {
+    manual = true;
+    window.clearTimeout(autoShow);
+    setHidden(!plan.classList.contains("is-hidden"));
+  });
+})();
+</script>
 <script>(function(){var modal=document.getElementById("region-announcement");var close=document.getElementById("region-announcement-close");if(!modal||!close)return;var key="regionAnnouncementDismissedDate";function today(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}try{if(window.localStorage.getItem(key)===today()){modal.hidden=true;return}}catch(e){}document.body.classList.add("region-announcement-open");function dismiss(){try{window.localStorage.setItem(key,today())}catch(e){}modal.hidden=true;document.body.classList.remove("region-announcement-open");document.removeEventListener("keydown",onKeydown)}function onKeydown(e){if(e.key==="Escape")dismiss()}close.addEventListener("click",dismiss);document.addEventListener("keydown",onKeydown)})();</script>{% include "template/vn_waji_4/common_link.html" %}
-<script src="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/js/main.js"></script>
-{% include "template/vn_waji_5/common_ga.html" %}
+<script>(function(){var button=document.getElementById("back-to-top");if(!button)return;var launchFinished=false;var lastScrollY=window.pageYOffset||0;function updateVisibility(){var currentY=window.pageYOffset||0;var root=document.documentElement;var pageHeight=Math.max(root.scrollHeight,document.body?document.body.scrollHeight:0);var maxScroll=pageHeight-window.innerHeight;var wasVisible=button.classList.contains("is-visible");if(launchFinished&&currentY>lastScrollY&&maxScroll>0&&currentY>=400){button.classList.remove("is-launching");launchFinished=false}var launching=button.classList.contains("is-launching")&&!launchFinished;var visible=launching||(!launchFinished&&maxScroll>0&&currentY>=400);if(visible&&!wasVisible&&!launching){button.classList.remove("is-entering");void button.offsetWidth;button.classList.add("is-entering")}if(!visible){button.classList.remove("is-entering")}button.classList.toggle("is-visible",visible);button.setAttribute("aria-hidden",String(!visible));button.tabIndex=visible?0:-1;lastScrollY=currentY}button.addEventListener("click",function(){var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduced){window.scrollTo({top:0,behavior:"auto"});return}launchFinished=false;lastScrollY=window.pageYOffset||0;button.classList.remove("is-entering");button.classList.remove("is-launching");void button.offsetWidth;button.classList.add("is-launching");button.classList.add("is-visible");button.setAttribute("aria-hidden","false");button.tabIndex=0;window.scrollTo({top:0,behavior:"smooth"})});button.addEventListener("animationend",function(event){if(event.animationName==="back-to-top-land"){button.classList.remove("is-entering")}else if(event.animationName==="back-to-top-launch"){launchFinished=true;updateVisibility()}});window.addEventListener("scroll",updateVisibility,{passive:true});window.addEventListener("resize",updateVisibility);updateVisibility()})();</script><script src="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/js/main.js"></script>
+<script src="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/js/energy-ribbons.js?v=19" defer></script>

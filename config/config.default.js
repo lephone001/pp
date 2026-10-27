@@ -132,6 +132,8 @@ module.exports = appInfo => {
   config.development = {
     overrideDefault: true,
     watchDirs: [
+      'app/router.js',
+      'app/router',
       'app/controller',
       'app/extend',
       'app/middleware',
@@ -272,7 +274,7 @@ module.exports = appInfo => {
   // 路由模式改为服务启动时由 app/router/loader.js 读取本地配置并注册，
   // 保存配置后必须重启服务才会切换，不再在每次请求中动态判断路由模式。
   config.uplink = require('./uplink');
-  config.middleware = [ 'stats', 'sitePageOverride' ];
+  config.middleware = [ 'stats', 'sitePageOverride', 'errorPageData' ];
   // config.ipRateLimit = {
   //   windowSeconds: 60,
   //   maxRequests: 180,

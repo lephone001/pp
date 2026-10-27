@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b16">
+  <title>红蓝能量光带 Demo</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bolt-size: 52px;
+      --bolt-inset: 20px;
+      --bolt-center-inset: calc(var(--bolt-inset) + var(--bolt-size) / 2);
+      --ribbon-scale: .45;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { width: 100%; height: 100%; margin: 0; }
+
+    body {
+      overflow: hidden;
+      background: radial-gradient(ellipse at 72% 82%, rgba(22, 55, 104, .22), transparent 45%), #070b16;
+      color: #f3f6ff;
+      font-family: Inter, "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+
+    .demo-copy {
+      position: fixed;
+      z-index: 12;
+      top: 26px;
+      left: 28px;
+      max-width: min(420px, calc(100vw - 56px));
+      pointer-events: none;
+      text-shadow: 0 1px 12px rgba(0, 0, 0, .55);
+    }
+
+    .demo-copy h1 {
+      margin: 0;
+      font-size: clamp(18px, 2.2vw, 26px);
+      letter-spacing: .02em;
+    }
+
+    .demo-copy p {
+      margin: 8px 0 0;
+      color: rgba(220, 230, 250, .76);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .energy-layer {
+      position: fixed;
+      z-index: 5;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .energy-ribbon {
+      position: fixed;
+      right: var(--bolt-center-inset);
+      bottom: var(--bolt-center-inset);
+      display: block;
+      width: max(calc(100vw * var(--ribbon-scale)), calc(150vh * var(--ribbon-scale)));
+      height: auto;
+      max-width: none;
+      transform-origin: 100% 100%;
+      opacity: .7;
+      visibility: hidden;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      user-select: none;
+      -webkit-user-drag: none;
+      
+      will-change: transform, opacity;
+      animation-play-state: paused;
+    }
+
+    .energy-ribbon--blue {
+      width: max(calc(110vw * var(--ribbon-scale)), calc(165vh * var(--ribbon-scale)));
+      opacity: .62;
+    }
+
+    html.energy-active .energy-ribbon {
+      visibility: visible;
+      animation-play-state: running;
+    }
+
+    html.energy-active .energy-ribbon--red {
+      animation: red-flow 7.6s ease-in-out -1.8s infinite;
+    }
+
+    html.energy-active .energy-ribbon--blue {
+      animation: blue-flow 9.4s ease-in-out -4.3s infinite;
+    }
+
+    @keyframes red-flow {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(.99); opacity: .72; }
+      50% { transform: translate3d(0, 0, 1px) scale(1.025); opacity: .96; }
+    }
+
+    @keyframes blue-flow {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(.985); opacity: .64; }
+      50% { transform: translate3d(0, 0, 1px) scale(1.035); opacity: .9; }
+    }
+
+    .energy-toggle {
+      position: fixed;
+      z-index: 20;
+      right: var(--bolt-inset);
+      bottom: var(--bolt-inset);
+      display: grid;
+      width: var(--bolt-size);
+      height: var(--bolt-size);
+      padding: 0;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: 50%;
+      background: linear-gradient(132deg, #ed233d 0%, #c5144d 47%, #073eae 53%, #087fe9 100%);
+      color: #fff;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .energy-toggle:hover { opacity: .92; }
+    .energy-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+    .energy-toggle svg { display: block; width: 21px; height: 30px; }
+
+    .demo-hint {
+      position: fixed;
+      z-index: 12;
+      right: 86px;
+      bottom: 32px;
+      margin: 0;
+      color: rgba(234, 240, 255, .7);
+      font-size: 12px;
+      line-height: 1.4;
+      pointer-events: none;
+    }
+
+    .size-control {
+      position: fixed;
+      z-index: 20;
+      top: 112px;
+      left: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: calc(100vw - 56px);
+      font-size: 13px;
+    }
+
+    .size-control input { width: min(180px, 35vw); accent-color: #238cff; }
+    .size-control output { min-width: 4ch; }
+
+    html.page-hidden .energy-ribbon { animation-play-state: paused !important; }
+
+    @media (max-width: 700px) {
+      .demo-copy { top: 18px; left: 18px; max-width: calc(100vw - 36px); }
+      .demo-copy p { font-size: 12px; }
+      .size-control { top: 124px; left: 18px; max-width: calc(100vw - 36px); }
+      .demo-hint { right: 82px; bottom: 29px; font-size: 11px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html.energy-active .energy-ribbon { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="demo-copy">
+    <h1>红蓝能量汇聚</h1>
+    <p>红蓝光带汇聚到闪电按钮。拖动滑块调节大小，点击闪电可开关动画。</p>
+  </main>
+
+  <label class="size-control" for="ribbon-size">
+    <span>光带大小</span>
+    <input id="ribbon-size" type="range" min="10" max="100" value="45" step="1">
+    <output id="ribbon-size-value" for="ribbon-size">45%</output>
+  </label>
+
+  <div class="energy-layer" aria-hidden="true">
+    <img class="energy-ribbon energy-ribbon--red" src="./energy-ribbon-red.webp" alt="" draggable="false" fetchpriority="high">
+    <img class="energy-ribbon energy-ribbon--blue" src="./energy-ribbon-blue.webp" alt="" draggable="false" fetchpriority="high">
+  </div>
+
+  <p class="demo-hint" id="energy-hint">点击闪电关闭光带</p>
+  <button class="energy-toggle" id="energy-toggle" type="button" aria-pressed="false" aria-label="开启红蓝能量光带" title="开启红蓝能量光带" aria-describedby="energy-hint">
+    <svg viewBox="0 0 24 32" focusable="false" aria-hidden="true"><path d="M14.2 1 3.9 18.1h7.3L10 31l10.2-18h-7.1L14.2 1Z" fill="currentColor"/></svg>
+  </button>
+
+  <script>
+    (function () {
+      var page = document.documentElement;
+      var button = document.getElementById("energy-toggle");
+      var hint = document.getElementById("energy-hint");
+      var sizeInput = document.getElementById("ribbon-size");
+      var sizeValue = document.getElementById("ribbon-size-value");
+      var sizeStorageKey = "energyRibbonDemoSize";
+      try {
+        var savedSize = Number(window.localStorage.getItem(sizeStorageKey));
+        if (savedSize >= 10 && savedSize <= 100) sizeInput.value = savedSize;
+      } catch (error) {}
+      function syncSize() {
+        page.style.setProperty("--ribbon-scale", Number(sizeInput.value) / 100);
+        sizeValue.value = sizeInput.value + "%";
+      }
+      sizeInput.addEventListener("input", function () {
+        syncSize();
+        try { window.localStorage.setItem(sizeStorageKey, sizeInput.value); } catch (error) {}
+      });
+      syncSize();
+      var mobileDefaultOff = window.matchMedia("(pointer: coarse) and (max-width: 900px)").matches;
+      var enabled = !mobileDefaultOff;
+
+      function syncState() {
+        page.classList.toggle("energy-active", enabled);
+        button.setAttribute("aria-pressed", String(enabled));
+        var label = enabled ? "关闭红蓝能量光带" : "开启红蓝能量光带";
+        button.setAttribute("aria-label", label);
+        button.title = label;
+        hint.textContent = enabled ? "点击闪电关闭光带" : "点击闪电开启光带";
+      }
+
+      button.addEventListener("click", function () {
+        enabled = !enabled;
+        syncState();
+      });
+
+      document.addEventListener("visibilitychange", function () {
+        page.classList.toggle("page-hidden", document.hidden);
+      });
+
+      syncState();
+    }());
+  </script>
+</body>
+</html>

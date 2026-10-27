@@ -17,6 +17,24 @@ module.exports = app => {
   // Article 的跳转判断必须先于泛目录/静态模式的 /* 兜底执行。
   router.get('/Article/Movie/*', middleware.jump(), controller.page.fanmuluArticle.article);
   router.get("/Article/*", middleware.jump(),controller.page.fanmuluArticle.article);
+  const renderErrorTemplate = (templateName, statusCode) => async ctx => {
+    const { domain } = await ctx.service.utils.getSiteInfo();
+    ctx.status = statusCode;
+    await ctx.render(templateName, { domain, detail: {} });
+  };
+  const errorPageAliases = [
+    ['/404', '404.html', 404], ['/404.html', '404.html', 404],
+    ['/404a', '404a.html', 404], ['/404a.html', '404a.html', 404],
+    ['/404b', '404b.html', 404], ['/404b.html', '404b.html', 404],
+    ['/404c', '404c.html', 404], ['/404c.html', '404c.html', 404],
+    ['/404v', '404v.html', 404], ['/404v.html', '404v.html', 404],
+    ['/error', 'error.html', 500], ['/error.html', 'error.html', 500],
+    ['/new404', 'new404.html', 404], ['/new404.html', 'new404.html', 404],
+    ['/notfind', 'notfind.html', 404], ['/notfind.html', 'notfind.html', 404],
+  ];
+  errorPageAliases.forEach(([route, templateName, statusCode]) => {
+    router.get(route, renderErrorTemplate(templateName, statusCode));
+  });
   loadSelectedRoute(app);
   // router.get("/xnxx", controller.page.index.xnxx);
 
@@ -188,8 +206,8 @@ module.exports = app => {
   router.get("/x-app/*", controller.page.appDownload.appDownloadDetail);
   
   router.get("/html/appjs", controller.page.link.appjs);
-
   router.get("/*", controller.page.link.allPage);
+
   
   router.post("/api/updateAdvLinks",controller.page.link.updateAdvLinks)
   router.post("/api/updateBCAdvLinks",controller.page.link.updateBCAdvLinks)

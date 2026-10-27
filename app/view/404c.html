@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
 <title>{{detail.title|safe}}{% if detail.title %}-{% endif %}{% if domain.beiAnName %}{{domain.beiAnName}}{% endif %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,
@@ -59,17 +62,17 @@
              display: inline-block;
             }
         </style>
-    </head>
-    <body>
+<link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl or ''}}/{{domain.tname or 'vn_waji_4'}}/static/assets/css/style.css?v=366">
+</head>
+    <body class="bgThemColor site-error-page">
+{% set contactAtTop = true %}
+{% include "template/vn_waji_4/common_header.html" %}
+{% include "template/vn_waji_4/common_contact.html" %}
+<main class="error-page-main">
         <div id="page">
             {% include "template/components/img.html" %}
             <div id="container">
-                <div>
-                    <a href="http://{{domain.fullDomain}}">
-                        <img src="/logos/{{domain.link}}.png" onrror="this.src='/x_xiazai_05/style/style2022/images/new_logo.png'"
-                        tppabs="/style/style2022/images/new_logo.png" alt="{{domain.beiAnName}}" />
-                    </a>
-                </div>
+                
                 <h1>
                     404C - Không tìm thấy nội dung
                 </h1>
@@ -79,7 +82,7 @@
                     <a target="_blank" rel="nofollow noopener" href="http://www.{{item.link}}">{{item.beiAnName}}-Địa chỉ dự phòng</a>
                     {%- endfor %}
                 </h2>
-                <h2>Trang bạn yêu cầu không tồn tại. Hãy truy cập <a href="http://m.{{domain.link}}">trang chủ</a>, <a href="http://www.{{domain.fullDomain}}">nội dung</a>, <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}">danh mục</a>, <a href="http://{{domain.fullDomain}}/article.xml">bài viết</a> hoặc <a href="http://{{domain.fullDomain}}/sitemap.html">sơ đồ trang web</a>.</h2>
+                <h2>Trang bạn yêu cầu không tồn tại. Hãy truy cập <a href="http://{{domain.fullDomain}}{{domain.muluRandomMulu}}">danh mục</a>, <a href="http://{{domain.fullDomain}}/article.xml">bài viết</a> hoặc <a href="http://{{domain.fullDomain}}/sitemap.html">sơ đồ trang web</a>.</h2>
                 <div id="details">
                     <div id="qr">
                         <div id="image">
@@ -97,5 +100,7 @@
                 {% include "template/components/common.html" %}
             </div>
         </div>
-    </body>
+    </main>
+{% include "template/vn_waji_4/common_footer.html" %}
+</body>
 </html>

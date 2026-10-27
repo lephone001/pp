@@ -1,4 +1,4 @@
-<header style="background: {{domain.themeColor}};" class="top">
+<header class="top themed-top">
   <div class="container top-row">
     <p>Địa chỉ: 573/5, Khu phố 4, Phường An Phú, TPHCM</p>
   </div>
@@ -6,20 +6,37 @@
 
 <section class="brand-bar">
   <div class="container brand-inner">
-    <a class="logo" href="//{{domain.fullDomain}}" aria-label="{{domain.titleText}}">
-      <img src="{{domain.sfurl.mubanStaticUrl}}/{{domain.tname}}/static/assets/img/logo.jpg" alt="{{domain.titleText}}">
-    </a>
-    <button id="menuBtn" style="background: linear-gradient(110deg, #850014 0%, #c5001d 13%, #ef1535 28%, #a70018 44%, #e51732 49.3%, #082c94 50.7%, #0055c9 63%, #1597ef 78%, #0d3ba8 91%, #071c69 100%);" class="menu-btn" type="button">☰</button>
-    <nav class="main-nav mobile-nav" style="background: linear-gradient(110deg, #850014 0%, #c5001d 13%, #ef1535 28%, #a70018 44%, #e51732 49.3%, #082c94 50.7%, #0055c9 63%, #1597ef 78%, #0d3ba8 91%, #071c69 100%);" id="nav">
-      <i style="color:{{domain.themeColor}}"></i>
+    <div class="left-logo-ductoan">
+       <a class="logo header-logo-particles" href="//{{domain.fullDomain}}" aria-label="{{domain.titleText}}" data-logo-particles data-particle-count="5000" data-stationary-count="1000" data-animation-speed="1">
+        <img src="/vn_waji_4/static/assets/img/logo.png" width="90" height="90" alt="{{domain.titleText}}">
+      </a>
+      <div>
+         <h1><span class="brand-name-red">Đức</span> <span class="brand-name-blue">Toàn</span></h1>
+        <div>{{domain.link}}</div>
+      </div>
+      <button id="menuBtn" class="menu-btn brand-nav-gradient" type="button">☰</button>
+    </div>
+    <div class="brand-text">
+      <p class="brand-slogan-marquee">
+        <span class="brand-slogan-track">
+          <span class="brand-slogan-copy">
+            {{domain.titleText2 |safe}}
+            <small class="brand-slogan-description">{{domain.description}}</small>
+          </span>
+        </span>
+      </p>
+    </div>
+   
+    <nav class="main-nav mobile-nav brand-nav-gradient" id="nav">
+      <i class="theme-indicator"></i>
       <div class="container nav-inner">
         <a href="//{{domain.fullDomain}}" aria-label="Trang chủ">Trang chủ</a>
         <a href="/v-nl/list.html" aria-label="Thi Công">Thi Công</a>
+        <a href="/article.html" aria-label="Tin tức">Tin tức</a>
         <a href="/case.html" aria-label="Dự Án">Dự Án</a>
         <a href="/gioi-thieu.html" aria-label="Giới thiệu">Giới thiệu</a>
         <a href="/dich-vu.html" aria-label="Dịch vụ">Dịch vụ</a>
         <a href="/video.html" aria-label="Hồ sơ">Hồ sơ</a>
-        <a href="/news-list.html" aria-label="Tin tức">Tin tức</a>
         <a href="/lien-he.html" aria-label="Liên hệ">Liên hệ</a>
         <div class="nav-menu-dropdown">
           <a href="/duc-toan.html" aria-label="Đức Toàn">Đức Toàn <span class="nav-dropdown-arrow" aria-hidden="true">&#9662;</span></a>
@@ -42,59 +59,47 @@
         </div>
       </div>
     </nav>
-    <div class="brand-text">
-      <p class="brand-slogan-marquee">
-        <span class="brand-slogan-track">
-          <span class="brand-slogan-copy">
-            {{domain.titleText2}}
-            <small class="brand-slogan-description">{{domain.description}}</small>
-          </span>
-        </span>
-      </p>
-      <h1 style="color: {{domain.themeColor}};">{{domain.titleText}}</h1>
-      <span>{{domain.title}}</span>
-    </div>
     <div class="hotline">
       <small>Điện thoại (7x24)</small>
-      <a style="color: {{domain.themeColor}};" href="tel:{{domain.agentLink.noticeDom}}" aria-label="{{domain.agentLink.noticeDom}}">{{domain.agentLink.noticeDom}}</a>
+      <a href="tel:{{domain.agentLink.noticeDom}}" aria-label="{{domain.agentLink.noticeDom}}">{{domain.agentLink.noticeDom}}</a>
     </div>
   </div>
 </section>
 
-<nav class="main-nav desktop-nav" style="background: linear-gradient(110deg, #850014 0%, #c5001d 13%, #ef1535 28%, #a70018 44%, #e51732 49.3%, #082c94 50.7%, #0055c9 63%, #1597ef 78%, #0d3ba8 91%, #071c69 100%);">
+<nav class="main-nav desktop-nav brand-nav-gradient">
   <div class="container nav-inner">
       <div class="nav-link-group nav-link-group-red">
     <a href="//{{domain.fullDomain}}" aria-label="Trang chủ">Trang chủ</a>
     <a href="/v-nl/list.html" aria-label="Thi Công">Thi Công</a>
-    <a href="/case.html" aria-label="Dự Án">Dự Án</a><div class="nav-menu-dropdown">
-    <a href="/dich-vu.html" aria-label="Dịch vụ">Dịch vụ</a>
-      
-    </div>
-      </div>
-      <div class="nav-link-group nav-link-group-blue">
+    <a href="/article.html" aria-label="Tin tức">Tin tức</a>
+    <a href="/case.html" aria-label="Dự Án">Dự Án</a>
     
-    <a href="/video.html" aria-label="Hồ sơ">Hồ sơ</a>
-    <a href="/news-list.html" aria-label="Tin tức">Tin tức</a>
-    <a href="/lien-he.html" aria-label="Liên hệ">Liên hệ</a>
-    <div class="nav-menu-dropdown">
-    <a href="/duc-toan.html" aria-label="Đức Toàn">Đức Toàn <span class="nav-dropdown-arrow" aria-hidden="true">&#9662;</span></a>
-      <ul class="header-subnav"><li><a href="/gioi-thieu.html" aria-label="Giới thiệu">Giới thiệu</a></li>
-        <li><a href="/index.html">Trang chủ</a></li>
-        <li><a href="/category/gioi-thieu/index.html">Giới thiệu</a></li>
-        <li class="header-subnav-group">
-          <a href="/category/dich-vu-xay-dung/index.html">Dịch vụ xây dựng <span class="nav-dropdown-arrow" aria-hidden="true">&#9656;</span></a>
-          <ul>
-            <li><a href="/category/dich-vu-xay-dung/san-lap-mat-bang/index.html">San lấp mặt bằng</a></li>
-            <li><a href="/category/dich-vu-xay-dung/pha-do-cong-trinh/index.html">Phá dỡ công trình</a></li>
-            <li><a href="/category/dich-vu-xay-dung/do-xa-ban/index.html">Đổ xà bần</a></li>
-            <li><a href="/category/ep-coc-tram/index.html">Ép cọc tràm</a></li>
+  </div>
+      <div class="nav-link-group nav-link-group-blue">
+      <a href="/dich-vu.html" aria-label="Dịch vụ">Dịch vụ</a>
+      <a href="/video.html" aria-label="Hồ sơ">Hồ sơ</a>
+      <a href="/lien-he.html" aria-label="Liên hệ">Liên hệ</a>
+      <div class="nav-menu-dropdown">
+          <a href="/duc-toan.html" aria-label="Đức Toàn">Đức Toàn <span class="nav-dropdown-arrow" aria-hidden="true">&#9662;</span></a>
+          <ul class="header-subnav"><li><a href="/gioi-thieu.html" aria-label="Giới thiệu">Giới thiệu</a></li>
+            <li><a href="/index.html">Trang chủ</a></li>
+            <li><a href="/category/gioi-thieu/index.html">Giới thiệu</a></li>
+            <li class="header-subnav-group">
+              <a href="/category/dich-vu-xay-dung/index.html">Dịch vụ xây dựng <span class="nav-dropdown-arrow" aria-hidden="true">&#9656;</span></a>
+              <ul>
+                <li><a href="/category/dich-vu-xay-dung/san-lap-mat-bang/index.html">San lấp mặt bằng</a></li>
+                <li><a href="/category/dich-vu-xay-dung/pha-do-cong-trinh/index.html">Phá dỡ công trình</a></li>
+                <li><a href="/category/dich-vu-xay-dung/do-xa-ban/index.html">Đổ xà bần</a></li>
+                <li><a href="/category/ep-coc-tram/index.html">Ép cọc tràm</a></li>
+              </ul>
+            </li>
+            <li><a href="/category/cho-thue-xe-co-gioi/index.html">Cho thuê xe cơ giới</a></li>
+            <li><a href="/category/dich-vu-xay-dung/thu-mua-xac-cong-trinh-nhaxuong/index.html">Thu mua xác công trình, nhà xưởng</a></li>
+            <li><a href="/category/tin-tuc/index.html">Tin tức</a></li>
           </ul>
-        </li>
-        <li><a href="/category/cho-thue-xe-co-gioi/index.html">Cho thuê xe cơ giới</a></li>
-        <li><a href="/category/dich-vu-xay-dung/thu-mua-xac-cong-trinh-nhaxuong/index.html">Thu mua xác công trình, nhà xưởng</a></li>
-        <li><a href="/category/tin-tuc/index.html">Tin tức</a></li>
-      </ul></div>
-  
+        </div>
+        </div>
       </div>
-    </div>
 </nav>
+
+<script src="/vn_waji_4/static/assets/js/logo-particles.js?v=12" defer></script>

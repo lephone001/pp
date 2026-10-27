@@ -3,6 +3,40 @@ const Service = require('egg').Service;
 var fs = require('fs');
 
 class Article extends Service {
+  // Public directory: range scans use the built-in _id index, without skip or a total count.
+  async publicCursorList({ cursor, direction } = {}) {
+    const validCursor = typeof cursor === 'string' && /^[a-f0-9]{24}$/i.test(cursor);
+    const previous = validCursor && direction === 'prev';
+    const criteria = validCursor ? { _id: { [previous ? '$gt' : '$lt']: cursor } } : {};
+    const limit = 12;
+    const found = await this.ctx.model.Article.find(criteria)
+      .select('title description articleCategory image view time createdAt')
+      .sort({ _id: previous ? 1 : -1 }).limit(limit + 1).lean();
+    const rows = found.slice(0, limit);
+    if (previous) rows.reverse();
+    let hasPrev = false;
+    let hasNext = false;
+    if (rows.length) {
+      if (previous) {
+        hasPrev = found.length > limit;
+        hasNext = Boolean(await this.ctx.model.Article.exists({ _id: { $lt: rows[rows.length - 1]._id } }));
+      } else {
+        hasNext = found.length > limit;
+        hasPrev = validCursor && Boolean(await this.ctx.model.Article.exists({ _id: { $gt: rows[0]._id } }));
+      }
+    }
+    return { rows, hasPrev, hasNext };
+  }
+
+  async publicNeighbors(id) {
+    if (typeof id !== 'string' || !/^[a-f0-9]{24}$/i.test(id)) return { previous: null, next: null };
+    const [ previous, next ] = await Promise.all([
+      this.ctx.model.Article.findOne({ _id: { $gt: id } }).select('_id title').sort({ _id: 1 }).lean(),
+      this.ctx.model.Article.findOne({ _id: { $lt: id } }).select('_id title').sort({ _id: -1 }).lean(),
+    ]);
+    return { previous, next };
+  }
+
   async getArticleList({
     limit = 50,
     pageType,

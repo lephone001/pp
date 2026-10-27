@@ -27,7 +27,7 @@
     <meta name="twitter:creator" content="{{domain.titleText}}">
     <link rel="icon" href="{{domain.httpFullDomain}}/{{domain.tname}}/favicon.ico" sizes="any">
     <link rel="canonical" href="{{domain.httpFullDomain}}" />
-    <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/css/style.css?v=366">
+    <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/css/style.css?v=380">
     <script type="application/ld+json">
     {"@context":"{{domain.fullUrl}}","@type":"Article","headline":"{{mtdk.title|safe}}","datePublished":"{{mtdk.createdAt}}","author":{"@type":"Organization","name":"{{domain.titleText}}"},"publisher":{"@type":"Organization","name":"{{domain.titleText}}"}}
     </script>
@@ -35,7 +35,7 @@
 <body>
   {% include "template/vn_waji_4/common_header.html" %}
   <main>
-    {% include "template/vn_waji_5/common_contact.html" %}
+    {% set contactAtTop = true %}{% include "template/vn_waji_4/common_contact.html" %}
     <article class="detail-page">
       <section class="page-hero">
         <div class="container">
