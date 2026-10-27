@@ -66,59 +66,59 @@ module.exports = app => {
   router.get("/index.htm",  controller.page.index.indexPage);
   router.get("/index",  controller.page.index.indexPage);
 
-  router.get("/c",  controller.page.index.indexPageCache);
+  // router.get("/c",  controller.page.index.indexPageCache);
   router.get("/update/agentlink/:id",controller.page.other.updateAgentLink)
   // router.get("/other/:name", controller.page.index.other);
   router.get("/domain",  controller.page.index.domain);
-  router.get("/getArticleData/:id", controller.article.getArticleData)//-------------------更新数据
-  router.get("/gogogo", controller.page.link.gogogo)
-  router.get("/gogogo/:id", controller.page.link.gogogo)
+  // router.get("/getArticleData/:id", controller.article.getArticleData)//-------------------更新数据
+  // router.get("/gogogo", controller.page.link.gogogo)
+  // router.get("/gogogo/:id", controller.page.link.gogogo)
 
-  router.get("/vdetail/:id/index.html",controller.page.video.vdetail);
-  router.get("/hls-proxy", controller.hlsProxy.index);
-  router.get("/vcategory.html", controller.page.video.vcategoryIndex);
-  router.get("/vcategory/:cid/",controller.page.video.vcategory);
-  router.get("/vsearchlist/:value",controller.page.video.vsearchlist);
-  // router.get("/play",controller.page.video.play);
-  router.get("/video_book.html", controller.page.video.videoBookPage);
-  router.get("/video_image.html", controller.page.video.videoImagePage);
+  // router.get("/vdetail/:id/index.html",controller.page.video.vdetail);
+  // router.get("/hls-proxy", controller.hlsProxy.index);
+  // router.get("/vcategory.html", controller.page.video.vcategoryIndex);
+  // router.get("/vcategory/:cid/",controller.page.video.vcategory);
+  // router.get("/vsearchlist/:value",controller.page.video.vsearchlist);
+  // // router.get("/play",controller.page.video.play);
+  // router.get("/video_book.html", controller.page.video.videoBookPage);
+  // router.get("/video_image.html", controller.page.video.videoImagePage);
 
-  // 电影站点（siteType=11），与现有 video 路由完全分离
-  router.get("/movie", controller.page.movie.index);
-  router.get("/movie/index.html", controller.page.movie.index);
-  router.get("/movie/category/:id", controller.page.movie.category);
-  router.get("/movie/category/:id/index.html", controller.page.movie.category);
-  router.get("/movie/search/:value", controller.page.movie.search);
-  router.get("/movie/search", controller.page.movie.search);
-  router.get("/movie/detail/:id", controller.page.movie.detail);
-  router.get("/movie/detail/:id/index.html", controller.page.movie.detail);
-  router.get("/movie/play/:id", controller.page.movie.play);
-  router.get("/movie/play/:id/index.html", controller.page.movie.play);
+  // // 电影站点（siteType=11），与现有 video 路由完全分离
+  // router.get("/movie", controller.page.movie.index);
+  // router.get("/movie/index.html", controller.page.movie.index);
+  // router.get("/movie/category/:id", controller.page.movie.category);
+  // router.get("/movie/category/:id/index.html", controller.page.movie.category);
+  // router.get("/movie/search/:value", controller.page.movie.search);
+  // router.get("/movie/search", controller.page.movie.search);
+  // router.get("/movie/detail/:id", controller.page.movie.detail);
+  // router.get("/movie/detail/:id/index.html", controller.page.movie.detail);
+  // router.get("/movie/play/:id", controller.page.movie.play);
+  // router.get("/movie/play/:id/index.html", controller.page.movie.play);
 
-  // 美女图片站点（siteType=12），与原有文章/视频/电影页面分离
-  router.get("/miss", controller.page.miss.index);
-  router.get("/miss/index.html", controller.page.miss.index);
-  router.get("/miss/category/:id", controller.page.miss.category);
-  router.get("/miss/category/:id/index.html", controller.page.miss.category);
-  router.get("/miss/detail/:id", controller.page.miss.detail);
-  router.get("/miss/detail/:id/index.html", controller.page.miss.detail);
-  router.get("/miss/leader", controller.page.miss.leaders);
-  router.get("/miss/leader/index.html", controller.page.miss.leaders);
-  router.get("/miss/leader/:id", controller.page.miss.leader);
-  router.get("/miss/leader/:id/index.html", controller.page.miss.leader);
-  router.get("/uploads/miss/:filename", controller.missUpload.file);
-  router.get("/uploads/miss/*", controller.missUpload.file);
+  // // 美女图片站点（siteType=12），与原有文章/视频/电影页面分离
+  // router.get("/miss", controller.page.miss.index);
+  // router.get("/miss/index.html", controller.page.miss.index);
+  // router.get("/miss/category/:id", controller.page.miss.category);
+  // router.get("/miss/category/:id/index.html", controller.page.miss.category);
+  // router.get("/miss/detail/:id", controller.page.miss.detail);
+  // router.get("/miss/detail/:id/index.html", controller.page.miss.detail);
+  // router.get("/miss/leader", controller.page.miss.leaders);
+  // router.get("/miss/leader/index.html", controller.page.miss.leaders);
+  // router.get("/miss/leader/:id", controller.page.miss.leader);
+  // router.get("/miss/leader/:id/index.html", controller.page.miss.leader);
+  // router.get("/uploads/miss/:filename", controller.missUpload.file);
+  // router.get("/uploads/miss/*", controller.missUpload.file);
  
-  router.get("/disclaimers", controller.page.other.disclaimers);
-  router.get("/aboutus", controller.page.other.aboutus);
-  router.get("/business", controller.page.other.business);
+  // router.get("/disclaimers", controller.page.other.disclaimers);
+  // router.get("/aboutus", controller.page.other.aboutus);
+  // router.get("/business", controller.page.other.business);
 
-  router.get("/so/:id", controller.page.so.so);
-  router.get("/so.html", controller.page.so.so);
-  router.get("/so", controller.page.so.so);
-  router.get("/301", controller.page.link.jump301);
-  router.get("/app123/:id", controller.page.link.app123);
-  router.get("/bc123/:id", controller.page.link.bc123);
+  // router.get("/so/:id", controller.page.so.so);
+  // router.get("/so.html", controller.page.so.so);
+  // router.get("/so", controller.page.so.so);
+  // router.get("/301", controller.page.link.jump301);
+  // router.get("/app123/:id", controller.page.link.app123);
+  // router.get("/bc123/:id", controller.page.link.bc123);
   
   // router.get("/url/:id", middleware.isBot(app), controller.page.link.url);
   // router.get("/url.html", middleware.isBot(app), controller.page.link.url);
@@ -144,43 +144,43 @@ module.exports = app => {
   router.get("/detail/:id:*", controller.page.index.detail);
   router.get("/detail/:id/index.html", controller.page.index.detail);
 
-  router.get("/options/:id", controller.page.jingtai.detail);
+  // router.get("/options/:id", controller.page.jingtai.detail);
 
-  router.get("/apps/:id", controller.page.app.apps);
-  router.get("/apps/:id:*", controller.page.app.apps);
-  router.get("/apps/:id/index.html", controller.page.app.apps);
+  // router.get("/apps/:id", controller.page.app.apps);
+  // router.get("/apps/:id:*", controller.page.app.apps);
+  // router.get("/apps/:id/index.html", controller.page.app.apps);
 
-  router.get("/nd/:id/index.html", controller.page.nav.detail);
-  router.get("/nd/:id", controller.page.nav.detail);
-  router.get("/addnav.html",middleware.jump(), controller.page.nav.addnav);
-  router.get("/navarticle.html",controller.page.nav.navarticle);
-  router.get("/nac/:id/index.html",middleware.jump(), controller.page.nav.navarticlecategory);
-  router.get("/nav/index.html",middleware.jump(), controller.page.nav.navhomepage);
+  // router.get("/nd/:id/index.html", controller.page.nav.detail);
+  // router.get("/nd/:id", controller.page.nav.detail);
+  // router.get("/addnav.html",middleware.jump(), controller.page.nav.addnav);
+  // router.get("/navarticle.html",controller.page.nav.navarticle);
+  // router.get("/nac/:id/index.html",middleware.jump(), controller.page.nav.navarticlecategory);
+  // router.get("/nav/index.html",middleware.jump(), controller.page.nav.navhomepage);
 
-  router.get("/nc/:id/index.html",middleware.jump(), controller.page.nav.navcategory);
-  router.get("/allcategory/index.html", controller.page.nav.allcategory);
+  // router.get("/nc/:id/index.html",middleware.jump(), controller.page.nav.navcategory);
+  // router.get("/allcategory/index.html", controller.page.nav.allcategory);
 
-  router.get("/xcategory/:id", middleware.jump(),controller.page.index.articleList);
-  router.get("/xcategory/:id/:aid/:bid", middleware.jump(),controller.page.index.articleList);
-  router.get("/xcategory/:id/index.html",middleware.jump(), controller.page.index.articleList);
-  router.get("/xcategory/:id.html",middleware.jump(), controller.page.index.articleList);
-  router.get("/xcategory/:id:*",middleware.jump(), controller.page.index.articleList);
+  // router.get("/xcategory/:id", middleware.jump(),controller.page.index.articleList);
+  // router.get("/xcategory/:id/:aid/:bid", middleware.jump(),controller.page.index.articleList);
+  // router.get("/xcategory/:id/index.html",middleware.jump(), controller.page.index.articleList);
+  // router.get("/xcategory/:id.html",middleware.jump(), controller.page.index.articleList);
+  // router.get("/xcategory/:id:*",middleware.jump(), controller.page.index.articleList);
 
   // 随机一张图片
-  router.get("/picturs/randomPicturs", controller.utils.randomPicturs);
-  // 网站首页图 一个站点配5张
-  router.get("/image_site/:type/:id/:num.jpg", controller.utils.getCommonImage);
-  router.get("/image_article/:type/:id/:num.jpg", controller.utils.getCommonImage);
-  router.get("/image_mulu/:type/:id/:num.jpg", controller.utils.getCommonImage);
+  // router.get("/picturs/randomPicturs", controller.utils.randomPicturs);
+  // // 网站首页图 一个站点配5张
+  // router.get("/image_site/:type/:id/:num.jpg", controller.utils.getCommonImage);
+  // router.get("/image_article/:type/:id/:num.jpg", controller.utils.getCommonImage);
+  // router.get("/image_mulu/:type/:id/:num.jpg", controller.utils.getCommonImage);
   // router.get("/favicon.ico", controller.page.link.favicon);
 
   // 测试api
   router.get("/proxy/ip", controller.utils.proxyip);
   // 域名
-  router.get(
-    '/api/domainCounterSet',
-    controller.domain.domainCounterSet
-  );
+  // router.get(
+  //   '/api/domainCounterSet',
+  //   controller.domain.domainCounterSet
+  // );
 
   router.get('/api/captcha', controller.user.captcha); // 验证码
   // router.get("/api/ufzy/feixiaohao", controller.ufzy.feixiaohao);
@@ -190,7 +190,7 @@ module.exports = app => {
   
   // router.get("/api/navStarAndBadAdd", controller.nav.navStarAndBadAdd);
   // router.get("/api/navStarAndBadAddRequest", controller.nav.navStarAndBadAddRequest);
-  router.get("/api/video/playstatus", controller.video.playstatus);
+  // router.get("/api/video/playstatus", controller.video.playstatus);
   // router.get("/ml/*", controller.page.link.mulu);
 
 //文章工厂逻辑
@@ -203,9 +203,9 @@ module.exports = app => {
   router.get("/v-nd/:id/index.html", controller.page.articleCbd.articleDetail);
 
   //导航页面下载详情页
-  router.get("/x-app/*", controller.page.appDownload.appDownloadDetail);
+  // router.get("/x-app/*", controller.page.appDownload.appDownloadDetail);
   
-  router.get("/html/appjs", controller.page.link.appjs);
+  // router.get("/html/appjs", controller.page.link.appjs);
   router.get("/*", controller.page.link.allPage);
 
   
