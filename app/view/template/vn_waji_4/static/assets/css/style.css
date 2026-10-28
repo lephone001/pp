@@ -1468,7 +1468,6 @@ body.site-error-page .contact-24h.contact-24h--inline .contact-24h__item {
     font-size: clamp(14px, 1.7vw, 18px);
     line-height: 1.4;
     color: #64748b;
-    font-family: fantasy;
     overflow-wrap: anywhere;
 }
 @media(max-width:900px) and (min-width:721px){.brand-bar .brand-inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(190px,.8fr);column-gap:14px}.brand-bar .hotline{padding:16px}.brand-bar .left-logo-ductoan{gap:12px}.brand-bar .brand-text{padding:10px 12px}}
