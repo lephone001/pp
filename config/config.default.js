@@ -201,7 +201,7 @@ module.exports = appInfo => {
         // mongos: true,
         user: 'root',
         pass: b,
-        dbName: 'seo-ductoan',
+        dbName: 'seo-smart',
         auth: { authSource: "admin" },
         useNewUrlParser: true,
         useCreateIndex: true,
