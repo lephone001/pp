@@ -1,6 +1,7 @@
 'use strict';
 
 const loadSelectedRoute = require('./router/loader');
+const { templateHtmlRedirectPath } = require('./utils/templateHtmlRedirect');
 
 /**
  * @param {Egg.Application} app - egg application
@@ -9,6 +10,12 @@ module.exports = app => {
   const { router, controller, middleware } = app;
   // 在路由文件统一注册 Host 校验，先于路由分发执行；POST 请求跳过。
   app.use(middleware.domainHostGuard());
+  router.get('template-html-redirect', '/*', async (ctx, next) => {
+    const target = templateHtmlRedirectPath(ctx.path, app.baseDir);
+    if (!target) return next();
+    ctx.status = 302;
+    ctx.redirect(target + (ctx.search || ''));
+  });
   // EggJS 在启动时固定路由表。这里根据本地配置优先加载对应路由文件；
   // 后台/API/资源请求仍继续使用本文件中的原有路由。
   // uplink 页面预览及接口属于全局路由，必须先于泛目录/静态兜底注册。

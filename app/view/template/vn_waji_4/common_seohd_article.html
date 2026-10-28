@@ -22,19 +22,36 @@
 {
   "@context":"https://schema.org",
   "@type":"Article",
-  "@id":"{{domain.fullUrl}}#website",
-  "url":"{{domain.fullUrl}}",
-  "name":"{{domain.titleText2}}",
-  "alternateName":"{{domain.titleText2}}",
-  "inLanguage":"vi",
+
+  "headline":"{{article.title}}",
+
+  "description":"{{article.description}}",
+
+  "image":[
+    "{{article.image}}"
+  ],
+
+  "author":{
+    "@type":"Organization",
+    "name":"{{domain.titleText2}}"
+  },
+
   "publisher":{
     "@type":"Organization",
     "name":"{{domain.titleText2}}",
-    "url":"{{domain.fullUrl}}",
     "logo":{
       "@type":"ImageObject",
-      "url":"{{domain.fullUrl}}/static/img/logo.jpg"
+      "url":"{{domain.fullUrl}}/logo.png"
     }
+  },
+
+  "datePublished":"{{article.createTime}}",
+
+  "dateModified":"{{article.updateTime}}",
+
+  "mainEntityOfPage":{
+    "@type":"WebPage",
+    "@id":"{{domain.fullUrl}}{{article.url}}"
   }
 }
 </script>
