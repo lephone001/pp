@@ -1055,12 +1055,12 @@ class utilsService extends Service {
     // 如果非蜘蛛、不跳转、pc开启、不是泛站的情况把标题改成备用标题
     // console.log(f_host)
     // 暂时先不改
-    if (data.domain.beiAnName && data.domain.beiAnName !== data.domain.title) {
-      if (data.domain.isOpenUrl==-1&&data.domain.browserType == 'baidu' && !data.domain.isSpider && !data.domain.isMobile && data.domain.ispcpage===1&&f_host=='') {
-        data.domain.isChangeTitle = 1;
-      }
-    }
-console.log(data.domain.isChangeTitle)
+    // if (data.domain.beiAnName && data.domain.beiAnName !== data.domain.title) {
+    //   if (data.domain.isOpenUrl==-1&&data.domain.browserType == 'baidu' && !data.domain.isSpider && !data.domain.isMobile && data.domain.ispcpage===1&&f_host=='') {
+    //     data.domain.isChangeTitle = 1;
+    //   }
+    // }
+    // console.log(data.domain.isChangeTitle)
     // Agent 查询在域名加载后已启动，与中间计算和泛词读取并行。
     const agentLink = await agentLinkPromise;
     // console.log(agentLink)
@@ -2596,11 +2596,11 @@ console.log(data.domain.isChangeTitle)
     // 如果非蜘蛛、不跳转、pc开启、不是泛站的情况把标题改成备用标题
     // console.log(f_host)
     // 暂时先不改
-    if (data.domain.beiAnName && data.domain.beiAnName !== data.domain.title) {
-      if (data.domain.isOpenUrl==-1&&data.domain.browserType == 'baidu' && !data.domain.isSpider && !data.domain.isMobile && data.domain.ispcpage===1&&f_host=='') {
-        data.domain.isChangeTitle = 1;
-      }
-    }
+    // if (data.domain.beiAnName && data.domain.beiAnName !== data.domain.title) {
+    //   if (data.domain.isOpenUrl==-1&&data.domain.browserType == 'baidu' && !data.domain.isSpider && !data.domain.isMobile && data.domain.ispcpage===1&&f_host=='') {
+    //     data.domain.isChangeTitle = 1;
+    //   }
+    // }
 
     // 数据库获取代理线
     let agentLink = {}
