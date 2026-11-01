@@ -15,6 +15,8 @@ const PUBLIC_PATHS = new Set([
 module.exports = () => {
   return async function domainHostGuard(ctx, next) {
     if (ctx.method === 'POST') return next();
+    // API GET requests may arrive through an IP address and do not require a listed Host.
+    if (ctx.method === 'GET' && (ctx.path === '/api' || ctx.path.startsWith('/api/'))) return next();
     // 公开页面和数据资源跳过 Host/IP 校验，查询参数不影响路径匹配。
     if ((ctx.method === 'GET' || ctx.method === 'HEAD') && PUBLIC_PATHS.has(ctx.path)) return next();
     // 使用真实 Host 头，不使用可由 X-Forwarded-Host 改写的 ctx.host。

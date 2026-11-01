@@ -279,8 +279,13 @@ class ArticleCbdPageController extends Controller {
       const data = JSON.parse(await fs.promises.readFile(filePath, 'utf8'));
       const cacheTime = new Date(data.cacheDate || data.createdAt || data.cacheTime || 0).getTime();
       const threeDaysMs = 3 * 24 * 60 * 60 * 1000;
-      if (!cacheTime || Date.now() - cacheTime > threeDaysMs) return null;
       if (!Array.isArray(data.list)) return null;
+      const maxAge = data.list.length ? threeDaysMs : 60 * 1000;
+      if (!cacheTime || Date.now() - cacheTime > maxAge) return null;
+      // Refreshing the article factory rewrites the first page. Older cursor
+      // caches (including cached empty pages) no longer describe that list.
+      const home = JSON.parse(await fs.promises.readFile(this.getListCachePath(), 'utf8'));
+      if (cacheTime < Number(home.cacheTime || 0)) return null;
       if (data.list.length && data.list.every(item => item && item.image === undefined)) return null;
       return data;
     } catch (e) {

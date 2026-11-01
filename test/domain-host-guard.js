@@ -103,6 +103,12 @@ async function main() {
         }
       }
     }
+    for (const host of [ 'evil.test', '127.0.0.1:7001', '[::1]:7001', '' ]) {
+      const ctx = await request(host, 'GET', '/api/cleatAllCacheFlushall/zhonghejiaye.net');
+      assert.strictEqual(ctx.status, 200, 'API GET rejected: ' + host);
+      assert.strictEqual(ctx.body.handler, 'utils.cleatAllCacheFlushall');
+    }
+    assert.strictEqual((await request('127.0.0.1:7001', 'HEAD', '/api/cleatAllCacheFlushall/zhonghejiaye.net')).status, 444);
     assert.strictEqual(reads, 0, 'Public resources must bypass the domain file entirely');
     assert.strictEqual(stats, 0);
     for (const host of [ '127.0.0.1:7001', '192.168.137.1:7001', '[::1]:7001', '[2001:db8::1]:7001', '[::ffff:127.0.0.1]:7001', '2130706433:7001', '0x7f000001:7001', '0177.0.0.1:7001' ]) {
@@ -116,6 +122,7 @@ async function main() {
     assert.strictEqual(stats, 0);
     await Promise.all(Array.from({ length: 20 }, () => request('example.com')));
     assert.strictEqual(reads, 1, 'Concurrent first requests must share one file read');
+    assert.strictEqual((await request('evil.test', 'GET', '/apiary/test')).status, 444);
     for (const [ url ] of publicPaths) {
       for (const method of [ 'PUT', 'DELETE', 'OPTIONS' ]) {
         assert.strictEqual((await request('evil.test', method, url)).status, 444);

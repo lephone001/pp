@@ -1060,7 +1060,7 @@ class utilsService extends Service {
         data.domain.isChangeTitle = 1;
       }
     }
-
+console.log(data.domain.isChangeTitle)
     // Agent 查询在域名加载后已启动，与中间计算和泛词读取并行。
     const agentLink = await agentLinkPromise;
     // console.log(agentLink)

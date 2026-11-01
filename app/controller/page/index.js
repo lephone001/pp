@@ -1099,15 +1099,15 @@ ${gaDOm}
       let keydesc = `<meta name="description" content="${domain.description}">
       <meta name="keywords" content="${domain.keyWords}">
       `
-      if (domain.isChangeTitle == 1) {
-        // 这里换了标题需要把网页的状态码换成403
-        // 不需要换状态码 仅跳转时候修改状态码
-        // // ctx.status = 403
-        bodyHtml = bodyHtml.replace(strtitlebefore, '<title>' + domain.beiAnName + '</title>')
+      // if (domain.isChangeTitle == 1) {
+      //   // 这里换了标题需要把网页的状态码换成403
+      //   // 不需要换状态码 仅跳转时候修改状态码
+      //   // // ctx.status = 403
+      //   bodyHtml = bodyHtml.replace(strtitlebefore, '<title>' + domain.beiAnName + '</title>')
 
-      } else if (strtitlebefore !== '<title>' + domain.title + '</title>') {
-        bodyHtml = bodyHtml.replace(strtitlebefore, '<title>' + domain.title + '</title>')
-      }
+      // } else if (strtitlebefore !== '<title>' + domain.title + '</title>') {
+      //   bodyHtml = bodyHtml.replace(strtitlebefore, '<title>' + domain.title + '</title>')
+      // }
       // console.log(iframeDom)
       if(iframeDom){
         bodyHtml = bodyHtml.replace('</head>','</head>'+iframeDom)

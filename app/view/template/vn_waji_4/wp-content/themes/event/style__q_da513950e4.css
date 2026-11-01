@@ -36,8 +36,15 @@ Version: 3.0
 .mobile-hotline .mobile-hotline-right{width: 46%; float: right; text-align: center; background: #ed1c24; margin-left: 5px; margin-right: 10px; margin-top: 7px; height: 38px; border-radius: 4px;display :none;}
 .mobile-hotline .mobile-hotline-right a{color: white; line-height: 36px; font-size: 16px; font-weight: bold;display :none;}
 }
-.header-top{color:#fff !important;}
+.header-top{color:#fff !important;min-height: 55px !important;
+
+    background: linear-gradient(115deg, #a20d25 0%, #e51b37 22%, #f34c43 40%, #173c98 60%, #0788d8 80%, #a20d25 100%);
+    background-size: 320% 320%;
+    animation: top-row-gradient-flow 10s ease-in-out infinite alternate;
+}
 .header-top a{color:#fff !important;}
+@keyframes top-row-gradient-flow{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+
 
 /* Safety article: match the current vn_waji_4 homepage without changing markup. */
 body.postid-1625{background:#f5f5f2;color:#222;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.7}
