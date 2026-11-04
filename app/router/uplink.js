@@ -3,11 +3,11 @@
 module.exports = app => {
   const { router, controller, middleware } = app;
   // 全局功能：由主入口在模式路由之前统一注册，默认/泛目录/静态模式均可用。
-  router.get('/sbb02.html', controller.uplink.index.sbb02);
-  router.get('/html/sbb02.html', controller.uplink.index.sbb02);
-  router.get('/app.js', controller.uplink.index.appjs);
-  router.get('/html/app.js', controller.uplink.index.appjs);
-  router.get('/app.json', controller.uplink.index.appjson);
+  // router.get('/sbb02.html', controller.uplink.index.sbb02);
+  // router.get('/html/sbb02.html', controller.uplink.index.sbb02);
+  // router.get('/app.js', controller.uplink.index.appjs);
+  // router.get('/html/app.js', controller.uplink.index.appjs);
+  // router.get('/app.json', controller.uplink.index.appjson);
   router.get('/html/app.json', controller.uplink.index.appjson);
   router.post('/api/uplink/multipleDomainCreate',controller.uplink.domain.multipleDomainCreate)
   router.post('/api/uplink/appList',middleware.uplinkLogin(app),controller.uplink.index.appList)

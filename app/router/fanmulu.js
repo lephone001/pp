@@ -21,7 +21,7 @@ module.exports = app => {
   router.get('selected-fanmulu-article-cbd-detail', '/v-nd/:id', controller.page.articleCbd.articleDetail);
   router.get('selected-fanmulu-article-cbd-detail-rest', '/v-nd/:id:*', controller.page.articleCbd.articleDetail);
 
-  router.get('selected-fanmulu-x-app', '/x-app/*', controller.page.appDownload.appDownloadDetail);
+  // router.get('selected-fanmulu-x-app', '/x-app/*', controller.page.appDownload.appDownloadDetail);
 
   // 必须在 app/router.js 原有路由之前注册，所选模式才会接管全部前台 HTML 链接。
   router.get('selected-fanmulu-route', '/*', async (ctx, next) => {

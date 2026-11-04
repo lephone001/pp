@@ -22,8 +22,8 @@ module.exports = app => {
   require('./router/uplink')(app);
   require('./router/wenzhang')(app);
   // Article 的跳转判断必须先于泛目录/静态模式的 /* 兜底执行。
-  router.get('/Article/Movie/*', middleware.jump(), controller.page.fanmuluArticle.article);
-  router.get("/Article/*", middleware.jump(),controller.page.fanmuluArticle.article);
+  // router.get('/Article/Movie/*', middleware.jump(), controller.page.fanmuluArticle.article);
+  // router.get("/Article/*", middleware.jump(),controller.page.fanmuluArticle.article);
   const renderErrorTemplate = (templateName, statusCode) => async ctx => {
     const { domain } = await ctx.service.utils.getSiteInfo();
     ctx.status = statusCode;
