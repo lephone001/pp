@@ -204,8 +204,8 @@ module.exports = class IndexController extends egg.Controller {
     linkArry.push(domain.httpFullDomain + '/v-nl/list.html')
 
     if (domain.isMuLu) {
-     linkArry.push(httpsbo + domain.fullDomain + '/WenZhang/list.html')
-     linkArry.push(httpsbo + domain.fullDomain + '/WenZhangMuLu/list.html')
+    //  linkArry.push(httpsbo + domain.fullDomain + '/WenZhang/list.html')
+    //  linkArry.push(httpsbo + domain.fullDomain + '/WenZhangMuLu/list.html')
      linkArry.push(domain.httpFullDomain + '/v-nl/list.html')
       if(domain.agentLink.muluUrlList&&domain.agentLink.muluUrlList.length>0){
         domain.agentLink.muluUrlList.forEach((itemmului,indexmului)=>{
@@ -213,15 +213,15 @@ module.exports = class IndexController extends egg.Controller {
         })
       }
       for (let i = 0; i < 5; i++) {
-      linkArry.push(domain.httpFullDomain + '/Article/Movie/'+ctx.service.utils.RandomZiMu(1, 1, 10,1)+'.html')
+      // linkArry.push(domain.httpFullDomain + '/Article/Movie/'+ctx.service.utils.RandomZiMu(1, 1, 10,1)+'.html')
       linkArry.push(domain.httpFullDomain + '/Article/'+ctx.service.utils.RandomZiMu(1, 1, 10,1))
       linkArry.push(domain.httpFullDomain + '/Article/'+ctx.service.utils.randomNumber(1, 1, 10))
       linkArry.push(domain.httpFullDomain + '/Article/'+ctx.service.utils.RandomZiMu(1, 1, 10,1)+'.html')
       linkArry.push(domain.httpFullDomain + '/Article/'+ctx.service.utils.randomNumber(1, 1, 10)+'.html')
-      linkArry.push(domain.httpFullDomain + '/WenZhang/'+ctx.service.utils.RandomZiMu(1, 1, 10,1))
-      linkArry.push(domain.httpFullDomain + '/WenZhang/'+ctx.service.utils.randomNumber(1, 1, 10))
-      linkArry.push(domain.httpFullDomain + '/WenZhangMuLu/'+ctx.service.utils.RandomZiMu(1, 1, 10,1)+'.html')
-      linkArry.push(domain.httpFullDomain + '/WenZhangMuLu/'+ctx.service.utils.randomNumber(1, 1, 10)+'.html')
+      // linkArry.push(domain.httpFullDomain + '/WenZhang/'+ctx.service.utils.RandomZiMu(1, 1, 10,1))
+      // linkArry.push(domain.httpFullDomain + '/WenZhang/'+ctx.service.utils.randomNumber(1, 1, 10))
+      // linkArry.push(domain.httpFullDomain + '/WenZhangMuLu/'+ctx.service.utils.RandomZiMu(1, 1, 10,1)+'.html')
+      // linkArry.push(domain.httpFullDomain + '/WenZhangMuLu/'+ctx.service.utils.randomNumber(1, 1, 10)+'.html')
       linkArry.push(domain.httpFullDomain + '/v-nd/'+ctx.service.utils.RandomZiMu(1, 1, 10,1))
       linkArry.push(domain.httpFullDomain + '/v-nd/'+ctx.service.utils.randomNumber(1, 1, 10))
 
