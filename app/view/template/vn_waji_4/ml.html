@@ -3,36 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{domain.title}} | {{domain.titleText}}</title>
+  <title>{{detail.title|safe}} | {{domain.titleText}}</title>
   <meta name="description" content="{{detail.description}}">
+  <meta name="keywords" content="{{detail.keywords}}">
   <meta property="og:title" content="{{detail.title|safe}} | {{domain.titleText}}">
   <meta property="og:description" content="{{detail.description}}">
   <meta property="og:type" content="article">
   <meta name="geo.region" content="VN">
+  <meta property="og:locale" content="vi_VN">
   <meta name="author" content="{{domain.titleText}}">
-  <meta name="copyright" content="{{domain.title}} - {{domain.link}}">
+  <meta name="copyright" content="{{domain.titleText2}}">
   <meta name="application-name" content="{{domain.titleText2}}">
   <meta name="theme-color" content="{{domain.themeColor}}">
-  <meta property="og:type" content="{{domain.titleText2}}">
+  <meta property="og:type" content="article">
   <meta property="og:site_name" content="{{domain.titleText2}}">
   <meta property="og:locale" content="vi_VN">
-  <meta property="og:title" content="{{domain.title}} | {{domain.titleText}}">
-  <meta property="og:description" content="{{domain.description}}">
+  <meta property="og:title" content="{{detail.title|safe}} | {{domain.titleText}}">
+  <meta property="og:description" content="{{detail.description}}">
   <meta property="og:url" content="{{domain.fullUrl}}">
-  <meta property="og:image" content="//{{domain.fullDomain}}/vn_waji_5/static/assets/bimg/{{domain.urlNumber%23}}.png">
-  <meta property="og:image:alt" content="{{domain.title}}">
+  <meta property="og:image" content="{{domain.sfurl.mubanStaticJsUrl}}/images/waji1/{{domain.urlNumber%1000}}.webp">
+  <meta property="og:image:alt" content="{{detail.title}}">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1280">
   <meta property="og:image:height" content="720">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="{{domain.fullUrl}}">
   <meta name="twitter:creator" content="{{domain.titleText}}">
-  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="https://www.ductoan.com/favicon.ico" sizes="any">
   <link rel="canonical" href="{{domain.httpFullDomain}}" />
-  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="stylesheet" href="{{domain.sfurl.mubanStaticJsUrl}}/{{domain.tname}}/static/assets/css/style.css?v=380">
   <script type="application/ld+json">
-    {"@context":"{{domain.fullUrl}}","@type":"Article","headline":"{{mtdk.title|safe}}","datePublished":"{{mtdk.createdAt}}","author":{"@type":"Organization","name":"{{domain.titleText}}"},"publisher":{"@type":"Organization","name":"{{domain.titleText}}"}}
+    {"@context":"{{domain.fullUrl}}","@type":"Article","headline":"{{detail.title|safe}}","datePublished":"{{detail.createdAt}}","author":{"@type":"Organization","name":"{{domain.titleText}}"},"publisher":{"@type":"Organization","name":"{{domain.titleText}}"}}
   </script>
 </head>
 <body>
